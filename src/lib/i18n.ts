@@ -87,6 +87,7 @@ type Dict = {
   minutesHome: string;
   sms: string;
   megafonUnlimited: string;
+  messengersPack: string;
   chooseTariff: string;
   benefitsTitle: string;
   benefits: { title: string; text: string }[];
@@ -126,7 +127,7 @@ export const dictionaries: Record<Locale, Dict> = {
   ru: {
     metaTitle: "МегаФон для мигрантов — тарифы «Тёплый приём»",
     metaDescription:
-      "Связь в России и звонки домой без переплат. SIM за 15 минут, мессенджеры даже при нулевом балансе, выгодные минуты в Узбекистан, Таджикистан и Киргизию.",
+      "Связь в России и звонки домой без переплат. WhatsApp, Telegram и IMO при любом балансе. SIM очно: паспорт, СНИЛС, Госуслуги и биометрия.",
     brand: "МегаФон",
     product: "Тёплый приём",
     nav: { rates: "Звонки домой", tariffs: "Тарифы", how: "Как подключить", faq: "Вопросы" },
@@ -135,19 +136,19 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Связь с домом —",
     heroTitleAccent: "без переплат",
     heroLead:
-      "Тарифы «Тёплый приём»: интернет и минуты по России, звонки родным от 5 ₽, WhatsApp и Telegram даже если на счёте ноль. SIM оформляют в салоне за 15 минут — нужен только паспорт.",
+      "Тарифы «Тёплый приём»: интернет в России, звонки родным от 5 ₽, видеозвонки в WhatsApp, Telegram и IMO даже при нуле. SIM оформляют очно: паспорт с переводом, СНИЛС, подтверждённые Госуслуги и биометрия.",
     heroSecondary: "Сравнить тарифы",
-    heroNote: "Паспорт · 15 минут в салоне · связь по всей России",
+    heroNote: "Паспорт с переводом · СНИЛС · Госуслуги · биометрия · до 10 номеров",
     stats: [
       { value: "5 ₽", label: "минута в Узбекистан и на МегаФон Таджикистан" },
-      { value: "15 мин", label: "на оформление SIM в салоне" },
-      { value: "0 ₽", label: "мессенджеры при любом балансе" },
+      { value: "4 шага", label: "документы до договора в салоне" },
+      { value: "0 ₽", label: "видеозвонки и мессенджеры при любом балансе" },
     ],
     phoneFrom: "Входящий",
     phoneHome: "Мама · Ташкент",
     phoneRate: "5 ₽ / мин · «Тёплый приём»",
     phoneBalance: "Баланс 0 ₽ — мессенджеры работают",
-    messengersOn: "WhatsApp, Telegram, IMO — безлимит",
+    messengersOn: "WhatsApp, Telegram, IMO — видео без пакета",
     ratesTitle: "Звоните домой по своим правилам",
     ratesLead:
       "Специальные цены на международные звонки для граждан Узбекистана, Таджикистана, Киргизии, Армении, Казахстана и Азербайджана. Точную стоимость в вашем регионе подтвердят в салоне.",
@@ -170,7 +171,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     tariffsTitle: "Выберите пакет на месяц",
     tariffsLead:
-      "Минуты, гигабайты и звонки домой в одном платеже. Безлимит на МегаФон России — даже когда пакет минут закончился.",
+      "Минуты, гигабайты и звонки домой в одном платеже. Мессенджеры и видеозвонки не едят пакет. Безлимит на МегаФон России — даже когда минуты закончились.",
     perMonth: "за 30 дней",
     popular: "Чаще берут",
     tariffNames: { s: "Тёплый приём S", m: "Тёплый приём M", l: "Тёплый приём L" },
@@ -179,12 +180,13 @@ export const dictionaries: Record<Locale, Dict> = {
     minutesHome: "минут домой",
     sms: "SMS по России",
     megafonUnlimited: "Безлимит на МегаФон России",
+    messengersPack: "WhatsApp, Telegram, IMO без пакета",
     chooseTariff: "Хочу этот тариф",
     benefitsTitle: "Что важно, когда вы далеко от дома",
     benefits: [
       {
-        title: "Мессенджеры при любом балансе",
-        text: "WhatsApp, Telegram, Viber, IMO и навигация не расходуют пакет и остаются доступны до следующего платежа — даже при минусе.",
+        title: "Видеозвонки и мессенджеры при любом балансе",
+        text: "WhatsApp, Telegram и IMO не расходуют пакет — даже если на счёте ноль. Так большинство говорит с семьёй: голосом и по видео.",
       },
       {
         title: "Такси и карты всегда с собой",
@@ -192,39 +194,40 @@ export const dictionaries: Record<Locale, Dict> = {
       },
       {
         title: "Меню на родном языке",
-        text: "Наберите *105*2022# — подсказки, остатки и баланс можно смотреть на узбекском или таджикском.",
+        text: "Наберите *105*2022# — подсказки, остатки и баланс можно смотреть на узбекском, таджикском или киргизском.",
       },
       {
         title: "Кешбэк с переводов домой",
         text: "1% возвращается за переводы в Узбекистан и Таджикистан с номера МегаФон — мелочь, которая копится каждый месяц.",
       },
       {
-        title: "Защита от случайных подписок",
-        text: "«МегаФон Защита» спрашивает подтверждение, если кто-то пытается подключить платную услугу на ваш номер.",
+        title: "Без скрытых подписок",
+        text: "«МегаФон Защита» спрашивает подтверждение, если кто-то пытается подключить платную услугу. Списания без согласия — нет.",
       },
       {
-        title: "Связь по всей России",
-        text: "Одни и те же условия в Москве, на стройке в области и в поездке в другой регион. Крым и отдельные территории — по особым правилам.",
+        title: "Номер не сгорает на сезон",
+        text: "Уезжаете домой — номер и условия можно сохранить до следующего сезона, без обнуления. Особенно важно, если вы возвращаетесь каждый год.",
       },
     ],
-    stepsTitle: "Как получить SIM",
-    stepsLead: "Никакого сайта и ожидания курьера: приходите в салон с паспортом.",
+    stepsTitle: "Как оформить SIM",
+    stepsLead:
+      "С 2025 года иностранцу нельзя купить российскую SIM только по паспорту. Сначала СНИЛС, Госуслуги и биометрия — потом договор в салоне.",
     steps: [
       {
-        title: "Возьмите паспорт",
-        text: "Нужен документ, удостоверяющий личность. Временная регистрация не обязательна для оформления SIM.",
+        title: "Паспорт и СНИЛС",
+        text: "Нотариальный перевод паспорта и СНИЛС в СФР или МФЦ. Это не миграционная процедура: можно сделать параллельно с патентом или учётом.",
       },
       {
-        title: "Выберите тариф и номер",
-        text: "В салоне подскажут пакет под звонки домой и покажут красивые номера, если они есть.",
+        title: "Подтвердите Госуслуги",
+        text: "Подтверждённая учётная запись в МФЦ или банке. Без неё биометрию и договор не оформят.",
       },
       {
-        title: "Подпишите договор",
-        text: "Регистрация SIM занимает около 15 минут. Первый платёж можно внести сразу на кассе.",
+        title: "Сдайте биометрию",
+        text: "Лицо и голос в уполномоченном банке или в салоне с терминалом. Если СНИЛС и Госуслуги уже есть, иногда всё получается за один визит.",
       },
       {
-        title: "Позвоните домой в тот же день",
-        text: "Вставьте SIM, включите роуминг данных при необходимости и сохраните USSD *105*2022#.",
+        title: "Договор и IMEI в салоне",
+        text: "Очно передаёте IMEI телефона и подписываете договор. На одного человека — не больше 10 номеров у всех операторов вместе.",
       },
     ],
     ussdHint: "Язык меню: *105*2022#",
@@ -232,7 +235,19 @@ export const dictionaries: Record<Locale, Dict> = {
     faq: [
       {
         q: "Какие документы нужны?",
-        a: "Достаточно паспорта или иного документа, удостоверяющего личность. СНИЛС и российская регистрация для базового оформления не требуются. Сотрудник салона сверит данные и зарегистрирует SIM по закону.",
+        a: "Паспорт с нотариальным переводом, СНИЛС, подтверждённые Госуслуги и биометрия — лицо и голос. В салоне понадобится IMEI телефона. Одна регистрация или патент эту цепочку не заменяют.",
+      },
+      {
+        q: "Можно ли оформить за одно посещение?",
+        a: "Да, если СНИЛС, Госуслуги и биометрия уже есть. Иначе сначала МФЦ или банк, затем салон. В части салонов биометрию снимают на месте — уточните, когда перезвоним.",
+      },
+      {
+        q: "Сколько SIM можно оформить?",
+        a: "Не больше 10 номеров на человека у всех операторов суммарно. В салоне проверят лимит по вашим данным.",
+      },
+      {
+        q: "Что будет с номером, если уеду домой на сезон?",
+        a: "Номер можно сохранить до следующего сезона: не отключайте его и следите за условиями. В салоне подскажут, как не потерять номер и пакет.",
       },
       {
         q: "Я уже живу в России. Мне подойдёт «Тёплый приём»?",
@@ -243,17 +258,13 @@ export const dictionaries: Record<Locale, Dict> = {
         a: "Звонки на МегаФон России остаются безлимитными. Остальные звонки и интернет тарифицируются отдельно или можно докупить пакет. Мессенджеры, такси и карты продолжают работать.",
       },
       {
-        q: "Можно ли раздавать интернет?",
-        a: "Тарифы «Тёплый приём» не предназначены для модемов и раздачи. Для телефона и обычных приложений скорость обычная, торренты ограничиваются.",
-      },
-      {
         q: "Цены на сайте — окончательные?",
         a: "Это демонстрационный лендинг: цифры ориентированы на публичные условия линейки «Тёплый приём» и могут отличаться в вашем регионе и на дату подключения. Актуальные цены — в салоне и на megafon.ru.",
       },
     ],
     formTitle: "Оставьте номер — салон перезвонит",
     formLead:
-      "Заявка уходит консультанту. Перезвоним в рабочие часы, подскажем ближайший салон и подготовим тариф.",
+      "Подскажем, какие документы взять и в какой салон ехать. Перезвоним в рабочие часы.",
     formName: "Как к вам обращаться",
     formPhone: "Телефон для звонка",
     formCity: "Город",
@@ -264,7 +275,7 @@ export const dictionaries: Record<Locale, Dict> = {
     formSending: "Отправляем…",
     formSuccessTitle: "Заявка принята",
     formSuccessText:
-      "Консультант перезвонит в ближайшие рабочие часы. Возьмите паспорт, когда пойдёте в салон.",
+      "Консультант перезвонит в ближайшие рабочие часы. В салон возьмите паспорт с переводом, СНИЛС и подтверждённые Госуслуги.",
     formAnother: "Отправить ещё одну",
     formError: "Укажите имя и телефон — так консультант сможет дозвониться.",
     cityNames: {
@@ -298,7 +309,7 @@ export const dictionaries: Record<Locale, Dict> = {
   uz: {
     metaTitle: "MegaFon migrantlar uchun — «Iliq kutib olish» tariflari",
     metaDescription:
-      "Rossiyada aloqa va uyga arzon qo‘ng‘iroqlar. SIM 15 daqiqada, balans nol bo‘lsa ham messenjerlar, O‘zbekiston, Tojikiston va Qirg‘izistonga foydali daqiqalar.",
+      "Rossiyada aloqa va uyga arzon qo‘ng‘iroqlar. WhatsApp, Telegram va IMO har qanday balansda. SIM ochiq: pasport, SNILS, Gosuslugi va biometriya.",
     brand: "MegaFon",
     product: "Iliq kutib olish",
     nav: { rates: "Uyga qo‘ng‘iroq", tariffs: "Tariflar", how: "Qanday ulash", faq: "Savollar" },
@@ -307,19 +318,19 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Uy bilan aloqa —",
     heroTitleAccent: "ortiqcha to‘lovsiz",
     heroLead:
-      "«Iliq kutib olish» tariflari: Rossiya bo‘yicha internet va daqiqalar, oilaga 5 ₽ dan qo‘ng‘iroq, balans nol bo‘lsa ham WhatsApp va Telegram. SIM salonida 15 daqiqada — faqat pasport kerak.",
+      "«Iliq kutib olish» tariflari: Rossiyada internet, oilaga 5 ₽ dan qo‘ng‘iroq, WhatsApp, Telegram va IMO video qo‘ng‘iroqlari balans nol bo‘lsa ham. SIM ochiq rasmiylashtiriladi: tarjima qilingan pasport, SNILS, tasdiqlangan Gosuslugi va biometriya.",
     heroSecondary: "Tariflarni solishtirish",
-    heroNote: "Pasport · salonda 15 daqiqa · butun Rossiya bo‘ylab aloqa",
+    heroNote: "Tarjima qilingan pasport · SNILS · Gosuslugi · biometriya · 10 tagacha raqam",
     stats: [
       { value: "5 ₽", label: "O‘zbekiston va MegaFon Tojikistonga bir daqiqa" },
-      { value: "15 daq", label: "salonda SIM rasmiylashtirish" },
-      { value: "0 ₽", label: "har qanday balansda messenjerlar" },
+      { value: "4 qadam", label: "salon shartnomasigacha hujjatlar" },
+      { value: "0 ₽", label: "har qanday balansda video va messenjerlar" },
     ],
     phoneFrom: "Kiruvchi",
     phoneHome: "Ona · Toshkent",
     phoneRate: "5 ₽ / daq · «Iliq kutib olish»",
     phoneBalance: "Balans 0 ₽ — messenjerlar ishlaydi",
-    messengersOn: "WhatsApp, Telegram, IMO — cheksiz",
+    messengersOn: "WhatsApp, Telegram, IMO — paketdan tashqari video",
     ratesTitle: "Uyga o‘z shartlaringiz bilan qo‘ng‘iroq qiling",
     ratesLead:
       "O‘zbekiston, Tojikiston, Qirg‘iziston, Armaniston, Qozog‘iston va Ozarbayjon fuqarolari uchun xalqaro qo‘ng‘iroqlarning maxsus narxi. Aniq summani salonda tasdiqlaydilar.",
@@ -342,7 +353,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     tariffsTitle: "Oyiga paket tanlang",
     tariffsLead:
-      "Daqiqalar, gigabaytlar va uyga qo‘ng‘iroqlar bitta to‘lovda. MegaFon Rossiya raqamlariga cheksiz — paket tugasa ham.",
+      "Daqiqalar, gigabaytlar va uyga qo‘ng‘iroqlar bitta to‘lovda. Messenjerlar va video qo‘ng‘iroqlar paketni yemaydi. MegaFon Rossiyaga cheksiz — daqiqa tugasa ham.",
     perMonth: "30 kuniga",
     popular: "Ko‘proq olinadi",
     tariffNames: { s: "Iliq kutib olish S", m: "Iliq kutib olish M", l: "Iliq kutib olish L" },
@@ -351,12 +362,13 @@ export const dictionaries: Record<Locale, Dict> = {
     minutesHome: "uyga daqiqa",
     sms: "Rossiya bo‘yicha SMS",
     megafonUnlimited: "MegaFon Rossiyaga cheksiz",
+    messengersPack: "WhatsApp, Telegram, IMO paketsiz",
     chooseTariff: "Shu tarifni xohlayman",
     benefitsTitle: "Uydan uzoqda muhim bo‘lgan narsalar",
     benefits: [
       {
-        title: "Har qanday balansda messenjerlar",
-        text: "WhatsApp, Telegram, Viber, IMO va navigatsiya paketni sarflamaydi va keyingi to‘lovgacha ishlayveradi — minus bo‘lsa ham.",
+        title: "Har qanday balansda video va messenjerlar",
+        text: "WhatsApp, Telegram va IMO paketni sarflamaydi — balans nol bo‘lsa ham. Oilaga ovoz va video orqali shunday gaplashiladi.",
       },
       {
         title: "Taksi va xarita doim yonida",
@@ -364,39 +376,40 @@ export const dictionaries: Record<Locale, Dict> = {
       },
       {
         title: "Menyu ona tilingizda",
-        text: "*105*2022# tering — qoldiq va balansni o‘zbek yoki tojik tilida ko‘rish mumkin.",
+        text: "*105*2022# tering — qoldiq va balansni o‘zbek, tojik yoki qirg‘iz tilida ko‘rish mumkin.",
       },
       {
         title: "Uyga pul o‘tkazmadan keshbek",
         text: "MegaFon raqamidan O‘zbekiston va Tojikistonga o‘tkazmalar uchun 1% qaytadi.",
       },
       {
-        title: "Tasodifiy obunalardan himoya",
-        text: "«MegaFon Himoya» pullik xizmat ulanmoqchi bo‘lsa, tasdiq so‘raydi.",
+        title: "Yashirin obunalarsiz",
+        text: "«MegaFon Himoya» pullik xizmat ulanmoqchi bo‘lsa, tasdiq so‘raydi. Ruxsatsiz yechib olish yo‘q.",
       },
       {
-        title: "Butun Rossiya bo‘ylab aloqa",
-        text: "Moskva, viloyatdagi qurilish va boshqa mintaqaga safarda shu shartlar. Qrim va ayrim hududlar — alohida qoidalar.",
+        title: "Raqam mavsumda yonmaydi",
+        text: "Uyga ketsangiz, raqam va shartlarni keyingi mavsumgacha saqlash mumkin. Har yili qaytadiganlar uchun muhim.",
       },
     ],
-    stepsTitle: "SIM qanday olinadi",
-    stepsLead: "Sayt va kuryer kutish shart emas: pasport bilan salonga keling.",
+    stepsTitle: "SIM qanday rasmiylashtiriladi",
+    stepsLead:
+      "2025-yildan chet ellik fuqaro rossiya SIMini faqat pasport bilan ololmaydi. Avval SNILS, Gosuslugi va biometriya — keyin salon shartnomasi.",
     steps: [
       {
-        title: "Pasport oling",
-        text: "Shaxsni tasdiqlovchi hujjat kifoya. SIM uchun vaqtincha ro‘yxatdan o‘tish shart emas.",
+        title: "Pasport va SNILS",
+        text: "Pasportning notarial tarjimasi va SNILS SFR yoki MFCda. Bu migratsiya tartibi emas: patent yoki hisob bilan parallel qilish mumkin.",
       },
       {
-        title: "Tarif va raqam tanlang",
-        text: "Salonda uyga qo‘ng‘iroqlar uchun paketni maslahat berishadi va chiroyli raqamlar bo‘lsa ko‘rsatishadi.",
+        title: "Gosuslugini tasdiqlang",
+        text: "MFC yoki bankda tasdiqlangan hisob. Bunsiz biometriya va shartnoma bo‘lmaydi.",
       },
       {
-        title: "Shartnoma imzolang",
-        text: "SIM ro‘yxati taxminan 15 daqiqa. Birinchi to‘lovni kassada darhol qilish mumkin.",
+        title: "Biometriya topshiring",
+        text: "Yuz va ovoz vakolatli bankda yoki terminali bor salonda. SNILS va Gosuslugi tayyor bo‘lsa, ba’zan bitta tashrif yetadi.",
       },
       {
-        title: "Shu kuni uyga qo‘ng‘iroq qiling",
-        text: "SIMni soling va *105*2022# kodini saqlab qo‘ying.",
+        title: "Shartnoma va IMEI salonda",
+        text: "Telefon IMEIsini ochiq topshirasiz va shartnoma imzolaysiz. Bir kishiga barcha operatorlarda jami 10 tadan ortiq raqam yo‘q.",
       },
     ],
     ussdHint: "Menyu tili: *105*2022#",
@@ -404,7 +417,19 @@ export const dictionaries: Record<Locale, Dict> = {
     faq: [
       {
         q: "Qanday hujjatlar kerak?",
-        a: "Pasport yoki boshqa shaxsni tasdiqlovchi hujjat yetarli. SNILS va Rossiya ro‘yxati asosiy rasmiylashtirish uchun shart emas.",
+        a: "Notarial tarjima qilingan pasport, SNILS, tasdiqlangan Gosuslugi va biometriya — yuz va ovoz. Salonda telefon IMEI kerak. Ro‘yxat yoki patent bu zanjirni almashtirmaydi.",
+      },
+      {
+        q: "Bitta tashrifda olish mumkinmi?",
+        a: "Ha, agar SNILS, Gosuslugi va biometriya tayyor bo‘lsa. Aks holda avval MFC yoki bank, keyin salon. Ba’zi salonlarda biometriyani joyida olishadi.",
+      },
+      {
+        q: "Nechta SIM olish mumkin?",
+        a: "Bir kishiga barcha operatorlarda jami 10 tadan ortiq raqam yo‘q. Salonda limitni tekshiradi.",
+      },
+      {
+        q: "Mavsumga uyga ketsam, raqam nima bo‘ladi?",
+        a: "Raqamni keyingi mavsumgacha saqlash mumkin: o‘chirmang va shartlarni kuzating. Salonda qanday saqlashni aytishadi.",
       },
       {
         q: "Men allaqachon Rossiyada yashayman. «Iliq kutib olish» menga to‘g‘ri keladimi?",
@@ -415,17 +440,13 @@ export const dictionaries: Record<Locale, Dict> = {
         a: "MegaFon Rossiyaga qo‘ng‘iroqlar cheksiz qoladi. Qolgan qo‘ng‘iroqlar va internet alohida to‘lanadi yoki paket xarid qilish mumkin. Messenjerlar ishlashda davom etadi.",
       },
       {
-        q: "Internet tarqatish mumkinmi?",
-        a: "«Iliq kutib olish» modem va tarqatish uchun mo‘ljallanmagan. Telefon va oddiy ilovalar uchun tezlik odatiy.",
-      },
-      {
         q: "Saytdagi narxlar yakuniymi?",
         a: "Bu namoyish lendinqi: raqamlar «Iliq kutib olish» ochiq shartlariga tayanadi va mintaqa hamda ulanish sanasiga qarab farq qilishi mumkin. Aniq narx — salonda va megafon.ru da.",
       },
     ],
     formTitle: "Raqamingizni qoldiring — salon qo‘ng‘iroq qiladi",
     formLead:
-      "Ariza maslahatchiga ketadi. Ish vaqtida qo‘ng‘iroq qilamiz, yaqin salonni aytamiz va tarifni tayyorlaymiz.",
+      "Qaysi hujjatlarni olib kelish va qaysi salonga borishni aytamiz. Ish vaqtida qo‘ng‘iroq qilamiz.",
     formName: "Ismingiz",
     formPhone: "Qo‘ng‘iroq uchun telefon",
     formCity: "Shahar",
@@ -436,7 +457,7 @@ export const dictionaries: Record<Locale, Dict> = {
     formSending: "Yuborilmoqda…",
     formSuccessTitle: "Ariza qabul qilindi",
     formSuccessText:
-      "Maslahatchi yaqin ish soatlarida qo‘ng‘iroq qiladi. Salonga pasport olib boring.",
+      "Maslahatchi yaqin ish soatlarida qo‘ng‘iroq qiladi. Salonga tarjima qilingan pasport, SNILS va tasdiqlangan Gosuslugini oling.",
     formAnother: "Yana yuborish",
     formError: "Ism va telefonni yozing — shunda maslahatchi yetib boradi.",
     cityNames: {
@@ -470,7 +491,7 @@ export const dictionaries: Record<Locale, Dict> = {
   tg: {
     metaTitle: "МегаФон барои муҳоҷирон — тарифҳои «Пешвози гарм»",
     metaDescription:
-      "Алоқа дар Русия ва зангҳо ба хона бе пардохти зиёдатӣ. SIM дар 15 дақиқа, мессенҷерҳо ҳатто бо баланси сифр.",
+      "Алоқа дар Русия ва зангҳо ба хона бе пардохти зиёдатӣ. WhatsApp, Telegram ва IMO бо ҳар баланс. SIM рӯ ба рӯ: шиноснома, СНИЛС, Госуслуги ва биометрия.",
     brand: "МегаФон",
     product: "Пешвози гарм",
     nav: { rates: "Занг ба хона", tariffs: "Тарифҳо", how: "Чӣ тавр пайваст", faq: "Саволҳо" },
@@ -479,19 +500,19 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Алоқа бо хона —",
     heroTitleAccent: "бе зиёдатпардохт",
     heroLead:
-      "Тарифҳои «Пешвози гарм»: интернет ва дақиқаҳо дар Русия, занг ба хешон аз 5 ₽, WhatsApp ва Telegram ҳатто агар баланс сифр бошад. SIM дар салон 15 дақиқа — танҳо шиноснома лозим аст.",
+      "Тарифҳои «Пешвози гарм»: интернет дар Русия, занг ба хешон аз 5 ₽, видеозангҳо дар WhatsApp, Telegram ва IMO ҳатто бо баланси сифр. SIM рӯ ба рӯ: шиноснома бо тарҷума, СНИЛС, Госуслуги ва биометрия.",
     heroSecondary: "Муқоисаи тарифҳо",
-    heroNote: "Шиноснома · 15 дақиқа дар салон · алоқа дар тамоми Русия",
+    heroNote: "Шиноснома бо тарҷума · СНИЛС · Госуслуги · биометрия · то 10 рақам",
     stats: [
       { value: "5 ₽", label: "дақиқа ба Ӯзбекистон ва МегаФон Тоҷикистон" },
-      { value: "15 дақ", label: "барои расмиёти SIM дар салон" },
-      { value: "0 ₽", label: "мессенҷерҳо бо ҳар баланс" },
+      { value: "4 қадам", label: "ҳуҷҷатҳо то шартнома дар салон" },
+      { value: "0 ₽", label: "видеозангҳо ва мессенҷерҳо бо ҳар баланс" },
     ],
     phoneFrom: "Даромад",
     phoneHome: "Модар · Душанбе",
     phoneRate: "5 ₽ / дақ · «Пешвози гарм»",
     phoneBalance: "Баланс 0 ₽ — мессенҷерҳо кор мекунанд",
-    messengersOn: "WhatsApp, Telegram, IMO — бемаҳдуд",
+    messengersOn: "WhatsApp, Telegram, IMO — видео бе баста",
     ratesTitle: "Ба хона бо шартҳои худ занг занед",
     ratesLead:
       "Нархҳои махсус барои шаҳрвандони Ӯзбекистон, Тоҷикистон, Қирғизистон, Арманистон, Қазоқистон ва Озарбойҷон. Нархи дақиқро дар салон тасдиқ мекунанд.",
@@ -514,7 +535,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     tariffsTitle: "Бастаи моҳонаро интихоб кунед",
     tariffsLead:
-      "Дақиқаҳо, гигабайтҳо ва занг ба хона дар як пардохт. Бемаҳдуд ба МегаФони Русия — ҳатто баъди тамом шудани баста.",
+      "Дақиқаҳо, гигабайтҳо ва занг ба хона дар як пардохт. Мессенҷерҳо ва видеозангҳо бастаро намехӯранд. Бемаҳдуд ба МегаФони Русия.",
     perMonth: "барои 30 рӯз",
     popular: "Бештар мегиранд",
     tariffNames: { s: "Пешвози гарм S", m: "Пешвози гарм M", l: "Пешвози гарм L" },
@@ -523,12 +544,13 @@ export const dictionaries: Record<Locale, Dict> = {
     minutesHome: "дақиқа ба хона",
     sms: "SMS дар Русия",
     megafonUnlimited: "Бемаҳдуд ба МегаФони Русия",
+    messengersPack: "WhatsApp, Telegram, IMO бе баста",
     chooseTariff: "Ҳамин тарифро мехоҳам",
     benefitsTitle: "Он чизҳое, ки дур аз хона муҳиманд",
     benefits: [
       {
-        title: "Мессенҷерҳо бо ҳар баланс",
-        text: "WhatsApp, Telegram, Viber, IMO ва навигация бастаро сарф намекунанд ва то пардохти навбатӣ мемонанд — ҳатто бо минус.",
+        title: "Видеозангҳо ва мессенҷерҳо бо ҳар баланс",
+        text: "WhatsApp, Telegram ва IMO бастаро сарф намекунанд — ҳатто агар баланс сифр бошад. Бо оила овоз ва видео мегӯянд.",
       },
       {
         title: "Таксӣ ва харита ҳамеша бо шумо",
@@ -536,39 +558,40 @@ export const dictionaries: Record<Locale, Dict> = {
       },
       {
         title: "Меню бо забони модарӣ",
-        text: "*105*2022# занед — бақия ва балансро бо тоҷикӣ ё ӯзбекӣ дидан мумкин аст.",
+        text: "*105*2022# занед — бақия ва балансро бо тоҷикӣ, ӯзбекӣ ё қирғизӣ дидан мумкин аст.",
       },
       {
         title: "Кешбэк аз интиқол ба хона",
         text: "1% барои интиқол ба Ӯзбекистон ва Тоҷикистон аз рақами МегаФон бармегардад.",
       },
       {
-        title: "Муҳофизат аз обунаҳои тасодуфӣ",
-        text: "«МегаФон Ҳимоя» тасдиқ мепурсад, агар хидмати пулакӣ пайваст карданӣ шаванд.",
+        title: "Бе обунаҳои пинҳонӣ",
+        text: "«МегаФон Ҳимоя» тасдиқ мепурсад, агар хидмати пулакӣ пайваст карданӣ шаванд. Бе ризоят пул намегиранд.",
       },
       {
-        title: "Алоқа дар тамоми Русия",
-        text: "Ҳамон шартҳо дар Маскав, дар сохтмон ва дар сафар ба минтақаи дигар.",
+        title: "Рақам дар мавсим намесӯзад",
+        text: "Ба хона меравед — рақам ва шартҳоро то мавсими оянда нигоҳ доштан мумкин аст, бе сифр шудан.",
       },
     ],
-    stepsTitle: "Чӣ тавр SIM гирифтан",
-    stepsLead: "Бе сайт ва интизори курьер: бо шиноснома ба салон биёед.",
+    stepsTitle: "Чӣ тавр SIM расмӣ кардан",
+    stepsLead:
+      "Аз соли 2025 шаҳрванди хориҷӣ SIM-и Русияро танҳо бо шиноснома харида наметавонад. Аввал СНИЛС, Госуслуги ва биометрия — баъд шартнома дар салон.",
     steps: [
       {
-        title: "Шиноснома гиред",
-        text: "Ҳуҷҷати шахсӣ кифоя аст. Бақайдгирии муваққатӣ барои SIM ҳатмӣ нест.",
+        title: "Шиноснома ва СНИЛС",
+        text: "Тарҷумаи нотариалии шиноснома ва СНИЛС дар СФР ё МФЦ. Ин расмиёти муҳоҷират нест: бо патент ё бақайдгирӣ параллел кардан мумкин аст.",
       },
       {
-        title: "Тариф ва рақамро интихоб кунед",
-        text: "Дар салон бастаро барои занг ба хона маслиҳат медиҳанд.",
+        title: "Госуслугиро тасдиқ кунед",
+        text: "Ҳисоби тасдиқшуда дар МФЦ ё бонк. Бе он биометрия ва шартнома намедиҳанд.",
       },
       {
-        title: "Шартнома имзо кунед",
-        text: "Бақайдгирии SIM тақрибан 15 дақиқа. Пардохти аввалро дар хазина кардан мумкин аст.",
+        title: "Биометрия супоред",
+        text: "Рӯй ва овоз дар бонки ваколатдор ё салони дорои терминал. Агар СНИЛС ва Госуслуги тайёр бошанд, гоҳе як ташриф кифоя аст.",
       },
       {
-        title: "Ҳамон рӯз ба хона занг занед",
-        text: "SIM-ро гузоред ва рамзи *105*2022#-ро захира кунед.",
+        title: "Шартнома ва IMEI дар салон",
+        text: "IMEI-и телефонро рӯ ба рӯ медиҳед ва шартнома имзо мекунед. Ба як нафар на зиёда аз 10 рақам дар ҳамаи операторон.",
       },
     ],
     ussdHint: "Забони меню: *105*2022#",
@@ -576,7 +599,19 @@ export const dictionaries: Record<Locale, Dict> = {
     faq: [
       {
         q: "Кадом ҳуҷҷатҳо лозиманд?",
-        a: "Шиноснома ё ҳуҷҷати дигари шахсӣ кифоя аст. СНИЛС ва бақайдгирии русӣ барои расмиёти асосӣ ҳатмӣ нестанд.",
+        a: "Шиноснома бо тарҷумаи нотариалӣ, СНИЛС, Госуслугиҳои тасдиқшуда ва биометрия — рӯй ва овоз. Дар салон IMEI-и телефон лозим аст. Бақайдгирӣ ё патент ин занҷирро иваз намекунад.",
+      },
+      {
+        q: "Дар як ташриф гирифтан мумкин аст?",
+        a: "Ҳа, агар СНИЛС, Госуслуги ва биометрия тайёр бошанд. Вагарна аввал МФЦ ё бонк, баъд салон. Дар баъзе салонҳо биометрияро дар ҷо гирифта метавонанд.",
+      },
+      {
+        q: "Чанд SIM гирифтан мумкин аст?",
+        a: "Ба як нафар на зиёда аз 10 рақам дар ҳамаи операторон. Дар салон лимитро месанҷанд.",
+      },
+      {
+        q: "Агар ба хона барои мавсим равам, бо рақам чӣ мешавад?",
+        a: "Рақамро то мавсими оянда нигоҳ доштан мумкин аст: хомӯш накунед ва шартҳоро назорат кунед. Дар салон мегӯянд, чӣ тавр гум накунед.",
       },
       {
         q: "Ман аллакай дар Русия зиндагӣ мекунам. «Пешвози гарм» мувофиқ аст?",
@@ -587,17 +622,13 @@ export const dictionaries: Record<Locale, Dict> = {
         a: "Зангҳо ба МегаФони Русия бемаҳдуд мемонанд. Мессенҷерҳо, таксӣ ва харитаҳо корро давом медиҳанд.",
       },
       {
-        q: "Интернетро паҳн кардан мумкин аст?",
-        a: "Тарифҳои «Пешвози гарм» барои модем ва паҳнкунӣ пешбинӣ нашудаанд.",
-      },
-      {
         q: "Нархҳои сайт ниҳоӣ ҳастанд?",
         a: "Ин лендинги намоишӣ аст. Рақамҳо метавонанд аз рӯи минтақа фарқ кунанд. Нархи аслӣ — дар салон ва megafon.ru.",
       },
     ],
     formTitle: "Рақам гузоред — салон занг мезанад",
     formLead:
-      "Дархост ба мушовир меравад. Дар соатҳои корӣ занг мезанем, салони наздиктаринро мегӯем.",
+      "Мегӯем, кадом ҳуҷҷатҳоро гиред ва ба кадом салон равед. Дар соатҳои корӣ занг мезанем.",
     formName: "Номи шумо",
     formPhone: "Телефон барои занг",
     formCity: "Шаҳр",
@@ -607,7 +638,8 @@ export const dictionaries: Record<Locale, Dict> = {
     formSubmit: "Фиристодани дархост",
     formSending: "Фиристода истодааст…",
     formSuccessTitle: "Дархост қабул шуд",
-    formSuccessText: "Мушовир дар соатҳои корӣ занг мезанад. Шиноснома ба салон гиред.",
+    formSuccessText:
+      "Мушовир дар соатҳои корӣ занг мезанад. Ба салон шиноснома бо тарҷума, СНИЛС ва Госуслугиҳои тасдиқшуда гиред.",
     formAnother: "Боз фиристодан",
     formError: "Ном ва телефонро нависед — то мушовир дастрас шавад.",
     cityNames: {
@@ -641,7 +673,7 @@ export const dictionaries: Record<Locale, Dict> = {
   ky: {
     metaTitle: "МегаФон мигранттар үчүн — «Жылуу тосуп алуу» тарифтери",
     metaDescription:
-      "Орусияда байланыш жана үйгө арзан чалуулар. SIM 15 мүнөттө, баланс нөл болсо да мессенджерлер.",
+      "Орусияда байланыш жана үйгө арзан чалуулар. WhatsApp, Telegram жана IMO каалаган баланста. SIM жүзө: паспорт, СНИЛС, Госуслуги жана биометрия.",
     brand: "МегаФон",
     product: "Жылуу тосуп алуу",
     nav: { rates: "Үйгө чалуу", tariffs: "Тарифтер", how: "Кантип кошуу", faq: "Суроолор" },
@@ -650,19 +682,19 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Үй менен байланыш —",
     heroTitleAccent: "ашыкча төлөмсүз",
     heroLead:
-      "«Жылуу тосуп алуу» тарифтери: Орусия боюнча интернет жана мүнөттөр, үйгө 5 ₽дан чалуу, баланс нөл болсо да WhatsApp менен Telegram. SIM салондо 15 мүнөттө — паспорт эле керек.",
+      "«Жылуу тосуп алуу» тарифтери: Орусияда интернет, үйгө 5 ₽дан чалуу, WhatsApp, Telegram жана IMO видео чалуулары баланс нөл болсо да. SIM жүзө таризделет: которулган паспорт, СНИЛС, ырасталган Госуслуги жана биометрия.",
     heroSecondary: "Тарифтерди салыштыруу",
-    heroNote: "Паспорт · салондо 15 мүнөт · бүткүл Орусия боюнча байланыш",
+    heroNote: "Которулган паспорт · СНИЛС · Госуслуги · биометрия · 10 номерге чейин",
     stats: [
       { value: "5 ₽", label: "Өзбекстан жана МегаФон Тажикстанга бир мүнөт" },
-      { value: "15 мүн", label: "салондо SIM тариздөө" },
-      { value: "0 ₽", label: "каалаган баланста мессенджерлер" },
+      { value: "4 кадам", label: "салон келишимине чейин документтер" },
+      { value: "0 ₽", label: "каалаган баланста видео жана мессенджерлер" },
     ],
     phoneFrom: "Кирүүчү",
     phoneHome: "Апа · Бишкек",
     phoneRate: "5 ₽ / мүн · «Жылуу тосуп алуу»",
     phoneBalance: "Баланс 0 ₽ — мессенджерлер иштейт",
-    messengersOn: "WhatsApp, Telegram, IMO — чексиз",
+    messengersOn: "WhatsApp, Telegram, IMO — пакетсиз видео",
     ratesTitle: "Үйгө өз шарттарыңыз менен чалыңыз",
     ratesLead:
       "Өзбекстан, Тажикстан, Кыргызстан, Армения, Казакстан жана Азербайжан жарандары үчүн эл аралык чалуулардын атайын баасы. Так сумманы салондо ырасташат.",
@@ -685,7 +717,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     tariffsTitle: "Айлык пакетти тандаңыз",
     tariffsLead:
-      "Мүнөттөр, гигабайттар жана үйгө чалуулар бир төлөмдө. МегаФон Орусияга чексиз — пакет бүтсө да.",
+      "Мүнөттөр, гигабайттар жана үйгө чалуулар бир төлөмдө. Мессенджерлер жана видео чалуулар пакетти жебейт. МегаФон Орусияга чексиз.",
     perMonth: "30 күнгө",
     popular: "Көбүрөөк алышат",
     tariffNames: { s: "Жылуу тосуп алуу S", m: "Жылуу тосуп алуу M", l: "Жылуу тосуп алуу L" },
@@ -694,12 +726,13 @@ export const dictionaries: Record<Locale, Dict> = {
     minutesHome: "үйгө мүнөт",
     sms: "Орусия боюнча SMS",
     megafonUnlimited: "МегаФон Орусияга чексиз",
+    messengersPack: "WhatsApp, Telegram, IMO пакетсиз",
     chooseTariff: "Ушул тарифти каалайм",
     benefitsTitle: "Үйдөн алыс жүргөндө маанилүү нерселер",
     benefits: [
       {
-        title: "Каалаган баланста мессенджерлер",
-        text: "WhatsApp, Telegram, Viber, IMO жана навигация пакетти сарптабайт жана кийинки төлөмгө чейин иштейт.",
+        title: "Каалаган баланста видео жана мессенджерлер",
+        text: "WhatsApp, Telegram жана IMO пакетти сарптабайт — баланс нөл болсо да. Үй-бүлө менен үн жана видео аркылуу ушундай сүйлөшөт.",
       },
       {
         title: "Такси жана карта дайыма жаныңызда",
@@ -707,39 +740,40 @@ export const dictionaries: Record<Locale, Dict> = {
       },
       {
         title: "Меню эне тилиңизде",
-        text: "*105*2022# териңиз — калдык менен балансты өзбек же тажик тилинде көрө аласыз.",
+        text: "*105*2022# териңиз — калдык менен балансты кыргыз, өзбек же тажик тилинде көрө аласыз.",
       },
       {
         title: "Үйгө которуудан кешбэк",
         text: "МегаФон номеринен Өзбекстан жана Тажикстанга которуулар үчүн 1% кайтып келет.",
       },
       {
-        title: "Кокустук жазылуулардан коргоо",
-        text: "«МегаФон Коргоо» акылуу кызмат кошулганда ырастоо сурайт.",
+        title: "Жашыруун жазылууларсыз",
+        text: "«МегаФон Коргоо» акылуу кызмат кошулганда ырастоо сурайт. Уруксатсыз акча албайт.",
       },
       {
-        title: "Бүткүл Орусия боюнча байланыш",
-        text: "Москвада, курулушта жана башка регионго сапарда ошол эле шарттар.",
+        title: "Номер мезгилде күйбөйт",
+        text: "Үйгө кетсеңиз, номер менен шарттарды кийинки мезгилге чейин сактаса болот, нөлдөнбөйт.",
       },
     ],
-    stepsTitle: "SIM кантип алынат",
-    stepsLead: "Сайт жана курьер күтүүнүн кереги жок: паспорт менен салонго келиңиз.",
+    stepsTitle: "SIM кантип таризделет",
+    stepsLead:
+      "2025-жылдан чет элдик жаран орус SIMин паспорт менен гана сатып ала албайт. Адегенде СНИЛС, Госуслуги жана биометрия — анан салон келишими.",
     steps: [
       {
-        title: "Паспорт алыңыз",
-        text: "Өздүк документ жетиштүү. SIM үчүн убактылуу каттоо милдеттүү эмес.",
+        title: "Паспорт жана СНИЛС",
+        text: "Паспорттун нотариалдык котормосу жана СНИЛС СФР же МФЦда. Бул миграция процедурасы эмес: патент же каттоо менен параллель жасаса болот.",
       },
       {
-        title: "Тариф жана номер тандаңыз",
-        text: "Салондо үйгө чалуулар үчүн пакетти кеңештешет.",
+        title: "Госуслугини ырастаңыз",
+        text: "МФЦ же банкта ырасталган эсеп. Ансыз биометрия жана келишим берилбейт.",
       },
       {
-        title: "Келишимге кол коюңуз",
-        text: "SIM каттоосу болжол менен 15 мүнөт. Биринчи төлөмдү кассада төлөсө болот.",
+        title: "Биометрия тапшырыңыз",
+        text: "Бет жана үн ыйгарымдуу банкта же терминалы бар салондо. СНИЛС менен Госуслуги даяр болсо, кээде бир жолу баруу жетет.",
       },
       {
-        title: "Ошол эле күнү үйгө чалыңыз",
-        text: "SIMди салып, *105*2022# кодун сактап коюңуз.",
+        title: "Келишим жана IMEI салондо",
+        text: "Телефондун IMEIсин жүзө тапшырып, келишимге кол коёсуз. Бир адамга бардык операторлордо жалпы 10 номерден көп эмес.",
       },
     ],
     ussdHint: "Меню тили: *105*2022#",
@@ -747,7 +781,19 @@ export const dictionaries: Record<Locale, Dict> = {
     faq: [
       {
         q: "Кайсы документтер керек?",
-        a: "Паспорт же башка өздүк документ жетиштүү. СНИЛС жана орус каттоосу негизги тариздөө үчүн милдеттүү эмес.",
+        a: "Нотариалдык которулган паспорт, СНИЛС, ырасталган Госуслуги жана биометрия — бет жана үн. Салондо телефондун IMEIси керек. Каттоо же патент бул чынжырды алмаштырбайт.",
+      },
+      {
+        q: "Бир жолу барганда алууга болобу?",
+        a: "Ооба, эгер СНИЛС, Госуслуги жана биометрия даяр болсо. Болбосо адегенде МФЦ же банк, анан салон. Айрым салондордо биометрияны жерден алышат.",
+      },
+      {
+        q: "Канча SIM алууга болот?",
+        a: "Бир адамга бардык операторлордо жалпы 10 номерден көп эмес. Салондо лимитти текшеришет.",
+      },
+      {
+        q: "Мезгилге үйгө кетсем, номер эмне болот?",
+        a: "Номерди кийинки мезгилге чейин сактаса болот: өчүрбөңүз жана шарттарды көзөмөлдөңүз. Салондо кантип жоготпоону айтышат.",
       },
       {
         q: "Мен Орусияда жашайм. «Жылуу тосуп алуу» мага туура келеби?",
@@ -758,17 +804,13 @@ export const dictionaries: Record<Locale, Dict> = {
         a: "МегаФон Орусияга чалуулар чексиз калат. Мессенджерлер, такси жана карталар иштей берет.",
       },
       {
-        q: "Интернет таратууга болобу?",
-        a: "«Жылуу тосуп алуу» модем жана таратуу үчүн арналган эмес.",
-      },
-      {
         q: "Сайттагы баалар акыркыбы?",
         a: "Бул демонстрациялык лендинг. Сандар регионго жараша айырмаланышы мүмкүн. Так баа — салондо жана megafon.ru да.",
       },
     ],
     formTitle: "Номериңизди калтырыңыз — салон чалат",
     formLead:
-      "Арыз кеңешчиге кетет. Иш сааттарында чалабыз, жакынкы салонду айтабыз.",
+      "Кайсы документтерди алып баруу жана кайсы салонго барууну айтабыз. Иш сааттарында чалабыз.",
     formName: "Атыңыз",
     formPhone: "Чалуу үчүн телефон",
     formCity: "Шаар",
@@ -778,7 +820,8 @@ export const dictionaries: Record<Locale, Dict> = {
     formSubmit: "Арыз жөнөтүү",
     formSending: "Жөнөтүлүүдө…",
     formSuccessTitle: "Арыз кабыл алынды",
-    formSuccessText: "Кеңешчи жакынкы иш сааттарында чалат. Салонго паспорт алып барыңыз.",
+    formSuccessText:
+      "Кеңешчи жакынкы иш сааттарында чалат. Салонго которулган паспорт, СНИЛС жана ырасталган Госуслугини алып барыңыз.",
     formAnother: "Дагы жөнөтүү",
     formError: "Ат менен телефонду жазыңыз — ошондо кеңешчи жетет.",
     cityNames: {

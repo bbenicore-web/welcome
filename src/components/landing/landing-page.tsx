@@ -288,6 +288,7 @@ export function LandingPage() {
                         `${tariff.homeMinutes} ${t.minutesHome}`,
                         `${tariff.sms} ${t.sms}`,
                         t.megafonUnlimited,
+                        t.messengersPack,
                       ].map((line) => (
                         <li key={line} className="flex items-start gap-2">
                           <Check
