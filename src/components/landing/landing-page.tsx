@@ -395,7 +395,7 @@ export function LandingPage() {
                 {t.formLead}
               </p>
             </div>
-            <CallbackForm defaultTariff={selectedTariff} />
+          <CallbackForm defaultTariff={selectedTariff} idPrefix="page-lead" />
           </div>
         </section>
       </main>
@@ -429,7 +429,12 @@ export function LandingPage() {
             <DialogTitle className="text-xl">{t.dialogTitle}</DialogTitle>
             <DialogDescription>{t.dialogLead}</DialogDescription>
           </DialogHeader>
-          <CallbackForm compact defaultTariff={selectedTariff} />
+          <CallbackForm
+            key={selectedTariff}
+            compact
+            defaultTariff={selectedTariff}
+            idPrefix="dialog-lead"
+          />
         </DialogContent>
       </Dialog>
     </div>
@@ -440,22 +445,30 @@ function LanguageSelect() {
   const { locale, setLocale, t } = useLanguage();
 
   return (
-    <label className="inline-flex items-center gap-1 text-sm">
-      <span className="sr-only">{t.lang}</span>
-      <select
-        value={locale}
-        onChange={(event) =>
-          setLocale(event.target.value as typeof locale)
-        }
-        className="h-10 rounded-full border border-input bg-white px-3 text-sm font-medium outline-none focus-visible:ring-3 focus-visible:ring-[#00B956]/40"
-      >
-        {locales.map((item) => (
-          <option key={item.id} value={item.id}>
+    <div
+      role="group"
+      aria-label={t.lang}
+      className="inline-flex rounded-full border border-input bg-white p-0.5"
+    >
+      {locales.map((item) => {
+        const active = item.id === locale;
+        return (
+          <button
+            key={item.id}
+            type="button"
+            aria-pressed={active}
+            onClick={() => setLocale(item.id)}
+            className={`h-9 min-w-9 rounded-full px-2.5 text-xs font-semibold transition-colors ${
+              active
+                ? "bg-[#00B956] text-white"
+                : "text-foreground/70 hover:text-foreground"
+            }`}
+          >
             {item.label}
-          </option>
-        ))}
-      </select>
-    </label>
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

@@ -20,12 +20,14 @@ type CallbackFormProps = {
   defaultTariff?: string;
   compact?: boolean;
   onSubmitted?: () => void;
+  idPrefix?: string;
 };
 
 export function CallbackForm({
   defaultTariff = "m",
   compact = false,
   onSubmitted,
+  idPrefix = "lead",
 }: CallbackFormProps) {
   const { t } = useLanguage();
   const [name, setName] = useState("");
@@ -89,9 +91,9 @@ export function CallbackForm({
   return (
     <form onSubmit={onSubmit} className="grid gap-4" noValidate>
       <div className="grid gap-1.5">
-        <Label htmlFor="lead-name">{t.formName}</Label>
+        <Label htmlFor={`${idPrefix}-name`}>{t.formName}</Label>
         <Input
-          id="lead-name"
+          id={`${idPrefix}-name`}
           name="name"
           autoComplete="name"
           value={name}
@@ -101,9 +103,9 @@ export function CallbackForm({
         />
       </div>
       <div className="grid gap-1.5">
-        <Label htmlFor="lead-phone">{t.formPhone}</Label>
+        <Label htmlFor={`${idPrefix}-phone`}>{t.formPhone}</Label>
         <Input
-          id="lead-phone"
+          id={`${idPrefix}-phone`}
           name="phone"
           type="tel"
           inputMode="tel"
@@ -117,10 +119,14 @@ export function CallbackForm({
       </div>
       <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <Label>{t.formCity}</Label>
+          <Label htmlFor={`${idPrefix}-city`}>{t.formCity}</Label>
           <Select value={city} onValueChange={(value) => setCity(String(value))}>
-            <SelectTrigger className="h-11 w-full bg-white">
-              <SelectValue />
+            <SelectTrigger id={`${idPrefix}-city`} className="h-11 w-full bg-white">
+              <SelectValue>
+                {(value: string | null) =>
+                  value ? t.cityNames[value as keyof typeof t.cityNames] : ""
+                }
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {cities.map((id) => (
@@ -132,13 +138,17 @@ export function CallbackForm({
           </Select>
         </div>
         <div className="grid gap-1.5">
-          <Label>{t.formCountry}</Label>
+          <Label htmlFor={`${idPrefix}-country`}>{t.formCountry}</Label>
           <Select
             value={country}
             onValueChange={(value) => setCountry(String(value))}
           >
-            <SelectTrigger className="h-11 w-full bg-white">
-              <SelectValue />
+            <SelectTrigger id={`${idPrefix}-country`} className="h-11 w-full bg-white">
+              <SelectValue>
+                {(value: string | null) =>
+                  value ? t.originCountries[Number(value)] : ""
+                }
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {t.originCountries.map((item, index) => (
@@ -151,13 +161,17 @@ export function CallbackForm({
         </div>
       </div>
       <div className="grid gap-1.5">
-        <Label>{t.formTariff}</Label>
+        <Label htmlFor={`${idPrefix}-tariff`}>{t.formTariff}</Label>
         <Select
           value={tariffId}
           onValueChange={(value) => setTariffId(String(value))}
         >
-          <SelectTrigger className="h-11 w-full bg-white">
-            <SelectValue />
+          <SelectTrigger id={`${idPrefix}-tariff`} className="h-11 w-full bg-white">
+            <SelectValue>
+              {(value: string | null) =>
+                value ? t.tariffNames[value as keyof typeof t.tariffNames] : ""
+              }
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {tariffOptions.map((option) => (
@@ -169,9 +183,9 @@ export function CallbackForm({
         </Select>
       </div>
       <div className="grid gap-1.5">
-        <Label htmlFor="lead-comment">{t.formComment}</Label>
+        <Label htmlFor={`${idPrefix}-comment`}>{t.formComment}</Label>
         <Textarea
-          id="lead-comment"
+          id={`${idPrefix}-comment`}
           name="comment"
           value={comment}
           onChange={(event) => setComment(event.target.value)}
