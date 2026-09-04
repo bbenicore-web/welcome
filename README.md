@@ -9,11 +9,13 @@
 
 Тексты опираются на исследования сегмента: звонки и видео домой, мессенджеры при нуле, сохранение номера на сезон. Оформление SIM — по цепочке 2025 года: паспорт с переводом, СНИЛС, подтверждённые Госуслуги, биометрия, IMEI и договор в салоне (не больше 10 номеров).
 
-Репозиторий: [benicore/Welcome](https://cursor.com/codebase/benicore/Welcome) (Origin, private).
+Репозиторий: [github.com/bbenicore-web/welcome](https://github.com/bbenicore-web/welcome)
 
 ## GitHub Pages
 
-Сайт собирается в статику (`output: "export"`). GitHub Pages заработает только после зеркала на GitHub: Settings → Pages → Source: **GitHub Actions**. Workflow `.github/workflows/pages.yml` кладёт сборку в `/welcome`.
+Сайт собирается в статику (`output: "export"`). Settings → Pages → Source: **GitHub Actions**. Workflow `.github/workflows/pages.yml` кладёт сборку в `/welcome`.
+
+Адрес: https://bbenicore-web.github.io/welcome/
 
 Локально:
 
