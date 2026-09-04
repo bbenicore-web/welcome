@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
 
 const manrope = Manrope({
-  variable: "--font-sans",
+  variable: "--font-manrope",
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
 });
 
@@ -15,8 +16,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${manrope.variable} h-full scroll-smooth antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    <html lang="ru" className={`${manrope.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-sans">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

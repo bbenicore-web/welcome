@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { Reveal } from "@/components/motion/reveal";
 import { catalogTariffs, formTariffs, specials } from "@/lib/products";
 
 const transferTiers = [
@@ -204,7 +205,7 @@ export function HerePage() {
               Два тарифа на выбор. Базовый — «Минимум +». Максимальный —
               «Семейный +».
             </p>
-            <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
               {catalogTariffs.map((item) => {
                 const active = item.id === tariffId;
                 const popular = "popular" in item && item.popular;
@@ -259,9 +260,10 @@ export function HerePage() {
                   </button>
                 );
               })}
-            </div>
+            </Reveal>
 
-            <div className="mt-8 overflow-hidden rounded-[1.75rem] bg-white p-6 sm:p-8">
+            <Reveal className="mt-8">
+            <div className="overflow-hidden rounded-[1.75rem] bg-white p-6 sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-wide text-[#00B956]">
                 Калькулятор тарифа
               </p>
@@ -304,6 +306,7 @@ export function HerePage() {
                 Хочу {tariff.name}
               </Button>
             </div>
+            </Reveal>
           </div>
         </section>
 
@@ -316,7 +319,7 @@ export function HerePage() {
               Дополнительные опции к тарифу. Где написано «сам» — подключается
               автоматически, без акций и заявок.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
               {perks.map((item) => (
                 <article
                   key={item.name}
@@ -332,7 +335,7 @@ export function HerePage() {
                   </p>
                 </article>
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -341,7 +344,7 @@ export function HerePage() {
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Что входит в тарифы
             </h2>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <Reveal className="mt-8 grid gap-5 lg:grid-cols-2">
               {catalogTariffs.map((item) => {
                 const popular = "popular" in item && item.popular;
                 return (
@@ -382,7 +385,7 @@ export function HerePage() {
                   </article>
                 );
               })}
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -394,7 +397,7 @@ export function HerePage() {
             <p className="mt-3 max-w-2xl text-white/65">
               Всего четыре шага — быстрее, чем оформление первой SIM.
             </p>
-            <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <Reveal as="ol" className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4" flip={false}>
               {steps.map((step, index) => (
                 <li key={step.title} className="rounded-[1.5rem] bg-white/5 p-5">
                   <span className="text-sm font-semibold text-[#9dffc2]">
@@ -406,7 +409,7 @@ export function HerePage() {
                   </p>
                 </li>
               ))}
-            </ol>
+            </Reveal>
             <p className="mt-8 inline-flex items-center gap-2 text-sm text-white/55">
               <ArrowRightLeft className="size-4" />
               Перенос номера и бонусы за переводы — в салоне МегаФона.
@@ -418,7 +421,7 @@ export function HerePage() {
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Кому это нужно
           </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <Reveal className="mt-8 grid gap-4 md:grid-cols-3" flip={false}>
             <article className="rounded-[1.5rem] bg-white p-6 ring-1 ring-black/5">
               <Smartphone className="size-6 text-[#00B956]" />
               <h3 className="mt-4 font-semibold">Уже есть российская SIM</h3>
@@ -442,7 +445,7 @@ export function HerePage() {
                 Номер сохраняете. Когда вернётесь на тариф — +20 ГБ до 6 месяцев.
               </p>
             </article>
-          </div>
+          </Reveal>
         </section>
 
         <section id="faq" className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
