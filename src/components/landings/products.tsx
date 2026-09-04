@@ -12,11 +12,11 @@ export function ProductTariffs({
     <section id="tariffs" className="bg-white py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Тарифы витрины
+          Тарифы
         </h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Для мигрантов доступны публичные тарифы плюс спецпродукты. Базовый —
-          «Минимум +». Максимальный — «Семейный +».
+          Два тарифа на выбор с дополнительными опциями. Базовый — «Минимум +».
+          Максимальный — «Семейный +».
         </p>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {catalogTariffs.map((tariff) => {
@@ -90,11 +90,11 @@ export function SpecialProducts() {
   return (
     <section id="products" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-        Спецпродукты к тарифу
+        Дополнительные опции к тарифу
       </h2>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Сгруппированы по смыслу. Где написано «сам» — подключается автоматически.
-        Остальное — в приложении, USSD или салоне, без прыжка на русскую простыню.
+        Где написано «сам» — подключается автоматически. Остальное — в
+        приложении, по USSD или в салоне.
       </p>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         <SpecialGroup title="Звони родным" items={specials.calls} />

@@ -54,7 +54,7 @@ export function LandingChrome({
       <footer className="border-t border-black/5 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-muted-foreground sm:px-6">
           <p className="font-semibold text-foreground">
-            МегаФон · демолендинг по бизнес-требованиям «Единая платформа»
+            МегаФон · связь для гостей из СНГ
           </p>
           <p>
             Цены ориентировочные, по Москве, с НДС. Точные условия — в салоне и
@@ -66,12 +66,6 @@ export function LandingChrome({
             </a>
             <a href={withBase("/here")} className="text-[#00B956] hover:underline">
               Переход со своим номером
-            </a>
-            <a href={withBase("/cjm")} className="text-[#00B956] hover:underline">
-              Сегменты и CJM
-            </a>
-            <a href={withBase("/warm")} className="text-[#00B956] hover:underline">
-              Старый лендинг «Тёплый приём»
             </a>
           </p>
         </div>

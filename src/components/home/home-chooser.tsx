@@ -11,16 +11,16 @@ export function HomeChooser() {
         <section className="bg-[#07150d] text-white">
           <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
             <p className="mb-4 inline-flex rounded-full bg-white/10 px-3 py-1 text-sm text-[#9dffc2]">
-              МегаФон · два сценария из бизнес-требований
+              МегаФон · связь для гостей из СНГ
             </p>
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               Вы только приехали{" "}
               <span className="text-[#00B956]">или уже живёте в России?</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-              Для первой SIM главное — как легализоваться. Для тех, кто уже на
-              другом операторе, — зачем переходить и какие продукты закрывают
-              звонки домой, переводы и семью.
+              Выберите свой случай. Если оформляете первую SIM — покажем, какие
+              документы нужны. Если хотите перейти на МегаФон — поможем сохранить
+              номер и звонить домой дешевле.
             </p>
           </div>
         </section>
@@ -34,8 +34,8 @@ export function HomeChooser() {
               <Luggage className="size-8 text-[#00B956]" />
               <h2 className="mt-6 text-2xl font-semibold">Только приехал</h2>
               <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">
-                Инструкция как у СберМобайла: сим-карта и документы за визит.
-                Тарифы из ТЗ — «Минимум +» и «Семейный +», не «Соседи +».
+                Пошагово: как оформить сим-карту и документы за один визит.
+                Тарифы «Минимум +» и «Семейный +».
               </p>
               <p className="mt-6 inline-flex items-center gap-2 font-semibold text-[#00B956]">
                 Как легализоваться
@@ -49,8 +49,8 @@ export function HomeChooser() {
               <MapPinned className="size-8 text-[#00B956]" />
               <h2 className="mt-6 text-2xl font-semibold">Уже живу в России</h2>
               <p className="mt-3 flex-1 text-base leading-relaxed text-white/70">
-                Как у Яндекс Еды: заявка сразу, два тарифа как «формат работы»,
-                калькулятор бонусов. Продукты из ТЗ — «Минимум +» и «Семейный +».
+                Перейдите на МегаФон со своим номером. Тарифы «Минимум +» и
+                «Семейный +», бонусы за переводы домой.
               </p>
               <p className="mt-6 inline-flex items-center gap-2 font-semibold text-[#9dffc2]">
                 Почему МегаФон
