@@ -23,12 +23,12 @@ export function MegaArt({
   imgClassName?: string;
 }) {
   return (
-    <div className={cn(mf.well, className)}>
+    <div className={cn("pointer-events-none", mf.well, className)}>
       <img
         src={withBase(megaArts[art])}
         alt=""
         className={cn(
-          "pointer-events-none absolute inset-0 size-full object-cover object-center mix-blend-screen",
+          "pointer-events-none absolute inset-0 size-full object-contain object-center",
           imgClassName,
         )}
       />
@@ -65,7 +65,8 @@ export function MegaHero({
       </div>
       <MegaArt
         art={art}
-        className="relative mt-8 h-[220px] rounded-[24px] sm:h-[280px] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[50%] lg:rounded-none"
+        className="relative mt-8 h-[220px] rounded-[24px] sm:h-[280px] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[52%] lg:rounded-none"
+        imgClassName="scale-[1.2] object-[70%_center] lg:object-right"
       />
     </section>
   );
