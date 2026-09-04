@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { MegafonMark } from "@/components/landing/logo";
+import { withBase } from "@/lib/base-path";
 import { locales } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
@@ -17,7 +18,7 @@ export function LandingChrome({
     <div className="min-h-full bg-[#f3faf5] pb-20 text-foreground sm:pb-0">
       <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-          <a href="/" className="inline-flex items-center gap-2 font-semibold">
+          <a href={withBase("/")} className="inline-flex items-center gap-2 font-semibold">
             <MegafonMark className="size-8 text-[#00B956]" />
             <span className="flex flex-col leading-none">
               <span className="text-[15px] tracking-tight">МегаФон</span>
@@ -37,7 +38,11 @@ export function LandingChrome({
           <div className="flex items-center gap-2">
             <LanguagePills />
             <Button
-              render={<a href={current === "here" ? "/here#lead" : "/arrive#lead"} />}
+              render={
+                <a
+                  href={withBase(current === "here" ? "/here#lead" : "/arrive#lead")}
+                />
+              }
               className="hidden h-10 rounded-full bg-[#00B956] px-4 font-semibold text-white hover:bg-[#00a34c] sm:inline-flex"
             >
               Оставить заявку
@@ -56,16 +61,16 @@ export function LandingChrome({
             на megafon.ru. Не официальный сайт ПАО «МегаФон».
           </p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
-            <a href="/arrive" className="text-[#00B956] hover:underline">
+            <a href={withBase("/arrive")} className="text-[#00B956] hover:underline">
               Первая SIM
             </a>
-            <a href="/here" className="text-[#00B956] hover:underline">
+            <a href={withBase("/here")} className="text-[#00B956] hover:underline">
               Переход со своим номером
             </a>
-            <a href="/cjm" className="text-[#00B956] hover:underline">
+            <a href={withBase("/cjm")} className="text-[#00B956] hover:underline">
               Сегменты и CJM
             </a>
-            <a href="/warm" className="text-[#00B956] hover:underline">
+            <a href={withBase("/warm")} className="text-[#00B956] hover:underline">
               Старый лендинг «Тёплый приём»
             </a>
           </p>
@@ -86,7 +91,7 @@ function NavLink({
 }) {
   return (
     <a
-      href={href}
+      href={withBase(href)}
       className={active ? "text-foreground" : "text-foreground/70 hover:text-foreground"}
     >
       {children}

@@ -2,6 +2,7 @@
 
 import { ArrowRight, Luggage, MapPinned } from "lucide-react";
 import { LandingChrome } from "@/components/landings/chrome";
+import { withBase } from "@/lib/base-path";
 
 export function HomeChooser() {
   return (
@@ -27,7 +28,7 @@ export function HomeChooser() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="grid gap-5 lg:grid-cols-2">
             <a
-              href="/arrive"
+              href={withBase("/arrive")}
               className="group flex flex-col rounded-[2rem] bg-white p-8 ring-1 ring-black/5 transition-shadow hover:shadow-lg"
             >
               <Luggage className="size-8 text-[#00B956]" />
@@ -42,7 +43,7 @@ export function HomeChooser() {
               </p>
             </a>
             <a
-              href="/here"
+              href={withBase("/here")}
               className="group flex flex-col rounded-[2rem] bg-[#07150d] p-8 text-white ring-1 ring-[#00B956] transition-shadow hover:shadow-lg"
             >
               <MapPinned className="size-8 text-[#00B956]" />

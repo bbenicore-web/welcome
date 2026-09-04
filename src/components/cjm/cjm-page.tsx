@@ -16,6 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MegafonMark } from "@/components/landing/logo";
+import { withBase } from "@/lib/base-path";
 import {
   jobMix,
   journeys,
@@ -40,7 +41,7 @@ export function CjmPage() {
     <div className="min-h-full bg-[#f3faf5] text-foreground">
       <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-          <a href="/" className="inline-flex items-center gap-2 font-semibold">
+          <a href={withBase("/")} className="inline-flex items-center gap-2 font-semibold">
             <MegafonMark className="size-8 text-[#00B956]" />
             <span className="flex flex-col leading-none">
               <span className="text-[15px] tracking-tight">МегаФон</span>
@@ -64,7 +65,7 @@ export function CjmPage() {
             </a>
           </nav>
           <Button
-            render={<a href="/migranty-cjm.pdf" download />}
+            render={<a href={withBase("/migranty-cjm.pdf")} download />}
             className="h-10 rounded-full bg-[#00B956] px-4 font-semibold text-white hover:bg-[#00a34c]"
           >
             Скачать PDF
@@ -90,13 +91,13 @@ export function CjmPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
-                render={<a href="/migranty-cjm.pdf" download />}
+                render={<a href={withBase("/migranty-cjm.pdf")} download />}
                 className="h-12 rounded-full bg-[#00B956] px-6 text-base font-semibold text-white hover:bg-[#00a34c]"
               >
                 Скачать PDF
               </Button>
               <Button
-                render={<a href="/cjm/print" />}
+                render={<a href={withBase("/cjm/print")} />}
                 variant="outline"
                 className="h-12 rounded-full border-white/20 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
               >
@@ -326,7 +327,7 @@ export function CjmPage() {
             МегаФон Таджикистан. Не официальная позиция оператора.
           </p>
           <p className="mt-3">
-            <a href="/" className="font-medium text-[#00B956] hover:underline">
+            <a href={withBase("/")} className="font-medium text-[#00B956] hover:underline">
               Вернуться к лендингу «Тёплый приём»
             </a>
           </p>

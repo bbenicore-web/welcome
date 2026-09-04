@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/sheet";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { MegafonMark } from "@/components/landing/logo";
+import { withBase } from "@/lib/base-path";
 import { countries, locales, tariffs } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
@@ -95,7 +96,7 @@ export function LandingPage() {
           <div className="flex items-center gap-2">
             <LanguageSelect />
             <Button
-              render={<a href="/cjm" />}
+              render={<a href={withBase("/cjm")} />}
               variant="outline"
               className="hidden h-10 rounded-full lg:inline-flex"
             >
@@ -139,13 +140,13 @@ export function LandingPage() {
                     </SheetClose>
                   ))}
                   <a
-                    href="/cjm"
+                    href={withBase("/cjm")}
                     className="rounded-lg px-3 py-3 text-base font-medium hover:bg-muted"
                   >
                     Сегменты и CJM
                   </a>
                   <a
-                    href="/migranty-cjm.pdf"
+                    href={withBase("/migranty-cjm.pdf")}
                     className="rounded-lg px-3 py-3 text-base font-medium hover:bg-muted"
                   >
                     Скачать PDF
@@ -203,7 +204,7 @@ export function LandingPage() {
               <p className="mt-4 text-sm text-white/55">{t.heroNote}</p>
               <p className="mt-3">
                 <a
-                  href="/migranty-cjm.pdf"
+                  href={withBase("/migranty-cjm.pdf")}
                   className="text-sm font-semibold text-[#9dffc2] underline-offset-2 hover:underline"
                 >
                   Скачать сегменты и CJM (PDF)
@@ -440,11 +441,11 @@ export function LandingPage() {
             {t.lang}: {locales.find((item) => item.id === locale)?.native}
           </p>
           <p>
-            <a href="/cjm" className="font-medium text-[#00B956] hover:underline">
+            <a href={withBase("/cjm")} className="font-medium text-[#00B956] hover:underline">
               Сегменты и CJM: от своей страны до России
             </a>
             {" · "}
-            <a href="/migranty-cjm.pdf" className="font-medium text-[#00B956] hover:underline">
+            <a href={withBase("/migranty-cjm.pdf")} className="font-medium text-[#00B956] hover:underline">
               Скачать PDF
             </a>
           </p>

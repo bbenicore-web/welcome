@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { withBase } from "@/lib/base-path";
 import { jobMix, journeys, painMatrix, segments } from "@/lib/cjm-data";
 
 export const metadata: Metadata = {
@@ -21,15 +22,15 @@ export default function CjmPrintPage() {
           и юридической развилке: патент или ЕАЭС.
         </p>
         <p className="mt-2 text-sm">
-          <a href="/migranty-cjm.pdf" className="font-semibold text-[#00B956]">
+          <a href={withBase("/migranty-cjm.pdf")} className="font-semibold text-[#00B956]">
             Скачать PDF
           </a>
           {" · "}
-          <a href="/cjm" className="font-semibold text-[#00B956]">
+          <a href={withBase("/cjm")} className="font-semibold text-[#00B956]">
             Интерактивная страница
           </a>
           {" · "}
-          <a href="/" className="font-semibold text-[#00B956]">
+          <a href={withBase("/")} className="font-semibold text-[#00B956]">
             Лендинг
           </a>
         </p>
