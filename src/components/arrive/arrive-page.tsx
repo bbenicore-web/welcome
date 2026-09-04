@@ -32,10 +32,16 @@ export function ArrivePage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [tariff, setTariff] = useState("family");
   const [shared, setShared] = useState(false);
+  const [faqOpen, setFaqOpen] = useState<string[]>([]);
 
   function openLead(id = "family") {
     setTariff(id);
     setDialogOpen(true);
+  }
+
+  function openFaqById(id: string) {
+    const index = copy.faq.findIndex((item) => item.id === id);
+    if (index >= 0) setFaqOpen([`a-${index}`]);
   }
 
   const shareUrl = useMemo(() => {
@@ -170,6 +176,11 @@ export function ArrivePage() {
                               href={link.href}
                               target={external ? "_blank" : undefined}
                               rel={external ? "noreferrer" : undefined}
+                              onClick={() => {
+                                if (link.href.startsWith("#")) {
+                                  openFaqById(link.href.slice(1));
+                                }
+                              }}
                               className="text-[15px] font-medium text-[#333] underline decoration-[#00B956] underline-offset-4 hover:text-[#00B956]"
                             >
                               {link.label}
@@ -225,7 +236,7 @@ export function ArrivePage() {
 
         <section id="faq">
           <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
-          <Accordion className="mt-8">
+          <Accordion className="mt-8" value={faqOpen} onValueChange={setFaqOpen}>
             {copy.faq.map((item, index) => (
               <AccordionItem
                 key={item.q}
