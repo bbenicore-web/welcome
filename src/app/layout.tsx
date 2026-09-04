@@ -10,7 +10,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "МегаФон для мигрантов — тарифы «Тёплый приём»",
   description:
-    "Связь в России и звонки домой без переплат. SIM за 15 минут, мессенджеры даже при нулевом балансе, выгодные минуты в Узбекистан, Таджикистан и Киргизию.",
+    "Связь в России и звонки домой без переплат. WhatsApp, Telegram и IMO при любом балансе. SIM очно: паспорт, СНИЛС, Госуслуги и биометрия.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
