@@ -3,9 +3,9 @@ import { HerePage } from "@/components/here/here-page";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Уже в России — переход в МегаФон со своим номером",
+  title: "Уже в России — переходите на МегаФон со своим номером",
   description:
-    "Почему МегаФон лучше текущего оператора и какие продукты закрывают звонки домой, переводы, семью и сезонный отъезд.",
+    "Заявка сразу. Минимум + от 850 ₽ и Семейный + от 1 140 ₽, «Тёплый приём», бонусы за переводы в салоне, свой номер.",
 };
 
 export default function Page() {

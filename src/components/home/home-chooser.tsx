@@ -49,8 +49,8 @@ export function HomeChooser() {
               <MapPinned className="size-8 text-[#00B956]" />
               <h2 className="mt-6 text-2xl font-semibold">Уже живу в России</h2>
               <p className="mt-3 flex-1 text-base leading-relaxed text-white/70">
-                Есть SIM другого оператора. Биометрию не повторяем. Почему
-                МегаФон лучше и какие продукты бьют в ваши барьеры.
+                Как у Яндекс Еды: заявка сразу, два тарифа как «формат работы»,
+                калькулятор бонусов. Продукты из ТЗ — «Минимум +» и «Семейный +».
               </p>
               <p className="mt-6 inline-flex items-center gap-2 font-semibold text-[#9dffc2]">
                 Почему МегаФон
