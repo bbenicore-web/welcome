@@ -134,7 +134,7 @@ export function ArrivePage() {
               <p className="text-sm font-medium text-[#731982]">{copy.productKicker}</p>
               <h2 className={`${mf.h2} mt-2`}>Минимум + · Семейный +</h2>
             </div>
-            <Button render={<a href="#snils" />} className={mf.btnDark}>
+            <Button render={<a href="#snils" />} className={mf.btnGreen}>
               {copy.productCta}
             </Button>
           </div>
