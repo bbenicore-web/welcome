@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { Reveal } from "@/components/motion/reveal";
 import { withBase } from "@/lib/base-path";
 import {
   biometryIpa,
@@ -155,7 +156,7 @@ export function ArrivePage() {
               </Button>
             </div>
 
-            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            <Reveal className="mt-10 grid gap-5 lg:grid-cols-2">
               {catalogTariffs.map((item) => {
                 const popular = "popular" in item && item.popular;
                 return (
@@ -212,9 +213,9 @@ export function ArrivePage() {
                   </article>
                 );
               })}
-            </div>
+            </Reveal>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" flip={false}>
               {copy.benefits.map((item) => (
                 <article
                   key={item.title}
@@ -226,7 +227,7 @@ export function ArrivePage() {
                   </p>
                 </article>
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -242,7 +243,8 @@ export function ArrivePage() {
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
               {copy.step1Text}
             </p>
-            <article className="mt-8 rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
+            <Reveal className="mt-8">
+              <article className="rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
               <MapPinned className="size-8 text-[#00B956]" />
               <h3 className="mt-4 text-2xl font-semibold">{copy.placeTitle}</h3>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
@@ -254,9 +256,10 @@ export function ArrivePage() {
               >
                 {copy.placeBtn}
               </Button>
-            </article>
+              </article>
+            </Reveal>
             <h3 className="mt-10 text-xl font-semibold">{copy.bringTitle}</h3>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <Reveal className="mt-5 grid gap-4 md:grid-cols-3" flip={false}>
               {copy.bring.map((item, index) => {
                 const Icon = bringIcons[index] ?? FileText;
                 return (
@@ -280,13 +283,13 @@ export function ArrivePage() {
                   </article>
                 );
               })}
-            </div>
+            </Reveal>
           </div>
         </section>
 
         <section id="getsim" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <StepHead n={2} title={copy.step2Title} />
-          <ol className="mt-8 grid gap-4 lg:grid-cols-2">
+          <Reveal as="ol" className="mt-8 grid gap-4 lg:grid-cols-2" flip={false}>
             {copy.step2Items.map((item, index) => (
               <li key={item.title} className="rounded-3xl bg-white p-6 ring-1 ring-black/5">
                 <span className="text-sm font-semibold text-[#00B956]">
@@ -298,9 +301,10 @@ export function ArrivePage() {
                 </p>
               </li>
             ))}
-          </ol>
+          </Reveal>
 
-          <div className="mt-10 rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
+          <Reveal className="mt-10">
+            <div className="rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
             <h3 className="text-2xl font-semibold">{copy.bioTitle}</h3>
             <p className="mt-2 text-sm text-white/70">{copy.bioText}</p>
             <div className="mt-6 grid gap-3 md:grid-cols-3">
@@ -318,10 +322,11 @@ export function ArrivePage() {
                 </article>
               ))}
             </div>
-          </div>
+            </div>
+          </Reveal>
 
           <h3 className="mt-10 text-xl font-semibold">{copy.bring2Title}</h3>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
             {copy.bring2.map((item, index) => {
               const Icon = bring2Icons[index] ?? FileText;
               return (
@@ -335,14 +340,14 @@ export function ArrivePage() {
                 </article>
               );
             })}
-          </div>
+          </Reveal>
         </section>
 
         <section id="activation" className="scroll-mt-24 bg-white py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <StepHead n={3} title={copy.step3Title} />
             <p className="mt-4 text-muted-foreground">{copy.step3Text}</p>
-            <ol className="mt-8 grid gap-4 md:grid-cols-2">
+            <Reveal as="ol" className="mt-8 grid gap-4 md:grid-cols-2" flip={false}>
               {copy.step3Items.map((item, index) => (
                 <li key={item.title} className="rounded-3xl bg-[#f3faf5] p-6">
                   <span className="flex size-10 items-center justify-center rounded-2xl bg-[#00B956] font-semibold text-white">
@@ -357,13 +362,13 @@ export function ArrivePage() {
                   ) : null}
                 </li>
               ))}
-            </ol>
+            </Reveal>
           </div>
         </section>
 
         <section id="payment" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <StepHead n={4} title={copy.step4Title} />
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <Reveal className="mt-8 grid gap-4 lg:grid-cols-3" flip={false}>
             {copy.step4Items.map((item, index) => (
               <article
                 key={item.title}
@@ -401,7 +406,7 @@ export function ArrivePage() {
                 )}
               </article>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         <section id="faq" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -431,6 +436,7 @@ export function ArrivePage() {
         </section>
 
         <section id="lead" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+          <Reveal>
           <div className="grid gap-8 overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/5 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight">
@@ -460,6 +466,7 @@ export function ArrivePage() {
               tariffChoices={formTariffs}
             />
           </div>
+          </Reveal>
         </section>
       </main>
 
