@@ -50,7 +50,7 @@ const ru: InstructionCopy = {
     { href: "#payment", label: "Оплатите тариф" },
   ],
   share: "Поделиться инструкцией",
-  productKicker: "Тарифы витрины из ТЗ",
+  productKicker: "Тарифы для гостей из СНГ",
   productCta: "Как оформить тариф",
   benefits: [
     {
@@ -184,7 +184,7 @@ const ru: InstructionCopy = {
   faqTitle: "Вопросы и ответы",
   faq: [
     {
-      q: "Что входит в тарифы витрины?",
+      q: "Что входит в тарифы?",
       a: "«Минимум +» — базовый: от 850 ₽, 400 минут по России, интернет в пакете, безлимит на МегаФон России, когда минуты закончились, +10 ГБ за оплату вовремя. «Семейный +» — максимальный: от 1 140 ₽, 1 500 минут, безлимитный интернет, МегаСемья до 5 человек, видеосервисы и сайты страны, откуда вы приехали. «Тёплый приём» подключается сам. 100 международных минут — по желанию.",
     },
     {
@@ -227,7 +227,7 @@ const uz: InstructionCopy = {
     { href: "#payment", label: "Tarifni to'lang" },
   ],
   share: "Ko'rsatmalarni baham ko'ring",
-  productKicker: "TZ dagi tariflar",
+  productKicker: "MDH mehmonlari uchun tariflar",
   productCta: "Tarifni qanday rasmiylashtirish mumkin",
   benefits: [
     {
@@ -362,7 +362,7 @@ const uz: InstructionCopy = {
   faqTitle: "Savollarga javoblar",
   faq: [
     {
-      q: "Vitrina tariflariga nima kiradi?",
+      q: "Tariflarga nima kiradi?",
       a: "«Minimum +» — asosiy: 850 ₽ dan, Rossiya bo‘ylab 400 daqiqa, paket internet, o‘z vaqtida to‘lov uchun +10 GB. «Oilaviy +» — maksimal: 1 140 ₽ dan, 1 500 daqiqa, cheksiz internet, MegaOila 5 kishigacha. «Iliq kutib olish» o‘zi ulanadi.",
     },
     {
@@ -405,7 +405,7 @@ const tg: InstructionCopy = {
     { href: "#payment", label: "Тарофаро пардохт кунед" },
   ],
   share: "Дастурҳоро мубодила кунед",
-  productKicker: "Тарофаҳо аз ТЗ",
+  productKicker: "Тарофаҳо барои меҳмонон аз ИДМ",
   productCta: "Тарофаро чӣ хел ба расмият даровардан",
   benefits: [
     {
@@ -539,7 +539,7 @@ const tg: InstructionCopy = {
   faqTitle: "Саволҳо ва ҷавобҳо",
   faq: [
     {
-      q: "Ба тарофаҳои витрина чӣ дохил аст?",
+      q: "Ба тарофаҳо чӣ дохил аст?",
       a: "«Минимум +» — асосӣ: аз 850 ₽, 400 дақиқа дар Россия, интернети баста, +10 ГБ барои пардохти саривақт. «Оилавӣ +» — максималӣ: аз 1 140 ₽, 1 500 дақиқа, интернети бемаҳдуд, МегаОила то 5 нафар. «Қабули гарм» худ пайваст мешавад.",
     },
     {
@@ -582,7 +582,7 @@ const ky: InstructionCopy = {
     { href: "#payment", label: "Тарифти төлөңүз" },
   ],
   share: "Инструкцияларды бөлүшүү",
-  productKicker: "ТЗдагы тарифтер",
+  productKicker: "КМШ конокторуна тарифтер",
   productCta: "Тарифти кантип тариздөөгө болот",
   benefits: [
     {
@@ -716,7 +716,7 @@ const ky: InstructionCopy = {
   faqTitle: "Суроолор жана жооптор",
   faq: [
     {
-      q: "Витрина тарифтерине эмне кирет?",
+      q: "Тарифтерге эмне кирет?",
       a: "«Минимум +» — негизги: 850 ₽ ден, Россия боюнча 400 мүнөт, пакеттик интернет, өз убагында төлөө үчүн +10 ГБ. «Үй-бүлөлүк +» — максималдуу: 1 140 ₽ ден, 1 500 мүнөт, чексиз интернет, МегаҮй-бүлө 5 кишиге чейин. «Жылуу тосуп алуу» өзү кошулат.",
     },
     {

@@ -450,7 +450,7 @@ export function ArrivePage() {
                 </li>
                 <li className="flex gap-2">
                   <Check className="mt-0.5 size-4 text-[#00B956]" />
-                  Демозаявка: консультант в этой среде не звонит
+                  Подскажем ближайший салон и что взять с собой
                 </li>
               </ul>
             </div>
