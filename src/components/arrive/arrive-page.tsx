@@ -28,6 +28,8 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { IconWell, MegaGlow, StepBadge } from "@/components/landings/mega-art";
+import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { withBase } from "@/lib/base-path";
 import {
@@ -76,313 +78,251 @@ export function ArrivePage() {
 
   return (
     <LandingChrome current="arrive">
-      <main>
-        <section className="relative overflow-hidden bg-[#e7f8ee]">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-20">
-            <div>
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#00B956]">
-                МегаФон · {copy.productKicker}
-              </p>
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-[#07150d] sm:text-5xl lg:text-6xl">
-                {copy.hero}
-              </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#3d5c4a]">
-                {copy.gainSub}
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  render={<a href="#snils" />}
-                  className="h-12 rounded-full bg-[#00B956] px-6 text-base font-semibold text-white hover:bg-[#00a34c]"
-                >
-                  {copy.download}
-                </Button>
-                <Button
-                  onClick={() => openLead()}
-                  variant="outline"
-                  className="h-12 rounded-full border-[#00B956]/40 bg-white px-6 text-base font-semibold text-[#07150d] hover:bg-white"
-                >
-                  {copy.apply}
-                </Button>
-              </div>
+      <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
+        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-16 lg:py-16`}>
+          <MegaGlow />
+          <div className="relative z-10">
+            <p className={mf.kicker}>МегаФон · {copy.productKicker}</p>
+            <h1 className={`${mf.h1} mt-4`}>{copy.hero}</h1>
+            <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
+              {copy.gainSub}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button render={<a href="#snils" />} className={mf.btnWhite}>
+                {copy.download}
+              </Button>
+              <Button
+                onClick={() => openLead()}
+                variant="outline"
+                className="h-[52px] rounded-full border-white/30 bg-transparent px-6 text-[15px] font-medium text-white hover:bg-white/10"
+              >
+                {copy.apply}
+              </Button>
             </div>
-            <div className="flex items-end">
-              <div className="w-full rounded-[2rem] bg-[#07150d] p-8 text-white">
-                <p className="text-sm text-[#9dffc2]">{copy.gainTitle}</p>
-                <p className="mt-4 text-3xl font-semibold leading-tight">
-                  Минимум +{" "}
-                  <span className="text-[#9dffc2]">и Семейный +</span>
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
-                  {copy.benefits[0].text}
-                </p>
-              </div>
+          </div>
+          <div className="relative z-10 mt-10 lg:mt-0">
+            <div className="rounded-[24px] bg-white/10 p-7 backdrop-blur-sm">
+              <p className="text-sm text-white/70">{copy.gainTitle}</p>
+              <p className="mt-4 text-[28px] font-semibold leading-tight">
+                Минимум + <span className="text-[#00B956]">и Семейный +</span>
+              </p>
+              <p className="mt-3 text-[15px] leading-6 text-white/70">
+                {copy.benefits[0].text}
+              </p>
             </div>
           </div>
         </section>
 
-        <nav className="border-b border-black/5 bg-white">
-          <div className="mx-auto grid max-w-6xl gap-2 px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+        <nav className={`${mf.card} ring-1 ring-[#EDEDED]`}>
+          <div className="grid gap-1 p-3 sm:grid-cols-2 lg:grid-cols-4">
             {copy.widgets.map((item, index) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium hover:bg-[#f3faf5]"
+                className="flex items-center gap-3 rounded-[16px] px-3 py-3 text-[15px] font-medium hover:bg-[#F6F6F6]"
               >
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#00B956] text-xs font-semibold text-white">
-                  {index + 1}
-                </span>
+                <StepBadge n={index + 1} />
                 {item.label}
               </a>
             ))}
           </div>
         </nav>
 
-        <section id="tariffs" className="bg-white py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-wide text-[#00B956]">
-                  {copy.productKicker}
-                </p>
-                <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-5xl">
-                  Минимум + · Семейный +
-                </h2>
-              </div>
-              <Button
-                render={<a href="#snils" />}
-                className="h-12 rounded-full bg-[#07150d] px-6 font-semibold text-white hover:bg-black"
-              >
-                {copy.productCta}
-              </Button>
+        <section id="tariffs" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium text-[#731982]">{copy.productKicker}</p>
+              <h2 className={`${mf.h2} mt-2`}>Минимум + · Семейный +</h2>
             </div>
-
-            <Reveal className="mt-10 grid gap-5 lg:grid-cols-2">
-              {catalogTariffs.map((item) => {
-                const popular = "popular" in item && item.popular;
-                return (
-                  <article
-                    key={item.id}
-                    className={`rounded-[2rem] p-7 ring-1 ${
-                      popular
-                        ? "bg-[#07150d] text-white ring-[#00B956]"
-                        : "bg-[#f3faf5] ring-black/5"
-                    }`}
-                  >
-                    <p
-                      className={`text-xs font-semibold uppercase tracking-wide ${
-                        popular ? "text-[#9dffc2]" : "text-[#00B956]"
-                      }`}
-                    >
-                      {item.level}
-                    </p>
-                    <h3 className="mt-2 text-3xl font-semibold">{item.name}</h3>
-                    <p className="mt-4 text-4xl font-semibold">
-                      {item.price}
-                      <span
-                        className={`ml-2 text-base font-normal ${
-                          popular ? "text-white/55" : "text-muted-foreground"
-                        }`}
-                      >
-                        / 30 дней
-                      </span>
-                    </p>
-                    <ul className="mt-6 space-y-3 text-sm">
-                      {[item.minutes, item.data, item.extra, ...item.points].map(
-                        (line) => (
-                          <li key={line} className="flex gap-2">
-                            <Check
-                              className={`mt-0.5 size-4 shrink-0 ${
-                                popular ? "text-[#9dffc2]" : "text-[#00B956]"
-                              }`}
-                            />
-                            {line}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                    <Button
-                      onClick={() => openLead(item.id)}
-                      className={`mt-8 h-12 w-full rounded-full text-base font-semibold ${
-                        popular
-                          ? "bg-[#00B956] text-white hover:bg-[#00a34c]"
-                          : "bg-[#07150d] text-white hover:bg-black"
-                      }`}
-                    >
-                      {copy.productCta}
-                    </Button>
-                  </article>
-                );
-              })}
-            </Reveal>
-
-            <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" flip={false}>
-              {copy.benefits.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-3xl bg-[#f3faf5] p-5 ring-1 ring-black/5"
-                >
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
-            </Reveal>
+            <Button render={<a href="#snils" />} className={mf.btnDark}>
+              {copy.productCta}
+            </Button>
           </div>
-        </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            {copy.howTitle}
-          </h2>
-        </section>
-
-        <section id="snils" className="scroll-mt-24 bg-white py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <StepHead n={1} title={copy.step1Title} />
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
-              {copy.step1Text}
-            </p>
-            <Reveal className="mt-8">
-              <article className="rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
-              <MapPinned className="size-8 text-[#00B956]" />
-              <h3 className="mt-4 text-2xl font-semibold">{copy.placeTitle}</h3>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
-                {copy.placeText}
-              </p>
-              <Button
-                onClick={() => openLead()}
-                className="mt-6 h-11 rounded-full bg-[#00B956] px-5 font-semibold text-white hover:bg-[#00a34c]"
-              >
-                {copy.placeBtn}
-              </Button>
-              </article>
-            </Reveal>
-            <h3 className="mt-10 text-xl font-semibold">{copy.bringTitle}</h3>
-            <Reveal className="mt-5 grid gap-4 md:grid-cols-3" flip={false}>
-              {copy.bring.map((item, index) => {
-                const Icon = bringIcons[index] ?? FileText;
-                return (
-                  <article
-                    key={item.title}
-                    className="rounded-3xl bg-[#f3faf5] p-5 ring-1 ring-black/5"
-                  >
-                    <Icon className="size-6 text-[#00B956]" />
-                    <h4 className="mt-4 font-semibold">{item.title}</h4>
-                    <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-                    {index === 1 ? (
-                      <a
-                        href="https://2gis.ru/moscow/search/%D0%B1%D1%8E%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D0%BE%D0%B2"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-block text-sm font-semibold text-[#00B956] hover:underline"
-                      >
-                        {copy.translateBtn}
-                      </a>
-                    ) : null}
-                  </article>
-                );
-              })}
-            </Reveal>
-          </div>
-        </section>
-
-        <section id="getsim" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <StepHead n={2} title={copy.step2Title} />
-          <Reveal as="ol" className="mt-8 grid gap-4 lg:grid-cols-2" flip={false}>
-            {copy.step2Items.map((item, index) => (
-              <li key={item.title} className="rounded-3xl bg-white p-6 ring-1 ring-black/5">
-                <span className="text-sm font-semibold text-[#00B956]">
-                  {index + 1}
-                </span>
-                <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.text}
-                </p>
-              </li>
-            ))}
-          </Reveal>
-
-          <Reveal className="mt-10">
-            <div className="rounded-[2rem] bg-[#07150d] p-6 text-white sm:p-8">
-            <h3 className="text-2xl font-semibold">{copy.bioTitle}</h3>
-            <p className="mt-2 text-sm text-white/70">{copy.bioText}</p>
-            <div className="mt-6 grid gap-3 md:grid-cols-3">
-              {biometryLines.map((line, index) => (
-                <article
-                  key={line}
-                  className="rounded-2xl bg-white p-4 text-[#07150d]"
-                >
-                  <p className="font-mono text-lg font-semibold tracking-wide">
-                    {line}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                    {biometryIpa[index]}
-                  </p>
-                </article>
-              ))}
-            </div>
-            </div>
-          </Reveal>
-
-          <h3 className="mt-10 text-xl font-semibold">{copy.bring2Title}</h3>
-          <Reveal className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
-            {copy.bring2.map((item, index) => {
-              const Icon = bring2Icons[index] ?? FileText;
+          <Reveal className="mt-10 grid gap-4 lg:grid-cols-2">
+            {catalogTariffs.map((item) => {
+              const popular = "popular" in item && item.popular;
               return (
                 <article
-                  key={item.title}
-                  className="rounded-3xl bg-white p-5 ring-1 ring-black/5"
+                  key={item.id}
+                  className={`rounded-[24px] p-7 ${
+                    popular
+                      ? "bg-[#731982] text-white"
+                      : "bg-[#F6F6F6] text-[#333]"
+                  }`}
                 >
-                  <Icon className="size-5 text-[#00B956]" />
-                  <h4 className="mt-3 font-semibold">{item.title}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
+                  <p
+                    className={`text-xs font-medium uppercase tracking-wide ${
+                      popular ? "text-[#00B956]" : "text-[#731982]"
+                    }`}
+                  >
+                    {item.level}
+                  </p>
+                  <h3 className="mt-2 text-[28px] font-semibold">{item.name}</h3>
+                  <p className="mt-4 text-[36px] font-bold leading-none">
+                    {item.price}
+                    <span
+                      className={`ml-2 text-base font-normal ${
+                        popular ? "text-white/60" : "text-[#999]"
+                      }`}
+                    >
+                      / 30 дней
+                    </span>
+                  </p>
+                  <ul className="mt-6 space-y-3 text-[15px]">
+                    {[item.minutes, item.data, item.extra, ...item.points].map(
+                      (line) => (
+                        <li key={line} className="flex gap-2">
+                          <Check
+                            className={`mt-0.5 size-4 shrink-0 ${
+                              popular ? "text-[#00B956]" : "text-[#00B956]"
+                            }`}
+                          />
+                          {line}
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                  <Button
+                    onClick={() => openLead(item.id)}
+                    className={`mt-8 w-full ${popular ? mf.btnGreen : mf.btnPurple}`}
+                  >
+                    {copy.productCta}
+                  </Button>
+                </article>
+              );
+            })}
+          </Reveal>
+
+          <Reveal className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" flip={false}>
+            {copy.benefits.map((item) => (
+              <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                <h3 className="font-medium">{item.title}</h3>
+                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+              </article>
+            ))}
+          </Reveal>
+        </section>
+
+        <section className="px-1 pt-6">
+          <h2 className={mf.h2}>{copy.howTitle}</h2>
+        </section>
+
+        <section id="snils" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <StepHead n={1} title={copy.step1Title} />
+          <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#999]">{copy.step1Text}</p>
+          <Reveal className="mt-8">
+            <article className="rounded-[24px] bg-[#731982] p-6 text-white sm:p-8">
+              <MapPinned className="size-8 text-[#00B956]" />
+              <h3 className="mt-4 text-[22px] font-semibold">{copy.placeTitle}</h3>
+              <p className="mt-3 max-w-2xl text-[15px] leading-6 text-white/75">
+                {copy.placeText}
+              </p>
+              <Button onClick={() => openLead()} className={`mt-6 ${mf.btnGreen}`}>
+                {copy.placeBtn}
+              </Button>
+            </article>
+          </Reveal>
+          <h3 className="mt-10 text-[20px] font-medium">{copy.bringTitle}</h3>
+          <Reveal className="mt-5 grid gap-4 md:grid-cols-3" flip={false}>
+            {copy.bring.map((item, index) => {
+              const Icon = bringIcons[index] ?? FileText;
+              return (
+                <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                  <IconWell>
+                    <Icon className="size-6" />
+                  </IconWell>
+                  <h4 className="mt-4 font-medium">{item.title}</h4>
+                  <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                  {index === 1 ? (
+                    <a
+                      href="https://2gis.ru/moscow/search/%D0%B1%D1%8E%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D0%BE%D0%B2"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-block text-[15px] font-medium text-[#00B956] hover:underline"
+                    >
+                      {copy.translateBtn}
+                    </a>
+                  ) : null}
                 </article>
               );
             })}
           </Reveal>
         </section>
 
-        <section id="activation" className="scroll-mt-24 bg-white py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <StepHead n={3} title={copy.step3Title} />
-            <p className="mt-4 text-muted-foreground">{copy.step3Text}</p>
-            <Reveal as="ol" className="mt-8 grid gap-4 md:grid-cols-2" flip={false}>
-              {copy.step3Items.map((item, index) => (
-                <li key={item.title} className="rounded-3xl bg-[#f3faf5] p-6">
-                  <span className="flex size-10 items-center justify-center rounded-2xl bg-[#00B956] font-semibold text-white">
-                    {index + 1}
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-                  {item.note ? (
-                    <p className="mt-3 text-xs leading-relaxed text-[#3d5c4a]">
-                      {item.note}
+        <section id="getsim" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <StepHead n={2} title={copy.step2Title} />
+          <Reveal as="ol" className="mt-8 grid gap-4 lg:grid-cols-2" flip={false}>
+            {copy.step2Items.map((item, index) => (
+              <li key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-6">
+                <StepBadge n={index + 1} />
+                <h3 className="mt-3 text-[18px] font-medium">{item.title}</h3>
+                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+              </li>
+            ))}
+          </Reveal>
+
+          <Reveal className="mt-10">
+            <div className="rounded-[24px] bg-[#731982] p-6 text-white sm:p-8">
+              <h3 className="text-[22px] font-semibold">{copy.bioTitle}</h3>
+              <p className="mt-2 text-[15px] text-white/75">{copy.bioText}</p>
+              <div className="mt-6 grid gap-3 md:grid-cols-3">
+                {biometryLines.map((line, index) => (
+                  <article key={line} className="rounded-[20px] bg-white p-4 text-[#333]">
+                    <p className="font-mono text-lg font-semibold tracking-wide">{line}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-[#999]">
+                      {biometryIpa[index]}
                     </p>
-                  ) : null}
-                </li>
-              ))}
-            </Reveal>
-          </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <h3 className="mt-10 text-[20px] font-medium">{copy.bring2Title}</h3>
+          <Reveal className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
+            {copy.bring2.map((item, index) => {
+              const Icon = bring2Icons[index] ?? FileText;
+              return (
+                <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                  <Icon className="size-5 text-[#00B956]" />
+                  <h4 className="mt-3 font-medium">{item.title}</h4>
+                  <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                </article>
+              );
+            })}
+          </Reveal>
         </section>
 
-        <section id="payment" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section id="activation" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <StepHead n={3} title={copy.step3Title} />
+          <p className="mt-4 text-[#999]">{copy.step3Text}</p>
+          <Reveal as="ol" className="mt-8 grid gap-4 md:grid-cols-2" flip={false}>
+            {copy.step3Items.map((item, index) => (
+              <li key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-6">
+                <StepBadge n={index + 1} />
+                <h3 className="mt-4 text-[18px] font-medium">{item.title}</h3>
+                <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                {item.note ? (
+                  <p className="mt-3 text-xs leading-relaxed text-[#731982]">{item.note}</p>
+                ) : null}
+              </li>
+            ))}
+          </Reveal>
+        </section>
+
+        <section id="payment" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
           <StepHead n={4} title={copy.step4Title} />
           <Reveal className="mt-8 grid gap-4 lg:grid-cols-3" flip={false}>
             {copy.step4Items.map((item, index) => (
               <article
                 key={item.title}
-                className="flex flex-col rounded-[2rem] bg-white p-6 ring-1 ring-black/5"
+                className="flex flex-col rounded-[24px] bg-[#F6F6F6] p-6"
               >
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 flex-1 text-sm text-muted-foreground">
-                  {item.text}
-                </p>
+                <h3 className="text-[20px] font-medium">{item.title}</h3>
+                <p className="mt-3 flex-1 text-[15px] text-[#999]">{item.text}</p>
                 {index === 0 ? (
-                  <Button
-                    onClick={() => openLead()}
-                    className="mt-6 h-11 rounded-full bg-[#00B956] font-semibold text-white hover:bg-[#00a34c]"
-                  >
+                  <Button onClick={() => openLead()} className={`mt-6 ${mf.btnGreen}`}>
                     {item.btn}
                   </Button>
                 ) : (
@@ -399,7 +339,7 @@ export function ArrivePage() {
                       />
                     }
                     variant="outline"
-                    className="mt-6 h-11 rounded-full font-semibold"
+                    className={`mt-6 ${mf.btnOutline}`}
                   >
                     {item.btn}
                   </Button>
@@ -409,72 +349,61 @@ export function ArrivePage() {
           </Reveal>
         </section>
 
-        <section id="faq" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            {copy.faqTitle}
-          </h2>
-          <Accordion className="mt-6 rounded-3xl bg-white px-5 ring-1 ring-black/5">
+        <section id="faq" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>{copy.faqTitle}</h2>
+          <Accordion className="mt-6">
             {copy.faq.map((item, index) => (
               <AccordionItem key={item.q} value={`a-${index}`}>
-                <AccordionTrigger className="py-4 text-base hover:no-underline">
+                <AccordionTrigger className="py-4 text-[16px] hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
+                <AccordionContent className="text-[#999]">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
           <button
             type="button"
             onClick={() => void share()}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#00B956]"
+            className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#00B956]"
           >
             <Share2 className="size-4" />
             {shared ? "Ссылка скопирована" : copy.share}
           </button>
         </section>
 
-        <section id="lead" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <section id="lead" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
           <Reveal>
-          <div className="grid gap-8 overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/5 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
-            <div>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                {copy.leadTitle}
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                {copy.leadText}
-              </p>
-              <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-                <li className="flex gap-2">
-                  <UserRound className="mt-0.5 size-4 text-[#00B956]" />
-                  {copy.placeTitle}
-                </li>
-                <li className="flex gap-2">
-                  <Fingerprint className="mt-0.5 size-4 text-[#00B956]" />
-                  {copy.bioTitle}
-                </li>
-                <li className="flex gap-2">
-                  <Check className="mt-0.5 size-4 text-[#00B956]" />
-                  Подскажем ближайший салон и что взять с собой
-                </li>
-              </ul>
+            <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+              <div>
+                <h2 className={mf.h2}>{copy.leadTitle}</h2>
+                <p className="mt-3 text-[15px] leading-6 text-[#999]">{copy.leadText}</p>
+                <ul className="mt-6 space-y-2 text-[15px] text-[#999]">
+                  <li className="flex gap-2">
+                    <UserRound className="mt-0.5 size-4 text-[#00B956]" />
+                    {copy.placeTitle}
+                  </li>
+                  <li className="flex gap-2">
+                    <Fingerprint className="mt-0.5 size-4 text-[#00B956]" />
+                    {copy.bioTitle}
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 size-4 text-[#00B956]" />
+                    Подскажем ближайший салон и что взять с собой
+                  </li>
+                </ul>
+              </div>
+              <CallbackForm
+                defaultTariff={tariff}
+                idPrefix="arrive-lead"
+                tariffChoices={formTariffs}
+              />
             </div>
-            <CallbackForm
-              defaultTariff={tariff}
-              idPrefix="arrive-lead"
-              tariffChoices={formTariffs}
-            />
-          </div>
           </Reveal>
         </section>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-black/5 bg-white p-3 sm:hidden">
-        <Button
-          onClick={() => openLead()}
-          className="h-12 w-full rounded-full bg-[#00B956] text-base font-semibold text-white hover:bg-[#00a34c]"
-        >
+      <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
+        <Button onClick={() => openLead()} className={`w-full ${mf.btnGreen}`}>
           {copy.apply}
         </Button>
       </div>
@@ -501,10 +430,10 @@ export function ArrivePage() {
 function StepHead({ n, title }: { n: number; title: string }) {
   return (
     <div className="flex items-start gap-4">
-      <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#00B956] text-lg font-semibold text-white">
+      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#00B956] text-lg font-medium text-white">
         {String(n).padStart(2, "0")}
       </span>
-      <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className={mf.h2}>{title}</h2>
     </div>
   );
 }

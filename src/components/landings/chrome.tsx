@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { MegafonMark } from "@/components/landing/logo";
+import { mf } from "@/components/landings/mf";
 import { withBase } from "@/lib/base-path";
 import { locales } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
@@ -15,19 +16,19 @@ export function LandingChrome({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-full bg-[#f3faf5] pb-20 text-foreground sm:pb-0">
-      <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+    <div className={mf.page}>
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md">
+        <div className={`${mf.wrap} flex h-[72px] items-center justify-between gap-3`}>
           <a href={withBase("/")} className="inline-flex items-center gap-2 font-semibold">
             <MegafonMark className="size-8 text-[#00B956]" />
             <span className="flex flex-col leading-none">
-              <span className="text-[15px] tracking-tight">МегаФон</span>
-              <span className="text-[11px] font-medium text-[#00B956]">
+              <span className="text-[15px] font-medium tracking-tight">МегаФон</span>
+              <span className="text-[11px] font-medium text-[#731982]">
                 Для гостей из СНГ
               </span>
             </span>
           </a>
-          <nav className="hidden items-center gap-5 text-sm font-medium lg:flex">
+          <nav className="hidden items-center gap-6 text-[15px] font-medium lg:flex">
             <NavLink href="/arrive" active={current === "arrive"}>
               Только приехал
             </NavLink>
@@ -43,7 +44,7 @@ export function LandingChrome({
                   href={withBase(current === "here" ? "/here#lead" : "/arrive#lead")}
                 />
               }
-              className="hidden h-10 rounded-full bg-[#00B956] px-4 font-semibold text-white hover:bg-[#00a34c] sm:inline-flex"
+              className="hidden h-10 rounded-full bg-[#00B956] px-5 text-[15px] font-medium text-white hover:bg-[#10E272] sm:inline-flex"
             >
               Оставить заявку
             </Button>
@@ -51,11 +52,9 @@ export function LandingChrome({
         </div>
       </header>
       {children}
-      <footer className="border-t border-black/5 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-muted-foreground sm:px-6">
-          <p className="font-semibold text-foreground">
-            МегаФон · связь для гостей из СНГ
-          </p>
+      <footer className="mt-6 bg-[#F6F6F6]">
+        <div className={`${mf.wrap} flex flex-col gap-3 py-10 text-sm text-[#999]`}>
+          <p className="font-medium text-[#333]">МегаФон · связь для гостей из СНГ</p>
           <p>
             Цены ориентировочные, по Москве, с НДС. Точные условия — в салоне и
             на megafon.ru. Не официальный сайт ПАО «МегаФон».
@@ -86,7 +85,7 @@ function NavLink({
   return (
     <a
       href={withBase(href)}
-      className={active ? "text-foreground" : "text-foreground/70 hover:text-foreground"}
+      className={active ? "text-[#333]" : "text-[#999] hover:text-[#333]"}
     >
       {children}
     </a>
@@ -99,7 +98,7 @@ export function LanguagePills() {
     <div
       role="group"
       aria-label={t.lang}
-      className="inline-flex rounded-full border border-input bg-white p-0.5"
+      className="inline-flex rounded-full bg-[#F6F6F6] p-0.5"
     >
       {locales.map((item) => {
         const active = item.id === locale;
@@ -109,10 +108,10 @@ export function LanguagePills() {
             type="button"
             aria-pressed={active}
             onClick={() => setLocale(item.id)}
-            className={`h-9 min-w-9 rounded-full px-2.5 text-xs font-semibold transition-colors ${
+            className={`h-9 min-w-9 rounded-full px-2.5 text-xs font-medium transition-colors ${
               active
                 ? "bg-[#00B956] text-white"
-                : "text-foreground/70 hover:text-foreground"
+                : "text-[#999] hover:text-[#333]"
             }`}
           >
             {item.label}

@@ -30,6 +30,8 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { IconWell, MegaGlow, StepBadge } from "@/components/landings/mega-art";
+import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { catalogTariffs, formTariffs, specials } from "@/lib/products";
 
@@ -41,34 +43,13 @@ const transferTiers = [
 ] as const;
 
 const perks = [
-  {
-    icon: Gift,
-    ...specials.calls[0],
-  },
-  {
-    icon: PhoneCall,
-    ...specials.calls[1],
-  },
-  {
-    icon: Globe2,
-    ...specials.calls[2],
-  },
-  {
-    icon: Banknote,
-    ...specials.money[0],
-  },
-  {
-    icon: Wallet,
-    ...specials.money[1],
-  },
-  {
-    icon: Wifi,
-    ...specials.data[0],
-  },
-  {
-    icon: RefreshCcw,
-    ...specials.data[1],
-  },
+  { icon: Gift, ...specials.calls[0] },
+  { icon: PhoneCall, ...specials.calls[1] },
+  { icon: Globe2, ...specials.calls[2] },
+  { icon: Banknote, ...specials.money[0] },
+  { icon: Wallet, ...specials.money[1] },
+  { icon: Wifi, ...specials.data[0] },
+  { icon: RefreshCcw, ...specials.data[1] },
   {
     icon: Users,
     name: "МегаСемья",
@@ -141,140 +122,130 @@ export function HerePage() {
 
   return (
     <LandingChrome current="here">
-      <main>
-        <section className="bg-[#111] text-white">
-          <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
-            <div>
-              <p className="mb-4 inline-flex rounded-full bg-[#00B956] px-3 py-1 text-sm font-semibold text-white">
-                Уже в России · свой номер
-              </p>
-              <h1 className="max-w-xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                Переходите на МегаФон.{" "}
-                <span className="text-[#9dffc2]">Номер остаётся вашим.</span>
-              </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
-                Оставьте заявку — перезвоним и поможем перенести номер.
-                Биометрию заново сдавать не надо. Тарифы «Минимум +» и
-                «Семейный +», бонусы за переводы домой.
-              </p>
-              <dl className="mt-8 grid grid-cols-3 gap-3 text-center sm:text-left">
-                <div className="rounded-2xl bg-white/5 p-3">
-                  <dt className="text-xs text-white/55">Базовый</dt>
-                  <dd className="mt-1 text-xl font-semibold">от 850 ₽</dd>
-                </div>
-                <div className="rounded-2xl bg-white/5 p-3">
-                  <dt className="text-xs text-white/55">Максимальный</dt>
-                  <dd className="mt-1 text-xl font-semibold">от 1 140 ₽</dd>
-                </div>
-                <div className="rounded-2xl bg-white/5 p-3">
-                  <dt className="text-xs text-white/55">Перенос</dt>
-                  <dd className="mt-1 text-xl font-semibold">свой номер</dd>
-                </div>
-              </dl>
-            </div>
-            <div
-              id="lead"
-              className="rounded-[1.75rem] bg-white p-5 text-foreground shadow-xl sm:p-7"
-            >
-              <p className="text-xl font-semibold">Оставьте заявку</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Перезвоним и скажем, можно ли перенести номер в вашем салоне.
-              </p>
-              <div className="mt-5">
-                <CallbackForm
-                  hero
-                  defaultTariff={tariffId}
-                  idPrefix="here-hero"
-                  tariffChoices={formTariffs}
-                  submitLabel="Оставить заявку"
-                />
+      <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
+        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-10 lg:px-16 lg:py-14`}>
+          <MegaGlow />
+          <div className="relative z-10">
+            <p className="mb-4 inline-flex rounded-full bg-[#00B956] px-3 py-1 text-sm font-medium text-white">
+              Уже в России · свой номер
+            </p>
+            <h1 className={`${mf.h1} max-w-xl`}>
+              Переходите на МегаФон.{" "}
+              <span className="text-[#00B956]">Номер остаётся вашим.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
+              Оставьте заявку — перезвоним и поможем перенести номер.
+              Биометрию заново сдавать не надо. Тарифы «Минимум +» и
+              «Семейный +», бонусы за переводы домой.
+            </p>
+            <dl className="mt-8 grid grid-cols-3 gap-3">
+              <div className="rounded-[20px] bg-white/10 p-3">
+                <dt className="text-xs text-white/60">Базовый</dt>
+                <dd className="mt-1 text-xl font-semibold">от 850 ₽</dd>
               </div>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Перезвоним в рабочие часы. Звонок бесплатный.
-              </p>
+              <div className="rounded-[20px] bg-white/10 p-3">
+                <dt className="text-xs text-white/60">Максимальный</dt>
+                <dd className="mt-1 text-xl font-semibold">от 1 140 ₽</dd>
+              </div>
+              <div className="rounded-[20px] bg-white/10 p-3">
+                <dt className="text-xs text-white/60">Перенос</dt>
+                <dd className="mt-1 text-xl font-semibold">свой номер</dd>
+              </div>
+            </dl>
+          </div>
+          <div
+            id="lead"
+            className="relative z-10 mt-8 rounded-[24px] bg-white p-5 text-[#333] sm:p-7 lg:mt-0"
+          >
+            <p className="text-[22px] font-semibold">Оставьте заявку</p>
+            <p className="mt-1 text-[15px] text-[#999]">
+              Перезвоним и скажем, можно ли перенести номер в вашем салоне.
+            </p>
+            <div className="mt-5">
+              <CallbackForm
+                hero
+                defaultTariff={tariffId}
+                idPrefix="here-hero"
+                tariffChoices={formTariffs}
+                submitLabel="Оставить заявку"
+              />
             </div>
+            <p className="mt-3 text-xs text-[#999]">
+              Перезвоним в рабочие часы. Звонок бесплатный.
+            </p>
           </div>
         </section>
 
-        <section id="formats" className="bg-[#f6f7f2] py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Выберите формат связи
-            </h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              Два тарифа на выбор. Базовый — «Минимум +». Максимальный —
-              «Семейный +».
-            </p>
-            <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
-              {catalogTariffs.map((item) => {
-                const active = item.id === tariffId;
-                const popular = "popular" in item && item.popular;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setTariffId(item.id)}
-                    className={`rounded-[1.75rem] p-6 text-left ring-2 transition ${
-                      active
-                        ? "bg-[#111] text-white ring-[#00B956]"
-                        : "bg-white text-foreground ring-transparent hover:ring-[#00B956]/40"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <p
-                        className={`text-xs font-semibold uppercase tracking-wide ${
-                          active ? "text-[#9dffc2]" : "text-[#00B956]"
-                        }`}
-                      >
-                        {item.level}
-                      </p>
-                      {popular ? (
-                        <span className="rounded-full bg-[#00B956] px-2 py-0.5 text-xs font-semibold text-white">
-                          Чаще берут
-                        </span>
-                      ) : null}
-                    </div>
-                    <p className="mt-2 text-2xl font-semibold">{item.name}</p>
-                    <p className="mt-3 text-4xl font-semibold">
-                      {item.price}
-                      <span
-                        className={`ml-2 text-base font-normal ${
-                          active ? "text-white/55" : "text-muted-foreground"
-                        }`}
-                      >
-                        / 30 дней
-                      </span>
+        <section id="formats" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>Выберите формат связи</h2>
+          <p className="mt-3 max-w-2xl text-[15px] text-[#999]">
+            Два тарифа на выбор. Базовый — «Минимум +». Максимальный —
+            «Семейный +».
+          </p>
+          <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
+            {catalogTariffs.map((item) => {
+              const active = item.id === tariffId;
+              const popular = "popular" in item && item.popular;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setTariffId(item.id)}
+                  className={`rounded-[24px] p-6 text-left transition ${
+                    active
+                      ? "bg-[#731982] text-white"
+                      : "bg-[#F6F6F6] text-[#333] hover:ring-2 hover:ring-[#00B956]/40"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p
+                      className={`text-xs font-medium uppercase tracking-wide ${
+                        active ? "text-[#00B956]" : "text-[#731982]"
+                      }`}
+                    >
+                      {item.level}
                     </p>
-                    <ul className="mt-5 space-y-2 text-sm">
-                      {[item.minutes, item.data, item.extra].map((line) => (
-                        <li key={line} className="flex gap-2">
-                          <Check
-                            className={`mt-0.5 size-4 shrink-0 ${
-                              active ? "text-[#9dffc2]" : "text-[#00B956]"
-                            }`}
-                          />
-                          {line}
-                        </li>
-                      ))}
-                    </ul>
-                  </button>
-                );
-              })}
-            </Reveal>
+                    {popular ? (
+                      <span className="rounded-full bg-[#00B956] px-2 py-0.5 text-xs font-medium text-white">
+                        Чаще берут
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mt-2 text-[22px] font-semibold">{item.name}</p>
+                  <p className="mt-3 text-[32px] font-bold leading-none">
+                    {item.price}
+                    <span
+                      className={`ml-2 text-base font-normal ${
+                        active ? "text-white/60" : "text-[#999]"
+                      }`}
+                    >
+                      / 30 дней
+                    </span>
+                  </p>
+                  <ul className="mt-5 space-y-2 text-[15px]">
+                    {[item.minutes, item.data, item.extra].map((line) => (
+                      <li key={line} className="flex gap-2">
+                        <Check className="mt-0.5 size-4 shrink-0 text-[#00B956]" />
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </button>
+              );
+            })}
+          </Reveal>
 
-            <Reveal className="mt-8">
-            <div className="overflow-hidden rounded-[1.75rem] bg-white p-6 sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-wide text-[#00B956]">
-                Калькулятор тарифа
-              </p>
-              <p className="mt-2 text-3xl font-semibold tracking-tight">
+          <Reveal className="mt-4">
+            <div className="rounded-[24px] bg-[#F6F6F6] p-6 sm:p-8">
+              <p className="text-sm font-medium text-[#731982]">Калькулятор тарифа</p>
+              <p className="mt-2 text-[28px] font-semibold tracking-tight">
                 {tariff.price} · {monthlyLine}
               </p>
-              <p className="mt-2 text-muted-foreground">
+              <p className="mt-2 text-[15px] text-[#999]">
                 Интернет: {extraGb}. Дополнительные опции ниже подключаются
                 отдельно.
               </p>
-              <p className="mt-6 text-sm font-medium">
+              <p className="mt-6 text-[15px] font-medium">
                 Если переведёте домой в салоне МегаФона (не в приложении)
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -283,195 +254,174 @@ export function HerePage() {
                     key={item.amount}
                     type="button"
                     onClick={() => setTier(index)}
-                    className={`rounded-2xl px-3 py-3 text-sm font-semibold ring-1 ${
+                    className={`rounded-full px-3 py-3 text-sm font-medium ${
                       index === tier
-                        ? "bg-[#00B956] text-white ring-[#00B956]"
-                        : "bg-[#f6f7f2] ring-black/5 hover:ring-[#00B956]/40"
+                        ? "bg-[#00B956] text-white"
+                        : "bg-white text-[#333] hover:bg-[#DDFFEC]"
                     }`}
                   >
                     {item.label}
                   </button>
                 ))}
               </div>
-              <p className="mt-5 text-2xl font-semibold">
-                Бонус: {bonus.reward}
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {specials.money[0].text}
-              </p>
+              <p className="mt-5 text-[22px] font-semibold">Бонус: {bonus.reward}</p>
+              <p className="mt-2 text-[15px] text-[#999]">{specials.money[0].text}</p>
               <Button
                 onClick={() => setDialogOpen(true)}
-                className="mt-6 h-12 rounded-full bg-[#00B956] px-6 font-semibold text-white hover:bg-[#00a34c]"
+                className={`mt-6 ${mf.btnGreen}`}
               >
                 Хочу {tariff.name}
               </Button>
             </div>
-            </Reveal>
-          </div>
+          </Reveal>
         </section>
 
-        <section id="perks" className="bg-white py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Это вам понравится
-            </h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              Дополнительные опции к тарифу. Где написано «сам» — подключается
-              автоматически, без акций и заявок.
-            </p>
-            <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
-              {perks.map((item) => (
+        <section id="perks" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>Это вам понравится</h2>
+          <p className="mt-3 max-w-2xl text-[15px] text-[#999]">
+            Дополнительные опции к тарифу. Где написано «сам» — подключается
+            автоматически, без акций и заявок.
+          </p>
+          <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
+            {perks.map((item) => (
+              <article key={item.name} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                <IconWell>
+                  <item.icon className="size-6" />
+                </IconWell>
+                <h3 className="mt-4 font-medium">{item.name}</h3>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#731982]">
+                  {item.how}
+                </p>
+                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+              </article>
+            ))}
+          </Reveal>
+        </section>
+
+        <section id="tariffs" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>Что входит в тарифы</h2>
+          <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
+            {catalogTariffs.map((item) => {
+              const popular = "popular" in item && item.popular;
+              return (
                 <article
-                  key={item.name}
-                  className="rounded-[1.5rem] bg-[#f6f7f2] p-5"
+                  key={item.id}
+                  className={`rounded-[24px] p-6 ${
+                    popular ? "bg-[#731982] text-white" : "bg-[#F6F6F6] text-[#333]"
+                  }`}
                 >
-                  <item.icon className="size-6 text-[#00B956]" />
-                  <h3 className="mt-4 font-semibold">{item.name}</h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#00B956]">
-                    {item.how}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
-            </Reveal>
-          </div>
-        </section>
-
-        <section id="tariffs" className="bg-[#f6f7f2] py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Что входит в тарифы
-            </h2>
-            <Reveal className="mt-8 grid gap-5 lg:grid-cols-2">
-              {catalogTariffs.map((item) => {
-                const popular = "popular" in item && item.popular;
-                return (
-                  <article
-                    key={item.id}
-                    className="rounded-[1.75rem] bg-white p-6 ring-1 ring-black/5"
+                  <p
+                    className={`text-xs font-medium uppercase tracking-wide ${
+                      popular ? "text-[#00B956]" : "text-[#731982]"
+                    }`}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[#00B956]">
-                      {item.level}
-                    </p>
-                    <h3 className="mt-1 text-2xl font-semibold">{item.name}</h3>
-                    <p className="mt-4 text-3xl font-semibold">{item.price}</p>
-                    <ul className="mt-5 space-y-2 text-sm">
-                      {[item.minutes, item.data, item.extra, ...item.points].map(
-                        (line) => (
-                          <li key={line} className="flex gap-2">
-                            <Check className="mt-0.5 size-4 shrink-0 text-[#00B956]" />
-                            {line}
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                    {popular ? (
-                      <p className="mt-4 text-sm text-muted-foreground">
-                        Под работу: Яндекс Go, навигация, склады. Под семью:
-                        видео, мессенджеры, национальные приложения.
-                      </p>
-                    ) : null}
-                    <Button
-                      onClick={() => {
-                        setTariffId(item.id);
-                        setDialogOpen(true);
-                      }}
-                      className="mt-6 h-11 w-full rounded-full bg-[#111] font-semibold text-white hover:bg-black"
-                    >
-                      Оставить заявку
-                    </Button>
-                  </article>
-                );
-              })}
-            </Reveal>
-          </div>
-        </section>
-
-        <section id="how" className="bg-[#111] py-16 text-white">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Как перейти
-            </h2>
-            <p className="mt-3 max-w-2xl text-white/65">
-              Всего четыре шага — быстрее, чем оформление первой SIM.
-            </p>
-            <Reveal as="ol" className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4" flip={false}>
-              {steps.map((step, index) => (
-                <li key={step.title} className="rounded-[1.5rem] bg-white/5 p-5">
-                  <span className="text-sm font-semibold text-[#9dffc2]">
-                    {index + 1}
-                  </span>
-                  <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
-                    {step.text}
+                    {item.level}
                   </p>
-                </li>
-              ))}
-            </Reveal>
-            <p className="mt-8 inline-flex items-center gap-2 text-sm text-white/55">
-              <ArrowRightLeft className="size-4" />
-              Перенос номера и бонусы за переводы — в салоне МегаФона.
-            </p>
-          </div>
+                  <h3 className="mt-1 text-[22px] font-semibold">{item.name}</h3>
+                  <p className="mt-4 text-[32px] font-bold">{item.price}</p>
+                  <ul className="mt-5 space-y-2 text-[15px]">
+                    {[item.minutes, item.data, item.extra, ...item.points].map(
+                      (line) => (
+                        <li key={line} className="flex gap-2">
+                          <Check className="mt-0.5 size-4 shrink-0 text-[#00B956]" />
+                          {line}
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                  {popular ? (
+                    <p className="mt-4 text-[15px] text-white/75">
+                      Под работу: Яндекс Go, навигация, склады. Под семью:
+                      видео, мессенджеры, национальные приложения.
+                    </p>
+                  ) : null}
+                  <Button
+                    onClick={() => {
+                      setTariffId(item.id);
+                      setDialogOpen(true);
+                    }}
+                    className={`mt-6 w-full ${popular ? mf.btnGreen : mf.btnPurple}`}
+                  >
+                    Оставить заявку
+                  </Button>
+                </article>
+              );
+            })}
+          </Reveal>
         </section>
 
-        <section id="who" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Кому это нужно
-          </h2>
+        <section id="how" className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16`}>
+          <h2 className={mf.h2}>Как перейти</h2>
+          <p className="mt-3 max-w-2xl text-[15px] text-white/75">
+            Всего четыре шага — быстрее, чем оформление первой SIM.
+          </p>
+          <Reveal as="ol" className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4" flip={false}>
+            {steps.map((step, index) => (
+              <li key={step.title} className="rounded-[24px] bg-white/10 p-5">
+                <StepBadge n={index + 1} />
+                <h3 className="mt-3 text-[18px] font-medium">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-6 text-white/75">{step.text}</p>
+              </li>
+            ))}
+          </Reveal>
+          <p className="mt-8 inline-flex items-center gap-2 text-[15px] text-white/60">
+            <ArrowRightLeft className="size-4" />
+            Перенос номера и бонусы за переводы — в салоне МегаФона.
+          </p>
+        </section>
+
+        <section id="who" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>Кому это нужно</h2>
           <Reveal className="mt-8 grid gap-4 md:grid-cols-3" flip={false}>
-            <article className="rounded-[1.5rem] bg-white p-6 ring-1 ring-black/5">
-              <Smartphone className="size-6 text-[#00B956]" />
-              <h3 className="mt-4 font-semibold">Уже есть российская SIM</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
+              <IconWell>
+                <Smartphone className="size-6" />
+              </IconWell>
+              <h3 className="mt-4 font-medium">Уже есть российская SIM</h3>
+              <p className="mt-2 text-[15px] text-[#999]">
                 СНИЛС и биометрия сданы. Нужен свой номер, дешевле звонить домой
                 и не ловить скрытые списания.
               </p>
             </article>
-            <article className="rounded-[1.5rem] bg-white p-6 ring-1 ring-black/5">
-              <Banknote className="size-6 text-[#00B956]" />
-              <h3 className="mt-4 font-semibold">Переводите деньги семье</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
+              <IconWell tone="purple">
+                <Banknote className="size-6" />
+              </IconWell>
+              <h3 className="mt-4 font-medium">Переводите деньги семье</h3>
+              <p className="mt-2 text-[15px] text-[#999]">
                 Перевод в салоне МегаФона даёт минуты или месяцы связи. В
                 приложении этот бонус не копится.
               </p>
             </article>
-            <article className="rounded-[1.5rem] bg-white p-6 ring-1 ring-black/5">
-              <RefreshCcw className="size-6 text-[#00B956]" />
-              <h3 className="mt-4 font-semibold">Уезжаете на сезон</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
+              <IconWell>
+                <RefreshCcw className="size-6" />
+              </IconWell>
+              <h3 className="mt-4 font-medium">Уезжаете на сезон</h3>
+              <p className="mt-2 text-[15px] text-[#999]">
                 Номер сохраняете. Когда вернётесь на тариф — +20 ГБ до 6 месяцев.
               </p>
             </article>
           </Reveal>
         </section>
 
-        <section id="faq" className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Частые вопросы
-          </h2>
-          <Accordion className="mt-6 rounded-3xl bg-white px-5 ring-1 ring-black/5">
+        <section id="faq" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+          <h2 className={mf.h2}>Частые вопросы</h2>
+          <Accordion className="mt-6">
             {faq.map((item, index) => (
               <AccordionItem key={item.q} value={`h-${index}`}>
-                <AccordionTrigger className="py-4 text-base hover:no-underline">
+                <AccordionTrigger className="py-4 text-[16px] hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
+                <AccordionContent className="text-[#999]">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </section>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-black/5 bg-[#111] p-3 sm:hidden">
-        <Button
-          render={<a href="#lead" />}
-          className="h-12 w-full rounded-full bg-[#00B956] text-base font-semibold text-white hover:bg-[#00a34c]"
-        >
+      <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
+        <Button render={<a href="#lead" />} className={`w-full ${mf.btnGreen}`}>
           Оставить заявку
         </Button>
       </div>

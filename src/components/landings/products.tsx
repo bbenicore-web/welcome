@@ -25,16 +25,16 @@ export function ProductTariffs({
               <article
                 key={tariff.id}
                 className={`flex flex-col rounded-3xl p-6 ring-1 ${
-                  popular
-                    ? "bg-[#07150d] text-white ring-[#00B956]"
-                    : "bg-[#f3faf5] ring-black/5"
+                    popular
+                    ? "bg-[#731982] text-white ring-[#731982]"
+                    : "bg-[#F6F6F6] ring-[#EDEDED]"
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <p
                       className={`text-xs font-semibold uppercase tracking-wide ${
-                        popular ? "text-[#9dffc2]" : "text-[#00B956]"
+                        popular ? "text-[#00B956]" : "text-[#731982]"
                       }`}
                     >
                       {tariff.level}
@@ -60,7 +60,7 @@ export function ProductTariffs({
                     (line) => (
                       <li key={line} className="flex items-start gap-2">
                         <Check
-                          className={`mt-0.5 size-4 shrink-0 ${popular ? "text-[#9dffc2]" : "text-[#00B956]"}`}
+                          className="mt-0.5 size-4 shrink-0 text-[#00B956]"
                         />
                         <span>{line}</span>
                       </li>
@@ -71,8 +71,8 @@ export function ProductTariffs({
                   onClick={() => onPick(tariff.id)}
                   className={`mt-8 h-12 rounded-full text-base font-semibold ${
                     popular
-                      ? "bg-[#00B956] text-white hover:bg-[#00a34c]"
-                      : "bg-[#07150d] text-white hover:bg-black"
+                      ? "bg-[#00B956] text-white hover:bg-[#10E272]"
+                      : "bg-[#731982] text-white hover:bg-[#A500BF]"
                   }`}
                 >
                   Хочу этот тариф
