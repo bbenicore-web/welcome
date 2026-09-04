@@ -21,6 +21,7 @@ type CallbackFormProps = {
   compact?: boolean;
   onSubmitted?: () => void;
   idPrefix?: string;
+  tariffChoices?: { id: string; name: string }[];
 };
 
 export function CallbackForm({
@@ -28,6 +29,7 @@ export function CallbackForm({
   compact = false,
   onSubmitted,
   idPrefix = "lead",
+  tariffChoices,
 }: CallbackFormProps) {
   const { t } = useLanguage();
   const [name, setName] = useState("");
@@ -42,11 +44,12 @@ export function CallbackForm({
 
   const tariffOptions = useMemo(
     () =>
+      tariffChoices ??
       tariffs.map((tariff) => ({
         id: tariff.id,
         name: t.tariffNames[tariff.id],
       })),
-    [t],
+    [t, tariffChoices],
   );
 
   function reset() {
@@ -169,7 +172,9 @@ export function CallbackForm({
           <SelectTrigger id={`${idPrefix}-tariff`} className="h-11 w-full bg-white">
             <SelectValue>
               {(value: string | null) =>
-                value ? t.tariffNames[value as keyof typeof t.tariffNames] : ""
+                value
+                  ? (tariffOptions.find((option) => option.id === value)?.name ?? "")
+                  : ""
               }
             </SelectValue>
           </SelectTrigger>
