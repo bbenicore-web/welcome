@@ -412,6 +412,11 @@ export function LandingPage() {
           <p>
             {t.lang}: {locales.find((item) => item.id === locale)?.native}
           </p>
+          <p>
+            <a href="/cjm" className="font-medium text-[#00B956] hover:underline">
+              Сегменты и CJM: от своей страны до России
+            </a>
+          </p>
         </div>
       </footer>
 
