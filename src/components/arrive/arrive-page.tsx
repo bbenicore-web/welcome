@@ -79,9 +79,9 @@ export function ArrivePage() {
   return (
     <LandingChrome current="arrive">
       <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
-        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-16 lg:py-16`}>
+        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16 lg:py-16`}>
           <MegaGlow />
-          <div className="relative z-10">
+          <div className="relative z-10 max-w-2xl">
             <p className={mf.kicker}>МегаФон · {copy.productKicker}</p>
             <h1 className={`${mf.h1} mt-4`}>{copy.hero}</h1>
             <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
@@ -98,17 +98,6 @@ export function ArrivePage() {
               >
                 {copy.apply}
               </Button>
-            </div>
-          </div>
-          <div className="relative z-10 mt-10 lg:mt-0">
-            <div className="rounded-[24px] bg-white/10 p-7 backdrop-blur-sm">
-              <p className="text-sm text-white/70">{copy.gainTitle}</p>
-              <p className="mt-4 text-[28px] font-semibold leading-tight">
-                Минимум + <span className="text-[#00B956]">и Семейный +</span>
-              </p>
-              <p className="mt-3 text-[15px] leading-6 text-white/70">
-                {copy.benefits[0].text}
-              </p>
             </div>
           </div>
         </section>

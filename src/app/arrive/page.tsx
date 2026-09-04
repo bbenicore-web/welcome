@@ -3,9 +3,9 @@ import { ArrivePage } from "@/components/arrive/arrive-page";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Сим-карта и документы за один визит — МегаФон",
+  title: "Добро пожаловать в Россию — сим-карта МегаФон",
   description:
-    "Как оформить документы и получить сим-карту МегаФон: СНИЛС, Госуслуги, биометрия, тарифы Минимум + и Семейный +.",
+    "Подключайте сим-карту МегаФон и будьте на связи с родными. СНИЛС, Госуслуги, биометрия, тарифы Минимум + и Семейный +.",
 };
 
 export default function Page() {

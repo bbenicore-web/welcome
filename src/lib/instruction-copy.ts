@@ -38,11 +38,11 @@ export type InstructionCopy = {
 };
 
 const ru: InstructionCopy = {
-  hero: "Сим-карта и документы за один визит",
+  hero: "Добро пожаловать в Россию",
   download: "Скачать инструкцию",
   gainTitle: "Оформите тариф МегаФон",
   gainSub:
-    "Как оформить документы и получить сим-карту с тарифом «Минимум +» или «Семейный +»?",
+    "Подключайте сим‑карту МегаФон и будьте на связи с родными.",
   widgets: [
     { href: "#snils", label: "Паспорт и СНИЛС" },
     { href: "#getsim", label: "Госуслуги и биометрия" },
@@ -216,11 +216,11 @@ const ru: InstructionCopy = {
 };
 
 const uz: InstructionCopy = {
-  hero: "Chet el fuqarosi SIM-kartani qanday olishi mumkin?",
+  hero: "Rossiyaga xush kelibsiz",
   download: "Yo‘riqnomani yuklab olish",
   gainTitle: "MegaFon tarifini rasmiylashtiring",
   gainSub:
-    "Hujjatlarni qanday rasmiylashtirish va «Minimum +» yoki «Oilaviy +» tarifi bilan SIM-karta olish mumkin?",
+    "MegaFon SIM-kartasini ulang va yaqinlaringiz bilan aloqada bo‘ling.",
   widgets: [
     { href: "#snils", label: "Pasport va ShIHSR" },
     { href: "#getsim", label: "Gosuslugi va biometriya" },
@@ -394,11 +394,11 @@ const uz: InstructionCopy = {
 };
 
 const tg: InstructionCopy = {
-  hero: "Сим-корт ва ҳуҷҷатҳо дар як ташриф",
+  hero: "Ба Русия хуш омадед",
   download: "Дастурамалро сарборӣ кардан",
   gainTitle: "Тарофаи МегаФон ба расмият дароред",
   gainSub:
-    "Чӣ тавр ҳуҷҷатҳоро ба расмият дароварда, сим-корт бо тарофаи «Минимум +» ё «Оилавӣ +» гирифтан мумкин аст?",
+    "Сим-корти МегаФонро пайваст кунед ва бо наздиконатон дар тамос бошед.",
   widgets: [
     { href: "#snils", label: "Шиноснома ва СНИЛС" },
     { href: "#getsim", label: "Госуслуги ва биометрия" },
@@ -572,11 +572,11 @@ const tg: InstructionCopy = {
 };
 
 const ky: InstructionCopy = {
-  hero: "Сим-карта жана документтер бир жолу барууга туура келет",
+  hero: "Россияга кош келиңиз",
   download: "Нускаманы жүктөө",
   gainTitle: "МегаФон тарифин тариздеңиз",
   gainSub:
-    "Документтерди кантип тариздеп, «Минимум +» же «Үй-бүлөлүк +» тарифи менен SIM-карта алууга болот?",
+    "МегаФон сим-картасын туташтырыңыз да, жакындарыңыз менен байланышта болуңуз.",
   widgets: [
     { href: "#snils", label: "Паспорт жана ЖЭКН" },
     { href: "#getsim", label: "Госуслуги жана биометрия" },

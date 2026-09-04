@@ -123,60 +123,30 @@ export function HerePage() {
   return (
     <LandingChrome current="here">
       <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
-        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-10 lg:px-16 lg:py-14`}>
+        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16 lg:py-16`}>
           <MegaGlow />
-          <div className="relative z-10">
+          <div className="relative z-10 max-w-2xl">
             <p className="mb-4 inline-flex rounded-full bg-[#00B956] px-3 py-1 text-sm font-medium text-white">
               Уже в России · свой номер
             </p>
-            <h1 className={`${mf.h1} max-w-xl`}>
+            <h1 className={mf.h1}>
               Переходите на МегаФон.{" "}
               <span className="text-[#00B956]">Номер остаётся вашим.</span>
             </h1>
             <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
-              Оставьте заявку — перезвоним и поможем перенести номер.
               Биометрию заново сдавать не надо. Тарифы «Минимум +» и
-              «Семейный +», бонусы за переводы домой.
+              «Семейный +», бонусы за переводы домой. Перенос номера — в салоне.
             </p>
-            <dl className="mt-8 grid grid-cols-3 gap-3">
-              <div className="rounded-[20px] bg-white/10 p-3">
-                <dt className="text-xs text-white/60">Базовый</dt>
-                <dd className="mt-1 text-xl font-semibold">от 850 ₽</dd>
-              </div>
-              <div className="rounded-[20px] bg-white/10 p-3">
-                <dt className="text-xs text-white/60">Максимальный</dt>
-                <dd className="mt-1 text-xl font-semibold">от 1 140 ₽</dd>
-              </div>
-              <div className="rounded-[20px] bg-white/10 p-3">
-                <dt className="text-xs text-white/60">Перенос</dt>
-                <dd className="mt-1 text-xl font-semibold">свой номер</dd>
-              </div>
-            </dl>
-          </div>
-          <div
-            id="lead"
-            className="relative z-10 mt-8 rounded-[24px] bg-white p-5 text-[#333] sm:p-7 lg:mt-0"
-          >
-            <p className="text-[22px] font-semibold">Оставьте заявку</p>
-            <p className="mt-1 text-[15px] text-[#999]">
-              Перезвоним и скажем, можно ли перенести номер в вашем салоне.
-            </p>
-            <div className="mt-5">
-              <CallbackForm
-                hero
-                defaultTariff={tariffId}
-                idPrefix="here-hero"
-                tariffChoices={formTariffs}
-                submitLabel="Оставить заявку"
-              />
-            </div>
-            <p className="mt-3 text-xs text-[#999]">
-              Перезвоним в рабочие часы. Звонок бесплатный.
-            </p>
+            <Button
+              onClick={() => setDialogOpen(true)}
+              className={`mt-8 ${mf.btnWhite}`}
+            >
+              Оставить заявку
+            </Button>
           </div>
         </section>
 
-        <section id="formats" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="lead" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
           <h2 className={mf.h2}>Выберите формат связи</h2>
           <p className="mt-3 max-w-2xl text-[15px] text-[#999]">
             Два тарифа на выбор. Базовый — «Минимум +». Максимальный —
@@ -421,7 +391,7 @@ export function HerePage() {
       </main>
 
       <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
-        <Button render={<a href="#lead" />} className={`w-full ${mf.btnGreen}`}>
+        <Button onClick={() => setDialogOpen(true)} className={`w-full ${mf.btnGreen}`}>
           Оставить заявку
         </Button>
       </div>
