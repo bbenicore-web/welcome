@@ -13,7 +13,11 @@ npm run dev
 
 Откройте http://localhost:43123
 
-Сегменты мигрантов и CJM от выезда до ассимиляции: http://localhost:43123/cjm
+Сегменты и CJM: http://localhost:43123/cjm
+
+Полный документ: http://localhost:43123/cjm/print
+
+PDF: http://localhost:43123/migranty-cjm.pdf
 
 Для стабильной проверки кликов соберите прод:
 

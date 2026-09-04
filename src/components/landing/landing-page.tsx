@@ -95,6 +95,13 @@ export function LandingPage() {
           <div className="flex items-center gap-2">
             <LanguageSelect />
             <Button
+              render={<a href="/cjm" />}
+              variant="outline"
+              className="hidden h-10 rounded-full lg:inline-flex"
+            >
+              Сегменты и CJM
+            </Button>
+            <Button
               onClick={() => openLead()}
               className="hidden h-10 rounded-full bg-[#00B956] px-4 font-semibold text-white hover:bg-[#00a34c] sm:inline-flex"
             >
@@ -131,6 +138,18 @@ export function LandingPage() {
                       {item.label}
                     </SheetClose>
                   ))}
+                  <a
+                    href="/cjm"
+                    className="rounded-lg px-3 py-3 text-base font-medium hover:bg-muted"
+                  >
+                    Сегменты и CJM
+                  </a>
+                  <a
+                    href="/migranty-cjm.pdf"
+                    className="rounded-lg px-3 py-3 text-base font-medium hover:bg-muted"
+                  >
+                    Скачать PDF
+                  </a>
                   <Button
                     onClick={() => openLead()}
                     className="mt-3 h-12 rounded-full bg-[#00B956] text-base font-semibold text-white hover:bg-[#00a34c]"
@@ -182,6 +201,14 @@ export function LandingPage() {
                 </Button>
               </div>
               <p className="mt-4 text-sm text-white/55">{t.heroNote}</p>
+              <p className="mt-3">
+                <a
+                  href="/migranty-cjm.pdf"
+                  className="text-sm font-semibold text-[#9dffc2] underline-offset-2 hover:underline"
+                >
+                  Скачать сегменты и CJM (PDF)
+                </a>
+              </p>
               <dl className="mt-10 grid gap-4 sm:grid-cols-3">
                 {t.stats.map((stat) => (
                   <div
@@ -415,6 +442,10 @@ export function LandingPage() {
           <p>
             <a href="/cjm" className="font-medium text-[#00B956] hover:underline">
               Сегменты и CJM: от своей страны до России
+            </a>
+            {" · "}
+            <a href="/migranty-cjm.pdf" className="font-medium text-[#00B956] hover:underline">
+              Скачать PDF
             </a>
           </p>
         </div>

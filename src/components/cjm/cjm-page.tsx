@@ -64,11 +64,10 @@ export function CjmPage() {
             </a>
           </nav>
           <Button
-            render={<a href="/" />}
-            variant="outline"
-            className="h-10 rounded-full"
+            render={<a href="/migranty-cjm.pdf" download />}
+            className="h-10 rounded-full bg-[#00B956] px-4 font-semibold text-white hover:bg-[#00a34c]"
           >
-            К тарифам
+            Скачать PDF
           </Button>
         </div>
       </header>
@@ -89,6 +88,21 @@ export function CjmPage() {
               патент или ЕАЭС. Ниже — сегменты, боли и три CJM от сборов дома
               до ассимиляции и возврата.
             </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button
+                render={<a href="/migranty-cjm.pdf" download />}
+                className="h-12 rounded-full bg-[#00B956] px-6 text-base font-semibold text-white hover:bg-[#00a34c]"
+              >
+                Скачать PDF
+              </Button>
+              <Button
+                render={<a href="/cjm/print" />}
+                variant="outline"
+                className="h-12 rounded-full border-white/20 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
+              >
+                Полный документ
+              </Button>
+            </div>
           </div>
         </section>
 
