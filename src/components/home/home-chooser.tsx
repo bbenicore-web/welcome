@@ -34,8 +34,8 @@ export function HomeChooser() {
               <Luggage className="size-8 text-[#00B956]" />
               <h2 className="mt-6 text-2xl font-semibold">Только приехал</h2>
               <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">
-                Первая российская SIM. Как у СберМобайла: паспорт, СНИЛС,
-                Госуслуги, биометрия — потом тариф и «Тёплый приём».
+                Инструкция как у СберМобайла: сим-карта и документы за визит.
+                Тарифы из ТЗ — «Минимум +» и «Семейный +», не «Соседи +».
               </p>
               <p className="mt-6 inline-flex items-center gap-2 font-semibold text-[#00B956]">
                 Как легализоваться

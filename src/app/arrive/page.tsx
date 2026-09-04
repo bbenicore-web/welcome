@@ -3,9 +3,9 @@ import { ArrivePage } from "@/components/arrive/arrive-page";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Только приехали — как легально получить SIM МегаФон",
+  title: "Сим-карта и документы за один визит — МегаФон",
   description:
-    "СНИЛС, Госуслуги, биометрия и договор в салоне. Затем тарифы Минимум + и Семейный + с опцией «Тёплый приём».",
+    "Как оформить документы и получить сим-карту МегаФон: СНИЛС, Госуслуги, биометрия, тарифы Минимум + и Семейный +.",
 };
 
 export default function Page() {
