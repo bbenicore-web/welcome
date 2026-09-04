@@ -13,9 +13,9 @@
 
 ## GitHub Pages
 
-Сайт собирается в статику (`output: "export"`). Settings → Pages → Source: **GitHub Actions**. Workflow `.github/workflows/pages.yml` кладёт сборку в `/welcome`.
+Сайт собирается в статику (`npm run build` → папка `out`). Адрес после включения Pages:
 
-Адрес: https://bbenicore-web.github.io/welcome/
+https://bbenicore-web.github.io/welcome/
 
 Локально:
 
