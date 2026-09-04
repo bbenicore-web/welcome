@@ -44,10 +44,10 @@ const ru: InstructionCopy = {
   gainSub:
     "Как оформить документы и получить сим-карту с тарифом «Минимум +» или «Семейный +»?",
   widgets: [
-    { href: "#snils", label: "Получите СНИЛС" },
-    { href: "#getsim", label: "Получите документы и сим-карту" },
-    { href: "#activation", label: "Активируйте сим-карту" },
-    { href: "#payment", label: "Оплатите тариф" },
+    { href: "#snils", label: "Паспорт и СНИЛС" },
+    { href: "#getsim", label: "Госуслуги и биометрия" },
+    { href: "#activation", label: "Сим-карта и подтверждение" },
+    { href: "#payment", label: "Оплата тарифа" },
   ],
   share: "Поделиться инструкцией",
   productKicker: "Тарифы для гостей из СНГ",
@@ -78,15 +78,15 @@ const ru: InstructionCopy = {
       text: "На «Семейный +»: безлимитный интернет и делёжка тарифа. Кто уезжал на сезон — «+20 ГБ за возврат» до 6 месяцев.",
     },
   ],
-  howTitle: "Как оформить документы и сим-карту",
-  step1Title: "Получите СНИЛС",
+  howTitle: "Как оформить и подтвердить сим-карту",
+  step1Title: "Переведите паспорт и получите СНИЛС",
   step1Text:
-    "СНИЛС — это страховой номер индивидуального лицевого счёта. Его можно получить в МФЦ (Мои документы) или СФР (Социальный фонд России). Туда нужно прийти лично и взять с собой документы. Документ будет готов сразу. В редких случаях процесс может занять до 5 рабочих дней.",
-  placeTitle: "МФЦ, СФР или банк — затем салон МегаФон",
+    "Сначала переведите паспорт на русский язык в бюро переводов и заверьте перевод у нотариуса. С паспортом и переводом оформите СНИЛС — страховой номер лицевого счёта — в Социальном фонде России (СФР) или МФЦ. Документ обычно готов сразу при обращении.",
+  placeTitle: "Биометрию оформляют в банке, а не в салоне",
   placeText:
-    "СНИЛС, регистрацию на Госуслугах и биометрию делают в МФЦ, Социальном фонде или банке. Сим-карту МегаФон оформляют очно в салоне: договор, IMEI телефона, не больше 10 номеров на человека.",
+    "МегаФон — оператор связи, мы не снимаем биометрию. Запись лица и голоса делают в банке и сохраняют в Единой биометрической системе (ЕБС). В салоне МегаФон оформляют саму сим-карту: договор и IMEI телефона, не больше 10 номеров на человека.",
   placeBtn: "Оставить заявку на салон",
-  bringTitle: "Что нужно взять с собой",
+  bringTitle: "Что взять с собой",
   bring: [
     {
       title: "Документ о пребывании в РФ",
@@ -102,28 +102,28 @@ const ru: InstructionCopy = {
     },
   ],
   translateBtn: "Бюро переводов на карте",
-  step2Title: "Получите документы и сим-карту",
+  step2Title: "Зарегистрируйтесь на Госуслугах и сдайте биометрию",
   step2Items: [
     {
-      title: "Обратитесь за помощью к сотруднику МФЦ, СФР или банка",
-      text: "Он поможет оформить СНИЛС, зарегистрироваться на Госуслугах и возьмёт биометрию — лицо и голос.",
+      title: "Зарегистрируйтесь на Госуслугах",
+      text: "На сайте или лично в МФЦ либо банке. Возьмите паспорт, перевод и СНИЛС. После проверки на телефон или почту придёт пароль для первого входа.",
     },
     {
-      title: "Оформите сим-карту в салоне МегаФон",
-      text: "Скажите, что нужна первая SIM в России и тариф «Минимум +» или «Семейный +». «Тёплый приём» включится сам.",
+      title: "Зарегистрируйте биометрию в банке",
+      text: "Это запись голоса и скан лица. Возьмите паспорт, перевод и СНИЛС и обратитесь в банк — запись в Единую биометрическую систему займёт несколько секунд.",
     },
     {
-      title: "Назовите IMEI телефона",
-      text: "Его впишут в договор. На одного человека — не больше 10 номеров у всех операторов.",
+      title: "Узнайте IMEI телефона",
+      text: "Идентификатор устройства, в котором будет работать сим-карта. Его впишут в договор — без него не появится связь. На человека — не больше 10 номеров у всех операторов.",
     },
     {
       title: "Оформите карту банка РФ",
-      text: "Карта понадобится для пополнения сим-карты и других покупок. Это можно сделать в банке в тот же день.",
+      text: "Карта понадобится для пополнения сим-карты и оплаты тарифа. Это можно сделать в банке в тот же день.",
     },
   ],
-  bioTitle: "Рекомендуем подготовиться к сдаче биометрии",
-  bioText: "Сотрудник банка попросит вас произнести несколько цифр",
-  bring2Title: "Что нужно взять с собой в салон",
+  bioTitle: "Как проходит биометрия в банке",
+  bioText: "Сотрудник банка попросит произнести несколько цифр и сделает скан лица",
+  bring2Title: "Что взять в банк и салон",
   bring2: [
     {
       title: "Документ о пребывании в РФ",
@@ -142,25 +142,26 @@ const ru: InstructionCopy = {
       text: "для установки сим-карты и подтверждения данных на портале Госуслуги",
     },
   ],
-  step3Title: "Активируйте сим-карту",
-  step3Text: "После сдачи биометрии и регистрации на Госуслугах",
+  step3Title: "Оформите сим-карту и подтвердите биометрию",
+  step3Text:
+    "Когда СНИЛС, Госуслуги и биометрия готовы — приходите в салон МегаФон за сим-картой.",
   step3Items: [
     {
-      title: "Войдите на Госуслуги",
-      text: "через любое устройство с камерой: смартфон, планшет, ноутбук",
-      note: "Если у вас нет устройства с камерой, вы можете воспользоваться компьютером в МФЦ",
+      title: "Оформите сим-карту в салоне МегаФон",
+      text: "Скажите, что нужна первая SIM в России и тариф «Минимум +» или «Семейный +». «Тёплый приём» включится сам.",
     },
     {
-      title: "Перейдите в раздел «Уведомления»",
-      text: "через меню в левом верхнем углу",
+      title: "Подтвердите биометрию",
+      text: "Самостоятельно на Госуслугах или в салоне МегаФон. Сим-картой можно пользоваться сразу после подтверждения.",
+      note: "Для подтверждения на Госуслугах нужно устройство с камерой: смартфон, планшет или ноутбук. Если камеры нет — воспользуйтесь компьютером в МФЦ.",
     },
     {
       title: "Откройте уведомление о подтверждении личности",
-      text: "и следуйте инструкциям",
+      text: "в разделе «Уведомления» на Госуслугах и следуйте инструкциям.",
     },
     {
       title: "Привяжите номер МегаФон",
-      text: "к учётной записи на Госуслугах",
+      text: "к учётной записи на Госуслугах.",
     },
   ],
   step4Title: "Оплатите тариф",
@@ -210,7 +211,7 @@ const ru: InstructionCopy = {
   ],
   leadTitle: "Подскажем, куда идти за СНИЛС и в какой салон",
   leadText:
-    "Оставьте номер. Перезвоним, скажем, что взять с собой и где сдать биометрию рядом с вами.",
+    "Оставьте номер. Перезвоним и подскажем, что взять с собой, где рядом зарегистрировать биометрию и в какой салон МегаФон прийти за сим-картой.",
   apply: "Оставить заявку",
 };
 
@@ -221,10 +222,10 @@ const uz: InstructionCopy = {
   gainSub:
     "Hujjatlarni qanday rasmiylashtirish va «Minimum +» yoki «Oilaviy +» tarifi bilan SIM-karta olish mumkin?",
   widgets: [
-    { href: "#snils", label: "ShIHSR ni oling" },
-    { href: "#getsim", label: "Hujjatlar va SIM-karta oling" },
-    { href: "#activation", label: "SIM-kartani faollashtiring" },
-    { href: "#payment", label: "Tarifni to'lang" },
+    { href: "#snils", label: "Pasport va ShIHSR" },
+    { href: "#getsim", label: "Gosuslugi va biometriya" },
+    { href: "#activation", label: "SIM-karta va tasdiqlash" },
+    { href: "#payment", label: "Tarif to'lovi" },
   ],
   share: "Ko'rsatmalarni baham ko'ring",
   productKicker: "MDH mehmonlari uchun tariflar",
@@ -255,15 +256,15 @@ const uz: InstructionCopy = {
       text: "«Oilaviy +»: cheksiz internet. Mavsumdan qaytsangiz — +20 GB, 6 oygacha.",
     },
   ],
-  howTitle: "Hujjatlar va SIM-kartani qanday rasmiylashtirish",
-  step1Title: "ShIHSR ni oling",
+  howTitle: "SIM-kartani qanday rasmiylashtirish va tasdiqlash",
+  step1Title: "Pasportni tarjima qiling va ShIHSR oling",
   step1Text:
-    "ShIHSR - bu shaxsiy individual hisob raqamning sug’urta raqami. Uni KFM (mening hujjatlarim) yoki RIJ (Rossiya Ijtimoiy Jamg‘armasi) da olish mumkin. U yerga shaxsan tashrif buyurishingiz va o’zingiz bilan hujjatlarni olib kelishingiz kerak. Hujjat darhol tayyor bo’ladi. Kamdan kam hollarda jarayon 5 ish kunigacha davom etishi mumkin.",
-  placeTitle: "KFM, RIJ yoki bank — keyin MegaFon saloni",
+    "Avval pasportni tarjima byurosida rus tiliga tarjima qildiring va notarius tasdiqlatib oling. Pasport va tarjima bilan Rossiya Ijtimoiy Jamg‘armasi (RIJ) yoki MFCda ShIHSR — shaxsiy hisob sug‘urta raqamini rasmiylashtiring. Hujjat odatda murojaat paytida darhol tayyor bo‘ladi.",
+  placeTitle: "Biometriya bankda olinadi, salonda emas",
   placeText:
-    "ShIHSR, Gosuslugi va biometriya — KFM, jamg‘arma yoki bankda. MegaFon SIM-kartasi salonida: shartnoma, telefon IMEI, odamga 10 ta raqamdan oshmasin.",
+    "MegaFon — aloqa operatori, biz biometriya olmaymiz. Yuz va ovoz yozuvi bankda amalga oshiriladi va Yagona biometrik tizimda (YBT) saqlanadi. MegaFon salonida esa SIM-kartaning o‘zi rasmiylashtiriladi: shartnoma va telefon IMEI, bir kishiga 10 tadan ortiq raqam emas.",
   placeBtn: "Salon uchun ariza qoldiring",
-  bringTitle: "O'zingiz bilan nima olishingiz kerak",
+  bringTitle: "O‘zingiz bilan nima olish kerak",
   bring: [
     {
       title: "Rossiya Federatsiyasiga kelish to'g'risidagi hujjat",
@@ -279,29 +280,28 @@ const uz: InstructionCopy = {
     },
   ],
   translateBtn: "Xaritadagi tarjima byurosi",
-  step2Title: "Hujjatlar va SIM-karta oling",
+  step2Title: "Gosuslugida ro‘yxatdan o‘ting va biometriya topshiring",
   step2Items: [
     {
-      title: "KFM, RIJ yoki bank xodimiga murojaat qiling",
-      text: "U ShIHSR, Gosuslugi va biometriyani — yuz va ovozni rasmiylashtirishga yordam beradi.",
+      title: "Gosuslugida ro‘yxatdan o‘ting",
+      text: "Saytda yoki shaxsan MFC yoki bankda. Pasport, tarjima va ShIHSRni oling. Tekshiruvdan so‘ng telefon yoki pochtaga birinchi kirish uchun parol keladi.",
     },
     {
-      title: "MegaFon salonida SIM-karta oling",
-      text: "Rossiyada birinchi SIM va «Minimum +» yoki «Oilaviy +» kerakligini ayting. «Iliq kutib olish» o‘zi ulanadi.",
+      title: "Bankda biometriya topshiring",
+      text: "Bu ovoz yozuvi va yuz skani. Pasport, tarjima va ShIHSRni olib bankka boring — Yagona biometrik tizimga yozuv bir necha soniya oladi.",
     },
     {
-      title: "Telefon IMEI sini ayting",
-      text: "Shartnomaga yoziladi. Barcha operatorlarda odamga 10 ta raqamdan oshmasin.",
+      title: "Telefon IMEIsini biling",
+      text: "SIM-karta ishlaydigan qurilma identifikatori. U shartnomaga yoziladi — usiz aloqa bo‘lmaydi. Bir kishiga barcha operatorlarda 10 tadan ortiq raqam emas.",
     },
     {
       title: "RF bank kartasini rasmiylashtiring",
-      text: "SIM ni to‘ldirish uchun kerak. Bankda shu kuni qilish mumkin.",
+      text: "Karta SIM-kartani to‘ldirish va tarif to‘lovi uchun kerak. Bankda shu kuni qilish mumkin.",
     },
   ],
-  bioTitle:
-    "Biometrik ma'lumotlarni topshirishga tayyorgarlik ko'rishingizni tavsiya qilamiz",
-  bioText: "Bank xodimi sizdan bir nechta raqamlarni aytib berishingizni so'raydi",
-  bring2Title: "Salonga nima olib borish kerak",
+  bioTitle: "Bankda biometriya qanday o‘tadi",
+  bioText: "Bank xodimi bir nechta raqamni aytishingizni so‘raydi va yuz skanini oladi",
+  bring2Title: "Bank va salonga nima olib borish kerak",
   bring2: [
     {
       title: "Rossiya Federatsiyasiga kelish to'g'risidagi hujjat",
@@ -320,25 +320,26 @@ const uz: InstructionCopy = {
       text: "SIM-kartani o'rnatish va Davlat xizmatlari portalida ma'lumotlarni tasdiqlash uchun",
     },
   ],
-  step3Title: "SIM-kartani faollashtiring",
-  step3Text: "Biometrik ma'lumotlarni topshirgandan va Davlat xizmatlarida ro'yxatdan o'tgandan so'ng",
+  step3Title: "SIM-kartani rasmiylashtiring va biometriyani tasdiqlang",
+  step3Text:
+    "ShIHSR, Gosuslugi va biometriya tayyor bo‘lgach — SIM-karta uchun MegaFon saloniga keling.",
   step3Items: [
     {
-      title: "Gosuslugiga kiring",
-      text: "Kamerali har qanday qurilma orqali: smartfon, planshet, noutbuk",
-      note: "Agar sizda kamerali qurilma bo'lmasa, KFM da kompyuterdan foydalanishingiz mumkin",
+      title: "MegaFon salonida SIM-karta oling",
+      text: "Rossiyada birinchi SIM va «Minimum +» yoki «Oilaviy +» kerakligini ayting. «Iliq kutib olish» o‘zi ulanadi.",
     },
     {
-      title: "«Bildirishnomalar» bo‘limiga o‘ting",
-      text: "chap yuqori burchakdagi menyu orqali",
+      title: "Biometriyani tasdiqlang",
+      text: "Mustaqil ravishda Gosuslugida yoki MegaFon salonida. Tasdiqlangandan so‘ng SIM-kartadan darhol foydalanish mumkin.",
+      note: "Gosuslugida tasdiqlash uchun kamerali qurilma kerak: smartfon, planshet yoki noutbuk. Kamera bo‘lmasa — MFCdagi kompyuterdan foydalaning.",
     },
     {
       title: "Shaxsni tasdiqlash bildirishnomasini oching",
-      text: "va ko'rsatmalarga amal qiling",
+      text: "Gosuslugidagi «Bildirishnomalar» bo‘limida va ko‘rsatmalarga amal qiling.",
     },
     {
       title: "MegaFon raqamingizni bog‘lang",
-      text: "Davlat xizmatlaridagi hisob yozuviga",
+      text: "Gosuslugidagi hisob yozuviga.",
     },
   ],
   step4Title: "Tarifni to'lang",
@@ -388,7 +389,7 @@ const uz: InstructionCopy = {
   ],
   leadTitle: "ShIHSR va yaqin salonga yo‘l ko‘rsatamiz",
   leadText:
-    "Raqam qoldiring. Qo‘ng‘iroq qilamiz: nima olib borish va biometriyani qayerda topshirishni aytamiz.",
+    "Raqam qoldiring. Qo‘ng‘iroq qilib, nima olib borish, yaqin atrofda qayerda biometriya topshirish va qaysi MegaFon saloniga borishni aytamiz.",
   apply: "Ariza qoldirish",
 };
 
@@ -399,10 +400,10 @@ const tg: InstructionCopy = {
   gainSub:
     "Чӣ тавр ҳуҷҷатҳоро ба расмият дароварда, сим-корт бо тарофаи «Минимум +» ё «Оилавӣ +» гирифтан мумкин аст?",
   widgets: [
-    { href: "#snils", label: "СНИЛС гиред" },
-    { href: "#getsim", label: "Ҳуҷҷатҳо ва сим-корт гиред" },
-    { href: "#activation", label: "Сим-кортро фаъол кунед" },
-    { href: "#payment", label: "Тарофаро пардохт кунед" },
+    { href: "#snils", label: "Шиноснома ва СНИЛС" },
+    { href: "#getsim", label: "Госуслуги ва биометрия" },
+    { href: "#activation", label: "Сим-корт ва тасдиқ" },
+    { href: "#payment", label: "Пардохти тароф" },
   ],
   share: "Дастурҳоро мубодила кунед",
   productKicker: "Тарофаҳо барои меҳмонон аз ИДМ",
@@ -433,15 +434,15 @@ const tg: InstructionCopy = {
       text: "Дар «Оилавӣ +»: интернети бемаҳдуд. Аз мавсим баргардед — +20 ГБ то 6 моҳ.",
     },
   ],
-  howTitle: "Чӣ тавр ҳуҷҷатҳо ва сим-кортро ба расмият даровардан",
-  step1Title: "СНИЛС гиред",
+  howTitle: "Чӣ тавр сим-кортро ба расмият даровардан ва тасдиқ кардан",
+  step1Title: "Шиносномаро тарҷума кунед ва СНИЛС гиред",
   step1Text:
-    "СНИЛС –– рақами суғуртаи суратҳисоби шахсии инфиродӣ мебошад. Онро дар Маркази сершуғл (Ҳуҷҷатҳои ман) ё ФИР (Фонди иҷтимоии Россия) гирифтан мумкин аст. Бояд шахсан ба он ҷо омада, ҳуҷҷатҳоро бо худ гиред. Ҳуҷҷат фавран омода мешавад. Дар ҳолатҳои кам, раванд метавонад то 5 рӯзи корӣ тӯл кашад.",
-  placeTitle: "МФЦ, ФИР ё бонк — сипас салони МегаФон",
+    "Аввал шиносномаро дар бюрои тарҷума ба забони русӣ тарҷума карда, назди нотариус тасдиқ кунонед. Бо шиноснома ва тарҷума СНИЛС — рақами суғуртаи суратҳисоби шахсиро дар Фонди иҷтимоии Россия (ФИР) ё МФЦ ба расмият дароред. Ҳуҷҷат одатан фавран ҳангоми муроҷиат омода мешавад.",
+  placeTitle: "Биометрия дар бонк гирифта мешавад, на дар салон",
   placeText:
-    "СНИЛС, Госуслуги ва биометрия дар МФЦ, фонд ё бонк. Сим-корти МегаФон дар салон: шартнома, IMEI, на зиёда аз 10 рақам ба як нафар.",
+    "МегаФон — оператори алоқа аст, мо биометрия намегирем. Сабти рӯй ва овоз дар бонк анҷом дода мешавад ва дар Системаи ягонаи биометрӣ (СЯБ) нигоҳ дошта мешавад. Дар салони МегаФон бошад, худи сим-корт ба расмият дароварда мешавад: шартнома ва IMEI-и телефон, ба як нафар на зиёда аз 10 рақам.",
   placeBtn: "Дархост ба салон гузоред",
-  bringTitle: "Бо худ бояд чӣ гирифт",
+  bringTitle: "Бо худ чӣ гирифтан лозим аст",
   bring: [
     {
       title: "Ҳуҷҷати будубош дар РФ",
@@ -457,28 +458,28 @@ const tg: InstructionCopy = {
     },
   ],
   translateBtn: "Бюрои тарҷума дар харита",
-  step2Title: "Ҳуҷҷатҳо ва сим-корт гиред",
+  step2Title: "Дар Госуслуги сабти ном кунед ва биометрия супоред",
   step2Items: [
     {
-      title: "Ба корманди МФЦ, ФИР ё бонк муроҷиат кунед",
-      text: "Ӯ СНИЛС, Госуслуги ва биометрия — чеҳра ва овозро ба расмият медарорад.",
+      title: "Дар Госуслуги сабти ном кунед",
+      text: "Дар сайт ё шахсан дар МФЦ ё бонк. Шиноснома, тарҷума ва СНИЛСро гиред. Пас аз санҷиш ба телефон ё почта парол барои вуруди аввал меояд.",
     },
     {
-      title: "Дар салони МегаФон сим-корт гиред",
-      text: "Гӯед, ки SIM-и аввал дар Россия ва тарофаи «Минимум +» ё «Оилавӣ +» лозим аст. «Қабули гарм» худ пайваст мешавад.",
+      title: "Дар бонк биометрия супоред",
+      text: "Ин сабти овоз ва скани рӯй аст. Шиноснома, тарҷума ва СНИЛСро гирифта ба бонк муроҷиат кунед — сабт ба Системаи ягонаи биометрӣ чанд сония мегирад.",
     },
     {
-      title: "IMEI-и телефонро бигӯед",
-      text: "Ба шартнома менависанд. Ба як нафар на зиёда аз 10 рақам дар ҳамаи операторон.",
+      title: "IMEI-и телефонро бидонед",
+      text: "Идентификатори дастгоҳе, ки сим-корт дар он кор мекунад. Он ба шартнома навишта мешавад — бе он алоқа намешавад. Ба як нафар дар ҳамаи операторон на зиёда аз 10 рақам.",
     },
     {
       title: "Корти бонки РФ ба расмият дароред",
-      text: "Барои пур кардани сим-корт лозим аст. Дар бонк ҳамон рӯз кардан мумкин.",
+      text: "Корт барои пур кардани сим-корт ва пардохти тароф лозим аст. Дар бонк ҳамон рӯз кардан мумкин.",
     },
   ],
-  bioTitle: "Тавсия медиҳем, ки ба супоридани маълумоти биометрӣ омода шавед",
-  bioText: "Корманди бонк хоҳиш мекунад, ки чанд рақамро бигӯед",
-  bring2Title: "Ба салон бо худ чӣ гирифтан",
+  bioTitle: "Биометрия дар бонк чӣ тавр мегузарад",
+  bioText: "Корманди бонк хоҳиш мекунад, ки чанд рақамро бигӯед ва скани рӯйро мегирад",
+  bring2Title: "Ба бонк ва салон чӣ гирифтан",
   bring2: [
     {
       title: "Ҳуҷҷати будубош дар РФ",
@@ -497,25 +498,26 @@ const tg: InstructionCopy = {
       text: "барои насб кардани сим-корт ва тасдиқ дар Госуслуги",
     },
   ],
-  step3Title: "Сим-кортро фаъол кунед",
-  step3Text: "Пас аз супоридани биометрия ва сабти ном дар Госуслуги",
+  step3Title: "Сим-кортро ба расмият дароред ва биометрияро тасдиқ кунед",
+  step3Text:
+    "Вақте СНИЛС, Госуслуги ва биометрия тайёр шуданд — барои сим-корт ба салони МегаФон оед.",
   step3Items: [
     {
-      title: "Ба Госуслуги дароед",
-      text: "тавассути ҳар дастгоҳ бо камера: смартфон, планшет, ноутбук",
-      note: "Агар дастгоҳ бо камера набошад, аз компютери МФЦ истифода баред",
+      title: "Дар салони МегаФон сим-корт гиред",
+      text: "Гӯед, ки SIM-и аввал дар Россия ва тарофаи «Минимум +» ё «Оилавӣ +» лозим аст. «Қабули гарм» худ пайваст мешавад.",
     },
     {
-      title: "Ба бахши «Огоҳиномаҳо» гузаред",
-      text: "тавассути меню дар кунҷи чапи боло",
+      title: "Биометрияро тасдиқ кунед",
+      text: "Мустақилона дар Госуслуги ё дар салони МегаФон. Пас аз тасдиқ сим-кортро фавран истифода бурдан мумкин.",
+      note: "Барои тасдиқ дар Госуслуги дастгоҳи дорои камера лозим аст: смартфон, планшет ё ноутбук. Агар камера набошад — аз компютери МФЦ истифода баред.",
     },
     {
       title: "Огоҳиномаи тасдиқи шахсиятро кушоед",
-      text: "ва дастурҳоро риоя кунед",
+      text: "дар бахши «Огоҳиномаҳо»-и Госуслуги ва дастурҳоро риоя кунед.",
     },
     {
       title: "Рақами МегаФонро пайваст кунед",
-      text: "ба ҳисоби Госуслуги",
+      text: "ба ҳисоби Госуслуги.",
     },
   ],
   step4Title: "Тарофаро пардохт кунед",
@@ -565,7 +567,7 @@ const tg: InstructionCopy = {
   ],
   leadTitle: "Мегӯем, куҷо СНИЛС гирифтан ва кадом салон",
   leadText:
-    "Рақам гузоред. Занг мезанем: чӣ бо худ гирифтан ва биометрияро дар куҷо супоридан.",
+    "Рақам гузоред. Занг мезанем ва мегӯем: чӣ бо худ гирифтан, дар куҷои наздик биометрия супоридан ва ба кадом салони МегаФон барои сим-корт омадан.",
   apply: "Дархост гузоред",
 };
 
@@ -576,10 +578,10 @@ const ky: InstructionCopy = {
   gainSub:
     "Документтерди кантип тариздеп, «Минимум +» же «Үй-бүлөлүк +» тарифи менен SIM-карта алууга болот?",
   widgets: [
-    { href: "#snils", label: "ЖЭКН алыңыз" },
-    { href: "#getsim", label: "Документтер жана SIM алыңыз" },
-    { href: "#activation", label: "SIM-картаны иштетиңиз" },
-    { href: "#payment", label: "Тарифти төлөңүз" },
+    { href: "#snils", label: "Паспорт жана ЖЭКН" },
+    { href: "#getsim", label: "Госуслуги жана биометрия" },
+    { href: "#activation", label: "SIM-карта жана ырастоо" },
+    { href: "#payment", label: "Тариф төлөмү" },
   ],
   share: "Инструкцияларды бөлүшүү",
   productKicker: "КМШ конокторуна тарифтер",
@@ -610,15 +612,15 @@ const ky: InstructionCopy = {
       text: "«Үй-бүлөлүк +»: чексиз интернет. Сезондон кайтсаңыз — +20 ГБ, 6 айга чейин.",
     },
   ],
-  howTitle: "Документтерди жана SIM-картаны кантип тариздөө",
-  step1Title: "ЖЭКН алыңыз",
+  howTitle: "SIM-картаны кантип таризтөө жана ырастоо",
+  step1Title: "Паспортту которуп, ЖЭКН алыңыз",
   step1Text:
-    "ЖЭКН — жеке эсептин камсыздандыруу номери. Аны КФБден (Мои документы) же РСФден (Россиянын Социалдык фонду) алууга болот. Ал жакка өзү жана жанында документтерин алып баруу керек. Документ дароо даяр болот. Сейрек учурларда процесс 5 жумушчу күнгө чейин созулушу мүмкүн.",
-  placeTitle: "КФБ, РСФ же банк — андан кийин МегаФон салону",
+    "Адегенде паспортту котормо бюросунда орус тилине которуп, нотариустан күбөлөндүрүңүз. Паспорт жана котормо менен ЖЭКН — жеке эсептин камсыздандыруу номерин Россиянын Социалдык фондунан (РСФ) же МФЦден тариздеңиз. Документ көбүнчө кайрылганда дароо даяр болот.",
+  placeTitle: "Биометрия банкта алынат, салондо эмес",
   placeText:
-    "ЖЭКН, Госуслуги жана биометрия — КФБ, фонд же банкта. МегаФон SIM — салондо: келишим, телефондун IMEI, адамга 10 номерден ашпасын.",
+    "МегаФон — байланыш оператору, биз биометрия албайбыз. Бет жана үн жазуусу банкта жасалып, Бирдиктүү биометрикалык системада (ББС) сакталат. МегаФон салонунда болсо SIM-картанын өзү таризделет: келишим жана телефондун IMEIи, бир адамга 10 номерден ашык эмес.",
   placeBtn: "Салонго өтүнмө калтырыңыз",
-  bringTitle: "Эмнени алып барыш керек",
+  bringTitle: "Өзүңүз менен эмне алуу керек",
   bring: [
     {
       title: "Россия Федерациясында болуу жөнүндө документ",
@@ -634,28 +636,28 @@ const ky: InstructionCopy = {
     },
   ],
   translateBtn: "Картадагы котормо бюросу",
-  step2Title: "Документтер жана SIM-карта алыңыз",
+  step2Title: "Госуслугиге катталып, биометрия тапшырыңыз",
   step2Items: [
     {
-      title: "КФБ, РСФ же банк кызматкерине кайрылыңыз",
-      text: "Ал ЖЭКН, Госуслуги жана биометрияны — жүз жана үндү тариздөөгө жардам берет.",
+      title: "Госуслугиге катталыңыз",
+      text: "Сайтта же өзүңүз МФЦ же банкта. Паспорт, котормо жана ЖЭКНди алыңыз. Текшерүүдөн кийин телефонго же почтага биринчи кирүү үчүн сырсөз келет.",
     },
     {
-      title: "МегаФон салонунан SIM алыңыз",
-      text: "Россиядагы биринчи SIM жана «Минимум +» же «Үй-бүлөлүк +» керек экенин айтыңыз. «Жылуу тосуп алуу» өзү кошулат.",
+      title: "Банкта биометрия тапшырыңыз",
+      text: "Бул үн жазуусу жана беттин сканы. Паспорт, котормо жана ЖЭКНди алып банкка барыңыз — Бирдиктүү биометрикалык системага жазуу бир нече секунд алат.",
     },
     {
-      title: "Телефондун IMEIсин айтыңыз",
-      text: "Келишимге жазылат. Бардык операторлордо адамга 10 номерден ашпасын.",
+      title: "Телефондун IMEIсин билиңиз",
+      text: "SIM-карта иштей турган түзмөктүн идентификатору. Ал келишимге жазылат — ансыз байланыш болбойт. Бир адамга бардык операторлордо 10 номерден ашык эмес.",
     },
     {
       title: "РФ банк картасын тариздеңиз",
-      text: "SIM толуктоо үчүн керек. Банкта ошол эле күнү жасаса болот.",
+      text: "Карта SIM толуктоо жана тариф төлөө үчүн керек. Банкта ошол эле күнү жасаса болот.",
     },
   ],
-  bioTitle: "Биометрияны берүүгө даярданууну сунуштайбыз",
-  bioText: "Банк кызматкери сизден бир нече санды айтууну суранат",
-  bring2Title: "Салонго эмне алып баруу керек",
+  bioTitle: "Банкта биометрия кантип өтөт",
+  bioText: "Банк кызматкери бир нече санды айтууну сурайт жана беттин сканын алат",
+  bring2Title: "Банкка жана салонго эмне алып баруу",
   bring2: [
     {
       title: "Россия Федерациясында болуу жөнүндө документ",
@@ -674,25 +676,26 @@ const ky: InstructionCopy = {
       text: "SIM орнотуу жана Госуслугиде ырастоо үчүн",
     },
   ],
-  step3Title: "SIM-картаны иштетиңиз",
-  step3Text: "Биометрияны тапшыргандан жана Госуслугиге катталгандан кийин",
+  step3Title: "SIM-картаны тариздеп, биометрияны ырастаңыз",
+  step3Text:
+    "ЖЭКН, Госуслуги жана биометрия даяр болгондо — SIM-карта үчүн МегаФон салонуна келиңиз.",
   step3Items: [
     {
-      title: "Госуслугиге кириңиз",
-      text: "камералуу каалаган түзмөк аркылуу: смартфон, планшет, ноутбук",
-      note: "Камералуу түзмөгүңүз жок болсо, КФБдеги компьютерди колдонсоңуз болот",
+      title: "МегаФон салонунан SIM алыңыз",
+      text: "Россиядагы биринчи SIM жана «Минимум +» же «Үй-бүлөлүк +» керек экенин айтыңыз. «Жылуу тосуп алуу» өзү кошулат.",
     },
     {
-      title: "«Билдирмелер» бөлүмүнө өтүңүз",
-      text: "жогорку сол бурчтагы меню аркылуу",
+      title: "Биометрияны ырастаңыз",
+      text: "Өз алдынча Госуслугиде же МегаФон салонунда. Ырастагандан кийин SIM-картаны дароо колдонсо болот.",
+      note: "Госуслугиде ырастоо үчүн камералуу түзмөк керек: смартфон, планшет же ноутбук. Камера жок болсо — МФЦдеги компьютерди колдонуңуз.",
     },
     {
       title: "Инсанды ырастоо билдирмесин ачыңыз",
-      text: "жана көрсөтмөлөрдү аткарыңыз",
+      text: "Госуслугидеги «Билдирмелер» бөлүмүндө жана көрсөтмөлөрдү аткарыңыз.",
     },
     {
       title: "МегаФон номерин байлаңыз",
-      text: "Госуслуги эсебине",
+      text: "Госуслуги эсебине.",
     },
   ],
   step4Title: "Тарифти төлөңүз",
@@ -742,7 +745,7 @@ const ky: InstructionCopy = {
   ],
   leadTitle: "ЖЭКН жана жакын салонду айтабыз",
   leadText:
-    "Номер калтырыңыз. Чалабыз: эмне алып баруу жана биометрияны кайда тапшыруу.",
+    "Номер калтырыңыз. Чалып айтабыз: эмне алып баруу, жакын жерден кайда биометрия тапшыруу жана SIM-карта үчүн кайсы МегаФон салонуна баруу.",
   apply: "Өтүнмө калтыруу",
 };
 
