@@ -24,18 +24,16 @@ export function ProductTariffs({
             return (
               <article
                 key={tariff.id}
-                className={`flex flex-col rounded-3xl p-6 ring-1 ${
+                className={`flex flex-col rounded-[20px] p-6 ring-1 ${
                     popular
-                    ? "bg-[#731982] text-white ring-[#731982]"
-                    : "bg-[#F6F6F6] ring-[#EDEDED]"
+                    ? "bg-[#F2F4F7] text-[#333] ring-[#333]"
+                    : "bg-[#F2F4F7] ring-[#EDEDED]"
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <p
-                      className={`text-xs font-semibold uppercase tracking-wide ${
-                        popular ? "text-[#00B956]" : "text-[#731982]"
-                      }`}
+                      className="text-xs font-semibold uppercase tracking-wide text-[#616C82]"
                     >
                       {tariff.level}
                     </p>
@@ -49,9 +47,7 @@ export function ProductTariffs({
                 </div>
                 <p className="mt-4 text-3xl font-semibold">
                   {tariff.price}
-                  <span
-                    className={`ml-2 text-sm font-normal ${popular ? "text-white/60" : "text-muted-foreground"}`}
-                  >
+                    <span className="ml-2 text-sm font-normal text-muted-foreground">
                     за 30 дней
                   </span>
                 </p>
@@ -69,11 +65,7 @@ export function ProductTariffs({
                 </ul>
                 <Button
                   onClick={() => onPick(tariff.id)}
-                  className={`mt-8 h-12 rounded-full text-base font-semibold ${
-                    popular
-                      ? "bg-[#00B956] text-white hover:bg-[#10E272]"
-                      : "bg-[#731982] text-white hover:bg-[#A500BF]"
-                  }`}
+                  className="mt-8 h-[52px] rounded-[12px] border border-[#333] bg-white text-base font-medium text-[#333] hover:bg-[#E9EBF0]"
                 >
                   Хочу этот тариф
                 </Button>

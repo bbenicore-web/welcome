@@ -28,7 +28,14 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
-import { IconWell, MegaGlow, StepBadge } from "@/components/landings/mega-art";
+import {
+  CtaRow,
+  IconWell,
+  MegaArt,
+  MegaHero,
+  ProfileCard,
+  StepBadge,
+} from "@/components/landings/mega-art";
 import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { withBase } from "@/lib/base-path";
@@ -67,48 +74,44 @@ export function ArrivePage() {
         await navigator.share({ title: copy.hero, url });
         return;
       }
-      await navigator.clipboard.writeText(url);
-      setShared(true);
-      window.setTimeout(() => setShared(false), 2000);
     } catch {
-      await navigator.clipboard.writeText(url);
-      setShared(true);
+      /* fall through to clipboard */
     }
+    await navigator.clipboard.writeText(url);
+    setShared(true);
+    window.setTimeout(() => setShared(false), 2000);
   }
 
   return (
     <LandingChrome current="arrive">
-      <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
-        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16 lg:py-16`}>
-          <MegaGlow />
-          <div className="relative z-10 max-w-2xl">
-            <p className={mf.kicker}>МегаФон · {copy.productKicker}</p>
-            <h1 className={`${mf.h1} mt-4`}>{copy.hero}</h1>
-            <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
-              {copy.gainSub}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button render={<a href="#snils" />} className={mf.btnWhite}>
+      <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
+        <MegaHero
+          kicker={`МегаФон → ${copy.productKicker}`}
+          title={copy.hero}
+          subtitle={copy.gainSub}
+          actions={
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button render={<a href="#snils" />} className={mf.btnDark}>
                 {copy.download}
               </Button>
               <Button
                 onClick={() => openLead()}
                 variant="outline"
-                className="h-[52px] rounded-full border-white/30 bg-transparent px-6 text-[15px] font-medium text-white hover:bg-white/10"
+                className={mf.btnLine}
               >
                 {copy.apply}
               </Button>
             </div>
-          </div>
-        </section>
+          }
+        />
 
-        <nav className={`${mf.card} ring-1 ring-[#EDEDED]`}>
+        <nav className={`${mf.sky}`}>
           <div className="grid gap-1 p-3 sm:grid-cols-2 lg:grid-cols-4">
             {copy.widgets.map((item, index) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 rounded-[16px] px-3 py-3 text-[15px] font-medium hover:bg-[#F6F6F6]"
+                className="flex items-center gap-3 rounded-[16px] px-3 py-3 text-[15px] font-medium hover:bg-white"
               >
                 <StepBadge n={index + 1} />
                 {item.label}
@@ -117,99 +120,66 @@ export function ArrivePage() {
           </div>
         </nav>
 
-        <section id="tariffs" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-sm font-medium text-[#731982]">{copy.productKicker}</p>
-              <h2 className={`${mf.h2} mt-2`}>Минимум + · Семейный +</h2>
-            </div>
-            <Button render={<a href="#snils" />} className={mf.btnGreen}>
-              {copy.productCta}
-            </Button>
-          </div>
+        <section id="tariffs" className="scroll-mt-24">
+          <h2 className={`${mf.h2} text-center`}>
+            Несколько тарифов
+            <br className="hidden sm:block" /> под разные задачи
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
+            {copy.productKicker}. Базовый — «Минимум +». Максимальный — «Семейный +».
+          </p>
 
-          <Reveal className="mt-10 grid gap-4 lg:grid-cols-2">
+          <Reveal className="mt-10 space-y-4">
             {catalogTariffs.map((item) => {
               const popular = "popular" in item && item.popular;
               return (
-                <article
+                <ProfileCard
                   key={item.id}
-                  className={`rounded-[24px] p-7 ${
-                    popular
-                      ? "bg-[#731982] text-white"
-                      : "bg-[#F6F6F6] text-[#333]"
-                  }`}
-                >
-                  <p
-                    className={`text-xs font-medium uppercase tracking-wide ${
-                      popular ? "text-[#00B956]" : "text-[#731982]"
-                    }`}
-                  >
-                    {item.level}
-                  </p>
-                  <h3 className="mt-2 text-[28px] font-semibold">{item.name}</h3>
-                  <p className="mt-4 text-[36px] font-bold leading-none">
-                    {item.price}
-                    <span
-                      className={`ml-2 text-base font-normal ${
-                        popular ? "text-white/60" : "text-[#999]"
-                      }`}
-                    >
-                      / 30 дней
-                    </span>
-                  </p>
-                  <ul className="mt-6 space-y-3 text-[15px]">
-                    {[item.minutes, item.data, item.extra, ...item.points].map(
-                      (line) => (
-                        <li key={line} className="flex gap-2">
-                          <Check
-                            className={`mt-0.5 size-4 shrink-0 ${
-                              popular ? "text-[#00B956]" : "text-[#00B956]"
-                            }`}
-                          />
-                          {line}
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                  <Button
-                    onClick={() => openLead(item.id)}
-                    className={`mt-8 w-full ${popular ? mf.btnGreen : mf.btnPurple}`}
-                  >
-                    {copy.productCta}
-                  </Button>
-                </article>
+                  title={item.name}
+                  subtitle={item.extra}
+                  tag={item.level}
+                  badges={[item.minutes, item.data, ...item.points.slice(0, 2)]}
+                  price={item.price}
+                  cta={copy.productCta}
+                  onCta={() => openLead(item.id)}
+                  art={popular ? "promo" : "base"}
+                />
               );
             })}
           </Reveal>
 
           <Reveal className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" flip={false}>
             {copy.benefits.map((item) => (
-              <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+              <article key={item.title} className={`${mf.sky} p-5`}>
                 <h3 className="font-medium">{item.title}</h3>
-                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+                <p className="mt-2 text-[15px] leading-6 text-[#333]/80">{item.text}</p>
               </article>
             ))}
           </Reveal>
         </section>
 
-        <section className="px-1 pt-6">
-          <h2 className={mf.h2}>{copy.howTitle}</h2>
+        <section className="pt-2">
+          <h2 className={`${mf.h2} text-center`}>{copy.howTitle}</h2>
         </section>
 
-        <section id="snils" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="snils" className="scroll-mt-24">
           <StepHead n={1} title={copy.step1Title} />
-          <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#999]">{copy.step1Text}</p>
+          <p className="mt-4 max-w-3xl text-[15px] leading-6 text-[#333]/80">{copy.step1Text}</p>
           <Reveal className="mt-8">
-            <article className="rounded-[24px] bg-[#731982] p-6 text-white sm:p-8">
-              <MapPinned className="size-8 text-[#00B956]" />
-              <h3 className="mt-4 text-[22px] font-semibold">{copy.placeTitle}</h3>
-              <p className="mt-3 max-w-2xl text-[15px] leading-6 text-white/75">
-                {copy.placeText}
-              </p>
-              <Button onClick={() => openLead()} className={`mt-6 ${mf.btnGreen}`}>
-                {copy.placeBtn}
-              </Button>
+            <article className="flex overflow-hidden rounded-[20px] bg-white ring-1 ring-[#EDEDED] max-lg:flex-col">
+              <div className="flex flex-1 flex-col justify-between p-8">
+                <div>
+                  <MapPinned className="size-8 text-[#00B956]" />
+                  <h3 className="mt-4 text-[22px] font-semibold">{copy.placeTitle}</h3>
+                  <p className="mt-3 max-w-2xl text-[15px] leading-6 text-[#333]/80">
+                    {copy.placeText}
+                  </p>
+                </div>
+                <div className="mt-6">
+                  <CtaRow label={copy.placeBtn} onClick={() => openLead()} />
+                </div>
+              </div>
+              <MegaArt art="internet" className="h-[220px] lg:min-h-[320px] lg:w-1/2" />
             </article>
           </Reveal>
           <h3 className="mt-10 text-[20px] font-medium">{copy.bringTitle}</h3>
@@ -217,18 +187,18 @@ export function ArrivePage() {
             {copy.bring.map((item, index) => {
               const Icon = bringIcons[index] ?? FileText;
               return (
-                <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                <article key={item.title} className={`${mf.sky} p-5`}>
                   <IconWell>
-                    <Icon className="size-6" />
+                    <Icon className="size-5" />
                   </IconWell>
                   <h4 className="mt-4 font-medium">{item.title}</h4>
-                  <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                  <p className="mt-2 text-[15px] text-[#333]/80">{item.text}</p>
                   {index === 1 ? (
                     <a
                       href="https://2gis.ru/moscow/search/%D0%B1%D1%8E%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4%D0%BE%D0%B2"
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-3 inline-block text-[15px] font-medium text-[#00B956] hover:underline"
+                      className="mt-3 inline-block text-[15px] font-medium text-[#333] hover:underline"
                     >
                       {copy.translateBtn}
                     </a>
@@ -239,27 +209,27 @@ export function ArrivePage() {
           </Reveal>
         </section>
 
-        <section id="getsim" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="getsim" className="scroll-mt-24">
           <StepHead n={2} title={copy.step2Title} />
           <Reveal as="ol" className="mt-8 grid gap-4 lg:grid-cols-2" flip={false}>
             {copy.step2Items.map((item, index) => (
-              <li key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-6">
+              <li key={item.title} className={`${mf.sky} p-6`}>
                 <StepBadge n={index + 1} />
                 <h3 className="mt-3 text-[18px] font-medium">{item.title}</h3>
-                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+                <p className="mt-2 text-[15px] leading-6 text-[#333]/80">{item.text}</p>
               </li>
             ))}
           </Reveal>
 
           <Reveal className="mt-10">
-            <div className="rounded-[24px] bg-[#731982] p-6 text-white sm:p-8">
+            <div className={`${mf.sky} p-6 sm:p-8`}>
               <h3 className="text-[22px] font-semibold">{copy.bioTitle}</h3>
-              <p className="mt-2 text-[15px] text-white/75">{copy.bioText}</p>
+              <p className="mt-2 text-[15px] text-[#333]/80">{copy.bioText}</p>
               <div className="mt-6 grid gap-3 md:grid-cols-3">
                 {biometryLines.map((line, index) => (
-                  <article key={line} className="rounded-[20px] bg-white p-4 text-[#333]">
+                  <article key={line} className="rounded-[20px] bg-white p-4">
                     <p className="font-mono text-lg font-semibold tracking-wide">{line}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-[#999]">
+                    <p className="mt-2 text-xs leading-relaxed text-[#8F96A4]">
                       {biometryIpa[index]}
                     </p>
                   </article>
@@ -273,45 +243,45 @@ export function ArrivePage() {
             {copy.bring2.map((item, index) => {
               const Icon = bring2Icons[index] ?? FileText;
               return (
-                <article key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-5">
+                <article key={item.title} className={`${mf.sky} p-5`}>
                   <Icon className="size-5 text-[#00B956]" />
                   <h4 className="mt-3 font-medium">{item.title}</h4>
-                  <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                  <p className="mt-2 text-[15px] text-[#333]/80">{item.text}</p>
                 </article>
               );
             })}
           </Reveal>
         </section>
 
-        <section id="activation" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="activation" className="scroll-mt-24">
           <StepHead n={3} title={copy.step3Title} />
-          <p className="mt-4 text-[#999]">{copy.step3Text}</p>
+          <p className="mt-4 text-[#333]/80">{copy.step3Text}</p>
           <Reveal as="ol" className="mt-8 grid gap-4 md:grid-cols-2" flip={false}>
             {copy.step3Items.map((item, index) => (
-              <li key={item.title} className="rounded-[24px] bg-[#F6F6F6] p-6">
+              <li key={item.title} className={`${mf.sky} p-6`}>
                 <StepBadge n={index + 1} />
                 <h3 className="mt-4 text-[18px] font-medium">{item.title}</h3>
-                <p className="mt-2 text-[15px] text-[#999]">{item.text}</p>
+                <p className="mt-2 text-[15px] text-[#333]/80">{item.text}</p>
                 {item.note ? (
-                  <p className="mt-3 text-xs leading-relaxed text-[#731982]">{item.note}</p>
+                  <p className="mt-3 text-xs leading-relaxed text-[#616C82]">{item.note}</p>
                 ) : null}
               </li>
             ))}
           </Reveal>
         </section>
 
-        <section id="payment" className={`${mf.card} scroll-mt-24 p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="payment" className="scroll-mt-24">
           <StepHead n={4} title={copy.step4Title} />
           <Reveal className="mt-8 grid gap-4 lg:grid-cols-3" flip={false}>
             {copy.step4Items.map((item, index) => (
               <article
                 key={item.title}
-                className="flex flex-col rounded-[24px] bg-[#F6F6F6] p-6"
+                className={`flex flex-col ${mf.sky} p-6`}
               >
                 <h3 className="text-[20px] font-medium">{item.title}</h3>
-                <p className="mt-3 flex-1 text-[15px] text-[#999]">{item.text}</p>
+                <p className="mt-3 flex-1 text-[15px] text-[#333]/80">{item.text}</p>
                 {index === 0 ? (
-                  <Button onClick={() => openLead()} className={`mt-6 ${mf.btnGreen}`}>
+                  <Button onClick={() => openLead()} className={`mt-6 ${mf.btnDark}`}>
                     {item.btn}
                   </Button>
                 ) : (
@@ -328,7 +298,7 @@ export function ArrivePage() {
                       />
                     }
                     variant="outline"
-                    className={`mt-6 ${mf.btnOutline}`}
+                    className={`mt-6 ${mf.btnLine}`}
                   >
                     {item.btn}
                   </Button>
@@ -338,35 +308,39 @@ export function ArrivePage() {
           </Reveal>
         </section>
 
-        <section id="faq" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>{copy.faqTitle}</h2>
-          <Accordion className="mt-6">
+        <section id="faq">
+          <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
+          <Accordion className="mt-8">
             {copy.faq.map((item, index) => (
-              <AccordionItem key={item.q} value={`a-${index}`}>
-                <AccordionTrigger className="py-4 text-[16px] hover:no-underline">
+              <AccordionItem
+                key={item.q}
+                value={`a-${index}`}
+                className="border-b border-[#EDEDED]"
+              >
+                <AccordionTrigger className="py-5 text-[16px] font-medium hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#999]">{item.a}</AccordionContent>
+                <AccordionContent className="text-[#333]/80">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
           <button
             type="button"
             onClick={() => void share()}
-            className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#00B956]"
+            className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#333]"
           >
             <Share2 className="size-4" />
             {shared ? "Ссылка скопирована" : copy.share}
           </button>
         </section>
 
-        <section id="lead" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
+        <section id="lead" className={`${mf.sky} p-6 sm:p-10`}>
           <Reveal>
             <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
               <div>
                 <h2 className={mf.h2}>{copy.leadTitle}</h2>
-                <p className="mt-3 text-[15px] leading-6 text-[#999]">{copy.leadText}</p>
-                <ul className="mt-6 space-y-2 text-[15px] text-[#999]">
+                <p className="mt-3 text-[15px] leading-6 text-[#333]/80">{copy.leadText}</p>
+                <ul className="mt-6 space-y-2 text-[15px] text-[#333]/80">
                   <li className="flex gap-2">
                     <UserRound className="mt-0.5 size-4 text-[#00B956]" />
                     {copy.placeTitle}
@@ -381,18 +355,20 @@ export function ArrivePage() {
                   </li>
                 </ul>
               </div>
-              <CallbackForm
-                defaultTariff={tariff}
-                idPrefix="arrive-lead"
-                tariffChoices={formTariffs}
-              />
+              <div className="rounded-[20px] bg-white p-6">
+                <CallbackForm
+                  defaultTariff={tariff}
+                  idPrefix="arrive-lead"
+                  tariffChoices={formTariffs}
+                />
+              </div>
             </div>
           </Reveal>
         </section>
       </main>
 
       <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
-        <Button onClick={() => openLead()} className={`w-full ${mf.btnGreen}`}>
+        <Button onClick={() => openLead()} className={`w-full ${mf.btnDark}`}>
           {copy.apply}
         </Button>
       </div>

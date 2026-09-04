@@ -221,7 +221,7 @@ export function CallbackForm({
       <Button
         type="submit"
         disabled={sending}
-        className="h-[52px] rounded-full bg-[#00B956] px-6 text-[15px] font-medium text-white hover:bg-[#10E272]"
+        className="h-[52px] rounded-[12px] bg-[#333] px-8 text-[15px] font-medium text-white hover:bg-[#404D46]"
       >
         {sending ? t.formSending : submitLabel ?? t.formSubmit}
       </Button>

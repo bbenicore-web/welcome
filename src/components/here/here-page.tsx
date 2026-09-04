@@ -30,7 +30,14 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
-import { IconWell, MegaGlow, StepBadge } from "@/components/landings/mega-art";
+import {
+  CtaRow,
+  IconWell,
+  MegaArt,
+  MegaHero,
+  ProfileCard,
+  StepBadge,
+} from "@/components/landings/mega-art";
 import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { catalogTariffs, formTariffs, specials } from "@/lib/products";
@@ -122,96 +129,63 @@ export function HerePage() {
 
   return (
     <LandingChrome current="here">
-      <main className={`${mf.wrap} space-y-4 py-4 lg:py-6`}>
-        <section className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16 lg:py-16`}>
-          <MegaGlow />
-          <div className="relative z-10 max-w-2xl">
-            <p className="mb-4 inline-flex rounded-full bg-[#00B956] px-3 py-1 text-sm font-medium text-white">
-              Уже в России · свой номер
-            </p>
-            <h1 className={mf.h1}>
+      <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
+        <MegaHero
+          kicker="МегаФон → Уже в России"
+          title={
+            <>
               Переходите на МегаФон.{" "}
-              <span className="text-[#00B956]">Номер остаётся вашим.</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-[17px] leading-7 text-white/80">
-              Биометрию заново сдавать не надо. Тарифы «Минимум +» и
-              «Семейный +», бонусы за переводы домой. Перенос номера — в салоне.
-            </p>
-            <Button
-              onClick={() => setDialogOpen(true)}
-              className={`mt-8 ${mf.btnWhite}`}
-            >
+              <span className="font-bold">Номер остаётся вашим.</span>
+            </>
+          }
+          subtitle="Биометрию заново сдавать не надо. Тарифы «Минимум +» и «Семейный +», бонусы за переводы домой. Перенос номера — в салоне."
+          art="promo"
+          actions={
+            <Button onClick={() => setDialogOpen(true)} className={mf.btnDark}>
               Оставить заявку
             </Button>
-          </div>
-        </section>
+          }
+        />
 
-        <section id="lead" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>Выберите формат связи</h2>
-          <p className="mt-3 max-w-2xl text-[15px] text-[#999]">
-            Два тарифа на выбор. Базовый — «Минимум +». Максимальный —
-            «Семейный +».
+        <section id="lead" className="scroll-mt-24">
+          <h2 className={`${mf.h2} text-center`}>Выберите формат связи</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
+            Два тарифа на выбор. Базовый — «Минимум +». Максимальный — «Семейный +».
           </p>
-          <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
+          <Reveal className="mt-10 space-y-4">
             {catalogTariffs.map((item) => {
-              const active = item.id === tariffId;
               const popular = "popular" in item && item.popular;
+              const active = item.id === tariffId;
               return (
-                <button
+                <div
                   key={item.id}
-                  type="button"
-                  onClick={() => setTariffId(item.id)}
-                  className={`rounded-[24px] p-6 text-left transition ${
-                    active
-                      ? "bg-[#731982] text-white"
-                      : "bg-[#F6F6F6] text-[#333] hover:ring-2 hover:ring-[#00B956]/40"
-                  }`}
+                  className={active ? "rounded-[22px] ring-2 ring-[#333]" : ""}
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <p
-                      className={`text-xs font-medium uppercase tracking-wide ${
-                        active ? "text-[#00B956]" : "text-[#731982]"
-                      }`}
-                    >
-                      {item.level}
-                    </p>
-                    {popular ? (
-                      <span className="rounded-full bg-[#00B956] px-2 py-0.5 text-xs font-medium text-white">
-                        Чаще берут
-                      </span>
-                    ) : null}
-                  </div>
-                  <p className="mt-2 text-[22px] font-semibold">{item.name}</p>
-                  <p className="mt-3 text-[32px] font-bold leading-none">
-                    {item.price}
-                    <span
-                      className={`ml-2 text-base font-normal ${
-                        active ? "text-white/60" : "text-[#999]"
-                      }`}
-                    >
-                      / 30 дней
-                    </span>
-                  </p>
-                  <ul className="mt-5 space-y-2 text-[15px]">
-                    {[item.minutes, item.data, item.extra].map((line) => (
-                      <li key={line} className="flex gap-2">
-                        <Check className="mt-0.5 size-4 shrink-0 text-[#00B956]" />
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
-                </button>
+                  <ProfileCard
+                    title={item.name}
+                    subtitle={item.extra}
+                    tag={item.level}
+                    badges={[item.minutes, item.data]}
+                    price={item.price}
+                    cta={active ? "Оставить заявку" : "Выбрать"}
+                    onCta={() => {
+                      setTariffId(item.id);
+                      setDialogOpen(true);
+                    }}
+                    art={popular ? "promo" : "base"}
+                  />
+                </div>
               );
             })}
           </Reveal>
 
           <Reveal className="mt-4">
-            <div className="rounded-[24px] bg-[#F6F6F6] p-6 sm:p-8">
-              <p className="text-sm font-medium text-[#731982]">Калькулятор тарифа</p>
+            <div className={`${mf.sky} p-6 sm:p-8`}>
+              <p className="text-sm font-medium text-[#616C82]">Калькулятор тарифа</p>
               <p className="mt-2 text-[28px] font-semibold tracking-tight">
                 {tariff.price} · {monthlyLine}
               </p>
-              <p className="mt-2 text-[15px] text-[#999]">
+              <p className="mt-2 text-[15px] text-[#8F96A4]">
                 Интернет: {extraGb}. Дополнительные опции ниже подключаются
                 отдельно.
               </p>
@@ -224,10 +198,10 @@ export function HerePage() {
                     key={item.amount}
                     type="button"
                     onClick={() => setTier(index)}
-                    className={`rounded-full px-3 py-3 text-sm font-medium ${
+                    className={`rounded-[12px] px-3 py-3 text-sm font-medium ${
                       index === tier
-                        ? "bg-[#00B956] text-white"
-                        : "bg-white text-[#333] hover:bg-[#DDFFEC]"
+                        ? "bg-[#333] text-white"
+                        : "bg-white text-[#333] hover:bg-[#E9EBF0]"
                     }`}
                   >
                     {item.label}
@@ -235,56 +209,47 @@ export function HerePage() {
                 ))}
               </div>
               <p className="mt-5 text-[22px] font-semibold">Бонус: {bonus.reward}</p>
-              <p className="mt-2 text-[15px] text-[#999]">{specials.money[0].text}</p>
-              <Button
-                onClick={() => setDialogOpen(true)}
-                className={`mt-6 ${mf.btnGreen}`}
-              >
-                Хочу {tariff.name}
-              </Button>
+              <p className="mt-2 text-[15px] text-[#8F96A4]">{specials.money[0].text}</p>
+              <div className="mt-6">
+                <CtaRow
+                  label={`Хочу ${tariff.name}`}
+                  onClick={() => setDialogOpen(true)}
+                />
+              </div>
             </div>
           </Reveal>
         </section>
 
-        <section id="perks" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>Это вам понравится</h2>
-          <p className="mt-3 max-w-2xl text-[15px] text-[#999]">
+        <section id="perks">
+          <h2 className={`${mf.h2} text-center`}>Это вам понравится</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
             Дополнительные опции к тарифу. Где написано «сам» — подключается
             автоматически, без акций и заявок.
           </p>
           <Reveal className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" flip={false}>
             {perks.map((item) => (
-              <article key={item.name} className="rounded-[24px] bg-[#F6F6F6] p-5">
+              <article key={item.name} className={`${mf.sky} p-5`}>
                 <IconWell>
-                  <item.icon className="size-6" />
+                  <item.icon className="size-5" />
                 </IconWell>
                 <h3 className="mt-4 font-medium">{item.name}</h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#731982]">
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#616C82]">
                   {item.how}
                 </p>
-                <p className="mt-2 text-[15px] leading-6 text-[#999]">{item.text}</p>
+                <p className="mt-2 text-[15px] leading-6 text-[#333]/80">{item.text}</p>
               </article>
             ))}
           </Reveal>
         </section>
 
-        <section id="tariffs" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>Что входит в тарифы</h2>
+        <section id="tariffs">
+          <h2 className={`${mf.h2} text-center`}>Что входит в тарифы</h2>
           <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
             {catalogTariffs.map((item) => {
               const popular = "popular" in item && item.popular;
               return (
-                <article
-                  key={item.id}
-                  className={`rounded-[24px] p-6 ${
-                    popular ? "bg-[#731982] text-white" : "bg-[#F6F6F6] text-[#333]"
-                  }`}
-                >
-                  <p
-                    className={`text-xs font-medium uppercase tracking-wide ${
-                      popular ? "text-[#00B956]" : "text-[#731982]"
-                    }`}
-                  >
+                <article key={item.id} className={`${mf.sky} p-6`}>
+                  <p className="text-xs font-medium uppercase tracking-wide text-[#616C82]">
                     {item.level}
                   </p>
                   <h3 className="mt-1 text-[22px] font-semibold">{item.name}</h3>
@@ -300,7 +265,7 @@ export function HerePage() {
                     )}
                   </ul>
                   {popular ? (
-                    <p className="mt-4 text-[15px] text-white/75">
+                    <p className="mt-4 text-[15px] text-[#333]/80">
                       Под работу: Яндекс Go, навигация, склады. Под семью:
                       видео, мессенджеры, национальные приложения.
                     </p>
@@ -310,7 +275,7 @@ export function HerePage() {
                       setTariffId(item.id);
                       setDialogOpen(true);
                     }}
-                    className={`mt-6 w-full ${popular ? mf.btnGreen : mf.btnPurple}`}
+                    className={`mt-6 w-full ${mf.btnLine}`}
                   >
                     Оставить заявку
                   </Button>
@@ -320,70 +285,90 @@ export function HerePage() {
           </Reveal>
         </section>
 
-        <section id="how" className={`${mf.hero} px-6 py-12 sm:px-10 lg:px-16`}>
-          <h2 className={mf.h2}>Как перейти</h2>
-          <p className="mt-3 max-w-2xl text-[15px] text-white/75">
+        <section id="how">
+          <h2 className={`${mf.h2} text-center`}>Как подключить</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
             Всего четыре шага — быстрее, чем оформление первой SIM.
           </p>
-          <Reveal as="ol" className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4" flip={false}>
-            {steps.map((step, index) => (
-              <li key={step.title} className="rounded-[24px] bg-white/10 p-5">
-                <StepBadge n={index + 1} />
-                <h3 className="mt-3 text-[18px] font-medium">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-6 text-white/75">{step.text}</p>
-              </li>
-            ))}
+          <Reveal className="mt-10 flex overflow-hidden rounded-[20px] bg-white ring-1 ring-[#EDEDED] max-lg:flex-col">
+            <MegaArt art="internet" className="h-[240px] lg:min-h-[380px] lg:w-[45%]" />
+            <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
+              <h3 className="text-[22px] font-semibold leading-7">
+                Перенесите номер или закажите новую сим-карту
+              </h3>
+              <ol className="mt-6 space-y-4">
+                {steps.map((step, index) => (
+                  <li key={step.title} className="flex gap-3">
+                    <StepBadge n={index + 1} />
+                    <div>
+                      <p className="text-[15px] font-medium">{step.title}</p>
+                      <p className="mt-1 text-[15px] leading-6 text-[#333]/80">{step.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-8">
+                <CtaRow
+                  label="Оставить заявку"
+                  onClick={() => setDialogOpen(true)}
+                />
+              </div>
+              <p className="mt-6 inline-flex items-center gap-2 text-[15px] text-[#8F96A4]">
+                <ArrowRightLeft className="size-4" />
+                Перенос номера и бонусы за переводы — в салоне МегаФона.
+              </p>
+            </div>
           </Reveal>
-          <p className="mt-8 inline-flex items-center gap-2 text-[15px] text-white/60">
-            <ArrowRightLeft className="size-4" />
-            Перенос номера и бонусы за переводы — в салоне МегаФона.
-          </p>
         </section>
 
-        <section id="who" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>Кому это нужно</h2>
+        <section id="who">
+          <h2 className={`${mf.h2} text-center`}>Кому это нужно</h2>
           <Reveal className="mt-8 grid gap-4 md:grid-cols-3" flip={false}>
-            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
+            <article className={`${mf.sky} p-6`}>
               <IconWell>
-                <Smartphone className="size-6" />
+                <Smartphone className="size-5" />
               </IconWell>
               <h3 className="mt-4 font-medium">Уже есть российская SIM</h3>
-              <p className="mt-2 text-[15px] text-[#999]">
+              <p className="mt-2 text-[15px] text-[#333]/80">
                 СНИЛС и биометрия сданы. Нужен свой номер, дешевле звонить домой
                 и не ловить скрытые списания.
               </p>
             </article>
-            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
-              <IconWell tone="purple">
-                <Banknote className="size-6" />
+            <article className={`${mf.sky} p-6`}>
+              <IconWell>
+                <Banknote className="size-5" />
               </IconWell>
               <h3 className="mt-4 font-medium">Переводите деньги семье</h3>
-              <p className="mt-2 text-[15px] text-[#999]">
+              <p className="mt-2 text-[15px] text-[#333]/80">
                 Перевод в салоне МегаФона даёт минуты или месяцы связи. В
                 приложении этот бонус не копится.
               </p>
             </article>
-            <article className="rounded-[24px] bg-[#F6F6F6] p-6">
+            <article className={`${mf.sky} p-6`}>
               <IconWell>
-                <RefreshCcw className="size-6" />
+                <RefreshCcw className="size-5" />
               </IconWell>
               <h3 className="mt-4 font-medium">Уезжаете на сезон</h3>
-              <p className="mt-2 text-[15px] text-[#999]">
+              <p className="mt-2 text-[15px] text-[#333]/80">
                 Номер сохраняете. Когда вернётесь на тариф — +20 ГБ до 6 месяцев.
               </p>
             </article>
           </Reveal>
         </section>
 
-        <section id="faq" className={`${mf.card} p-6 ring-1 ring-[#EDEDED] sm:p-10`}>
-          <h2 className={mf.h2}>Частые вопросы</h2>
-          <Accordion className="mt-6">
+        <section id="faq">
+          <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
+          <Accordion className="mt-8">
             {faq.map((item, index) => (
-              <AccordionItem key={item.q} value={`h-${index}`}>
-                <AccordionTrigger className="py-4 text-[16px] hover:no-underline">
+              <AccordionItem
+                key={item.q}
+                value={`h-${index}`}
+                className="border-b border-[#EDEDED]"
+              >
+                <AccordionTrigger className="py-5 text-[16px] font-medium hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#999]">{item.a}</AccordionContent>
+                <AccordionContent className="text-[#333]/80">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -391,7 +376,7 @@ export function HerePage() {
       </main>
 
       <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
-        <Button onClick={() => setDialogOpen(true)} className={`w-full ${mf.btnGreen}`}>
+        <Button onClick={() => setDialogOpen(true)} className={`w-full ${mf.btnDark}`}>
           Оставить заявку
         </Button>
       </div>
