@@ -180,21 +180,39 @@ export function HerePage() {
           <Reveal className="mt-4">
             <div className={`${mf.sky} p-6 sm:p-8`}>
               <p className="text-sm font-medium text-[#616C82]">Калькулятор тарифа</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {catalogTariffs.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setTariffId(item.id)}
-                    className={`rounded-full px-4 py-2 text-sm font-medium ${
-                      item.id === tariffId
-                        ? "bg-[#333] text-white"
-                        : "bg-white text-[#333] ring-1 ring-[#EDEDED] hover:bg-[#E9EBF0]"
-                    }`}
-                  >
-                    {item.name}
-                  </button>
-                ))}
+              <div
+                role="radiogroup"
+                aria-label="Тариф"
+                className="mt-4 grid grid-cols-2 gap-1.5 rounded-[16px] bg-white p-1.5 ring-2 ring-[#333]"
+              >
+                {catalogTariffs.map((item) => {
+                  const active = item.id === tariffId;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setTariffId(item.id)}
+                      className={`min-h-[64px] rounded-[12px] px-3 py-3 text-left transition ${
+                        active
+                          ? "bg-[#00B956] text-white shadow-[0_6px_16px_rgba(0,185,86,0.35)]"
+                          : "bg-[#F2F4F7] text-[#333] hover:bg-[#E4E7EE]"
+                      }`}
+                    >
+                      <span className="block text-[16px] font-semibold leading-5 sm:text-[18px]">
+                        {item.name}
+                      </span>
+                      <span
+                        className={`mt-1 block text-[13px] font-medium ${
+                          active ? "text-white/90" : "text-[#616C82]"
+                        }`}
+                      >
+                        {item.price}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
               <p className="mt-5 text-[28px] font-semibold tracking-tight">
                 {tariff.price} · {monthlyLine}
