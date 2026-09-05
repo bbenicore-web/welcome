@@ -15,6 +15,7 @@ export function LandingChrome({
   current: "home" | "arrive" | "here";
   children: ReactNode;
 }) {
+  const applyLabel = current === "here" ? "Подключить" : "Оставить заявку";
   return (
     <div className={mf.page}>
       <header className="sticky top-0 z-40 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
@@ -46,7 +47,7 @@ export function LandingChrome({
               }
               className={`hidden sm:inline-flex ${mf.btnGreen}`}
             >
-              Оставить заявку
+              {applyLabel}
             </Button>
           </div>
         </div>

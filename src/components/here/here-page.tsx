@@ -142,7 +142,7 @@ export function HerePage() {
           art="promo"
           actions={
             <Button onClick={() => setDialogOpen(true)} className={mf.btnDark}>
-              Оставить заявку
+              Подключить
             </Button>
           }
         />
@@ -157,24 +157,22 @@ export function HerePage() {
               const popular = "popular" in item && item.popular;
               const active = item.id === tariffId;
               return (
-                <div
+                <ProfileCard
                   key={item.id}
-                  className={active ? "rounded-[22px] ring-2 ring-[#333]" : ""}
-                >
-                  <ProfileCard
-                    title={item.name}
-                    subtitle={item.extra}
-                    tag={item.level}
-                    badges={[item.minutes, item.data]}
-                    price={item.price}
-                    cta={active ? "Оставить заявку" : "Выбрать"}
-                    onCta={() => {
-                      setTariffId(item.id);
-                      setDialogOpen(true);
-                    }}
-                    art={popular ? "promo" : "base"}
-                  />
-                </div>
+                  title={item.name}
+                  subtitle={item.extra}
+                  tag={item.level}
+                  badges={[item.minutes, item.data]}
+                  price={item.price}
+                  selected={active}
+                  cta="Подключить"
+                  onSelect={() => setTariffId(item.id)}
+                  onCta={() => {
+                    setTariffId(item.id);
+                    setDialogOpen(true);
+                  }}
+                  art={popular ? "promo" : "base"}
+                />
               );
             })}
           </Reveal>
@@ -182,7 +180,23 @@ export function HerePage() {
           <Reveal className="mt-4">
             <div className={`${mf.sky} p-6 sm:p-8`}>
               <p className="text-sm font-medium text-[#616C82]">Калькулятор тарифа</p>
-              <p className="mt-2 text-[28px] font-semibold tracking-tight">
+              <div className="mt-4 flex flex-wrap gap-2">
+                {catalogTariffs.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setTariffId(item.id)}
+                    className={`rounded-full px-4 py-2 text-sm font-medium ${
+                      item.id === tariffId
+                        ? "bg-[#333] text-white"
+                        : "bg-white text-[#333] ring-1 ring-[#EDEDED] hover:bg-[#E9EBF0]"
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-5 text-[28px] font-semibold tracking-tight">
                 {tariff.price} · {monthlyLine}
               </p>
               <p className="mt-2 text-[15px] text-[#8F96A4]">
@@ -212,7 +226,7 @@ export function HerePage() {
               <p className="mt-2 text-[15px] text-[#8F96A4]">{specials.money[0].text}</p>
               <div className="mt-6">
                 <CtaRow
-                  label={`Хочу ${tariff.name}`}
+                  label={`Подключить ${tariff.name}`}
                   onClick={() => setDialogOpen(true)}
                 />
               </div>
@@ -247,8 +261,15 @@ export function HerePage() {
           <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
             {catalogTariffs.map((item) => {
               const popular = "popular" in item && item.popular;
+              const active = item.id === tariffId;
               return (
-                <article key={item.id} className={`${mf.sky} p-6`}>
+                <article
+                  key={item.id}
+                  className={`${mf.sky} cursor-pointer p-6 ${
+                    active ? "ring-2 ring-[#333]" : ""
+                  }`}
+                  onClick={() => setTariffId(item.id)}
+                >
                   <p className="text-xs font-medium uppercase tracking-wide text-[#616C82]">
                     {item.level}
                   </p>
@@ -271,13 +292,14 @@ export function HerePage() {
                     </p>
                   ) : null}
                   <Button
-                    onClick={() => {
+                    onClick={(event) => {
+                      event.stopPropagation();
                       setTariffId(item.id);
                       setDialogOpen(true);
                     }}
                     className={`mt-6 w-full ${mf.btnLine}`}
                   >
-                    Оставить заявку
+                    Подключить
                   </Button>
                 </article>
               );
@@ -309,7 +331,7 @@ export function HerePage() {
               </ol>
               <div className="mt-8">
                 <CtaRow
-                  label="Оставить заявку"
+                  label="Подключить"
                   onClick={() => setDialogOpen(true)}
                 />
               </div>
@@ -377,7 +399,7 @@ export function HerePage() {
 
       <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
         <Button onClick={() => setDialogOpen(true)} className={`w-full ${mf.btnDark}`}>
-          Оставить заявку
+          Подключить
         </Button>
       </div>
 
@@ -395,7 +417,7 @@ export function HerePage() {
             defaultTariff={tariffId}
             idPrefix="here-dialog"
             tariffChoices={formTariffs}
-            submitLabel="Оставить заявку"
+            submitLabel="Подключить"
           />
         </DialogContent>
       </Dialog>

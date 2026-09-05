@@ -157,6 +157,8 @@ export function ProfileCard({
   period = "за 30 дней",
   cta,
   onCta,
+  onSelect,
+  selected = false,
   art,
 }: {
   title: string;
@@ -167,10 +169,32 @@ export function ProfileCard({
   period?: string;
   cta: string;
   onCta: () => void;
+  onSelect?: () => void;
+  selected?: boolean;
   art: MegaArtId;
 }) {
   return (
-    <article className="flex overflow-hidden rounded-[20px] bg-white ring-1 ring-[#EDEDED] max-lg:flex-col">
+    <article
+      className={cn(
+        "flex overflow-hidden rounded-[20px] bg-white max-lg:flex-col",
+        selected ? "ring-2 ring-[#333]" : "ring-1 ring-[#EDEDED]",
+        onSelect ? "cursor-pointer" : "",
+      )}
+      onClick={onSelect}
+      onKeyDown={
+        onSelect
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onSelect();
+              }
+            }
+          : undefined
+      }
+      role={onSelect ? "button" : undefined}
+      tabIndex={onSelect ? 0 : undefined}
+      aria-pressed={onSelect ? selected : undefined}
+    >
       <div className="flex flex-1 flex-col justify-between gap-8 p-8">
         <div className="flex flex-col gap-5">
           <div className="flex items-start justify-between gap-4">
@@ -198,7 +222,12 @@ export function ProfileCard({
             <span>{price}</span>
             <span className="text-[#8F96A4]">{period}</span>
           </p>
-          <CtaRow label={cta} onClick={onCta} />
+          <div
+            onClick={(event) => event.stopPropagation()}
+            onKeyDown={(event) => event.stopPropagation()}
+          >
+            <CtaRow label={cta} onClick={onCta} />
+          </div>
         </div>
       </div>
       <MegaArt
