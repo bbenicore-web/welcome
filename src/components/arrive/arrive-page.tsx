@@ -129,34 +129,26 @@ export function ArrivePage() {
 
         <section id="payment" className="scroll-mt-24">
           <h2 className={mf.h2}>{copy.step4Title}</h2>
-          <Reveal className="mt-8 grid gap-4 lg:grid-cols-3" flip={false}>
-            {copy.step4Items.map((item, index) => (
+          <Reveal className="mt-8 grid gap-4 sm:grid-cols-2" flip={false}>
+            {copy.step4Items.map((item) => (
               <article
                 key={item.title}
                 className={`flex flex-col ${mf.sky} p-6`}
               >
                 <h3 className="text-[20px] font-medium">{item.title}</h3>
                 <p className="mt-3 flex-1 text-[15px] text-[#333]/80">{item.text}</p>
-                {index === 0 ? (
-                  <Button onClick={() => openLead()} className={`mt-6 ${mf.btnDark}`}>
-                    {item.btn}
-                  </Button>
-                ) : (
+                {item.href ? (
                   <Button
                     render={
-                      <a
-                        href={
-                          index === 1
-                            ? "https://www.megafon.ru/"
-                            : "https://www.megafon.ru/download/"
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                      />
+                      <a href={item.href} target="_blank" rel="noreferrer" />
                     }
                     variant="outline"
                     className={`mt-6 ${mf.btnLine}`}
                   >
+                    {item.btn}
+                  </Button>
+                ) : (
+                  <Button onClick={() => openLead()} className={`mt-6 ${mf.btnDark}`}>
                     {item.btn}
                   </Button>
                 )}

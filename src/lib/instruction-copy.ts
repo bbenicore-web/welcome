@@ -23,7 +23,7 @@ export type InstructionCopy = {
   bioTitle: string;
   bioText: string;
   step4Title: string;
-  step4Items: { title: string; text: string; btn: string }[];
+  step4Items: { title: string; text: string; btn: string; href?: string }[];
   faqTitle: string;
   faq: { id?: string; q: string; a: string }[];
   leadTitle: string;
@@ -135,14 +135,10 @@ const ru: InstructionCopy = {
       btn: "Оставить заявку",
     },
     {
-      title: "На сайте МегаФон",
-      text: "Быстро, без отдельной кассы",
-      btn: "Оплатить на сайте",
-    },
-    {
       title: "Через мобильное приложение",
       text: "Скачайте и оплатите со смартфона",
       btn: "Скачать приложение",
+      href: "https://www.megafon.ru/download/",
     },
   ],
   faqTitle: "Вопросы и ответы",
@@ -282,14 +278,10 @@ const uz: InstructionCopy = {
       btn: "Ariza qoldirish",
     },
     {
-      title: "MegaFon saytida",
-      text: "Tez va alohida kassasiz",
-      btn: "Saytda to'lash",
-    },
-    {
       title: "Mobil ilova orqali",
       text: "Ko'chirib oling va smartfoningizdan to'lang",
       btn: "Ilovani ko'chirib olish",
+      href: "https://www.megafon.ru/download/",
     },
   ],
   faqTitle: "Savollarga javoblar",
@@ -429,14 +421,10 @@ const tg: InstructionCopy = {
       btn: "Дархост гузоред",
     },
     {
-      title: "Дар сомонаи МегаФон",
-      text: "Тез, бе хазинаи алоҳида",
-      btn: "Дар сомона пардохт кунед",
-    },
-    {
       title: "Тавассути барномаи мобилӣ",
       text: "Боргирӣ кунед ва аз смартфон пардохт кунед",
       btn: "Барномаро боргирӣ кунед",
+      href: "https://www.megafon.ru/download/",
     },
   ],
   faqTitle: "Саволҳо ва ҷавобҳо",
@@ -576,14 +564,10 @@ const ky: InstructionCopy = {
       btn: "Өтүнмө калтыруу",
     },
     {
-      title: "МегаФон сайтында",
-      text: "Тез, өзүнчө кассасыз",
-      btn: "Сайтта төлөө",
-    },
-    {
       title: "Мобилдик колдонмо аркылуу",
       text: "Жүктөп алып, смартфондон төлөңүз",
       btn: "Колдонмону жүктөө",
+      href: "https://www.megafon.ru/download/",
     },
   ],
   faqTitle: "Суроолор жана жооптор",
