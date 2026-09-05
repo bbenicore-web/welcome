@@ -23,7 +23,7 @@ export type InstructionCopy = {
   bioTitle: string;
   bioText: string;
   step4Title: string;
-  step4Items: { title: string; text: string; btn: string; href?: string }[];
+  step4Items: { title: string; text: string; btn: string; href?: string; outline?: boolean }[];
   faqTitle: string;
   faq: { id?: string; q: string; a: string }[];
   leadTitle: string;
@@ -39,7 +39,7 @@ const mfcMapHref = "https://www.gosuslugi.ru/";
 const gosuslugiAndroidHref =
   "https://play.google.com/store/apps/details?id=ru.gosuslugi.androidapp";
 const gosuslugiIosHref = "https://apps.apple.com/ru/app/id723512330";
-const megafonOfficesHref = "https://www.megafon.ru/";
+const megafonOfficesHref = "https://www.megafon.ru/help/offices/";
 
 const ru: InstructionCopy = {
   hero: "Добро пожаловать в Россию",
@@ -132,13 +132,15 @@ const ru: InstructionCopy = {
     {
       title: "В салоне МегаФон",
       text: "Пополните баланс на кассе или через перевод в салоне — так же копятся бонусы за переводы в СНГ",
-      btn: "Оставить заявку",
+      btn: "Найти на карте",
+      href: megafonOfficesHref,
     },
     {
       title: "Через мобильное приложение",
       text: "Скачайте и оплатите со смартфона",
       btn: "Скачать приложение",
       href: "https://www.megafon.ru/download/",
+      outline: true,
     },
   ],
   faqTitle: "Вопросы и ответы",
@@ -275,13 +277,15 @@ const uz: InstructionCopy = {
     {
       title: "MegaFon salonida",
       text: "Kassada yoki salon orqali o‘tkazmada to‘ldiring — MDH bonuslari ham shu yerda",
-      btn: "Ariza qoldirish",
+      btn: "Xaritadan topish",
+      href: megafonOfficesHref,
     },
     {
       title: "Mobil ilova orqali",
       text: "Ko'chirib oling va smartfoningizdan to'lang",
       btn: "Ilovani ko'chirib olish",
       href: "https://www.megafon.ru/download/",
+      outline: true,
     },
   ],
   faqTitle: "Savollarga javoblar",
@@ -418,13 +422,15 @@ const tg: InstructionCopy = {
     {
       title: "Дар салони МегаФон",
       text: "Тавозунро дар хазина ё тавассути интиқол дар салон пур кунед — бонусҳои ИДМ ҳам ҳамин ҷо",
-      btn: "Дархост гузоред",
+      btn: "Дар харита ёбед",
+      href: megafonOfficesHref,
     },
     {
       title: "Тавассути барномаи мобилӣ",
       text: "Боргирӣ кунед ва аз смартфон пардохт кунед",
       btn: "Барномаро боргирӣ кунед",
       href: "https://www.megafon.ru/download/",
+      outline: true,
     },
   ],
   faqTitle: "Саволҳо ва ҷавобҳо",
@@ -561,13 +567,15 @@ const ky: InstructionCopy = {
     {
       title: "МегаФон салонунда",
       text: "Кассада же салон аркылуу которууда толуктаңыз — КМШ бонустары да ушул жерде",
-      btn: "Өтүнмө калтыруу",
+      btn: "Картадан табуу",
+      href: megafonOfficesHref,
     },
     {
       title: "Мобилдик колдонмо аркылуу",
       text: "Жүктөп алып, смартфондон төлөңүз",
       btn: "Колдонмону жүктөө",
       href: "https://www.megafon.ru/download/",
+      outline: true,
     },
   ],
   faqTitle: "Суроолор жана жооптор",

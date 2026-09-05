@@ -142,8 +142,8 @@ export function ArrivePage() {
                     render={
                       <a href={item.href} target="_blank" rel="noreferrer" />
                     }
-                    variant="outline"
-                    className={`mt-6 ${mf.btnLine}`}
+                    variant={item.outline ? "outline" : undefined}
+                    className={`mt-6 ${item.outline ? mf.btnLine : mf.btnDark}`}
                   >
                     {item.btn}
                   </Button>
