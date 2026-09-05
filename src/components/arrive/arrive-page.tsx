@@ -22,7 +22,7 @@ import { MegaHero, ProfileCard } from "@/components/landings/mega-art";
 import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { withBase } from "@/lib/base-path";
-import { instructionCopy, type InstructionCopy } from "@/lib/instruction-copy";
+import { instructionCopy, type InstructionCopy, biometryIpa, biometryLines } from "@/lib/instruction-copy";
 import { useLanguage } from "@/lib/language-context";
 import { catalogTariffs, formTariffs } from "@/lib/products";
 
@@ -262,60 +262,77 @@ function ActivationSteps({
   return (
     <section id="howto" className="scroll-mt-24">
       <h2 className={`${mf.h2} text-center`}>{copy.howTitle}</h2>
-      <Reveal as="ol" className="mt-8 space-y-4" flip={false}>
+      <Reveal className="mt-8 space-y-4" flip={false}>
         {copy.activationSteps.map((step, index) => (
-          <li
-            key={step.id}
-            id={step.id}
-            className="scroll-mt-24 rounded-[24px] bg-white p-6 shadow-[0_12px_32px_rgba(51,51,51,0.08)] ring-1 ring-[#EDEDED] sm:p-8"
-          >
-            <h3 className="text-[20px] font-semibold leading-7 tracking-[0.2px] sm:text-[22px]">
-              {index + 1}. {step.title}
-            </h3>
-            <p className="mt-3 text-[15px] leading-6 text-[#333]/80">{step.text}</p>
-            {step.needs?.length ? (
-              <ul className="mt-4 list-disc space-y-1 pl-5 text-[15px] leading-6 text-[#333]/80">
-                {step.needs.map((need) => (
-                  <li key={need}>{need}</li>
-                ))}
-              </ul>
-            ) : null}
-            {step.links?.length ? (
-              <div className="mt-4 flex flex-col items-start gap-2">
-                {step.links.map((link) => {
-                  if (link.href === "#faq-imei") {
+          <div key={step.id} className="space-y-4">
+            <article
+              id={step.id}
+              className="scroll-mt-24 rounded-[24px] bg-white p-6 shadow-[0_12px_32px_rgba(51,51,51,0.08)] ring-1 ring-[#EDEDED] sm:p-8"
+            >
+              <h3 className="text-[20px] font-semibold leading-7 tracking-[0.2px] sm:text-[22px]">
+                {index + 1}. {step.title}
+              </h3>
+              <p className="mt-3 text-[15px] leading-6 text-[#333]/80">{step.text}</p>
+              {step.needs?.length ? (
+                <ul className="mt-4 list-disc space-y-1 pl-5 text-[15px] leading-6 text-[#333]/80">
+                  {step.needs.map((need) => (
+                    <li key={need}>{need}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {step.links?.length ? (
+                <div className="mt-4 flex flex-col items-start gap-2">
+                  {step.links.map((link) => {
+                    if (link.href === "#faq-imei") {
+                      return (
+                        <details key={link.label} className="w-full">
+                          <summary className={`${stepLinkClass} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>
+                            {link.label}
+                          </summary>
+                          {imeiAnswer ? (
+                            <p className="mt-2 text-[15px] leading-6 text-[#333]/80">
+                              {imeiAnswer}
+                            </p>
+                          ) : null}
+                        </details>
+                      );
+                    }
+                    const external = link.href.startsWith("http");
                     return (
-                      <details key={link.label} className="w-full">
-                        <summary className={`${stepLinkClass} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>
-                          {link.label}
-                        </summary>
-                        {imeiAnswer ? (
-                          <p className="mt-2 text-[15px] leading-6 text-[#333]/80">
-                            {imeiAnswer}
-                          </p>
-                        ) : null}
-                      </details>
+                      <a
+                        key={`${link.href}-${link.label}`}
+                        href={link.href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noreferrer" : undefined}
+                        onClick={() => {
+                          if (link.href.startsWith("#")) onFaq(link.href.slice(1));
+                        }}
+                        className={stepLinkClass}
+                      >
+                        {link.label}
+                      </a>
                     );
-                  }
-                  const external = link.href.startsWith("http");
-                  return (
-                    <a
-                      key={`${link.href}-${link.label}`}
-                      href={link.href}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noreferrer" : undefined}
-                      onClick={() => {
-                        if (link.href.startsWith("#")) onFaq(link.href.slice(1));
-                      }}
-                      className={stepLinkClass}
-                    >
-                      {link.label}
-                    </a>
-                  );
-                })}
+                  })}
+                </div>
+              ) : null}
+            </article>
+            {step.id === "biometry" ? (
+              <div id="biometry-how" className={`scroll-mt-24 ${mf.sky} p-6 sm:p-8`}>
+                <h3 className="text-[22px] font-semibold">{copy.bioTitle}</h3>
+                <p className="mt-2 text-[15px] text-[#333]/80">{copy.bioText}</p>
+                <div className="mt-6 grid gap-3 md:grid-cols-3">
+                  {biometryLines.map((line, index) => (
+                    <article key={line} className="rounded-[20px] bg-white p-4">
+                      <p className="font-mono text-lg font-semibold tracking-wide">{line}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-[#8F96A4]">
+                        {biometryIpa[index]}
+                      </p>
+                    </article>
+                  ))}
+                </div>
               </div>
             ) : null}
-          </li>
+          </div>
         ))}
       </Reveal>
     </section>

@@ -20,6 +20,8 @@ export type InstructionCopy = {
   benefits: { title: string; text: string }[];
   howTitle: string;
   activationSteps: ActivationStep[];
+  bioTitle: string;
+  bioText: string;
   step4Title: string;
   step4Items: { title: string; text: string; btn: string }[];
   faqTitle: string;
@@ -123,6 +125,8 @@ const ru: InstructionCopy = {
       ],
     },
   ],
+  bioTitle: "Как проходит биометрия в банке",
+  bioText: "Сотрудник банка попросит произнести несколько цифр и сделает скан лица",
   step4Title: "Оплатите тариф",
   step4Items: [
     {
@@ -268,6 +272,8 @@ const uz: InstructionCopy = {
       ],
     },
   ],
+  bioTitle: "Bankda biometriya qanday o‘tadi",
+  bioText: "Bank xodimi bir nechta raqamni aytishingizni so‘raydi va yuz skanini oladi",
   step4Title: "Tarifni to'lang",
   step4Items: [
     {
@@ -413,6 +419,8 @@ const tg: InstructionCopy = {
       ],
     },
   ],
+  bioTitle: "Биометрия дар бонк чӣ тавр мегузарад",
+  bioText: "Корманди бонк хоҳиш мекунад, ки чанд рақамро бигӯед ва скани рӯйро мегирад",
   step4Title: "Тарофаро пардохт кунед",
   step4Items: [
     {
@@ -558,6 +566,8 @@ const ky: InstructionCopy = {
       ],
     },
   ],
+  bioTitle: "Банкта биометрия кантип өтөт",
+  bioText: "Банк кызматкери бир нече санды айтууну сурайт жана беттин сканын алат",
   step4Title: "Тарифти төлөңүз",
   step4Items: [
     {
@@ -625,3 +635,15 @@ export const instructionCopy: Record<Locale, InstructionCopy> = {
   tg,
   ky,
 };
+
+export const biometryLines = [
+  "0 1 2 3 4 5 6 7 8 9",
+  "9 8 7 6 5 4 3 2 1 0",
+  "5 9 4 7 3 1 8 6 0 2",
+] as const;
+
+export const biometryIpa = [
+  "но́л' ад'и́н два́ тр'и́ ч'иты́р'э п'а́т' шэ́ст' с'э́м' во́с'им' д'э́в'ат'",
+  "д'э́в'ат' во́с'им' с'э́м' шэ́ст' п'а́т' ч'иты́р'э тр'и́ два́ ад'и́н но́л'",
+  "п'а́т' д'э́в'ат' ч'иты́р'э с'э́м' тр'и́ ад'и́н во́с'им' шэ́ст' но́л' два́",
+] as const;
