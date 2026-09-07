@@ -14,11 +14,11 @@ export function DraftHub() {
           kicker="Сравнить две версии"
           title={
             <>
-              Сначала черновик,{" "}
-              <span className="whitespace-nowrap">потом решим.</span>
+              Сейчас на сайте новая версия.{" "}
+              <span className="whitespace-nowrap">Старая рядом.</span>
             </>
           }
-          subtitle="Страницы «Только приехал» и «Уже в России» на сайте пока старые. Здесь новые тексты про тарифы, что включается само и МегаСилы."
+          subtitle="На основных страницах — тарифы по смыслу, что включается само и МегаСилы. Предыдущие тексты оставлены, чтобы сравнить."
         />
 
         <Reveal className="mt-10">
@@ -27,16 +27,16 @@ export function DraftHub() {
         <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
           <RtbCard
             href={withBase("/arrive")}
-            art="internet"
-            title="Как сейчас"
-            text="Карточки тарифов и общий список плюшек — то, что уже на сайте."
+            art="promo"
+            title="Сейчас на сайте"
+            text="Минимум + для связи и работы. Семейный + для безлимита. Что само, что вручную, где МегаСилы."
             cta="Открыть"
           />
           <RtbCard
-            href={withBase("/arrive-next")}
-            art="promo"
-            title="Черновик"
-            text="Минимум + для связи и работы. Семейный + для безлимита. Что само, что вручную, где МегаСилы."
+            href={withBase("/arrive-old")}
+            art="internet"
+            title="Предыдущая версия"
+            text="Карточки тарифов и общий список плюшек — как было раньше."
             cta="Открыть"
           />
         </Reveal>
@@ -47,16 +47,16 @@ export function DraftHub() {
         <Reveal className="mt-8 grid gap-4 lg:grid-cols-2">
           <RtbCard
             href={withBase("/here")}
-            art="base"
-            title="Как сейчас"
-            text="Карточки, калькулятор и блок «это вам понравится»."
+            art="promo"
+            title="Сейчас на сайте"
+            text="Тот же безлимит и калькулятор, плюс понятнее про опции для СНГ и МегаСилы."
             cta="Открыть"
           />
           <RtbCard
-            href={withBase("/here-next")}
-            art="promo"
-            title="Черновик"
-            text="Тот же безлимит и калькулятор, плюс понятнее про опции для СНГ и МегаСилы."
+            href={withBase("/here-old")}
+            art="base"
+            title="Предыдущая версия"
+            text="Карточки, калькулятор и блок «это вам понравится»."
             cta="Открыть"
           />
         </Reveal>

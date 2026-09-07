@@ -413,16 +413,16 @@ export const offerUi = {
     tg: "Шартҳои Оилавӣ +",
     ky: "Үй-бүлөлүк + шарттары",
   } satisfies Text,
-  draftKicker: {
-    ru: "Новая версия, ещё не на основном сайте",
-    uz: "Yangi sahifa, asosiy saytda yo‘q",
-    tg: "Саҳифаи нав, ҳанӯз дар сайт нест",
-    ky: "Жаңы барак, негизги сайтта жок",
+  previousKicker: {
+    ru: "Предыдущая версия страницы",
+    uz: "Sahifaning avvalgi versiyasi",
+    tg: "Версияи қаблии саҳифа",
+    ky: "Барактын мурунку версиясы",
   } satisfies Text,
-  draftOld: {
-    ru: "Как сейчас на сайте",
-    uz: "Hozirgi sahifa",
-    tg: "Саҳифаи ҳозира",
-    ky: "Азыркы барак",
+  previousLive: {
+    ru: "Открыть текущую",
+    uz: "Joriy sahifani ochish",
+    tg: "Ҷории кунуниро кушоед",
+    ky: "Учурдагыны ачуу",
   } satisfies Text,
 } as const;

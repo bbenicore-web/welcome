@@ -3,9 +3,9 @@ import { DraftHub } from "@/components/home/draft-hub";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Черновики лендингов — сравнение с текущими",
+  title: "Сравнение версий лендингов",
   description:
-    "Новые версии /arrive и /here рядом с текущими страницами. Старые маршруты не менялись.",
+    "Текущие страницы /arrive и /here рядом с предыдущими версиями.",
 };
 
 export default function Page() {

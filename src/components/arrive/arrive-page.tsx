@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { PreviousBanner } from "@/components/landings/offer-next";
 import { MegaHero, ProfileCard } from "@/components/landings/mega-art";
 import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
@@ -65,7 +66,8 @@ export function ArrivePage() {
   }
 
   return (
-    <LandingChrome current="arrive">
+    <LandingChrome current="arrive-old">
+      <PreviousBanner current="arrive" />
       <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
         <MegaHero
           kicker={`МегаФон → ${copy.productKicker}`}

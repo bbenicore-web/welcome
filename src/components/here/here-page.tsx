@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
+import { PreviousBanner } from "@/components/landings/offer-next";
 import {
   CtaRow,
   IconWell,
@@ -128,7 +129,8 @@ export function HerePage() {
   }, [tariffId]);
 
   return (
-    <LandingChrome current="here">
+    <LandingChrome current="here-old">
+      <PreviousBanner current="here" />
       <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
         <MegaHero
           kicker="МегаФон → Уже в России"

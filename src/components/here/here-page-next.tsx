@@ -31,7 +31,6 @@ import {
   StepBadge,
 } from "@/components/landings/mega-art";
 import {
-  DraftBanner,
   MeaningTariffs,
   MegaSilaBlock,
   MigrantProducts,
@@ -109,8 +108,7 @@ export function HerePageNext() {
   }, [tariffId]);
 
   return (
-    <LandingChrome current="here-next">
-      <DraftBanner current="here" />
+    <LandingChrome current="here">
       <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
         <MegaHero
           kicker="МегаФон → Уже в России"

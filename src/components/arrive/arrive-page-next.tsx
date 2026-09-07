@@ -20,7 +20,6 @@ import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
 import { MegaHero } from "@/components/landings/mega-art";
 import {
-  DraftBanner,
   MeaningTariffs,
   MegaSilaBlock,
   MigrantProducts,
@@ -71,8 +70,7 @@ export function ArrivePageNext() {
   }
 
   return (
-    <LandingChrome current="arrive-next">
-      <DraftBanner current="arrive" />
+    <LandingChrome current="arrive">
       <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
         <MegaHero
           kicker={`МегаФон → ${copy.productKicker}`}

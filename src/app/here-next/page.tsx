@@ -3,9 +3,9 @@ import { HerePageNext } from "@/components/here/here-page-next";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Черновик: уже в России — новая версия",
+  title: "Уже в России — переходите на МегаФон со своим номером",
   description:
-    "Новая группировка тарифов, авто-продукты для СНГ и стандартные МегаСилы. Для сравнения со текущей страницей.",
+    "Минимум + от 850 ₽ и Семейный + от 1 140 ₽, «Тёплый приём», бонусы за переводы в салоне, МегаСилы, свой номер.",
 };
 
 export default function Page() {

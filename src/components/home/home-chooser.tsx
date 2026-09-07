@@ -43,10 +43,8 @@ export function HomeChooser() {
 
         <p className="mt-10 text-center text-[15px] text-[#8F96A4]">
           <a href={withBase("/draft")} className="font-medium text-[#00B956] hover:underline">
-            Сравнить с новой версией
+            Сравнить с предыдущей версией
           </a>
-          {" · "}
-          текущие страницы не менялись
         </p>
       </main>
     </LandingChrome>

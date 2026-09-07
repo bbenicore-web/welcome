@@ -17,6 +17,7 @@
 
 - Только приехал: https://bbenicore-web.github.io/welcome/arrive/
 - Уже в России: https://bbenicore-web.github.io/welcome/here/
+- Предыдущие версии: https://bbenicore-web.github.io/welcome/draft/
 - Сегменты и CJM: https://bbenicore-web.github.io/welcome/cjm/
 
 Источник — ветка `gh-pages`. Обновить публикацию:

@@ -8,7 +8,7 @@ import { withBase } from "@/lib/base-path";
 import { locales } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
-type ChromeCurrent = "home" | "arrive" | "here" | "arrive-next" | "here-next";
+type ChromeCurrent = "home" | "arrive" | "here" | "arrive-old" | "here-old";
 
 export function LandingChrome({
   current,
@@ -17,10 +17,10 @@ export function LandingChrome({
   current: ChromeCurrent;
   children: ReactNode;
 }) {
-  const isHere = current === "here" || current === "here-next";
-  const isDraft = current === "arrive-next" || current === "here-next";
-  const arriveHref = isDraft ? "/arrive-next" : "/arrive";
-  const hereHref = isDraft ? "/here-next" : "/here";
+  const isHere = current === "here" || current === "here-old";
+  const isOld = current === "arrive-old" || current === "here-old";
+  const arriveHref = "/arrive";
+  const hereHref = "/here";
   const applyHref = isHere ? `${hereHref}#lead` : `${arriveHref}#lead`;
   const applyLabel = isHere ? "Подключить" : "Оставить заявку";
   return (
@@ -37,10 +37,10 @@ export function LandingChrome({
             </span>
           </a>
           <nav className="hidden items-center gap-6 text-[15px] font-medium lg:flex">
-            <NavLink href={arriveHref} active={current === "arrive" || current === "arrive-next"}>
+            <NavLink href={arriveHref} active={current === "arrive" || current === "arrive-old"}>
               Только приехал
             </NavLink>
-            <NavLink href={hereHref} active={current === "here" || current === "here-next"}>
+            <NavLink href={hereHref} active={current === "here" || current === "here-old"}>
               Уже живу в России
             </NavLink>
           </nav>
@@ -70,13 +70,13 @@ export function LandingChrome({
             <a href={withBase("/here")} className="text-[#333] hover:underline">
               Переход со своим номером
             </a>
-            {isDraft ? (
+            {isOld ? (
               <a href={withBase("/draft")} className="text-[#00B956] hover:underline">
                 Сравнить версии
               </a>
             ) : (
               <a href={withBase("/draft")} className="text-[#8F96A4] hover:underline">
-                Новая версия
+                Предыдущая версия
               </a>
             )}
           </p>

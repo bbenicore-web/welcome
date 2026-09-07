@@ -18,18 +18,18 @@ import {
   optInMigrantProducts,
 } from "@/lib/offer-next";
 
-export function DraftBanner({
+export function PreviousBanner({
   current,
 }: {
   current: "arrive" | "here";
 }) {
   const { locale } = useLanguage();
-  const oldHref = current === "arrive" ? "/arrive" : "/here";
+  const liveHref = current === "arrive" ? "/arrive" : "/here";
   return (
     <div className="bg-[#07150d] text-white">
       <div className={`${mf.wrap} flex flex-wrap items-center justify-between gap-2 py-2.5 text-sm`}>
         <p>
-          <span className="font-medium text-[#9dffc2]">{offerUi.draftKicker[locale]}</span>
+          <span className="font-medium text-[#9dffc2]">{offerUi.previousKicker[locale]}</span>
           <span className="text-white/70"> · </span>
           <span className="text-white/80">
             {current === "arrive" ? "Только приехал" : "Уже живу в России"}
@@ -39,8 +39,8 @@ export function DraftBanner({
           <a href={withBase("/draft")} className="text-[#9dffc2] hover:underline">
             Все варианты
           </a>
-          <a href={withBase(oldHref)} className="text-white hover:underline">
-            {offerUi.draftOld[locale]}
+          <a href={withBase(liveHref)} className="text-white hover:underline">
+            {offerUi.previousLive[locale]}
           </a>
         </div>
       </div>
