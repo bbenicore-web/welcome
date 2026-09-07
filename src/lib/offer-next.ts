@@ -354,10 +354,10 @@ export const megaSilaHow = {
 export const offerUi = {
   ...t,
   meaningTitle: {
-    ru: "Какой тариф вам",
-    uz: "Qaysi tarif sizga",
-    tg: "Кадом тариф ба шумо",
-    ky: "Кайсы тариф сизге",
+    ru: "Какой тариф вам подойдёт",
+    uz: "Qaysi tarif sizga mos",
+    tg: "Кадом тариф ба шумо меояд",
+    ky: "Кайсы тариф сизге ылайык",
   } satisfies Text,
   meaningLead: {
     ru: "Минимум + — звонки и интернет на смену. Семейный + — безлимит и до пяти человек.",
