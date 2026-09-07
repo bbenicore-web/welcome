@@ -81,11 +81,6 @@ export function MeaningTariffs({
                 <p className="text-xs font-medium uppercase tracking-wide text-[#616C82]">
                   {item.level[locale]}
                 </p>
-                {item.id === "family" ? (
-                  <span className="rounded-full bg-[#00B956] px-2.5 py-0.5 text-[12px] font-medium text-white">
-                    Комфорт
-                  </span>
-                ) : null}
               </div>
               <h3 className="mt-1 text-[26px] font-semibold">{item.name}</h3>
               <p className="mt-2 text-[15px] leading-6 text-[#333]/80">{item.purpose[locale]}</p>
