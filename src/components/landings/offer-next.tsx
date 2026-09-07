@@ -37,7 +37,7 @@ export function DraftBanner({
         </p>
         <div className="flex flex-wrap gap-3">
           <a href={withBase("/draft")} className="text-[#9dffc2] hover:underline">
-            Все черновики
+            Все варианты
           </a>
           <a href={withBase(oldHref)} className="text-white hover:underline">
             {offerUi.draftOld[locale]}

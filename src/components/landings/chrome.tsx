@@ -72,11 +72,11 @@ export function LandingChrome({
             </a>
             {isDraft ? (
               <a href={withBase("/draft")} className="text-[#00B956] hover:underline">
-                Черновики новых версий
+                Сравнить версии
               </a>
             ) : (
               <a href={withBase("/draft")} className="text-[#8F96A4] hover:underline">
-                Новые версии
+                Новая версия
               </a>
             )}
           </p>
