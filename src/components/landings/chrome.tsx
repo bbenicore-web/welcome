@@ -8,14 +8,21 @@ import { withBase } from "@/lib/base-path";
 import { locales } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
+type ChromeCurrent = "home" | "arrive" | "here" | "arrive-next" | "here-next";
+
 export function LandingChrome({
   current,
   children,
 }: {
-  current: "home" | "arrive" | "here";
+  current: ChromeCurrent;
   children: ReactNode;
 }) {
-  const applyLabel = current === "here" ? "Подключить" : "Оставить заявку";
+  const isHere = current === "here" || current === "here-next";
+  const isDraft = current === "arrive-next" || current === "here-next";
+  const arriveHref = isDraft ? "/arrive-next" : "/arrive";
+  const hereHref = isDraft ? "/here-next" : "/here";
+  const applyHref = isHere ? `${hereHref}#lead` : `${arriveHref}#lead`;
+  const applyLabel = isHere ? "Подключить" : "Оставить заявку";
   return (
     <div className={mf.page}>
       <header className="sticky top-0 z-40 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
@@ -30,21 +37,17 @@ export function LandingChrome({
             </span>
           </a>
           <nav className="hidden items-center gap-6 text-[15px] font-medium lg:flex">
-            <NavLink href="/arrive" active={current === "arrive"}>
+            <NavLink href={arriveHref} active={current === "arrive" || current === "arrive-next"}>
               Только приехал
             </NavLink>
-            <NavLink href="/here" active={current === "here"}>
+            <NavLink href={hereHref} active={current === "here" || current === "here-next"}>
               Уже живу в России
             </NavLink>
           </nav>
           <div className="flex items-center gap-2">
             <LanguagePills />
             <Button
-              render={
-                <a
-                  href={withBase(current === "here" ? "/here#lead" : "/arrive#lead")}
-                />
-              }
+              render={<a href={withBase(applyHref)} />}
               className={`hidden sm:inline-flex ${mf.btnGreen}`}
             >
               {applyLabel}
@@ -67,6 +70,15 @@ export function LandingChrome({
             <a href={withBase("/here")} className="text-[#333] hover:underline">
               Переход со своим номером
             </a>
+            {isDraft ? (
+              <a href={withBase("/draft")} className="text-[#00B956] hover:underline">
+                Черновики новых версий
+              </a>
+            ) : (
+              <a href={withBase("/draft")} className="text-[#8F96A4] hover:underline">
+                Новые версии
+              </a>
+            )}
           </p>
         </div>
       </footer>
