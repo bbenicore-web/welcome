@@ -24,18 +24,16 @@ export function ProductTariffs({
             return (
               <article
                 key={tariff.id}
-                className={`flex flex-col rounded-3xl p-6 ring-1 ${
-                  popular
-                    ? "bg-[#07150d] text-white ring-[#00B956]"
-                    : "bg-[#f3faf5] ring-black/5"
+                className={`flex flex-col rounded-[20px] p-6 ring-1 ${
+                    popular
+                    ? "bg-[#F2F4F7] text-[#333] ring-[#333]"
+                    : "bg-[#F2F4F7] ring-[#EDEDED]"
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <p
-                      className={`text-xs font-semibold uppercase tracking-wide ${
-                        popular ? "text-[#9dffc2]" : "text-[#00B956]"
-                      }`}
+                      className="text-xs font-semibold uppercase tracking-wide text-[#616C82]"
                     >
                       {tariff.level}
                     </p>
@@ -49,9 +47,7 @@ export function ProductTariffs({
                 </div>
                 <p className="mt-4 text-3xl font-semibold">
                   {tariff.price}
-                  <span
-                    className={`ml-2 text-sm font-normal ${popular ? "text-white/60" : "text-muted-foreground"}`}
-                  >
+                    <span className="ml-2 text-sm font-normal text-muted-foreground">
                     за 30 дней
                   </span>
                 </p>
@@ -60,7 +56,7 @@ export function ProductTariffs({
                     (line) => (
                       <li key={line} className="flex items-start gap-2">
                         <Check
-                          className={`mt-0.5 size-4 shrink-0 ${popular ? "text-[#9dffc2]" : "text-[#00B956]"}`}
+                          className="mt-0.5 size-4 shrink-0 text-[#00B956]"
                         />
                         <span>{line}</span>
                       </li>
@@ -69,11 +65,7 @@ export function ProductTariffs({
                 </ul>
                 <Button
                   onClick={() => onPick(tariff.id)}
-                  className={`mt-8 h-12 rounded-full text-base font-semibold ${
-                    popular
-                      ? "bg-[#00B956] text-white hover:bg-[#00a34c]"
-                      : "bg-[#07150d] text-white hover:bg-black"
-                  }`}
+                  className="mt-8 h-[52px] rounded-[12px] border border-[#333] bg-white text-base font-medium text-[#333] hover:bg-[#E9EBF0]"
                 >
                   Хочу этот тариф
                 </Button>

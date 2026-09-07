@@ -18,16 +18,20 @@ import {
 } from "@/components/ui/dialog";
 import { CallbackForm } from "@/components/landing/callback-form";
 import { LandingChrome } from "@/components/landings/chrome";
-import { PreviousBanner } from "@/components/landings/offer-next";
-import { MegaHero, ProfileCard } from "@/components/landings/mega-art";
+import { MegaHero } from "@/components/landings/mega-art";
+import {
+  MeaningTariffs,
+  MegaSilaBlock,
+  MigrantProducts,
+} from "@/components/landings/offer-next";
 import { mf } from "@/components/landings/mf";
 import { Reveal } from "@/components/motion/reveal";
 import { withBase } from "@/lib/base-path";
 import { instructionCopy, type InstructionCopy, biometryIpa, biometryLines } from "@/lib/instruction-copy";
 import { useLanguage } from "@/lib/language-context";
-import { catalogTariffs, formTariffs } from "@/lib/products";
+import { formTariffs } from "@/lib/products";
 
-export function ArrivePage() {
+export function ArrivePageNext() {
   const { locale } = useLanguage();
   const copy = instructionCopy[locale];
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -66,8 +70,7 @@ export function ArrivePage() {
   }
 
   return (
-    <LandingChrome current="arrive-old">
-      <PreviousBanner current="arrive" />
+    <LandingChrome current="arrive">
       <main className={`${mf.wrap} space-y-10 py-4 lg:py-6`}>
         <MegaHero
           kicker={`МегаФон → ${copy.productKicker}`}
@@ -91,43 +94,14 @@ export function ArrivePage() {
 
         <ActivationSteps copy={copy} onFaq={openFaqById} />
 
-        <section id="tariffs" className="scroll-mt-24">
-          <h2 className={`${mf.h2} text-center`}>
-            Несколько тарифов
-            <br className="hidden sm:block" /> под разные задачи
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
-            {copy.productKicker}. Базовый — «Минимум +». Максимальный — «Семейный +».
-          </p>
+        <MeaningTariffs
+          ctaLabel={copy.productCta}
+          onCta={(id) => openLead(id)}
+        />
 
-          <Reveal className="mt-10 space-y-4">
-            {catalogTariffs.map((item) => {
-              const popular = "popular" in item && item.popular;
-              return (
-                <ProfileCard
-                  key={item.id}
-                  title={item.name}
-                  subtitle={item.extra}
-                  tag={item.level}
-                  badges={[item.minutes, item.data, ...item.points.slice(0, 2)]}
-                  price={item.price}
-                  cta={copy.productCta}
-                  onCta={() => openLead(item.id)}
-                  art={popular ? "promo" : "base"}
-                />
-              );
-            })}
-          </Reveal>
+        <MigrantProducts />
 
-          <Reveal className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" flip={false}>
-            {copy.benefits.map((item) => (
-              <article key={item.title} className={`${mf.sky} p-5`}>
-                <h3 className="font-medium">{item.title}</h3>
-                <p className="mt-2 text-[15px] leading-6 text-[#333]/80">{item.text}</p>
-              </article>
-            ))}
-          </Reveal>
-        </section>
+        <MegaSilaBlock />
 
         <section id="payment" className="scroll-mt-24">
           <h2 className={mf.h2}>{copy.step4Title}</h2>
@@ -160,7 +134,7 @@ export function ArrivePage() {
         </section>
 
         <section id="faq">
-          <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
+          <h2 className={`${mf.h2} text-center`}>{copy.faqTitle}</h2>
           <Accordion className="mt-8" value={faqOpen} onValueChange={setFaqOpen}>
             {copy.faq.map((item, index) => (
               <AccordionItem
@@ -207,7 +181,7 @@ export function ArrivePage() {
               <div className="rounded-[20px] bg-white p-6">
                 <CallbackForm
                   defaultTariff={tariff}
-                  idPrefix="arrive-lead"
+                  idPrefix="arrive-next-lead"
                   tariffChoices={formTariffs}
                 />
               </div>
@@ -232,7 +206,7 @@ export function ArrivePage() {
             key={tariff}
             compact
             defaultTariff={tariff}
-            idPrefix="arrive-dialog"
+            idPrefix="arrive-next-dialog"
             tariffChoices={formTariffs}
           />
         </DialogContent>

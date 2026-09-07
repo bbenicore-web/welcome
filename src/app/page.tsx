@@ -3,9 +3,9 @@ import { HomeChooser } from "@/components/home/home-chooser";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "МегаФон для гостей из СНГ — выберите свой сценарий",
+  title: "МегаФон для гостей из СНГ — первая SIM или свой номер",
   description:
-    "Два лендинга: первая SIM и легализация для тех, кто только приехал, и переход в МегаФон для тех, кто уже живёт в России.",
+    "Первая SIM с документами или переход со своим номером без новой биометрии. Тарифы от 850 ₽.",
 };
 
 export default function Home() {

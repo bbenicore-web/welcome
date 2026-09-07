@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MegafonMark } from "@/components/landing/logo";
 import { withBase } from "@/lib/base-path";
 import {
   jobMix,
@@ -41,10 +40,9 @@ export function CjmPage() {
     <div className="min-h-full bg-[#f3faf5] text-foreground">
       <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-          <a href={withBase("/")} className="inline-flex items-center gap-2 font-semibold">
-            <MegafonMark className="size-8 text-[#00B956]" />
+          <a href={withBase("/cjm")} className="inline-flex items-center gap-2 font-semibold">
             <span className="flex flex-col leading-none">
-              <span className="text-[15px] tracking-tight">МегаФон</span>
+              <span className="text-[15px] tracking-tight">Мигранты</span>
               <span className="text-[11px] font-medium text-[#00B956]">
                 Сегменты и CJM
               </span>

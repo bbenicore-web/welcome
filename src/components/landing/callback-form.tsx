@@ -83,7 +83,7 @@ export function CallbackForm({
 
   if (done) {
     return (
-      <div className="flex flex-col items-start gap-3 rounded-2xl bg-[#e5f7ec] p-5">
+      <div className="flex flex-col items-start gap-3 rounded-[24px] bg-[#DDFFEC] p-5">
         <CheckCircle2 className="size-8 text-[#00B956]" aria-hidden />
         <p className="text-lg font-semibold text-foreground">{t.formSuccessTitle}</p>
         <p className="text-sm leading-relaxed text-muted-foreground">
@@ -221,7 +221,7 @@ export function CallbackForm({
       <Button
         type="submit"
         disabled={sending}
-        className="h-12 rounded-full bg-[#00B956] px-6 text-base font-semibold text-white hover:bg-[#00a34c]"
+        className="h-[52px] rounded-[12px] bg-[#333] px-8 text-[15px] font-medium text-white hover:bg-[#404D46]"
       >
         {sending ? t.formSending : submitLabel ?? t.formSubmit}
       </Button>

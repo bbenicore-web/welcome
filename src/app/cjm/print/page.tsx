@@ -12,7 +12,7 @@ export default function CjmPrintPage() {
   return (
     <div className="min-h-full bg-white px-6 py-10 text-[#111] sm:px-10">
       <header className="mx-auto max-w-3xl border-b border-[#d7eadc] pb-6">
-        <p className="text-sm font-semibold text-[#00B956]">МегаФон · Тёплый приём</p>
+        <p className="text-sm font-semibold text-[#00B956]">Мигранты · Сегменты и CJM</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight">
           Сегменты мигрантов и CJM: от своей страны до России
         </h1>

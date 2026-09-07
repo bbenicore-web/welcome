@@ -35,6 +35,8 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-brand-green: var(--brand-green, #00b956);
+  --color-brand-purple: var(--brand-purple, #731982);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -49,23 +51,30 @@
 }
 
 :root {
-  --background: #f3faf5;
-  --foreground: #111111;
+  --brand-green: #00b956;
+  --brand-purple: #731982;
+  --button-hover-green: #10e272;
+  --button-hover-purple: #a500bf;
+  --spb-sky-0: #f2f4f7;
+  --spb-sky-1: #ededed;
+  --spb-sky-2: #d8d8d8;
+  --background: #ffffff;
+  --foreground: #333333;
   --card: #ffffff;
-  --card-foreground: #111111;
+  --card-foreground: #333333;
   --popover: #ffffff;
-  --popover-foreground: #111111;
+  --popover-foreground: #333333;
   --primary: #00b956;
   --primary-foreground: #ffffff;
-  --secondary: #e5f7ec;
+  --secondary: #ddffec;
   --secondary-foreground: #086b32;
-  --muted: #eef6f0;
-  --muted-foreground: #4d6356;
-  --accent: #e5f7ec;
-  --accent-foreground: #086b32;
+  --muted: #f2f4f7;
+  --muted-foreground: #999999;
+  --accent: #f2e5ff;
+  --accent-foreground: #731982;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #d7eadc;
-  --input: #d7eadc;
+  --border: #ededed;
+  --input: #d8d8d8;
   --ring: #00b956;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
