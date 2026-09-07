@@ -42,11 +42,11 @@ const gosuslugiIosHref = "https://apps.apple.com/ru/app/id723512330";
 const megafonOfficesHref = "https://www.megafon.ru/help/offices/";
 
 const ru: InstructionCopy = {
-  hero: "Добро пожаловать в Россию",
-  download: "Скачать инструкцию",
+  hero: "Чтобы звонить домой — нужна российская SIM",
+  download: "Смотреть шаги",
   gainTitle: "Оформите тариф МегаФон",
   gainSub:
-    "Подключайте сим‑карту МегаФон и будьте на связи с родными.",
+    "Пять шагов: сим-карта, СНИЛС, Госуслуги, биометрия, активация. Оставьте номер — подскажем салон рядом.",
   widgets: [
     { href: "#buy-sim", label: "Приобретите сим-карту" },
     { href: "#get-snils", label: "Получите СНИЛС" },
@@ -55,8 +55,8 @@ const ru: InstructionCopy = {
     { href: "#activate", label: "Активация на Госуслугах" },
   ],
   share: "Поделиться инструкцией",
-  productKicker: "Тарифы для гостей из СНГ",
-  productCta: "Как оформить тариф",
+  productKicker: "Для гостей из СНГ",
+  productCta: "Хочу этот тариф",
   benefits: [
     {
       title: "«Тёплый приём» сам",
@@ -83,41 +83,41 @@ const ru: InstructionCopy = {
       text: "На «Семейный +»: безлимитный интернет и делёжка тарифа. Кто уезжал на сезон — «+20 ГБ за возврат» до 6 месяцев.",
     },
   ],
-  howTitle: "Что нужно сделать для активации сим-карты",
+  howTitle: "Пять шагов до связи",
   activationSteps: [
     {
       id: "buy-sim",
-      title: "Приобретите сим-карту",
-      text: "Заранее перед приездом или в салоне МегаФона в России. При заключении договора мы запросим идентификатор устройства (IMEI), в котором вы будете использовать сим-карту — это нужно, чтобы появилась связь.",
+      title: "Купите сим-карту",
+      text: "До приезда или в салоне МегаФона в России. В договор впишут IMEI телефона — без него связь не появится.",
       links: [
-        { label: "Как узнать идентификатор устройства (IMEI)", href: imeiHref },
+        { label: "Как узнать IMEI", href: imeiHref },
       ],
     },
     {
       id: "get-snils",
       title: "Получите СНИЛС",
-      text: "Он будет готов сразу, но иногда это занимает до 5 рабочих дней. Обратитесь в отделение МФЦ, в отделение СФР или к работодателю. Потребуется:",
+      text: "Часто готово сразу, иногда до 5 рабочих дней. МФЦ, СФР или работодатель. С собой:",
       needs: [
-        "паспорт и его нотариально заверенный перевод;",
-        "имейл, к которому у вас есть доступ.",
+        "паспорт и нотариальный перевод;",
+        "почта, к которой есть доступ.",
       ],
       links: [{ label: "Бюро переводов на карте", href: translateMapHref }],
     },
     {
       id: "gosuslugi",
       title: "Зарегистрируйтесь на Госуслугах",
-      text: "Обратитесь в МФЦ или банк для создания учётной записи на Госуслугах. Будут нужны СНИЛС и паспорт.",
+      text: "В МФЦ или банке. Нужны СНИЛС и паспорт.",
       links: [{ label: "Карта отделений МФЦ", href: mfcMapHref }],
     },
     {
       id: "biometry",
-      title: "Зарегистрируйте биометрию в банке",
-      text: "Сотрудник сфотографирует вас и запишет ваш голос. Будут нужны СНИЛС и паспорт. Обратитесь в банк — заранее уточните, есть ли в отделении оборудование для биометрии.",
+      title: "Сдайте биометрию в банке",
+      text: "Фото лица и запись голоса. Нужны СНИЛС и паспорт. Спросите заранее, есть ли в отделении оборудование.",
     },
     {
       id: "activate",
       title: "Активируйте сим-карту на Госуслугах",
-      text: "Скачайте приложение «Госуслуги» для Android или iOS, найдите в нём уведомление о сим-карте и следуйте инструкции. Или обратитесь за помощью в салон МегаФона.",
+      text: "В приложении «Госуслуги» откройте уведомление о сим-карте и следуйте шагам. Или помогут в салоне МегаФона.",
       links: [
         { label: "Госуслуги для Android", href: gosuslugiAndroidHref },
         { label: "Госуслуги для iOS", href: gosuslugiIosHref },
@@ -126,28 +126,28 @@ const ru: InstructionCopy = {
     },
   ],
   bioTitle: "Как проходит биометрия в банке",
-  bioText: "Сотрудник банка попросит произнести несколько цифр и сделает скан лица",
-  step4Title: "Оплатите тариф",
+  bioText: "Сотрудник попросит произнести несколько цифр и снимет лицо",
+  step4Title: "Как оплатить",
   step4Items: [
     {
       title: "В салоне МегаФон",
-      text: "Пополните баланс на кассе или через перевод в салоне — так же копятся бонусы за переводы в СНГ",
+      text: "На кассе или переводом в салоне. Бонусы за переводы домой копятся только так",
       btn: "Найти на карте",
       href: megafonOfficesHref,
     },
     {
-      title: "Через мобильное приложение",
-      text: "Скачайте и оплатите со смартфона",
+      title: "В приложении",
+      text: "Оплатите со смартфона. Бонусы за переводы домой здесь не копятся",
       btn: "Скачать приложение",
       href: "https://www.megafon.ru/download/",
       outline: true,
     },
   ],
-  faqTitle: "Вопросы и ответы",
+  faqTitle: "Частые вопросы",
   faq: [
     {
       q: "Что входит в тарифы?",
-      a: "«Минимум +» — базовый: от 850 ₽, 400 минут по России, интернет в пакете, безлимит на МегаФон России, когда минуты закончились, +10 ГБ за оплату вовремя. «Семейный +» — максимальный: от 1 140 ₽, 1 500 минут, безлимитный интернет, МегаСемья до 5 человек, видеосервисы и сайты страны, откуда вы приехали. «Тёплый приём» подключается сам. 100 международных минут — по желанию.",
+      a: "«Минимум +» от 850 ₽: 400 минут по России и интернет на смену. «Семейный +» от 1 140 ₽: 1 500 минут, безлимит и МегаСемья до 5 человек. «Тёплый приём» включается сам, если вы не гражданин России. 100 международных минут — по желанию.",
     },
     {
       q: "Где узнать о тарифе подробнее?",
@@ -155,43 +155,43 @@ const ru: InstructionCopy = {
     },
     {
       q: "Как получить дополнительные гигабайты?",
-      a: "Платите «Минимум +» вовремя — приходят +10 ГБ. Если уезжали на сезон и вернулись на тариф — +20 ГБ до 6 месяцев. Бонусы за переводы в СНГ дают только в салоне МегаФона, не в приложении.",
+      a: "На «Минимум +» до +10 ГБ за оплату вовремя — это МегаСила «Бонусные ГБ», её нужно включить в приложении. Если уезжали на сезон и вернулись на тариф — +20 ГБ до 6 месяцев. Бонусы за переводы домой дают только в салоне, не в приложении.",
     },
     {
       id: "faq-imei",
-      q: "Что такое идентификатор устройства (IMEI) и как его узнать?",
-      a: "IMEI — уникальный номер телефона, в котором будет работать сим-карта. Наберите на клавиатуре *#06# — номер появится на экране. Его вписывают в договор: без IMEI связь не появится.",
+      q: "Что такое IMEI и как его узнать?",
+      a: "IMEI — номер телефона, в котором будет работать сим-карта. Наберите *#06# — номер появится на экране. Его вписывают в договор: без IMEI связи не будет.",
     },
     {
       q: "Как изменить IMEI в договоре?",
-      a: "Вставьте сим-карту в новое устройство, откройте приложение МегаФон, нажмите «Обновить» и подтвердите личность на Госуслугах.",
+      a: "Вставьте сим-карту в новый телефон, в приложении МегаФон нажмите «Обновить» и подтвердите личность на Госуслугах.",
     },
     {
-      q: "Что будет с моим счётом, когда я вернусь в свою страну?",
-      a: "Счёт останется открытым и сохранится за вами. Чтобы закрыть счёт, обратитесь в поддержку или салон.",
+      q: "Что будет со счётом, когда я вернусь домой?",
+      a: "Счёт останется вашим. Чтобы закрыть — напишите в поддержку или зайдите в салон.",
     },
     {
-      q: "Что будет с моей сим-картой, когда я вернусь в свою страну?",
-      a: "Сим-карта будет активна, если вы пополняете баланс минимум раз в 6 месяцев. Если не пополнить вовремя, номер заблокируют. Чтобы разблокировать — напишите в поддержку. При возврате на тариф может подключиться «+20 ГБ за возврат».",
+      q: "Что будет с сим-картой, когда я вернусь домой?",
+      a: "Сим-карта работает, если пополняете баланс хотя бы раз в 6 месяцев. Иначе номер заблокируют. Разблокировать можно через поддержку. При возврате на тариф может включиться +20 ГБ.",
     },
   ],
-  leadTitle: "Подскажем, куда идти за СНИЛС и в какой салон",
+  leadTitle: "Подскажем салон и какие бумаги взять",
   leadText:
-    "Оставьте номер. Перезвоним и подскажем, что взять с собой, где рядом зарегистрировать биометрию и в какой салон МегаФон прийти за сим-картой.",
+    "Оставьте номер. Перезвоним: куда за СНИЛС, где сдать биометрию и в какой салон идти за сим-картой.",
   leadPoints: [
     "Где купить сим-карту и как узнать IMEI",
     "Куда идти за СНИЛС, Госуслугами и биометрией",
     "Как активировать сим-карту на Госуслугах",
   ],
-  apply: "Оставить заявку",
+  apply: "Оставить номер",
 };
 
 const uz: InstructionCopy = {
-  hero: "Rossiyaga xush kelibsiz",
-  download: "Yo‘riqnomani yuklab olish",
+  hero: "Uyga qo‘ng‘iroq uchun Rossiya SIMi kerak",
+  download: "Qadamlarni ko‘rish",
   gainTitle: "MegaFon tarifini rasmiylashtiring",
   gainSub:
-    "MegaFon SIM-kartasini ulang va yaqinlaringiz bilan aloqada bo‘ling.",
+    "Besh qadam: SIM, ShIHSR, Gosuslugi, biometriya, faollashtirish. Raqam qoldiring — yaqin salonni aytamiz.",
   widgets: [
     { href: "#buy-sim", label: "SIM-karta oling" },
     { href: "#get-snils", label: "ShIHSR oling" },
@@ -200,8 +200,8 @@ const uz: InstructionCopy = {
     { href: "#activate", label: "Gosuslugida faollashtirish" },
   ],
   share: "Ko'rsatmalarni baham ko'ring",
-  productKicker: "MDH mehmonlari uchun tariflar",
-  productCta: "Tarifni qanday rasmiylashtirish mumkin",
+  productKicker: "MDH mehmonlari uchun",
+  productCta: "Shu tarifni xohlayman",
   benefits: [
     {
       title: "«Iliq kutib olish» o‘zi ulanadi",
@@ -228,14 +228,14 @@ const uz: InstructionCopy = {
       text: "«Oilaviy +»: cheksiz internet. Mavsumdan qaytsangiz — +20 GB, 6 oygacha.",
     },
   ],
-  howTitle: "SIM-kartani faollashtirish uchun nima qilish kerak",
+  howTitle: "Aloqaga besh qadam",
   activationSteps: [
     {
       id: "buy-sim",
-      title: "SIM-kartani xarid qiling",
-      text: "Oldindan, Rossiyaga kelishdan avval yoki MegaFon salonida. Shartnoma tuzilganda qurilma identifikatori (IMEI) so‘raladi — usiz aloqa bo‘lmaydi.",
+      title: "SIM-karta oling",
+      text: "Kelishdan oldin yoki MegaFon salonida. Shartnomaga telefon IMEI yoziladi — usiz aloqa bo‘lmaydi.",
       links: [
-        { label: "Qurilma identifikatorini (IMEI) qanday bilish mumkin", href: imeiHref },
+        { label: "IMEIni qanday bilish", href: imeiHref },
       ],
     },
     {
@@ -272,27 +272,27 @@ const uz: InstructionCopy = {
   ],
   bioTitle: "Bankda biometriya qanday o‘tadi",
   bioText: "Bank xodimi bir nechta raqamni aytishingizni so‘raydi va yuz skanini oladi",
-  step4Title: "Tarifni to'lang",
+  step4Title: "Qanday to‘lash",
   step4Items: [
     {
       title: "MegaFon salonida",
-      text: "Kassada yoki salon orqali o‘tkazmada to‘ldiring — MDH bonuslari ham shu yerda",
+      text: "Kassada yoki salon orqali o‘tkazmada. Uyga pul bonuslari faqat shu yerda",
       btn: "Xaritadan topish",
       href: megafonOfficesHref,
     },
     {
-      title: "Mobil ilova orqali",
-      text: "Ko'chirib oling va smartfoningizdan to'lang",
+      title: "Ilovada",
+      text: "Smartfondan to‘lang. Uyga pul bonuslari bu yerda yig‘ilmaydi",
       btn: "Ilovani ko'chirib olish",
       href: "https://www.megafon.ru/download/",
       outline: true,
     },
   ],
-  faqTitle: "Savollarga javoblar",
+  faqTitle: "Ko‘p so‘raladigan savollar",
   faq: [
     {
       q: "Tariflarga nima kiradi?",
-      a: "«Minimum +» — asosiy: 850 ₽ dan, Rossiya bo‘ylab 400 daqiqa, paket internet, o‘z vaqtida to‘lov uchun +10 GB. «Oilaviy +» — maksimal: 1 140 ₽ dan, 1 500 daqiqa, cheksiz internet, MegaOila 5 kishigacha. «Iliq kutib olish» o‘zi ulanadi.",
+      a: "«Minimum +» 850 ₽ dan: Rossiya bo‘ylab 400 daqiqa va smenaga internet. «Oilaviy +» 1 140 ₽ dan: 1 500 daqiqa, cheksiz internet, MegaOila 5 kishigacha. «Iliq kutib olish» RF fuqarosi bo‘lmasangiz o‘zi ulanadi. 100 xalqaro daqiqa — ixtiyoriy.",
     },
     {
       q: "Tarif haqida batafsil qayerdan o‘qish mumkin?",
@@ -300,7 +300,7 @@ const uz: InstructionCopy = {
     },
     {
       q: "Qo‘shimcha gigabaytlarni qanday olaman?",
-      a: "«Minimum +» ni o‘z vaqtida to‘lang — +10 GB. Mavsumdan qaytsangiz — +20 GB, 6 oygacha. MDH o‘tkazma bonuslari faqat salonda.",
+      a: "«Minimum +» da o‘z vaqtida to‘lov uchun +10 GB gacha — bu MegaKuch «Bonus GB», ilovada yoqish kerak. Mavsumdan qaytsangiz — +20 GB, 6 oygacha. Uyga o‘tkazma bonuslari faqat salonda.",
     },
     {
       id: "faq-imei",
@@ -320,23 +320,23 @@ const uz: InstructionCopy = {
       a: "Balansni kamida 6 oyda bir marta to‘ldirsangiz, SIM faol qoladi. To‘ldirmasangiz, raqam bloklanadi. Qaytgach «+20 GB qaytish» ulanishi mumkin.",
     },
   ],
-  leadTitle: "ShIHSR va yaqin salonga yo‘l ko‘rsatamiz",
+  leadTitle: "Yaqin salon va qanday hujjat olib borishni aytamiz",
   leadText:
-    "Raqam qoldiring. Qo‘ng‘iroq qilib, nima olib borish, yaqin atrofda qayerda biometriya topshirish va qaysi MegaFon saloniga borishni aytamiz.",
+    "Raqam qoldiring. Qo‘ng‘iroq qilamiz: ShIHSR qayerdan, biometriya qayerda, qaysi MegaFon saloniga SIM uchun borish.",
   leadPoints: [
     "SIM-kartani qayerdan olish va IMEIni qanday bilish",
     "ShIHSR, Gosuslugi va biometriya uchun qayerga borish",
     "SIM-kartani Gosuslugida qanday faollashtirish",
   ],
-  apply: "Ariza qoldirish",
+  apply: "Raqam qoldirish",
 };
 
 const tg: InstructionCopy = {
-  hero: "Ба Русия хуш омадед",
-  download: "Дастурамалро сарборӣ кардан",
+  hero: "Барои занг ба хона SIM-и Русия лозим",
+  download: "Қадамҳоро дидан",
   gainTitle: "Тарофаи МегаФон ба расмият дароред",
   gainSub:
-    "Сим-корти МегаФонро пайваст кунед ва бо наздиконатон дар тамос бошед.",
+    "Панҷ қадам: сим-корт, СНИЛС, Госуслуги, биометрия, фаъолсозӣ. Рақам гузоред — салони наздикро мегӯем.",
   widgets: [
     { href: "#buy-sim", label: "Сим-корт гиред" },
     { href: "#get-snils", label: "СНИЛС гиред" },
@@ -345,8 +345,8 @@ const tg: InstructionCopy = {
     { href: "#activate", label: "Фаъолсозӣ дар Госуслуги" },
   ],
   share: "Дастурҳоро мубодила кунед",
-  productKicker: "Тарофаҳо барои меҳмонон аз ИДМ",
-  productCta: "Тарофаро чӣ хел ба расмият даровардан",
+  productKicker: "Барои меҳмонон аз ИДМ",
+  productCta: "Ҳамин тарофаро мехоҳам",
   benefits: [
     {
       title: "«Қабули гарм» худ пайваст мешавад",
@@ -373,14 +373,14 @@ const tg: InstructionCopy = {
       text: "Дар «Оилавӣ +»: интернети бемаҳдуд. Аз мавсим баргардед — +20 ГБ то 6 моҳ.",
     },
   ],
-  howTitle: "Барои фаъол кардани сим-корт чӣ кор кардан лозим аст",
+  howTitle: "То алоқа панҷ қадам",
   activationSteps: [
     {
       id: "buy-sim",
       title: "Сим-корт харед",
-      text: "Пешакӣ пеш аз омадан ба Русия ё дар салони МегаФон. Ҳангоми бастани шартнома идентификатори дастгоҳ (IMEI) лозим мешавад — бе он алоқа намешавад.",
+      text: "Пеш аз омадан ё дар салони МегаФон. Ба шартнома IMEI-и телефон навишта мешавад — бе он алоқа намешавад.",
       links: [
-        { label: "Идентификатори дастгоҳро (IMEI) чӣ тавр донистан", href: imeiHref },
+        { label: "IMEI-ро чӣ тавр донистан", href: imeiHref },
       ],
     },
     {
@@ -417,27 +417,27 @@ const tg: InstructionCopy = {
   ],
   bioTitle: "Биометрия дар бонк чӣ тавр мегузарад",
   bioText: "Корманди бонк хоҳиш мекунад, ки чанд рақамро бигӯед ва скани рӯйро мегирад",
-  step4Title: "Тарофаро пардохт кунед",
+  step4Title: "Чӣ тавр пардохт кардан",
   step4Items: [
     {
       title: "Дар салони МегаФон",
-      text: "Тавозунро дар хазина ё тавассути интиқол дар салон пур кунед — бонусҳои ИДМ ҳам ҳамин ҷо",
+      text: "Дар хазина ё бо интиқол дар салон. Бонусҳои пул ба хона танҳо ҳамин ҷо",
       btn: "Дар харита ёбед",
       href: megafonOfficesHref,
     },
     {
-      title: "Тавассути барномаи мобилӣ",
-      text: "Боргирӣ кунед ва аз смартфон пардохт кунед",
+      title: "Дар барнома",
+      text: "Аз смартфон пардохт кунед. Бонусҳои пул ба хона ин ҷо ҷамъ намешаванд",
       btn: "Барномаро боргирӣ кунед",
       href: "https://www.megafon.ru/download/",
       outline: true,
     },
   ],
-  faqTitle: "Саволҳо ва ҷавобҳо",
+  faqTitle: "Саволҳои зиёд",
   faq: [
     {
       q: "Ба тарофаҳо чӣ дохил аст?",
-      a: "«Минимум +» — асосӣ: аз 850 ₽, 400 дақиқа дар Россия, интернети баста, +10 ГБ барои пардохти саривақт. «Оилавӣ +» — максималӣ: аз 1 140 ₽, 1 500 дақиқа, интернети бемаҳдуд, МегаОила то 5 нафар. «Қабули гарм» худ пайваст мешавад.",
+      a: "«Минимум +» аз 850 ₽: 400 дақиқа дар Русия ва интернет ба смена. «Оилавӣ +» аз 1 140 ₽: 1 500 дақиқа, интернети бемаҳдуд, МегаОила то 5 нафар. «Қабули гарм» худ мегирад, агар шаҳрванди Русия набошед. 100 дақиқаи байналмилалӣ — бо хоҳиш.",
     },
     {
       q: "Тафсилоти тарофаро аз куҷо хондан мумкин?",
@@ -445,7 +445,7 @@ const tg: InstructionCopy = {
     },
     {
       q: "Гигабайтҳои иловагӣ чӣ тавр гирифтан?",
-      a: "«Минимум +»-ро сари вақт пардохт кунед — +10 ГБ. Аз мавсим баргардед — +20 ГБ то 6 моҳ. Бонусҳои интиқол танҳо дар салон.",
+      a: "Дар «Минимум +» то +10 ГБ барои пардохти саривақт — ин МегаҚувваи «Бонус ГБ», дар барнома гирифтан лозим. Аз мавсим баргардед — +20 ГБ то 6 моҳ. Бонусҳои интиқол танҳо дар салон.",
     },
     {
       id: "faq-imei",
@@ -465,23 +465,23 @@ const tg: InstructionCopy = {
       a: "Агар тавозунро ҳадди ақал дар 6 моҳ як бор пур кунед, сим-корт фаъол мемонад. Дар акси ҳол рақам баста мешавад. Ҳангоми бозгашт «+20 ГБ барои бозгашт» пайваст шуда метавонад.",
     },
   ],
-  leadTitle: "Мегӯем, куҷо СНИЛС гирифтан ва кадом салон",
+  leadTitle: "Салон ва кадом ҳуҷҷат гирифтанро мегӯем",
   leadText:
-    "Рақам гузоред. Занг мезанем ва мегӯем: чӣ бо худ гирифтан, дар куҷои наздик биометрия супоридан ва ба кадом салони МегаФон барои сим-корт омадан.",
+    "Рақам гузоред. Занг мезанем: СНИЛС аз куҷо, биометрия дар куҷо, ба кадом салони МегаФон барои сим-корт рафтан.",
   leadPoints: [
     "Сим-кортро аз куҷо харидан ва IMEI-ро чӣ тавр донистан",
     "Барои СНИЛС, Госуслуги ва биометрия куҷо рафтан",
     "Сим-кортро дар Госуслуги чӣ тавр фаъол кардан",
   ],
-  apply: "Дархост гузоред",
+  apply: "Рақам гузоред",
 };
 
 const ky: InstructionCopy = {
-  hero: "Россияга кош келиңиз",
-  download: "Нускаманы жүктөө",
+  hero: "Үйгө чалуу үчүн Россия SIMи керек",
+  download: "Кадамдарды көрүү",
   gainTitle: "МегаФон тарифин тариздеңиз",
   gainSub:
-    "МегаФон сим-картасын туташтырыңыз да, жакындарыңыз менен байланышта болуңуз.",
+    "Беш кадам: SIM, ЖЭКН, Госуслуги, биометрия, активдештирүү. Номер калтырыңыз — жакын салонду айтабыз.",
   widgets: [
     { href: "#buy-sim", label: "SIM-карта алыңыз" },
     { href: "#get-snils", label: "ЖЭКН алыңыз" },
@@ -490,8 +490,8 @@ const ky: InstructionCopy = {
     { href: "#activate", label: "Госуслугиде активдештирүү" },
   ],
   share: "Инструкцияларды бөлүшүү",
-  productKicker: "КМШ конокторуна тарифтер",
-  productCta: "Тарифти кантип тариздөөгө болот",
+  productKicker: "КМШ конокторуна",
+  productCta: "Ушул тарифти каалайм",
   benefits: [
     {
       title: "«Жылуу тосуп алуу» өзү кошулат",
@@ -518,14 +518,14 @@ const ky: InstructionCopy = {
       text: "«Үй-бүлөлүк +»: чексиз интернет. Сезондон кайтсаңыз — +20 ГБ, 6 айга чейин.",
     },
   ],
-  howTitle: "SIM-картаны активдештирүү үчүн эмне кылуу керек",
+  howTitle: "Байланышка беш кадам",
   activationSteps: [
     {
       id: "buy-sim",
-      title: "SIM-карта сатып алыңыз",
-      text: "Алдын ала, Россияга келерден мурда же МегаФон салонунда. Келишим түзүлгөндө түзмөктүн идентификатору (IMEI) керек болот — ансыз байланыш болбойт.",
+      title: "SIM-карта алыңыз",
+      text: "Келерден мурда же МегаФон салонунда. Келишимге телефондун IMEI жазылат — ансыз байланыш болбойт.",
       links: [
-        { label: "Түзмөктүн идентификаторун (IMEI) кантип билсе болот", href: imeiHref },
+        { label: "IMEIни кантип билсе болот", href: imeiHref },
       ],
     },
     {
@@ -562,27 +562,27 @@ const ky: InstructionCopy = {
   ],
   bioTitle: "Банкта биометрия кантип өтөт",
   bioText: "Банк кызматкери бир нече санды айтууну сурайт жана беттин сканын алат",
-  step4Title: "Тарифти төлөңүз",
+  step4Title: "Кантип төлөө",
   step4Items: [
     {
       title: "МегаФон салонунда",
-      text: "Кассада же салон аркылуу которууда толуктаңыз — КМШ бонустары да ушул жерде",
+      text: "Кассада же салон аркылуу которууда. Үйгө акча бонустары ушул жерде гана",
       btn: "Картадан табуу",
       href: megafonOfficesHref,
     },
     {
-      title: "Мобилдик колдонмо аркылуу",
-      text: "Жүктөп алып, смартфондон төлөңүз",
+      title: "Тиркемеде",
+      text: "Смартфондон төлөңүз. Үйгө акча бонустары бул жерде жыйналбайт",
       btn: "Колдонмону жүктөө",
       href: "https://www.megafon.ru/download/",
       outline: true,
     },
   ],
-  faqTitle: "Суроолор жана жооптор",
+  faqTitle: "Көп берилүүчү суроолор",
   faq: [
     {
       q: "Тарифтерге эмне кирет?",
-      a: "«Минимум +» — негизги: 850 ₽ ден, Россия боюнча 400 мүнөт, пакеттик интернет, өз убагында төлөө үчүн +10 ГБ. «Үй-бүлөлүк +» — максималдуу: 1 140 ₽ ден, 1 500 мүнөт, чексиз интернет, МегаҮй-бүлө 5 кишиге чейин. «Жылуу тосуп алуу» өзү кошулат.",
+      a: "«Минимум +» 850 ₽ ден: Россия боюнча 400 мүнөт жана сменага интернет. «Үй-бүлөлүк +» 1 140 ₽ ден: 1 500 мүнөт, чексиз интернет, МегаҮй-бүлө 5 кишиге чейин. «Жылуу тосуп алуу» Россия жараны болбосоңуз өзү кошулат. 100 эл аралык мүнөт — каалоо боюнча.",
     },
     {
       q: "Тариф жөнүндө кеңири кайдан окуса болот?",
@@ -590,7 +590,7 @@ const ky: InstructionCopy = {
     },
     {
       q: "Кошумча гигабайтты кантип алуу керек?",
-      a: "«Минимум +» ти өз убагында төлөңүз — +10 ГБ. Сезондон кайтсаңыз — +20 ГБ, 6 айга чейин. Которуу бонустары жалаң салондо.",
+      a: "«Минимум +» да өз убагында төлөө үчүн +10 ГБ чейин — бул МегаКүч «Бонус ГБ», тиркемеден күйгүзүү керек. Сезондон кайтсаңыз — +20 ГБ, 6 айга чейин. Которуу бонустары жалаң салондо.",
     },
     {
       id: "faq-imei",
@@ -610,15 +610,15 @@ const ky: InstructionCopy = {
       a: "Балансты кеминде 6 айда бир жолу толуктасаңыз, SIM активдүү калат. Болбосо номер бөгөттөлөт. Кайтканда «+20 ГБ кайтуу» кошулушу мүмкүн.",
     },
   ],
-  leadTitle: "ЖЭКН жана жакын салонду айтабыз",
+  leadTitle: "Салонду жана кайсы кагаз алып барууну айтабыз",
   leadText:
-    "Номер калтырыңыз. Чалып айтабыз: эмне алып баруу, жакын жерден кайда биометрия тапшыруу жана SIM-карта үчүн кайсы МегаФон салонуна баруу.",
+    "Номер калтырыңыз. Чалып айтабыз: ЖЭКН кайдан, биометрия кайда, SIM үчүн кайсы МегаФон салонуна баруу.",
   leadPoints: [
     "SIM-картаны кайдан алуу жана IMEIни кантип билүү",
     "ЖЭКН, Госуслуги жана биометрия үчүн кайда баруу",
     "SIM-картаны Госуслугиде кантип активдештирүү",
   ],
-  apply: "Өтүнмө калтыруу",
+  apply: "Номер калтыруу",
 };
 
 export const instructionCopy: Record<Locale, InstructionCopy> = {

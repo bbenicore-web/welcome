@@ -22,7 +22,7 @@ export function LandingChrome({
   const arriveHref = "/arrive";
   const hereHref = "/here";
   const applyHref = isHere ? `${hereHref}#lead` : `${arriveHref}#lead`;
-  const applyLabel = isHere ? "Подключить" : "Оставить заявку";
+  const applyLabel = isHere ? "Подключить номер" : "Оставить номер";
   return (
     <div className={mf.page}>
       <header className="sticky top-0 z-40 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">

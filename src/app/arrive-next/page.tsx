@@ -3,9 +3,9 @@ import { ArrivePageNext } from "@/components/arrive/arrive-page-next";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Добро пожаловать в Россию — сим-карта МегаФон",
+  title: "Первая SIM МегаФон — документы и активация",
   description:
-    "Подключайте сим-карту МегаФон и будьте на связи с родными. СНИЛС, Госуслуги, биометрия, тарифы Минимум + и Семейный +, МегаСилы.",
+    "Пять шагов: сим-карта, СНИЛС, Госуслуги, биометрия, активация. Тарифы Минимум + от 850 ₽ и Семейный + от 1 140 ₽.",
 };
 
 export default function Page() {

@@ -33,7 +33,7 @@ export const meaningTariffs = [
   {
     id: "minimum" as const,
     name: "Минимум +",
-    level: { ru: "Базовый", uz: "Oddiy", tg: "Оддӣ", ky: "Жөнөкөй" } satisfies Text,
+    level: { ru: "Работа и учёба", uz: "Ish va o‘qish", tg: "Кор ва таҳсил", ky: "Иш жана окуу" } satisfies Text,
     price: "от 850 ₽",
     minutes: "400 минут по России",
     data: {
@@ -43,10 +43,10 @@ export const meaningTariffs = [
       ky: "Чалуу, смена жана окуу үчүн интернет",
     } satisfies Text,
     purpose: {
-      ru: "Чтобы звонить, выходить в интернет на работе и учиться — без лишнего.",
-      uz: "Qo‘ng‘iroq, ishdagi internet va o‘qish uchun. Ortig‘i yo‘q.",
-      tg: "Барои занг задан, интернет дар кор ва таҳсил — бе зиёдатӣ.",
-      ky: "Чалуу, иштеги интернет жана окуу үчүн. Ашыкчасы жок.",
+      ru: "Хватает на смену, карты и учёбу. Когда минуты кончились — на МегаФон России звоните дальше.",
+      uz: "Smena, xarita va o‘qishga yetadi. Daqiqa tugasa, MegaFon Rossiyaga qo‘ng‘iroq davom etadi.",
+      tg: "Ба смена, харита ва таҳсил кифоя. Дақиқа тамом — ба МегаФон Русия ҳанӯз занг задан мумкин.",
+      ky: "Смена, карта жана окууга жетет. Мүнөт бүтсө, MegaFon Россияга чала бересиз.",
     } satisfies Text,
     groups: [
       {
@@ -84,7 +84,7 @@ export const meaningTariffs = [
   {
     id: "family" as const,
     name: "Семейный +",
-    level: { ru: "Комфорт", uz: "Komfort", tg: "Комфорт", ky: "Комфорт" } satisfies Text,
+    level: { ru: "Безлимит и семья", uz: "Cheksiz va oila", tg: "Беҳад ва оила", ky: "Чексиз жана үй-бүлө" } satisfies Text,
     price: "от 1 140 ₽",
     minutes: "1 500 минут по России",
     data: {
@@ -94,10 +94,10 @@ export const meaningTariffs = [
       ky: "Чексиз: такси, видео, үй-бүлө",
     } satisfies Text,
     purpose: {
-      ru: "Безлимит. Хватает на такси, кино, звонки домой и семью — до пяти человек.",
-      uz: "Cheksiz internet. Taksi, kino, uyga qo‘ng‘iroq va oila — 5 kishigacha.",
-      tg: "Интернети беҳад. Таксӣ, кино, занг ба хона ва оила — то панҷ нафар.",
-      ky: "Чексиз интернет. Такси, кино, үйгө чалуу жана үй-бүлө — бешке чейин.",
+      ru: "Интернет не кончится на такси и видео. До пяти человек на одном тарифе. Звонки домой — в мессенджерах, которые работают в России.",
+      uz: "Taksi va videoda internet tugamaydi. Bitta tarif — 5 kishigacha. Uyga qo‘ng‘iroq — Rossiyada ishlaydigan messenjerlarda.",
+      tg: "Дар таксӣ ва видео интернет намемирад. Як тариф — то панҷ нафар. Занг ба хона — дар мессенҷерҳои Русия.",
+      ky: "Такси менен видеодо интернет бүтпөйт. Бир тариф — беш кишиге чейин. Үйгө чалуу — Россияда иштеген мессенджерлерде.",
     } satisfies Text,
     groups: [
       {
@@ -162,7 +162,7 @@ export const autoMigrantProducts = [
       ky: "Жылуу тосуп алуу",
     } satisfies Text,
     text: {
-      ru: "Минуты в СНГ и Китай дешевле. Включается само, если вы не гражданин РФ.",
+      ru: "Минуты в СНГ и Китай дешевле. Само, если вы не гражданин России.",
       uz: "MDH va Xitoyga daqiqalar arzonroq. RF fuqarosi bo‘lmasangiz, o‘zi yonadi.",
       tg: "Дақиқа ба ИДМ ва Чин арзонтар. Агар шаҳрванди РФ набошед, худаш мегирад.",
       ky: "КМШ жана Кытайга мүнөт арзаныраак. РФ жараны болбосоңуз, өзү күйөт.",
@@ -177,7 +177,7 @@ export const autoMigrantProducts = [
       ky: "Салондон которсоңуз — бонус",
     } satisfies Text,
     text: {
-      ru: "Деньги домой — в салоне МегаФона, не в приложении. От 30 000 ₽ дают минуты или месяцы связи.",
+      ru: "Деньги домой отправляйте в салоне МегаФона, не в приложении. От 30 000 ₽ — минуты или месяцы связи.",
       uz: "Uyga pulni MegaFon salonida o‘tkazing, ilovada emas. 30 000 ₽ dan daqiqa yoki oy beriladi.",
       tg: "Пул ба хона — дар салони МегаФон, на дар барнома. Аз 30 000 ₽ дақиқа ё моҳ медиҳанд.",
       ky: "Үйгө акчаны MegaFon салонунан которуңуз, тиркемеден эмес. 30 000 ₽ ден мүнөт же ай берилет.",
@@ -192,7 +192,7 @@ export const autoMigrantProducts = [
       ky: "Кайтсаңыз — +20 ГБ",
     } satisfies Text,
     text: {
-      ru: "Уезжали на сезон и снова на тарифе — до шести месяцев капает +20 ГБ.",
+      ru: "Уезжали домой на сезон и снова на тарифе — до шести месяцев приходит +20 ГБ.",
       uz: "Mavsumga ketib, tarifga qaytsangiz — 6 oygacha +20 GB tushadi.",
       tg: "Ба мавсим рафтед ва боз дар тариф ҳастед — то шаш моҳ +20 ГБ меояд.",
       ky: "Сезонго кетип, тарифке кайтсаңыз — алты айга чейин +20 ГБ түшөт.",
@@ -354,40 +354,40 @@ export const megaSilaHow = {
 export const offerUi = {
   ...t,
   meaningTitle: {
-    ru: "Какой тариф взять",
-    uz: "Qaysi tarif",
-    tg: "Кадом тариф",
-    ky: "Кайсы тариф",
+    ru: "Какой тариф вам",
+    uz: "Qaysi tarif sizga",
+    tg: "Кадом тариф ба шумо",
+    ky: "Кайсы тариф сизге",
   } satisfies Text,
   meaningLead: {
-    ru: "Минимум + — звонки, работа, учёба. Семейный + — безлимит на такси, видео и семью.",
-    uz: "Minimum + — qo‘ng‘iroq, ish, o‘qish. Oilaviy + — taksi, video va oilaga cheksiz.",
-    tg: "Минимум + — занг, кор, таҳсил. Оилавӣ + — беҳад ба таксӣ, видео ва оила.",
-    ky: "Минимум + — чалуу, иш, окуу. Үй-бүлөлүк + — такси, видео жана үй-бүлөгө чексиз.",
+    ru: "Минимум + — звонки и интернет на смену. Семейный + — безлимит и до пяти человек.",
+    uz: "Minimum + — smenaga qo‘ng‘iroq va internet. Oilaviy + — cheksiz internet va 5 kishigacha.",
+    tg: "Минимум + — занг ва интернет ба смена. Оилавӣ + — беҳад ва то панҷ нафар.",
+    ky: "Минимум + — сменага чалуу жана интернет. Үй-бүлөлүк + — чексиз жана беш кишиге чейин.",
   } satisfies Text,
   autoTitle: {
-    ru: "Само включится",
-    uz: "O‘zi yonadi",
-    tg: "Худаш мегирад",
-    ky: "Өзү күйөт",
+    ru: "Само, без заявки",
+    uz: "O‘zi, arizasiz",
+    tg: "Худ, бе ариза",
+    ky: "Өзү, арызсыз",
   } satisfies Text,
   autoLead: {
-    ru: "Для тех, кто приехал из СНГ. Заявку оставлять не надо.",
-    uz: "MDH dan kelganlar uchun. Ariza shart emas.",
-    tg: "Барои аз ИДМ омадагон. Ариза лозим нест.",
-    ky: "КМШдан келгендер үчүн. Арыз керек эмес.",
+    ru: "Если вы не гражданин России — включать ничего не нужно.",
+    uz: "RF fuqarosi bo‘lmasangiz, hech narsa yoqish shart emas.",
+    tg: "Агар шаҳрванди Русия набошед — чизе гирифтан лозим нест.",
+    ky: "Россия жараны болбосоңуз — эч нерсе күйгүзүүнүн кереги жок.",
   } satisfies Text,
   optInTitle: {
-    ru: "Если нужно ещё",
-    uz: "Yana kerak bo‘lsa",
-    tg: "Агар боз лозим шавад",
-    ky: "Дагы керек болсо",
+    ru: "Звонки за границу",
+    uz: "Chet elga qo‘ng‘iroq",
+    tg: "Занг ба хориҷа",
+    ky: "Чет өлкөгө чалуу",
   } satisfies Text,
   optInLead: {
-    ru: "Включаются в приложении, по 0500 или в салоне. Полные условия — по ссылке на русском.",
-    uz: "Ilovada, 0500 yoki salonda. To‘liq shartlar — ruscha havolada.",
-    tg: "Дар барнома, 0500 ё салон. Шартҳои пурра — пайванди русӣ.",
-    ky: "Тиркемеде, 0500 же салондо. Толук шарттар — орусча шилтемеде.",
+    ru: "Включают в приложении, по 0500 или в салоне. Полные условия — на русском на сайте МегаФона.",
+    uz: "Ilovada, 0500 yoki salonda yoqiladi. To‘liq shartlar — MegaFon saytida ruscha.",
+    tg: "Дар барнома, 0500 ё салон мегиранд. Шартҳои пурра — дар сомонаи МегаФон ба русӣ.",
+    ky: "Тиркемеде, 0500 же салондо күйгүзүлөт. Толук шарттар — MegaFon сайтында орусча.",
   } satisfies Text,
   silaTitle: {
     ru: "МегаСилы",
@@ -396,10 +396,10 @@ export const offerUi = {
     ky: "МегаКүчтөр",
   } satisfies Text,
   silaLead: {
-    ru: "Обычные опции тарифа. Их включают в приложении — это не то, что для СНГ включается само.",
-    uz: "Oddiy tarif opsiyalari. Ilovada yoqiladi — MDH uchun o‘zi yonadigan narsa emas.",
-    tg: "Опсияҳои оддии тариф. Дар барнома мегиред — ин чизе нест, ки барои ИДМ худаш мегирад.",
-    ky: "Кадимки тариф опциялары. Тиркемеден күйгүзүлөт — КМШ үчүн өзү күйгөндөр эмес.",
+    ru: "Опции тарифа. Включаете сами в приложении.",
+    uz: "Tarif opsiyalari. Ilovada o‘zingiz yoqasiz.",
+    tg: "Опсияҳои тариф. Дар барнома худатон мегиред.",
+    ky: "Тариф опциялары. Тиркемеден өзүңүз күйгүзөсүз.",
   } satisfies Text,
   silaMinimum: {
     ru: "Условия Минимум +",

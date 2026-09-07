@@ -48,47 +48,47 @@ const transferTiers = [
 
 const steps = [
   {
-    title: "Оставьте заявку",
-    text: "Имя, телефон, город. Займёт пару минут — заполнить можно с телефона.",
+    title: "Оставьте номер",
+    text: "Имя, телефон, город. Займёт пару минут — с телефона.",
   },
   {
     title: "Проверьте биометрию",
-    text: "Если российская SIM уже есть, СНИЛС и ЕБС обычно уже в системе. Статус — на Госуслугах. Повторно сдавать не нужно.",
+    text: "Если российская SIM уже есть, СНИЛС и биометрия обычно уже в системе. Статус — на Госуслугах. Заново сдавать не нужно.",
   },
   {
     title: "Приходите в салон со своим номером",
-    text: "Паспорт и текущая SIM. IMEI телефона. Общий лимит — 10 номеров. Перенос делают в салоне, не в приложении.",
+    text: "Паспорт и текущая SIM. IMEI телефона. Не больше 10 номеров. Перенос делают в салоне, не в приложении.",
   },
   {
-    title: "Включаем тариф и опции",
-    text: "«Минимум +» или «Семейный +». «Тёплый приём» сам. 100 международных минут и «Звони во все страны» — по желанию.",
+    title: "Включаем тариф",
+    text: "«Минимум +» или «Семейный +». «Тёплый приём» сам. Международные минуты — если нужно.",
   },
 ];
 
 const faq = [
   {
     q: "Нужно ли заново делать СНИЛС и Госуслуги?",
-    a: "Нет, если вы уже оформляли российскую SIM. Повторно — только если сменился паспорт или биометрию не приняли.",
+    a: "Нет, если российская SIM уже была. Повторно — только если сменился паспорт или биометрию не приняли.",
   },
   {
     q: "Можно ли оставить свой номер?",
-    a: "Да. Переходите на МегаФон со своим номером — срок переноса скажут в салоне.",
+    a: "Да. Перенос делают в салоне МегаФона. Срок скажут на месте.",
   },
   {
     q: "Что входит в «Минимум +»?",
-    a: "Базовый тариф: от 850 ₽ за 30 дней (Москва, с НДС), 400 минут по России, интернет в пакете на карты, такси и мессенджеры, безлимит на МегаФон России когда минуты закончились. Автоматически +10 ГБ, если платите вовремя. «Тёплый приём» для нерезидентов подключается сам. 100 международных минут можно докупить.",
+    a: "От 850 ₽ за 30 дней (Москва, с НДС): 400 минут по России и интернет на смену. Когда минуты кончились — на МегаФон России можно звонить дальше. «Тёплый приём» сам, если вы не гражданин России. +10 ГБ за оплату вовремя — МегаСила, её включают в приложении.",
   },
   {
     q: "Что входит в «Семейный +»?",
-    a: "Максимальный тариф: от 1 140 ₽ за 30 дней, 1 500 минут по России, безлимитный интернет, МегаСемья до 5 человек. Хватает на Яндекс Go, навигацию, склады, видеосервисы, ТВ, соцсети и национальные сайты страны, откуда вы приехали. Общение с близкими в доступных в РФ мессенджерах.",
+    a: "От 1 140 ₽ за 30 дней: 1 500 минут, безлимитный интернет, МегаСемья до 5 человек. Хватает на такси, карты, видео и сайты своей страны. Родные — в мессенджерах, которые работают в России.",
   },
   {
     q: "Как работают бонусы за переводы?",
-    a: "Только при переводе в салоне МегаФона, не в приложении. От 30 000 ₽ — 50 международных минут. От 50 000 ₽ — месяц связи. От 70 000 ₽ — три месяца. От 100 000 ₽ — полгода.",
+    a: "Только если переводите деньги в салоне МегаФона, не в приложении. От 30 000 ₽ — 50 международных минут. От 50 000 ₽ — месяц связи. От 70 000 ₽ — три месяца. От 100 000 ₽ — полгода.",
   },
   {
     q: "Что будет, если уеду домой на зиму?",
-    a: "Номер можно сохранить. Когда вернётесь и снова пользуетесь тарифом, капает +20 ГБ до 6 месяцев в день списания платы.",
+    a: "Номер можно сохранить. Когда вернётесь и снова на тарифе — +20 ГБ до 6 месяцев.",
   },
 ];
 
@@ -114,15 +114,15 @@ export function HerePageNext() {
           kicker="МегаФон → Уже в России"
           title={
             <>
-              Переходите на МегаФон.{" "}
-              <span className="font-bold">Номер остаётся вашим.</span>
+              Свой номер. МегаФон.{" "}
+              <span className="font-bold">Без новой биометрии.</span>
             </>
           }
-          subtitle="Биометрию заново сдавать не надо. Тарифы «Минимум +» и «Семейный +», бонусы за переводы домой. Перенос номера — в салоне."
+          subtitle="Перенос — в салоне. «Тёплый приём» для звонков домой включается сам. Тарифы от 850 ₽."
           art="promo"
           actions={
             <Button onClick={() => setDialogOpen(true)} className={mf.btnDark}>
-              Подключить
+              Подключить номер
             </Button>
           }
         />
@@ -131,7 +131,7 @@ export function HerePageNext() {
           <MeaningTariffs
             selectedId={tariffId}
             onSelect={(id) => setTariffId(id)}
-            ctaLabel="Подключить"
+            ctaLabel="Подключить номер"
             onCta={(id) => {
               setTariffId(id);
               setDialogOpen(true);
@@ -140,7 +140,7 @@ export function HerePageNext() {
 
           <Reveal className="mt-4">
             <div className={`${mf.sky} p-6 sm:p-8`}>
-              <p className="text-sm font-medium text-[#616C82]">Калькулятор тарифа</p>
+              <p className="text-sm font-medium text-[#616C82]">Сколько выйдет в месяц</p>
               <div
                 role="radiogroup"
                 aria-label="Тариф"
@@ -180,11 +180,11 @@ export function HerePageNext() {
               </p>
               <p className="mt-2 text-[15px] text-[#8F96A4]">
                 {tariffId === "minimum"
-                  ? "Звонки, работа, учёба. Что включается само и МегаСилы — ниже."
-                  : "Безлимит на такси, видео и семью. Опции — ниже."}
+                  ? "Звонки и интернет на смену. Что включается само — ниже."
+                  : "Безлимит и до пяти человек. Опции — ниже."}
               </p>
               <p className="mt-6 text-[15px] font-medium">
-                Если переведёте домой в салоне МегаФона (не в приложении)
+                Если переведёте деньги домой в салоне МегаФона, не в приложении
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {transferTiers.map((item, index) => (
@@ -219,15 +219,15 @@ export function HerePageNext() {
         <MegaSilaBlock />
 
         <section id="how">
-          <h2 className={`${mf.h2} text-center`}>Как подключить</h2>
+          <h2 className={`${mf.h2} text-center`}>Как перейти</h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-[15px] text-[#8F96A4]">
-            Всего четыре шага — быстрее, чем оформление первой SIM.
+            Четыре шага. Новую биометрию сдавать не нужно, если российская SIM уже была.
           </p>
           <Reveal className="mt-10 flex overflow-hidden rounded-[20px] bg-white ring-1 ring-[#EDEDED] max-lg:flex-col">
             <MegaArt art="internet" className="h-[240px] lg:min-h-[380px] lg:w-[45%]" />
             <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
               <h3 className="text-[22px] font-semibold leading-7">
-                Перенесите номер или закажите новую сим-карту
+                Приходите со своим номером или возьмите новую SIM
               </h3>
               <ol className="mt-6 space-y-4">
                 {steps.map((step, index) => (
@@ -242,7 +242,7 @@ export function HerePageNext() {
               </ol>
               <div className="mt-8">
                 <CtaRow
-                  label="Подключить"
+                  label="Подключить номер"
                   onClick={() => setDialogOpen(true)}
                 />
               </div>
@@ -255,16 +255,15 @@ export function HerePageNext() {
         </section>
 
         <section id="who">
-          <h2 className={`${mf.h2} text-center`}>Кому это нужно</h2>
+          <h2 className={`${mf.h2} text-center`}>Если российская SIM уже есть</h2>
           <Reveal className="mt-8 grid gap-4 md:grid-cols-3" flip={false}>
             <article className={`${mf.sky} p-6`}>
               <IconWell>
                 <Smartphone className="size-5" />
               </IconWell>
-              <h3 className="mt-4 font-medium">Уже есть российская SIM</h3>
+              <h3 className="mt-4 font-medium">Уже сдавали биометрию</h3>
               <p className="mt-2 text-[15px] text-[#333]/80">
-                СНИЛС и биометрия сданы. Нужен свой номер, дешевле звонить домой
-                и не ловить скрытые списания.
+                СНИЛС и Госуслуги обычно уже есть. Нужен свой номер и дешевле звонить домой.
               </p>
             </article>
             <article className={`${mf.sky} p-6`}>
@@ -273,8 +272,7 @@ export function HerePageNext() {
               </IconWell>
               <h3 className="mt-4 font-medium">Переводите деньги семье</h3>
               <p className="mt-2 text-[15px] text-[#333]/80">
-                Перевод в салоне МегаФона даёт минуты или месяцы связи. В
-                приложении этот бонус не копится.
+                Перевод в салоне МегаФона даёт минуты или месяцы связи. В приложении этот бонус не копится.
               </p>
             </article>
             <article className={`${mf.sky} p-6`}>
@@ -290,7 +288,7 @@ export function HerePageNext() {
         </section>
 
         <section id="faq">
-          <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
+          <h2 className={`${mf.h2} text-center`}>Частые вопросы</h2>
           <Accordion className="mt-8">
             {faq.map((item, index) => (
               <AccordionItem
@@ -310,16 +308,16 @@ export function HerePageNext() {
 
       <div className="fixed inset-x-0 bottom-0 z-30 bg-white p-3 shadow-[0_-8px_24px_rgba(51,51,51,0.08)] sm:hidden">
         <Button onClick={() => setDialogOpen(true)} className={`w-full ${mf.btnDark}`}>
-          Подключить
+          Подключить номер
         </Button>
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-xl">Переход в МегаФон</DialogTitle>
+            <DialogTitle className="text-xl">Подключить номер</DialogTitle>
             <DialogDescription>
-              Свой номер, готовая биометрия, тариф на выбор.
+              Перезвоним: как перенести номер в салоне и какой тариф взять.
             </DialogDescription>
           </DialogHeader>
           <CallbackForm
@@ -328,7 +326,7 @@ export function HerePageNext() {
             defaultTariff={tariffId}
             idPrefix="here-next-dialog"
             tariffChoices={formTariffs}
-            submitLabel="Подключить"
+            submitLabel="Подключить номер"
           />
         </DialogContent>
       </Dialog>

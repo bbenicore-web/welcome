@@ -3,9 +3,9 @@ import { HerePageNext } from "@/components/here/here-page-next";
 import { LanguageProvider } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: "Уже в России — переходите на МегаФон со своим номером",
+  title: "Свой номер в МегаФон — без новой биометрии",
   description:
-    "Минимум + от 850 ₽ и Семейный + от 1 140 ₽, «Тёплый приём», бонусы за переводы в салоне, МегаСилы, свой номер.",
+    "Перенос в салоне. Минимум + от 850 ₽ и Семейный + от 1 140 ₽. «Тёплый приём» сам. Бонусы за переводы домой в салоне.",
 };
 
 export default function Page() {

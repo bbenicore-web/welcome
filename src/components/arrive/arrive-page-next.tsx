@@ -134,7 +134,7 @@ export function ArrivePageNext() {
         </section>
 
         <section id="faq">
-          <h2 className={`${mf.h2} text-center`}>Остались вопросы?</h2>
+          <h2 className={`${mf.h2} text-center`}>{copy.faqTitle}</h2>
           <Accordion className="mt-8" value={faqOpen} onValueChange={setFaqOpen}>
             {copy.faq.map((item, index) => (
               <AccordionItem
