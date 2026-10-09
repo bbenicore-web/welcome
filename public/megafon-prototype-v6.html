@@ -288,7 +288,7 @@ const cardButton = key => `<button class="button" data-dialog="${key}">Подр�
 document.querySelector('[data-carousel="tariffs"]').innerHTML = tariffData.map((item,index) => {
   const key = `tariff-${index}`;
   details[key] = {title:item.title,body:`<p>${item.subtitle}</p><ul>${item.benefits.map(text=>`<li>${text}</li>`).join('')}</ul><a href="#offices" class="button button-dark" data-close-dialog>Найти офис для подключения</a>`};
-  return `<article class="tariff-card"><div><h3>${item.title}</h3><p class="subtitle">${item.subtitle}</p><ul class="benefits">${item.benefits.map(text=>`<li>${text}</li>`).join('')}</ul></div>${cardButton(key)}</article>`;
+  return `<article class="tariff-card"><div><h3>${item.title}</h3><p class="subtitle">${item.subtitle}</p><ul class="benefits">${item.benefits.map(text=>`<li>${text}</li>`).join('')}</ul></div><a class="button" href="#activation">Подробнее</a></article>`;
 }).join('');
 for (const [name,data] of [['calls',callsData],['entertainment',entertainmentData]]) {
   document.querySelector(`[data-carousel="${name}"]`).innerHTML = data.map((item,index)=>{
