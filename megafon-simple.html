@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Простая версия: как подключить сим-карту МегаФона в России и какие тарифы выбрать.">
+  <title>Тёплый приём в России — простая версия</title>
+  <style>
+    :root {
+      --green: #00b956;
+      --green-deep: #087a3e;
+      --ink: #1c1c1c;
+      --muted: #5c6570;
+      --line: #e6eaef;
+      --bg: #eef1f4;
+      --card: #fff;
+      --header: 56px;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    a { color: var(--green-deep); }
+    button, a { font: inherit; }
+    .frame {
+      width: min(100%, 420px);
+      min-height: 100dvh;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 0 40px #00000014;
+    }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header);
+      padding: 0 16px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      color: var(--green);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+    .menu-btn {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      background: #f4f6f8;
+      cursor: pointer;
+    }
+    .menu-btn span, .menu-btn span:before, .menu-btn span:after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 0 auto;
+      background: var(--ink);
+      border-radius: 2px;
+      position: relative;
+    }
+    .menu-btn span:before, .menu-btn span:after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+    .menu-btn span:before { top: -6px; }
+    .menu-btn span:after { top: 6px; }
+    .menu {
+      display: none;
+      position: fixed;
+      z-index: 6;
+      top: var(--header);
+      left: 50%;
+      width: min(100%, 420px);
+      padding: 8px 16px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 16px 32px #0000001a;
+      transform: translateX(-50%);
+    }
+    .menu.open { display: grid; gap: 4px; }
+    .menu a {
+      display: block;
+      padding: 12px 4px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    main { padding-bottom: 32px; }
+    section { padding: 28px 16px 8px; scroll-margin-top: calc(var(--header) + 8px); }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: 40px; line-height: 1.05; letter-spacing: -0.04em; }
+    h2 { font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; }
+    h3 { font-size: 18px; line-height: 1.3; }
+    .lead { margin-top: 12px; color: var(--muted); font-size: 17px; line-height: 1.45; }
+    .hero { padding-top: 24px; }
+    .sim {
+      width: 148px;
+      height: 100px;
+      margin: 22px 0 8px auto;
+      border-radius: 18px;
+      background:
+        linear-gradient(#fff 0 0) 18px 18px / 28px 22px no-repeat,
+        linear-gradient(#d9ffe9 0 0) 18px 46px / 28px 8px no-repeat,
+        linear-gradient(#b6f5cf 0 0) 18px 58px / 28px 8px no-repeat,
+        linear-gradient(160deg, #7dffb4, var(--green) 45%, #049447);
+      box-shadow: inset 0 0 0 8px #ffffff22;
+    }
+    .actions, .card .actions { display: grid; gap: 10px; margin-top: 20px; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 0;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-green { background: var(--green-deep); color: #fff; }
+    .btn-line { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px #d5dbe3; }
+    .btn-dark { background: #171717; color: #fff; }
+    .stack { display: grid; gap: 12px; margin-top: 16px; }
+    .card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f6f8fa;
+    }
+    .card p, .product p, .step p, .faq p { margin-top: 8px; color: var(--muted); line-height: 1.45; }
+    .card .btn { margin-top: 14px; }
+    .tariff {
+      padding: 18px 16px 16px;
+      border-radius: 20px;
+      background: #f6f8fa;
+    }
+    .tariff.popular {
+      background: #102117;
+      color: #fff;
+    }
+    .tariff.popular p, .tariff.popular li { color: #d7e7dc; }
+    .price { margin-top: 8px; font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+    .price span { font-size: 15px; font-weight: 500; color: var(--muted); }
+    .tariff.popular .price span { color: #b7d4c2; }
+    .badge {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #06210f;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    ul.plain { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    ul.plain li { padding-left: 22px; position: relative; line-height: 1.35; }
+    ul.plain li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 10px;
+      height: 6px;
+      border-left: 2px solid var(--green);
+      border-bottom: 2px solid var(--green);
+      transform: rotate(-45deg);
+    }
+    .group { margin-top: 22px; }
+    .group h3 { color: var(--green-deep); font-size: 15px; }
+    .product {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .product strong { display: block; font-size: 17px; }
+    .product p { margin-top: 4px; }
+    .amounts { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .amounts li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f6f8fa;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .step .btn { margin-top: 12px; }
+    .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e8f8ee;
+      color: var(--green-deep);
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+    details.help, .faq details {
+      margin-top: 12px;
+      border-radius: 14px;
+      background: #fff;
+    }
+    details.help { background: #fff; box-shadow: inset 0 0 0 1.5px #d5dbe3; }
+    details.help summary, .faq summary {
+      min-height: 48px;
+      padding: 12px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details.help p, .faq p { padding: 0 14px 14px; }
+    .note {
+      margin-top: 8px;
+      padding: 16px;
+      border-radius: 18px;
+      background: #f6f8fa;
+    }
+    .faq details { border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
+    .faq details:first-of-type { border-top: 1px solid var(--line); margin-top: 16px; }
+    footer {
+      padding: 8px 16px 28px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    footer strong { color: var(--green); font-size: 18px; }
+    :focus-visible { outline: 3px solid #8be7b0; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header class="header">
+      <a class="brand" href="#top">МегаФон</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+    </header>
+    <nav class="menu" id="menu" aria-label="Разделы страницы">
+      <a href="#how">Как подключить</a>
+      <a href="#tariffs">Тарифы</a>
+      <a href="#services">Услуги</a>
+      <a href="#steps">Шаги</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Тёплый приём в&nbsp;России</h1>
+        <p class="lead">Связь в России и звонки домой.</p>
+        <div class="sim" aria-hidden="true"></div>
+        <div class="actions">
+          <a class="btn btn-green" href="#how">Подключить сим-карту</a>
+          <a class="btn btn-line" href="#tariffs">Выбрать тариф</a>
+        </div>
+      </section>
+
+      <section id="how" aria-labelledby="how-title">
+        <h2 id="how-title">Как подключить</h2>
+        <p class="lead">Два пути. Выберите свой.</p>
+        <div class="stack">
+          <article class="card">
+            <h3>Документы уже есть</h3>
+            <p>Есть СНИЛС, Госуслуги и биометрия. Выберите тариф и заберите сим-карту в салоне. Нужен паспорт.</p>
+            <a class="btn btn-dark" href="#tariffs">Выбрать тариф</a>
+          </article>
+          <article class="card">
+            <h3>Документов ещё нет</h3>
+            <p>Сначала получите СНИЛС, зарегистрируйтесь на Госуслугах и сдайте биометрию в банке. Потом приходите в салон.</p>
+            <a class="btn btn-line" href="#steps">Смотреть шаги</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="tariffs" aria-labelledby="tariffs-title">
+        <h2 id="tariffs-title">Тарифы</h2>
+        <p class="lead">Два варианта. Цена — за 30 дней.</p>
+        <div class="stack">
+          <article class="tariff popular">
+            <span class="badge">Чаще берут</span>
+            <h3>Семейный +</h3>
+            <p>Для себя и близких.</p>
+            <p class="price">от 1&nbsp;140&nbsp;₽ <span>за 30 дней</span></p>
+            <ul class="plain">
+              <li>1&nbsp;500 минут по России</li>
+              <li>Интернет без ограничений</li>
+              <li>Один тариф на 5 человек</li>
+            </ul>
+            <div class="actions"><a class="btn btn-green" href="#steps">Как подключить</a></div>
+          </article>
+          <article class="tariff">
+            <h3>Минимум +</h3>
+            <p>Для звонков, карт и сообщений.</p>
+            <p class="price">от 850&nbsp;₽ <span>за 30 дней</span></p>
+            <ul class="plain">
+              <li>400 минут по России</li>
+              <li>Интернет на карты, такси и мессенджеры</li>
+              <li>Звонки на МегаФон, даже если минуты кончились</li>
+            </ul>
+            <div class="actions"><a class="btn btn-dark" href="#steps">Как подключить</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" aria-labelledby="services-title">
+        <h2 id="services-title">Услуги</h2>
+        <p class="lead">Коротко, что можно добавить.</p>
+
+        <div class="group">
+          <h3>Звонки домой</h3>
+          <article class="product">
+            <strong>Тёплый приём</strong>
+            <p>Звонки в страны СНГ. Включается сам, отдельно платить не нужно.</p>
+          </article>
+          <article class="product">
+            <strong>100 минут за границу</strong>
+            <p>100&nbsp;₽ на 30 дней. Таджикистан, Узбекистан, Киргизия, Армения, Казахстан, Китай, Индия и Пакистан.</p>
+          </article>
+          <article class="product">
+            <strong>Другие страны</strong>
+            <p>Минуты на мобильные и городские номера. Цена зависит от страны.</p>
+          </article>
+        </div>
+
+        <div class="group">
+          <h3>Деньги</h3>
+          <article class="product">
+            <strong>Скидка за перевод в салоне</strong>
+            <p>Переведите деньги в салоне МегаФона — связь будет бесплатной.</p>
+            <ul class="amounts">
+              <li><span>50&nbsp;000&nbsp;₽</span><span>1 месяц</span></li>
+              <li><span>70&nbsp;000&nbsp;₽</span><span>3 месяца</span></li>
+              <li><span>100&nbsp;000&nbsp;₽</span><span>полгода</span></li>
+            </ul>
+          </article>
+          <article class="product">
+            <strong>Перевод с телефона</strong>
+            <p>Со своего номера — на другой номер или на карту. В приложении МегаФона.</p>
+          </article>
+        </div>
+
+        <div class="group">
+          <h3>Интернет и отдых</h3>
+          <article class="product">
+            <strong>Остатки не сгорают</strong>
+            <p>Минуты и интернет, которые не использовали, переходят на следующий месяц.</p>
+          </article>
+          <article class="product">
+            <strong>Связь при нуле</strong>
+            <p>Пакет работает, даже если деньги на счёте кончились.</p>
+          </article>
+          <article class="product">
+            <strong>МегаСемья</strong>
+            <p>Один тариф на пять номеров. Можно пополнять баланс близких.</p>
+          </article>
+          <article class="product">
+            <strong>Кинотеатр START</strong>
+            <p>Фильмы, сериалы и телеканалы. Полный каталог — за отдельную плату.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="steps" aria-labelledby="steps-title">
+        <h2 id="steps-title">Пять шагов</h2>
+        <p class="lead">Идите по порядку.</p>
+        <article class="step">
+          <div class="num">1</div>
+          <div>
+            <h3>Купите сим-карту</h3>
+            <p>В салоне МегаФона. Можно заранее или уже в России.</p>
+            <p>Назовите номер устройства — IMEI. Он в настройках телефона. Без него связь не заработает.</p>
+            <details class="help">
+              <summary>Как узнать IMEI</summary>
+              <p>Откройте настройки телефона и найдите раздел «О телефоне». IMEI — длинный номер устройства.</p>
+            </details>
+            <a class="btn btn-line" href="#tariffs">Выбрать тариф</a>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <div>
+            <h3>Получите СНИЛС</h3>
+            <p>Это номер для документов. Оформите его в МФЦ. Возьмите паспорт и перевод паспорта на русский.</p>
+            <p>Обычно готово сразу. Иногда ждут до 5 дней.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <div>
+            <h3>Откройте Госуслуги</h3>
+            <p>Придите в банк или МФЦ. Возьмите паспорт и СНИЛС.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">4</div>
+          <div>
+            <h3>Сдайте биометрию</h3>
+            <p>В банке сфотографируют лицо и запишут голос. Возьмите паспорт и СНИЛС.</p>
+            <p>Спросите заранее, есть ли в отделении нужное оборудование.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">5</div>
+          <div>
+            <h3>Включите сим-карту</h3>
+            <p>В приложении «Госуслуги» откройте сообщение о сим-карте и пройдите шаги. Или попросите помочь в салоне.</p>
+          </div>
+        </article>
+        <article class="note">
+          <h3>Хотите оставить свой номер</h3>
+          <p>Придите в салон МегаФона. Поможем перенести его.</p>
+        </article>
+      </section>
+
+      <section id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Вопросы</h2>
+        <div class="faq">
+          <details>
+            <summary>Биометрия обязательна?</summary>
+            <p>Да. В банке сделают фото лица и запишут голос. Возьмите паспорт и СНИЛС.</p>
+          </details>
+          <details>
+            <summary>Можно купить сим-карту с рук?</summary>
+            <p>Нет. Оформите её в салоне МегаФона на своё имя.</p>
+          </details>
+          <details>
+            <summary>Уже есть сим-карта МегаФона или Yota</summary>
+            <p>Придите в салон. Проверим, можно ли ей пользоваться.</p>
+          </details>
+          <details>
+            <summary>Зачем нужен IMEI?</summary>
+            <p>Это номер устройства, не номер сим-карты. Его вписывают при оформлении. Без него связь не заработает.</p>
+          </details>
+          <details>
+            <summary>Если переставить сим-карту в другой телефон?</summary>
+            <p>Придите в салон и назовите IMEI нового телефона.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <strong>МегаФон</strong>
+      <p>Салоны есть в городах России. Адрес подскажут на сайте и в приложении.</p>
+      <p>6+ · ПАО «МегаФон»</p>
+    </footer>
+  </div>
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.menu');
+    menuBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    });
+    menu.addEventListener('click', event => {
+      if (!event.target.closest('a')) return;
+      menu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-label', 'Открыть меню');
+    });
+  </script>
+</body>
+</html>
