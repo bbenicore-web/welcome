@@ -55,6 +55,20 @@
     h2 { margin: 0; font-size: 48px; line-height: 1.08; font-weight: 700; letter-spacing: -.03em; }
     .section-head p, .how-head p { max-width: 320px; margin: 0; color: var(--muted); }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .tariff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .plan { background: var(--bg); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; }
+    .plan.popular { background: var(--deep); color: #fff; }
+    .plan .badge { align-self: flex-start; margin-bottom: 12px; padding: 4px 10px; border-radius: 999px; background: var(--green); color: #06210f; font-size: 13px; font-weight: 600; }
+    .plan h3 { margin: 0; font-size: 32px; line-height: 1.1; font-weight: 600; letter-spacing: -.03em; }
+    .plan .lead { margin: 8px 0 0; color: #4d6356; }
+    .plan.popular .lead, .plan.popular li { color: #d7e7dc; }
+    .plan .price { margin: 20px 0 0; font-size: 40px; line-height: 1; font-weight: 700; letter-spacing: -.03em; }
+    .plan .price span { font-size: 15px; font-weight: 400; color: var(--muted); }
+    .plan.popular .price span { color: #b7d4c2; }
+    .plan ul { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; flex: 1; }
+    .plan li { padding-left: 22px; position: relative; }
+    .plan li:before { content: ""; position: absolute; left: 0; top: 8px; width: 10px; height: 6px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(-45deg); }
+    .plan .button { margin-top: 24px; align-self: flex-start; }
     .benefit { background: var(--bg); border-radius: var(--radius); padding: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
     .benefit:nth-child(2) { background: #e5f7ec; }
     .benefit:nth-child(3) { background: #f3faf5; }
@@ -87,7 +101,8 @@
       .hero, .panel, .section-head, .how-head, footer .wrap { display: block; }
       .hero-copy { padding: 32px 24px 0; }
       .hero-art { padding: 8px 16px 16px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .tariff-grid { grid-template-columns: 1fr; }
+      .plan .button { align-self: stretch; }
       .chooser { flex-direction: column; }
       .panel { padding: 24px; }
       section { padding-top: 56px; }
@@ -104,6 +119,7 @@
     </a>
     <nav aria-label="Разделы">
       <a href="#benefits">Почему МегаФон</a>
+      <a href="#tariffs">Тарифы</a>
       <a href="#connect">Как подключиться</a>
     </nav>
     <a class="button dark" href="#connect">Стать абонентом</a>
@@ -157,6 +173,41 @@
       </div>
     </section>
 
+    <section id="tariffs">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Тарифы</div>
+          <h2>Два тарифа.<br>Выберите свой.</h2>
+        </div>
+        <p>Цена за 30 дней. Если биометрия уже есть, подключение можно начать онлайн. Если нет — в салоне.</p>
+      </div>
+      <div class="tariff-grid">
+        <article class="plan popular">
+          <span class="badge">Чаще берут</span>
+          <h3>Семейный +</h3>
+          <p class="lead">Для себя и близких.</p>
+          <p class="price">от 1&nbsp;140&nbsp;₽ <span>за 30 дней</span></p>
+          <ul>
+            <li>1&nbsp;500 минут по России</li>
+            <li>Интернет без ограничений</li>
+            <li>Один тариф на 5 человек</li>
+          </ul>
+          <a class="button" href="#connect">Хочу этот тариф</a>
+        </article>
+        <article class="plan">
+          <h3>Минимум +</h3>
+          <p class="lead">Для звонков, карт и сообщений.</p>
+          <p class="price">от 850&nbsp;₽ <span>за 30 дней</span></p>
+          <ul>
+            <li>400 минут по России</li>
+            <li>Интернет на карты, такси и мессенджеры</li>
+            <li>Звонки на МегаФон, даже если минуты кончились</li>
+          </ul>
+          <a class="button dark" href="#connect">Хочу этот тариф</a>
+        </article>
+      </div>
+    </section>
+
     <section class="how" id="connect">
       <div class="how-head">
         <div>
@@ -181,7 +232,7 @@
           <h3>Подключитесь, не выходя из дома</h3>
           <p>Если ваши данные уже подтверждены, часть оформления может быть доступна дистанционно. Возможность онлайн-подключения зависит от способа идентификации.</p>
           <div class="actions">
-            <a class="button white" href="https://shop.megafon.ru/connect/" target="_blank" rel="noopener">Выбрать тариф</a>
+            <a class="button white" href="#tariffs">Выбрать тариф</a>
             <a class="button line" href="#offline">Если биометрии нет</a>
           </div>
         </div>
