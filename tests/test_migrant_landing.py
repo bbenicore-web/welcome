@@ -11,6 +11,16 @@ class MigrantLandingRegressionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.source = PAGE.read_text(encoding="utf-8")
 
+    def test_tariff_cards_use_mockup_border_radius(self):
+        self.assertNotRegex(
+            self.source,
+            r"\.landing-service-side-picture-card\s*\{\s*border-radius:\s*0",
+        )
+        self.assertIn(
+            ".landing-service-side-picture-card {\n      border-radius: 16px;",
+            self.source,
+        )
+
     def test_connect_button_does_not_inherit_hero_flex_basis(self):
         rule = re.search(
             r"\.landing-buttons-box \.mfui-button\s*\{([^}]*)\}",
