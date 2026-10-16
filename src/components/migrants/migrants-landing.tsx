@@ -22,6 +22,8 @@ import { cities, locales, type Locale } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
 const heroSrc = withBase("/migrants/hero.webp");
+const deviceSrc = withBase("/migrants/device.webp");
+const heroAlt = "Две чашки чая, выпечка и зелёный смартфон на светлом столе";
 
 export function MigrantsLanding() {
   const { locale, setLocale, t: dict } = useLanguage();
@@ -200,11 +202,11 @@ export function MigrantsLanding() {
               </div>
             </div>
 
-            <div className="relative mt-2 h-[212px] overflow-hidden">
+            <div className="relative mt-6 aspect-square overflow-hidden">
               <img
                 src={heroSrc}
-                alt=""
-                className="pointer-events-none absolute left-1/2 top-[calc(50%+20px)] h-[274px] w-[486px] max-w-none -translate-x-[calc(50%+20px)] -translate-y-1/2 object-cover"
+                alt={heroAlt}
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
           </section>
@@ -231,7 +233,7 @@ export function MigrantsLanding() {
                     }}
                   >
                     <img
-                      src={heroSrc}
+                      src={deviceSrc}
                       alt=""
                       className={`absolute max-w-none object-cover ${
                         index === 0
@@ -322,7 +324,7 @@ export function MigrantsLanding() {
             <article className="mt-6 overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(17,24,39,0.08)]">
               <div className="relative h-[184px] overflow-hidden bg-[#e7f7ee]">
                 <img
-                  src={heroSrc}
+                  src={deviceSrc}
                   alt=""
                   className="absolute left-1/2 top-1/2 h-[240px] w-[426px] max-w-none -translate-x-1/2 -translate-y-[46%] object-cover"
                 />
@@ -568,7 +570,7 @@ function TariffArt({ id }: { id: "work" | "study" | "family" }) {
   return (
     <div className="relative h-[184px] overflow-hidden" style={{ background }}>
       <img
-        src={heroSrc}
+        src={deviceSrc}
         alt=""
         className={`absolute max-w-none object-contain ${
           id === "family"
