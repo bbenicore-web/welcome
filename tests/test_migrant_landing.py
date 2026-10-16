@@ -11,6 +11,11 @@ class MigrantLandingRegressionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.source = PAGE.read_text(encoding="utf-8")
 
+    def test_step_badges_use_figma_shapes_and_stroke(self):
+        self.assertIn("-webkit-text-stroke: 0.666667px #333", self.source)
+        self.assertIn('background-image: url("migrant-assets/step-2.svg")', self.source)
+        self.assertIn('background-image: url("migrant-assets/step-3.svg")', self.source)
+
     def test_tariff_cards_use_mockup_border_radius(self):
         self.assertNotRegex(
             self.source,
