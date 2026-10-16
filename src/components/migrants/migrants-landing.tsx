@@ -75,7 +75,7 @@ export function MigrantsLanding() {
               href="https://lk.megafon.ru/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-6 items-center rounded-full bg-[#00B956] px-4 text-[12px] font-medium leading-none text-white"
+              className="inline-flex h-6 items-center rounded-full bg-[#00B956] px-4 text-[12px] font-medium leading-[14px] text-white"
             >
               {t.login}
             </a>
@@ -146,14 +146,14 @@ export function MigrantsLanding() {
               <p className="mt-2 text-[18px] font-medium leading-6 text-[#333]">
                 {t.heroLead}
               </p>
-              <div className="mt-8 flex gap-2">
+              <div className="mt-8 grid grid-cols-2 gap-2">
                 <a
                   href="#connect"
-                  className="flex h-[52px] flex-1 items-center justify-center rounded-[12px] bg-[#333] px-3 text-center text-[15px] font-medium leading-6 whitespace-nowrap text-white"
+                  className="flex h-[52px] items-center justify-center rounded-[12px] bg-[#333] px-2 text-center text-[15px] font-medium leading-6 whitespace-nowrap text-white"
                 >
                   {t.cta}
                 </a>
-                <div ref={langRef} className="relative flex-1">
+                <div ref={langRef} className="relative min-w-0">
                   <button
                     type="button"
                     aria-expanded={langOpen}
@@ -216,7 +216,7 @@ export function MigrantsLanding() {
               {t.benefitCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className="flex h-[162px] overflow-hidden rounded-[16px] bg-[#f3f5f8]"
+                  className="flex h-[162px] overflow-hidden rounded-[12px] bg-[#f2f4f7]"
                 >
                   <div className="flex w-[200px] shrink-0 flex-col justify-center px-4 py-4">
                     <h3 className="text-[16px] font-medium leading-6">{card.title}</h3>
@@ -237,16 +237,16 @@ export function MigrantsLanding() {
             <h2 className="text-[22px] font-bold leading-7">{t.tariffsTitle}</h2>
             <div className="mt-6 grid gap-3">
               {t.tariffs.map((tariff) => (
-                <article key={tariff.id} className="overflow-hidden rounded-[16px] bg-white shadow-[0_8px_28px_rgba(17,24,39,0.08)]">
+                <article key={tariff.id} className="overflow-hidden rounded-[12px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
                   <TariffArt id={tariff.id} />
-                  <div className="relative -mt-8 rounded-t-[16px] bg-white px-4 pb-4 pt-5">
+                  <div className="relative -mt-8 rounded-t-[12px] bg-white px-4 pb-4 pt-5">
                     <h3 className="text-[22px] font-bold leading-8">{tariff.title}</h3>
                     <p className="mt-1 text-[15px] leading-6 text-[#333]/80">{tariff.text}</p>
                     <ul className="mt-3 flex flex-wrap gap-1">
                       {tariff.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="inline-flex h-[22px] items-center rounded-full bg-[#f2f4f7] px-2 text-[12px] font-medium leading-none text-[#333]"
+                          className="inline-flex h-[22px] items-center rounded-[8px] bg-[#f2f4f7] px-2 text-[12px] font-medium leading-none text-[#333]"
                         >
                           {tag}
                         </li>
@@ -302,7 +302,7 @@ export function MigrantsLanding() {
               })}
             </div>
 
-            <article className="mt-6 overflow-hidden rounded-[16px] bg-white shadow-[0_8px_28px_rgba(17,24,39,0.08)]">
+            <article className="mt-6 overflow-hidden rounded-[12px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)]">
               <div className="relative h-[184px] overflow-hidden bg-[#e7f7ee]">
                 <img
                   src={deviceSrc}
@@ -310,7 +310,7 @@ export function MigrantsLanding() {
                   className="absolute top-[-16px] left-[-48px] h-[239px] w-[424px] max-w-none object-cover"
                 />
               </div>
-              <div className="relative -mt-8 rounded-t-[16px] bg-white px-4 pb-4 pt-5">
+              <div className="relative -mt-8 rounded-t-[12px] bg-white px-4 pb-4 pt-5">
                 <h3 className="text-[18px] font-medium leading-6">
                   {tab === "online" ? t.onlineTitle : t.salonTitle}
                 </h3>
@@ -505,7 +505,7 @@ function TileScroller({ tiles }: { tiles: { title: string; text: string }[] }) {
         {tiles.map((tile, index) => (
           <article
             key={tile.title}
-            className="flex h-[148px] w-[146px] shrink-0 snap-start flex-col rounded-[16px] bg-[#f3f5f8] p-3"
+            className="flex h-[148px] w-[146px] shrink-0 snap-start flex-col rounded-[12px] bg-[#f2f4f7] p-3"
           >
             <TileIcon index={index} />
             <h4 className="mt-3 text-[14px] font-medium leading-5">{tile.title}</h4>
@@ -586,7 +586,7 @@ function SalonMap({ title, subtitle }: { title: string; subtitle: string }) {
       <Pin className="left-[28%] top-[34%]" />
       <Pin className="left-[58%] top-[48%]" active />
       <Pin className="left-[42%] top-[62%]" />
-      <div className="absolute inset-x-3 bottom-3 rounded-[16px] bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+      <div className="absolute inset-x-3 bottom-3 rounded-[12px] bg-white p-3 shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
         <p className="text-[12px] font-medium text-[#00B956]">{subtitle}</p>
         <p className="mt-0.5 text-[16px] font-medium">{title}</p>
       </div>
