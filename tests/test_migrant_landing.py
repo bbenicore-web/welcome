@@ -25,6 +25,7 @@ class MigrantLandingRegressionTests(unittest.TestCase):
         self.assertIn("landing-appear-animation-wrapper_state_hidden", self.source)
         self.assertIn("rotateX(-68deg)", self.source)
         self.assertIn("data-card-reveal", self.source)
+        self.assertNotIn(".landing-feature-cards-item,", self.source)
         self.assertIn("rootMargin: '0px 0px 120px 0px'", self.source)
         self.assertIn("MegaFonGraphikLC-Light.woff2", self.source)
         self.assertIn("MegaFonGraphikLC-Black.woff2", self.source)
