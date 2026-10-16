@@ -742,7 +742,9 @@
     }
     .landing-advantage-cards-carousel {
       gap: 6px; padding: 0 16px; margin: 0 -16px; scroll-padding: 16px;
+      cursor: grab;
     }
+    .landing-advantage-cards-carousel.is-dragging { cursor: grabbing; user-select: none; }
     .landing-advantage-card {
       width: 146px; min-height: 148px; height: 148px; padding: 16px;
       border-radius: 16px; gap: 0; background: #f9f8fa;
@@ -781,7 +783,9 @@
     .landing-text-with-icon { gap: 16px; margin: -16px 0 0; }
     .mfui-text-with-icon-item { grid-template-columns: 32px 1fr; gap: 10px; align-items: center; line-height: 18px; }
     .step-badge { border: 0; background: center/32px 32px no-repeat url(\"migrant-assets/step-1.svg\"); }
-    .landing-buttons-box .mfui-button { min-height: 52px; border-radius: 12px; padding: 14px 32px; }
+    .landing-buttons-box .mfui-button {
+      flex: 0 0 auto; min-height: 52px; height: 52px; border-radius: 12px; padding: 14px 32px;
+    }
     #panel-bio-yes .mfui-button_type_primary { display: none; }
     .map-section { height: 615.295px; padding: 48px 16px; }
     .map-section .landing-title-description-box h2 { margin-bottom: 20px; }
@@ -970,7 +974,7 @@
           </div>
         </article>
         </div>
-        <div class="carousel-dots" id="perks-dots" aria-hidden="true"></div>
+        <div class="carousel-dots" id="perks-dots" aria-label="Страницы с дополнительными возможностями"></div>
       </section>
 
       <section class="landing-container-v2" id="connect" aria-labelledby="connect-title">
@@ -1141,20 +1145,80 @@
     const carousel = document.getElementById('perks-carousel');
     const dotsRoot = document.getElementById('perks-dots');
     const cards = [...carousel.querySelectorAll('.landing-advantage-card')];
+    const getPerksPageLeft = (page) => page === 0 ? 0 : carousel.scrollWidth - carousel.clientWidth;
+    const showPerksPage = (page, behavior = 'smooth') => {
+      carousel.scrollTo({ left: getPerksPageLeft(page), behavior });
+    };
     cards.slice(0, 2).forEach((_, i) => {
       const dot = document.createElement('button');
       dot.type = 'button';
+      dot.setAttribute('aria-label', `Страница ${i + 1}`);
       if (i === 0) dot.classList.add('active');
       dot.addEventListener('click', () => {
-        carousel.scrollTo({ left: cards[i].offsetLeft - 16, behavior: 'smooth' });
+        showPerksPage(i);
       });
       dotsRoot.appendChild(dot);
     });
     carousel.addEventListener('scroll', () => {
-      const secondPageStart = Math.max(1, cards[1].offsetLeft - 16);
+      const secondPageStart = Math.max(1, getPerksPageLeft(1) / 2);
       const idx = carousel.scrollLeft >= secondPageStart ? 1 : 0;
       [...dotsRoot.children].forEach((d, i) => d.classList.toggle('active', i === idx));
     }, { passive: true });
+    const rotatePerks = () => {
+      const onSecondPage = carousel.scrollLeft >= getPerksPageLeft(1) / 2;
+      showPerksPage(onSecondPage ? 0 : 1);
+    };
+    let perksTimer = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 0
+      : setInterval(rotatePerks, 4500);
+    const pausePerks = () => {
+      if (perksTimer) clearInterval(perksTimer);
+      perksTimer = 0;
+    };
+    const resumePerks = () => {
+      pausePerks();
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        perksTimer = setInterval(rotatePerks, 4500);
+      }
+    };
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+    let draggingPerks = false;
+    carousel.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      draggingPerks = true;
+      dragStartX = event.clientX;
+      dragStartScroll = carousel.scrollLeft;
+      carousel.classList.add('is-dragging');
+      carousel.setPointerCapture(event.pointerId);
+      pausePerks();
+    });
+    carousel.addEventListener('pointermove', (event) => {
+      if (!draggingPerks) return;
+      carousel.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+    });
+    const finishPerksDrag = () => {
+      if (!draggingPerks) return;
+      draggingPerks = false;
+      carousel.classList.remove('is-dragging');
+      showPerksPage(carousel.scrollLeft >= getPerksPageLeft(1) / 2 ? 1 : 0);
+      resumePerks();
+    };
+    carousel.addEventListener('pointerup', finishPerksDrag);
+    carousel.addEventListener('pointercancel', finishPerksDrag);
+    carousel.addEventListener('mouseenter', pausePerks);
+    carousel.addEventListener('mouseleave', () => {
+      finishPerksDrag();
+      resumePerks();
+    });
+    carousel.addEventListener('focusin', pausePerks);
+    carousel.addEventListener('focusout', resumePerks);
+    carousel.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        showPerksPage(event.key === 'ArrowRight' ? 1 : 0);
+      }
+    });
 
     const faqItems = [...document.querySelectorAll('.mfui-accordion')];
     faqItems.forEach((item) => {
