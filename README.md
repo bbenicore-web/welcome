@@ -13,9 +13,15 @@
 
 ## GitHub Pages
 
-Сайт собирается в статику (`npm run build` → папка `out`). Адрес после включения Pages:
+Сайт собирается в статику (`npm run build` → папка `out`) и публикуется из ветки `gh-pages`:
 
 https://bbenicore-web.github.io/welcome/
+
+- Связь для иностранных граждан: https://bbenicore-web.github.io/welcome/warm/
+- Только приехал: https://bbenicore-web.github.io/welcome/arrive/
+- Уже в России: https://bbenicore-web.github.io/welcome/here/
+
+Обновить публикацию: `npm run deploy:pages` (`GITHUB_PAGES=true`, `basePath=/welcome`).
 
 Локально:
 
@@ -26,6 +32,7 @@ npm run dev
 
 Откройте http://localhost:43123 — выбор сценария
 
+- Связь для иностранных граждан: http://localhost:43123/warm
 - Только приехал: http://localhost:43123/arrive
 - Уже в России: http://localhost:43123/here
 - Сегменты и CJM: http://localhost:43123/cjm
