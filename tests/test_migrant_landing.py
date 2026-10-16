@@ -11,6 +11,13 @@ class MigrantLandingRegressionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.source = PAGE.read_text(encoding="utf-8")
 
+    def test_language_selector_lists_mock_languages(self):
+        self.assertIn('id="language-menu"', self.source)
+        self.assertIn("Oʻzbekcha", self.source)
+        self.assertIn("Тоҷикӣ", self.source)
+        self.assertIn("中文", self.source)
+        self.assertIn("language-menu__option is-active", self.source)
+
     def test_step_badges_use_figma_shapes_and_stroke(self):
         self.assertIn("-webkit-text-stroke: 0.666667px #333", self.source)
         self.assertIn('background-image: url("migrant-assets/step-2.svg")', self.source)
