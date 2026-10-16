@@ -823,7 +823,24 @@
     .landing-picture-with-description__content h3 { margin: 0; font-size: 18px; line-height: 24px; font-weight: 500; }
     .landing-text-with-icon { gap: 16px; margin: -16px 0 0; }
     .mfui-text-with-icon-item { grid-template-columns: 32px 1fr; gap: 10px; align-items: center; line-height: 18px; }
-    .step-badge { border: 0; background: center/32px 32px no-repeat url(\"migrant-assets/step-1.svg\"); }
+    .step-badge {
+      border: 0;
+      background-position: center;
+      background-size: 32px 32px;
+      background-repeat: no-repeat;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      color: #333;
+      -webkit-text-stroke: 0.666667px #333;
+      paint-order: stroke fill;
+    }
+    .mfui-text-with-icon-item:nth-child(1) .step-badge { background-image: url("migrant-assets/step-1.svg"); }
+    .mfui-text-with-icon-item:nth-child(2) .step-badge { background-image: url("migrant-assets/step-2.svg"); }
+    .mfui-text-with-icon-item:nth-child(3) .step-badge { background-image: url("migrant-assets/step-3.svg"); }
+    .mfui-text-with-icon-item:nth-child(4) .step-badge { background-image: url("migrant-assets/step-1.svg"); }
     .landing-buttons-box .mfui-button {
       flex: 0 0 auto; min-height: 52px; height: 52px; border-radius: 12px; padding: 14px 32px;
     }
