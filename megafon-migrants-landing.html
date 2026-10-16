@@ -212,20 +212,87 @@
       color: var(--stc-white);
       flex: 1 1 160px;
     }
-    .language-pill {
+    .language-select {
+      position: relative;
       flex: 1 1 140px;
+      min-width: 0;
+    }
+    .language-pill {
+      width: 100%;
       min-height: 52px;
       border-radius: var(--radius-pill);
       border: 1px solid var(--content);
       background: var(--stc-white);
-      padding: 8px 16px;
+      padding: 8px 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       font-weight: 500;
     }
-    .language-pill img { width: 20px; height: 20px; }
+    .language-pill__flag {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: none;
+    }
+    .language-pill__label {
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: left;
+    }
+    .language-pill__chevron {
+      width: 20px;
+      height: 20px;
+      flex: none;
+      transition: transform .2s ease;
+    }
+    .language-select.is-open .language-pill__chevron {
+      transform: rotate(180deg);
+    }
+    .language-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      z-index: 120;
+      margin: 0;
+      padding: 8px;
+      list-style: none;
+      background: var(--stc-white);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px #00000024;
+    }
+    .language-menu[hidden] { display: none !important; }
+    .language-menu__option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      font: inherit;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--content);
+      text-align: left;
+      cursor: pointer;
+    }
+    .language-menu__option.is-active {
+      background: #ecfbf2;
+      color: var(--brand-green);
+    }
+    .language-menu__option .language-flag {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex: none;
+    }
     .landing-banner-full-screen__art {
       position: relative;
       margin: 16px -8px 0;
@@ -672,9 +739,11 @@
       line-height: 24px; white-space: nowrap; overflow: hidden;
     }
     .breadcrumbs .trail { opacity: .5; }
-    .landing-banner-full-screen { border-radius: 0; height: 480px; }
-    .landing-banner-full-screen__inner { min-height: 480px; height: 480px; padding: 0; }
-    .landing-banner-full-screen__body { flex: none; height: 268px; padding: 32px 16px 0; }
+    .landing-banner-full-screen { border-radius: 0; height: 480px; overflow: visible; }
+    .landing-banner-full-screen__inner { min-height: 480px; height: 480px; padding: 0; overflow: visible; }
+    .landing-banner-full-screen__body {
+      flex: none; height: 268px; padding: 32px 16px 0; position: relative; z-index: 2; overflow: visible;
+    }
     .landing-banner-full-screen__title {
       margin: 0; font-size: 44px; line-height: 48px; letter-spacing: 0;
     }
@@ -682,13 +751,20 @@
       margin-top: 8px; font-size: 18px; line-height: 24px; font-weight: 500;
     }
     .hero-actions { margin-top: 32px; gap: 8px; flex-wrap: nowrap; }
-    .hero-actions .mfui-button, .language-pill {
-      width: 160px; min-width: 0; min-height: 52px; height: 52px;
-      flex: 0 0 160px; border: 0; border-radius: 12px; padding: 14px 10px;
+    .hero-actions .mfui-button, .language-select {
+      width: 160px; min-width: 0; flex: 0 0 160px;
     }
-    .language-pill { gap: 10px; }
-    .language-pill > img:first-child { width: 16px; height: 16px; }
-    .language-pill > img:last-child { width: 20px; height: 20px; margin-left: -10px; }
+    .hero-actions .mfui-button {
+      min-height: 52px; height: 52px; border: 0; border-radius: 12px; padding: 14px 10px;
+    }
+    .language-pill {
+      min-height: 52px; height: 52px; border-radius: 12px; padding: 14px 10px; gap: 10px;
+    }
+    .language-pill__flag { width: 16px; height: 16px; }
+    .language-pill__chevron { width: 20px; height: 20px; margin-left: -6px; }
+    .language-menu { border-radius: 20px; padding: 8px; }
+    .language-menu__option { padding: 12px; border-radius: 16px; font-size: 15px; line-height: 24px; }
+    .language-menu__option.is-active { background: #ecfbf2; color: #00b956; }
     .landing-banner-full-screen__art {
       flex: none; height: 212px; margin: 0; overflow: hidden;
     }
@@ -973,11 +1049,45 @@
             <p class="landing-banner-full-screen__description">Тарифы для гостей, интернет, звонки домой и полезные сервисы</p>
             <div class="hero-actions">
               <a class="mfui-button mfui-button_type_primary mfui-button_theme_black" href="#connect">Стать абонентом</a>
-              <button type="button" class="language-pill" aria-haspopup="listbox" aria-label="Язык">
-                <img src="migrant-assets/flag.svg" alt="">
-                Русский
-                <img src="migrant-assets/arrow-down.svg" alt="">
-              </button>
+              <div class="language-select" id="language-select">
+                <button type="button" class="language-pill" id="language-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu" aria-label="Язык интерфейса">
+                  <img class="language-pill__flag" src="migrant-assets/flag.svg" alt="">
+                  <span class="language-pill__label">Русский</span>
+                  <img class="language-pill__chevron" src="migrant-assets/arrow-down.svg" alt="">
+                </button>
+                <ul class="language-menu" id="language-menu" role="listbox" aria-label="Выбор языка" hidden>
+                  <li role="presentation">
+                    <button type="button" class="language-menu__option is-active" role="option" aria-selected="true" data-lang="ru" data-label="Русский" data-flag="migrant-assets/flag.svg">
+                      <img class="language-flag" src="migrant-assets/flag.svg" alt="">
+                      <span>Русский</span>
+                    </button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="en" data-label="English" data-flag="migrant-assets/flag-gb.svg">
+                      <img class="language-flag" src="migrant-assets/flag-gb.svg" alt="">
+                      <span>English</span>
+                    </button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="uz" data-label="Oʻzbekcha" data-flag="migrant-assets/flag-uz.svg">
+                      <img class="language-flag" src="migrant-assets/flag-uz.svg" alt="">
+                      <span>Oʻzbekcha</span>
+                    </button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="tg" data-label="Тоҷикӣ" data-flag="migrant-assets/flag-tj.svg">
+                      <img class="language-flag" src="migrant-assets/flag-tj.svg" alt="">
+                      <span>Тоҷикӣ</span>
+                    </button>
+                  </li>
+                  <li role="presentation">
+                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="zh" data-label="中文" data-flag="migrant-assets/flag-cn.svg">
+                      <img class="language-flag" src="migrant-assets/flag-cn.svg" alt="">
+                      <span>中文</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="landing-banner-full-screen__art">
@@ -1365,6 +1475,60 @@
         icon.src = item.open ? 'migrant-assets/faq-open.svg' : 'migrant-assets/faq-closed.svg';
       });
     });
+
+    (() => {
+      const root = document.getElementById('language-select');
+      const toggle = document.getElementById('language-toggle');
+      const menu = document.getElementById('language-menu');
+      if (!root || !toggle || !menu) return;
+      const flag = toggle.querySelector('.language-pill__flag');
+      const label = toggle.querySelector('.language-pill__label');
+      const options = [...menu.querySelectorAll('.language-menu__option')];
+      const storageKey = 'megafon-migrant-landing-lang';
+
+      function setOpen(open) {
+        root.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.hidden = !open;
+      }
+
+      function applySelection(option) {
+        options.forEach((item) => {
+          const active = item === option;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        flag.src = option.dataset.flag;
+        flag.alt = '';
+        label.textContent = option.dataset.label;
+        document.documentElement.lang = option.dataset.lang === 'zh' ? 'zh' : option.dataset.lang;
+        try {
+          localStorage.setItem(storageKey, option.dataset.lang);
+        } catch (_) {}
+        setOpen(false);
+      }
+
+      const saved = (() => {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (_) {
+          return null;
+        }
+      })();
+      const initial = options.find((item) => item.dataset.lang === saved) || options[0];
+      if (initial !== options[0]) applySelection(initial);
+
+      toggle.addEventListener('click', () => setOpen(!root.classList.contains('is-open')));
+      options.forEach((option) => {
+        option.addEventListener('click', () => applySelection(option));
+      });
+      document.addEventListener('click', (event) => {
+        if (!root.contains(event.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setOpen(false);
+      });
+    })();
   </script>
 </body>
 </html>
