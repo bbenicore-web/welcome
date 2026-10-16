@@ -21,9 +21,8 @@ import { withBase } from "@/lib/base-path";
 import { cities, locales, type Locale } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language-context";
 
-const heroSrc = withBase("/migrants/hero.webp");
 const deviceSrc = withBase("/migrants/device.webp");
-const heroAlt = "Две чашки чая, выпечка и зелёный смартфон на светлом столе";
+const heroAlt = "Зелёный смартфон МегаФон";
 
 export function MigrantsLanding() {
   const { locale, setLocale, t: dict } = useLanguage();
@@ -202,11 +201,11 @@ export function MigrantsLanding() {
               </div>
             </div>
 
-            <div className="relative h-[212px] overflow-hidden">
+            <div className="relative h-[212px] overflow-hidden bg-[#e7f6ee]">
               <img
-                src={heroSrc}
+                src={deviceSrc}
                 alt={heroAlt}
-                className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
           </section>
@@ -223,25 +222,7 @@ export function MigrantsLanding() {
                     <h3 className="text-[16px] font-medium leading-6">{card.title}</h3>
                     <p className="mt-2 text-[14px] leading-[18px] text-[#333]/80">{card.text}</p>
                   </div>
-                  <div
-                    className="relative min-w-0 flex-1 overflow-hidden"
-                    style={{
-                      background:
-                        index === 0
-                          ? "linear-gradient(160deg, #eef3f8, #d5e4f2)"
-                          : "linear-gradient(160deg, #e7fff2, #b7f0cf)",
-                    }}
-                  >
-                    <img
-                      src={deviceSrc}
-                      alt=""
-                      className={`absolute max-w-none object-cover ${
-                        index === 0
-                          ? "-left-6 top-2 h-[180px] w-[220px]"
-                          : "-left-10 top-0 h-[190px] w-[230px]"
-                      }`}
-                    />
-                  </div>
+                  <BenefitArt index={index} />
                 </article>
               ))}
             </div>
@@ -385,7 +366,7 @@ export function MigrantsLanding() {
             <FaqList items={t.faq} />
           </section>
 
-          <footer className="bg-[#f7f8fa] px-4 pb-10 pt-8">
+          <footer className="bg-[#f2f4f7] px-4 pb-10 pt-8">
             <div className="divide-y divide-black/10 border-y border-black/10">
               {t.footerGroups.map((group) => (
                 <details key={group.title} className="group py-1">
@@ -540,6 +521,20 @@ function TileScroller({ tiles }: { tiles: { title: string; text: string }[] }) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+function BenefitArt({ index }: { index: number }) {
+  return (
+    <div className={`relative min-w-0 flex-1 overflow-hidden ${index === 0 ? "bg-[#e7eef6]" : "bg-[#e5f6ec]"}`}>
+      <img
+        src={deviceSrc}
+        alt=""
+        className={`absolute h-[170px] w-[220px] max-w-none object-cover ${
+          index === 0 ? "top-1 left-[-78px]" : "top-[-8px] left-[-96px]"
+        }`}
+      />
     </div>
   );
 }

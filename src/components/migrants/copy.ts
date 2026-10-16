@@ -71,12 +71,12 @@ const ru: MigrantCopy = {
   benefitsTitle: "Связь для всего, что важно",
   benefitCards: [
     {
-      title: "Интернет для каждого дня",
-      text: "Мессенджеры, карты и видеозвонки остаются с вами — чтобы решать дела и быть рядом с семьёй.",
+      title: "Быстрый интернет",
+      text: "Мессенджеры, карты и видеозвонки без доплат.",
     },
     {
-      title: "Звонки домой",
-      text: "Специальные цены на звонки в страны СНГ, без скрытых списаний.",
+      title: "Связь с близкими",
+      text: "Звонки домой по специальным ценам.",
     },
   ],
   moreTitle:
@@ -92,20 +92,20 @@ const ru: MigrantCopy = {
     {
       id: "work",
       title: "Для работы",
-      text: "Для смены, дороги и вечерних звонков семье.",
-      tags: ["35 ГБ", "700 мин", "звонки домой"],
+      text: "Безлимитный доступ к сервисам, которые помогают в работе и общении каждый день.",
+      tags: ["безлимит на мессенджеры", "безлимит на соцсети", "безлимит на видео"],
     },
     {
       id: "study",
       title: "Для учёбы",
-      text: "Интернет для занятий, карт и видеосвязи.",
-      tags: ["20 ГБ", "мессенджеры", "карты"],
+      text: "Безлимитный доступ к сервисам для занятий, карт и связи с близкими.",
+      tags: ["безлимит на мессенджеры", "безлимит на видео", "безлимит на музыку"],
     },
     {
       id: "family",
       title: "Для семьи",
       text: "Объединяйте близких в МегаСемью: три участника в одной семейной группе",
-      tags: ["МегаСемья", "3 номера"],
+      tags: ["МегаСемья", "общий пакет", "семейная группа"],
     },
   ],
   details: "Подробнее",
@@ -118,7 +118,7 @@ const ru: MigrantCopy = {
     "Подтвердите личность доступным для вас способом.",
     "Завершите оформление по подсказкам на экране.",
   ],
-  prepare: "Что подготовить",
+  prepare: "Пойти в салон",
   salonTitle: "Сначала подготовьте данные",
   salonSteps: [
     "Подготовьте паспорт и перевод, если он необходим.",
@@ -215,12 +215,12 @@ const uz: MigrantCopy = {
   benefitsTitle: "Muhim bo‘lgan hamma narsa uchun aloqa",
   benefitCards: [
     {
-      title: "Har kungi internet",
-      text: "Messenjerlar, xaritalar va videoqo‘ng‘iroqlar yonida — ishni hal qilish va oila bilan bo‘lish uchun.",
+      title: "Tez internet",
+      text: "Messenjerlar, xaritalar va videoqo‘ng‘iroqlar qo‘shimcha to‘lovsiz.",
     },
     {
-      title: "Uyga qo‘ng‘iroq",
-      text: "MDH mamlakatlariga maxsus narx, yashirin yechimlarsiz.",
+      title: "Yaqinlar bilan aloqa",
+      text: "Uyga qo‘ng‘iroqlar maxsus narxda.",
     },
   ],
   moreTitle: "Har bir kun osonroq bo‘lishi uchun boshqa muhim narsalarni ham o‘yladik",
@@ -235,20 +235,20 @@ const uz: MigrantCopy = {
     {
       id: "work",
       title: "Ish uchun",
-      text: "Smena, yo‘l va kechqurun oilaga qo‘ng‘iroq uchun.",
-      tags: ["35 GB", "700 daq", "uyga"],
+      text: "Ish va muloqotga yordam beradigan servislarga cheksiz kirish.",
+      tags: ["messenjerlar", "ijtimoiy tarmoqlar", "video"],
     },
     {
       id: "study",
       title: "O‘qish uchun",
-      text: "Darslar, xaritalar va videoaloqa uchun internet.",
-      tags: ["20 GB", "messenjer", "xarita"],
+      text: "Darslar, xaritalar va yaqinlar bilan aloqa uchun cheksiz kirish.",
+      tags: ["messenjerlar", "video", "musiqa"],
     },
     {
       id: "family",
       title: "Oila uchun",
       text: "Yaqinlarni MegaOilaga biriktiring: bitta oilaviy guruhda uch ishtirokchi",
-      tags: ["MegaOila", "3 raqam"],
+      tags: ["MegaOila", "umumiy paket", "oilaviy guruh"],
     },
   ],
   details: "Batafsil",
@@ -261,7 +261,7 @@ const uz: MigrantCopy = {
     "Shaxsingizni sizga mos usulda tasdiqlang.",
     "Rasmiylashtirishni ekrandagi ko‘rsatmalar bo‘yicha yakunlang.",
   ],
-  prepare: "Nima tayyorlash kerak",
+  prepare: "Salonga borish",
   salonTitle: "Avval ma’lumotlarni tayyorlang",
   salonSteps: [
     "Pasport va tarjimani, agar kerak bo‘lsa, tayyorlang.",
@@ -357,12 +357,12 @@ const tg: MigrantCopy = {
   benefitsTitle: "Алоқа барои ҳар чизи муҳим",
   benefitCards: [
     {
-      title: "Интернет барои ҳар рӯз",
-      text: "Паёмрасонҳо, харитаҳо ва зангҳои видеоӣ бо шумо мемонанд — барои кор ва наздикӣ бо оила.",
+      title: "Интернети тез",
+      text: "Паёмрасонҳо, харитаҳо ва зангҳои видеоӣ бе пардохти иловагӣ.",
     },
     {
-      title: "Занг ба хона",
-      text: "Нархи махсус ба кишварҳои ИДМ, бе ҳисоббарории пинҳонӣ.",
+      title: "Алоқа бо наздикон",
+      text: "Занг ба хона бо нархи махсус.",
     },
   ],
   moreTitle: "То ҳар рӯз осонтар шавад, дар бораи чизҳои дигари муҳим ҳам фикр кардем",
@@ -377,20 +377,20 @@ const tg: MigrantCopy = {
     {
       id: "work",
       title: "Барои кор",
-      text: "Барои баст, роҳ ва зангҳои шом ба оила.",
-      tags: ["35 ГБ", "700 дақ", "ба хона"],
+      text: "Дастрасии бемаҳдуд ба хидматҳое, ки ба кор ва муошират кӯмак мекунанд.",
+      tags: ["паёмрасонҳо", "шабакаҳо", "видео"],
     },
     {
       id: "study",
       title: "Барои таҳсил",
-      text: "Интернет барои дарс, харита ва видеоалоқа.",
-      tags: ["20 ГБ", "паёмрасон", "харита"],
+      text: "Дастрасии бемаҳдуд барои дарс, харита ва алоқа бо наздикон.",
+      tags: ["паёмрасонҳо", "видео", "мусиқӣ"],
     },
     {
       id: "family",
       title: "Барои оила",
       text: "Наздиконро дар МегаОила муттаҳид кунед: се иштирокчӣ дар як гурӯҳи оилавӣ",
-      tags: ["МегаОила", "3 рақам"],
+      tags: ["МегаОила", "бастаи умумӣ", "гурӯҳи оилавӣ"],
     },
   ],
   details: "Муфассал",
@@ -403,7 +403,7 @@ const tg: MigrantCopy = {
     "Шахсиятро бо усули дастрас тасдиқ кунед.",
     "Барасмиятдарориро аз рӯи нишондодҳои экран анҷом диҳед.",
   ],
-  prepare: "Чӣ тайёр кардан лозим",
+  prepare: "Ба салон рафтан",
   salonTitle: "Аввал маълумотро омода кунед",
   salonSteps: [
     "Шиноснома ва тарҷумаро, агар лозим бошад, омода кунед.",
@@ -473,12 +473,12 @@ const ky: MigrantCopy = {
   benefitsTitle: "Маанилүү нерселердин баары үчүн байланыш",
   benefitCards: [
     {
-      title: "Күнүмдүк интернет",
-      text: "Мессенджерлер, карталар жана видео чалуулар жаныңызда — иш үчүн жана үй-бүлө менен болуу үчүн.",
+      title: "Ыкчам интернет",
+      text: "Мессенджерлер, карталар жана видео чалуулар кошумча төлөмсүз.",
     },
     {
-      title: "Үйгө чалуу",
-      text: "КМШ өлкөлөрүнө өзгөчө баа, жашыруун чегерүүлөрсүз.",
+      title: "Жакындарың менен байланыш",
+      text: "Үйгө чалуу өзгөчө баада.",
     },
   ],
   moreTitle: "Ар бир күн жеңил болушу үчүн башка маанилүү нерселерди да ойлодук",
@@ -493,20 +493,20 @@ const ky: MigrantCopy = {
     {
       id: "work",
       title: "Иш үчүн",
-      text: "Смена, жол жана кечки үй-бүлөгө чалуу үчүн.",
-      tags: ["35 ГБ", "700 мүн", "үйгө"],
+      text: "Ишке жана баарлашууга жардам берген кызматтарга чексиз кирүү.",
+      tags: ["мессенджерлер", "соцтармактар", "видео"],
     },
     {
       id: "study",
       title: "Окуу үчүн",
-      text: "Сабак, карта жана видео байланыш үчүн интернет.",
-      tags: ["20 ГБ", "мессенджер", "карта"],
+      text: "Сабак, карта жана жакындарың менен байланыш үчүн чексиз кирүү.",
+      tags: ["мессенджерлер", "видео", "музыка"],
     },
     {
       id: "family",
       title: "Үй-бүлө үчүн",
       text: "Жакындарыңызды МегаҮй-бүлөгө бириктириңиз: бир топто үч катышуучу",
-      tags: ["МегаҮй-бүлө", "3 номер"],
+      tags: ["МегаҮй-бүлө", "орток пакет", "үй-бүлөлүк топ"],
     },
   ],
   details: "Кененирээк",
@@ -519,7 +519,7 @@ const ky: MigrantCopy = {
     "Өздүгүңүздү жеткиликтүү ыкма менен ырастаңыз.",
     "Тариздөөнү экрандагы кеңештер боюнча бүтүрүңүз.",
   ],
-  prepare: "Эмнени даярдоо керек",
+  prepare: "Салонго баруу",
   salonTitle: "Адегенде маалыматты даярдаңыз",
   salonSteps: [
     "Паспортту жана котормону, керек болсо, даярдаңыз.",
