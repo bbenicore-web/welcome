@@ -59,7 +59,7 @@ await evaluate("document.documentElement.style.scrollBehavior = 'auto'");
 const initialReveal = await evaluate(
   "document.querySelector('.landing-service-side-picture-card').parentElement.dataset.revealState",
 );
-assert.equal(initialReveal, "pending", "Offscreen tariff card must wait for its reveal");
+assert.equal(initialReveal, "hidden", "Offscreen tariff card must wait for its reveal");
 
 await evaluate(`(() => {
   const card = document.querySelector('.landing-service-side-picture-card');
@@ -70,7 +70,7 @@ await new Promise((resolve) => setTimeout(resolve, 700));
 const revealed = await evaluate(
   "document.querySelector('.landing-service-side-picture-card').parentElement.dataset.revealState",
 );
-assert.ok(["playing", "shown"].includes(revealed), `Tariff card must reveal, got ${revealed}`);
+assert.ok(["animated", "shown"].includes(revealed), `Tariff card must reveal, got ${revealed}`);
 if (process.env.REVEAL_ARTIFACT_PATH) {
   const screenshot = await command("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
   await writeFile(process.env.REVEAL_ARTIFACT_PATH, screenshot.data, "base64");
