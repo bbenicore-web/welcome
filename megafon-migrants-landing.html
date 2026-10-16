@@ -6,7 +6,15 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Связь для иностранных граждан — тарифы, подключение SIM и офисы МегаФона.">
   <title>На связи с близкими — МегаФон</title>
+  <link rel="preload" href="fonts/MegaFonGraphikLC-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/MegaFonGraphikLC-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face {
+      font-family: Graphik;
+      src: url("fonts/MegaFonGraphikLC-Light.woff2") format("woff2");
+      font-weight: 300;
+      font-display: swap;
+    }
     @font-face {
       font-family: Graphik;
       src: url("fonts/MegaFonGraphikLC-Regular.woff2") format("woff2");
@@ -29,6 +37,12 @@
       font-family: Graphik;
       src: url("fonts/MegaFonGraphikLC-Bold.woff2") format("woff2");
       font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: Graphik;
+      src: url("fonts/MegaFonGraphikLC-Black.woff2") format("woff2");
+      font-weight: 900;
       font-display: swap;
     }
 
@@ -852,23 +866,41 @@
     .footer-socials { display: flex; align-items: center; gap: 8px; }
     .footer-socials img { width: 24px; height: 24px; }
     .footer-socials .speedtest { width: 73px; height: 32px; margin-left: auto; }
-    [data-card-reveal][data-reveal-state="pending"] > * {
+    [data-card-reveal].landing-appear-animation-wrapper_state_hidden {
       opacity: 0;
       transform: perspective(900px) translateY(120px) translateZ(-36px) rotateX(-68deg);
       transform-origin: 50% 0;
       pointer-events: none;
     }
-    [data-card-reveal][data-reveal-state="playing"] > * {
+    [data-card-reveal].landing-appear-animation-wrapper_state_animated {
       transform-origin: 50% 0;
-      animation: megafon-service-appear .6s ease both;
+      animation: appear-animation-wrapper .6s ease both;
       will-change: transform, opacity;
     }
-    @keyframes megafon-service-appear {
-      from { opacity: 0; transform: perspective(900px) translateY(120px) translateZ(-36px) rotateX(-68deg); }
-      to { opacity: 1; transform: perspective(900px); }
+    [data-card-reveal].landing-appear-animation-wrapper_state_shown {
+      opacity: 1;
+      transform: perspective(900px);
+    }
+    @keyframes appear-animation-wrapper {
+      0% {
+        opacity: 0;
+        transform: perspective(900px) translateY(120px) translateZ(-36px) rotateX(-68deg);
+      }
+      to {
+        opacity: 1;
+        transform: perspective(900px);
+      }
+    }
+    .bio-tab-panel.tab-panel-enter {
+      animation: tabShow .3s forwards;
+    }
+    @keyframes tabShow {
+      0% { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (prefers-reduced-motion: reduce) {
-      [data-card-reveal] > * { animation: none !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; }
+      [data-card-reveal] { animation: none !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; }
+      .bio-tab-panel.tab-panel-enter { animation: none !important; transform: none !important; opacity: 1 !important; }
     }
     @media (min-width: 600px) { :root { --page-width: 360px; } }
   </style>
@@ -1011,7 +1043,7 @@
           </div>
         </div>
 
-        <div id="panel-bio-yes" role="tabpanel" aria-labelledby="tab-bio-yes">
+        <div id="panel-bio-yes" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-yes">
           <article class="landing-picture-with-description">
             <div class="landing-picture-with-description__img-wrap">
               <img src="migrant-assets/sim-card.png" alt="SIM-карта">
@@ -1031,7 +1063,7 @@
           </article>
         </div>
 
-        <div id="panel-bio-no" role="tabpanel" aria-labelledby="tab-bio-no" hidden>
+        <div id="panel-bio-no" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-no" hidden>
           <article class="landing-picture-with-description">
             <div class="landing-picture-with-description__img-wrap">
               <img src="migrant-assets/sim-card.png" alt="SIM-карта">
@@ -1162,50 +1194,56 @@
 
     const revealSlots = [...document.querySelectorAll('[data-card-reveal]')];
     const revealMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const revealViewportFraction = 0.75;
-    let revealLastY = window.scrollY;
-    let revealQueued = false;
-    function updateCardReveals() {
-      revealQueued = false;
-      const y = window.scrollY;
-      const movingUp = y < revealLastY;
-      const triggerY = window.innerHeight * revealViewportFraction;
-      revealSlots.forEach((slot) => {
-        if (!slot.getClientRects().length) return;
-        const rect = slot.getBoundingClientRect();
-        if (revealMotion.matches) {
-          slot.dataset.revealState = 'shown';
-          return;
-        }
-        if (movingUp && rect.top > triggerY + 32) slot.dataset.revealState = 'pending';
-        const track = slot.closest('.landing-advantage-cards-carousel');
-        const bounds = track ? track.getBoundingClientRect() : { left: 0, right: window.innerWidth };
-        const visibleWidth = Math.min(rect.right, bounds.right, window.innerWidth) - Math.max(rect.left, bounds.left, 0);
-        if (slot.dataset.revealState === 'pending' && rect.top <= triggerY && rect.bottom > 0 && visibleWidth > 0) {
-          slot.dataset.revealState = 'playing';
-        }
-      });
-      revealLastY = y;
+    const revealStates = {
+      hidden: 'landing-appear-animation-wrapper_state_hidden',
+      animated: 'landing-appear-animation-wrapper_state_animated',
+      shown: 'landing-appear-animation-wrapper_state_shown',
+    };
+    function revealRootBottom(entry) {
+      return entry?.rootBounds?.bottom ?? window.visualViewport?.height ?? window.innerHeight;
     }
-    function queueCardReveals() {
-      if (revealQueued) return;
-      revealQueued = true;
-      requestAnimationFrame(updateCardReveals);
+    function carouselSlotVisible(slot) {
+      const track = slot.closest('.landing-advantage-cards-carousel');
+      if (!track) return true;
+      const rect = slot.getBoundingClientRect();
+      const bounds = track.getBoundingClientRect();
+      return Math.min(rect.right, bounds.right, window.innerWidth) - Math.max(rect.left, bounds.left, 0) > 0;
     }
+    function setRevealState(slot, state) {
+      slot.dataset.revealState = state;
+      slot.classList.remove(revealStates.hidden, revealStates.animated, revealStates.shown);
+      slot.classList.add(revealStates[state]);
+    }
+    function updateRevealSlot(slot, entry) {
+      if (!slot.getClientRects().length) return;
+      if (revealMotion.matches) {
+        setRevealState(slot, 'shown');
+        return;
+      }
+      if (!carouselSlotVisible(slot)) return;
+      const { top, bottom } = entry.boundingClientRect;
+      const viewportBottom = revealRootBottom(entry);
+      const state = slot.dataset.revealState || 'hidden';
+      if (state === 'hidden' && top < viewportBottom) setRevealState(slot, 'animated');
+      else if (top > viewportBottom && bottom > viewportBottom) setRevealState(slot, 'hidden');
+    }
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => updateRevealSlot(entry.target, entry));
+    }, { root: null, rootMargin: '0px 0px 120px 0px', threshold: [0, 0.01, 0.1, 0.25, 0.5, 0.75, 1] });
     revealSlots.forEach((slot) => {
-      slot.dataset.revealState = revealMotion.matches ? 'shown' : 'pending';
-      slot.firstElementChild.addEventListener('animationend', (event) => {
-        if (event.target === slot.firstElementChild && slot.dataset.revealState === 'playing') slot.dataset.revealState = 'shown';
+      setRevealState(slot, revealMotion.matches ? 'shown' : 'hidden');
+      slot.addEventListener('animationend', (event) => {
+        if (event.target === slot && slot.dataset.revealState === 'animated') setRevealState(slot, 'shown');
       });
+      revealObserver.observe(slot);
     });
-    window.addEventListener('scroll', queueCardReveals, { passive: true });
-    window.addEventListener('resize', queueCardReveals, { passive: true });
     document.addEventListener('focusin', (event) => {
       const slot = event.target.closest('[data-card-reveal]');
-      if (slot) slot.dataset.revealState = 'shown';
+      if (slot) setRevealState(slot, 'shown');
     });
-    revealMotion.addEventListener('change', queueCardReveals);
-    queueCardReveals();
+    revealMotion.addEventListener('change', () => {
+      revealSlots.forEach((slot) => setRevealState(slot, revealMotion.matches ? 'shown' : 'hidden'));
+    });
 
     bioTabs.forEach((tab) => {
       tab.addEventListener('click', () => {
@@ -1215,9 +1253,18 @@
           t.tabIndex = active ? 0 : -1;
         });
         Object.entries(bioPanels).forEach(([id, panel]) => {
-          panel.hidden = tab.id !== id;
+          const show = tab.id === id;
+          panel.classList.remove('tab-panel-enter');
+          panel.hidden = !show;
+          if (show && !revealMotion.matches) {
+            void panel.offsetWidth;
+            panel.classList.add('tab-panel-enter');
+          }
         });
-        queueCardReveals();
+        revealSlots.forEach((slot) => {
+          if (slot.isConnected) revealObserver.unobserve(slot);
+          revealObserver.observe(slot);
+        });
       });
     });
 
@@ -1238,7 +1285,6 @@
       carousel.addEventListener('scroll', () => {
         const active = carousel.scrollLeft >= maxLeft() / 2 ? 1 : 0;
         [...dotsRoot.children].forEach((dot, index) => dot.classList.toggle('active', index === active));
-        queueCardReveals();
       }, { passive: true });
       let dragStartX = 0;
       let dragStartScroll = 0;
