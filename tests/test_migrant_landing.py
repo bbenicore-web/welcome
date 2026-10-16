@@ -20,11 +20,13 @@ class MigrantLandingRegressionTests(unittest.TestCase):
         self.assertIn("flex: 0 0 auto", rule.group(1))
         self.assertIn("height: 52px", rule.group(1))
 
-    def test_perks_carousel_supports_rotation_and_pointer_drag(self):
-        self.assertIn("const rotatePerks", self.source)
-        self.assertIn("setInterval(rotatePerks", self.source)
-        self.assertIn("carousel.addEventListener('pointerdown'", self.source)
-        self.assertIn("carousel.addEventListener('pointermove'", self.source)
+    def test_prototype_card_reveal_and_scroll_slider(self):
+        self.assertIn("@keyframes megafon-service-appear", self.source)
+        self.assertIn("rotateX(-68deg)", self.source)
+        self.assertIn("data-card-reveal", self.source)
+        self.assertIn("perks-scroll-story", self.source)
+        self.assertIn("expectedLeft", self.source)
+        self.assertNotIn("setInterval(rotatePerks", self.source)
 
 
 if __name__ == "__main__":

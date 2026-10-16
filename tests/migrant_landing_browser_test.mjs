@@ -55,83 +55,54 @@ await command("Page.navigate", {
 });
 await new Promise((resolve) => setTimeout(resolve, 800));
 
-await evaluate("document.querySelector('#tab-bio-no').click()");
-const buttonHeight = await evaluate(
-  "document.querySelector('#panel-bio-no .mfui-button').getBoundingClientRect().height",
+await evaluate("document.documentElement.style.scrollBehavior = 'auto'");
+const initialReveal = await evaluate(
+  "document.querySelector('.landing-service-side-picture-card').parentElement.dataset.revealState",
 );
-assert.equal(buttonHeight, 52, "No-biometry CTA must remain 52px high");
+assert.equal(initialReveal, "pending", "Offscreen tariff card must wait for its reveal");
 
-const carouselMetrics = await evaluate(`(() => {
-  const carousel = document.querySelector('#perks-carousel');
+await evaluate(`(() => {
+  const card = document.querySelector('.landing-service-side-picture-card');
+  const top = card.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.5;
+  window.scrollTo(0, top);
+})()`);
+await new Promise((resolve) => setTimeout(resolve, 700));
+const revealed = await evaluate(
+  "document.querySelector('.landing-service-side-picture-card').parentElement.dataset.revealState",
+);
+assert.ok(["playing", "shown"].includes(revealed), `Tariff card must reveal, got ${revealed}`);
+if (process.env.REVEAL_ARTIFACT_PATH) {
+  const screenshot = await command("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+  await writeFile(process.env.REVEAL_ARTIFACT_PATH, screenshot.data, "base64");
+}
+
+const slider = await evaluate(`(() => {
+  const stage = document.getElementById('perks-stage');
+  const carousel = document.getElementById('perks-carousel');
+  const start = stage.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo(0, start + 80 + (stage.offsetHeight - 80) * 0.65);
   return {
-    clientWidth: carousel.clientWidth,
-    scrollWidth: carousel.scrollWidth,
-    left: carousel.scrollLeft,
+    range: carousel.scrollWidth - carousel.clientWidth,
+    stageHeight: stage.offsetHeight,
+    pinHeight: stage.querySelector('.perks-pin').offsetHeight,
   };
 })()`);
-assert.ok(
-  carouselMetrics.scrollWidth > carouselMetrics.clientWidth,
-  "Perks carousel must have horizontally scrollable content",
-);
+await new Promise((resolve) => setTimeout(resolve, 100));
+const drivenLeft = await evaluate("document.getElementById('perks-carousel').scrollLeft");
+assert.ok(slider.range > 0, "Perks carousel must overflow horizontally");
+assert.ok(slider.stageHeight > slider.pinHeight, "Perks slider must reserve vertical travel");
+assert.ok(drivenLeft > 0, `Vertical scrolling must move the perks slider, left=${drivenLeft}`);
 
-await new Promise((resolve) => setTimeout(resolve, 4800));
-const rotatedLeft = await evaluate(
-  "document.querySelector('#perks-carousel').scrollLeft",
-);
-assert.ok(rotatedLeft > 0, "Perks carousel must rotate to its second page");
-
-const carouselRect = await evaluate(`new Promise((resolve) => {
-  const carousel = document.querySelector('#perks-carousel');
-  document.documentElement.style.scrollBehavior = 'auto';
-  carousel.scrollIntoView({ block: 'center' });
-  carousel.scrollLeft = 0;
-  setTimeout(() => {
-    const rect = carousel.getBoundingClientRect();
-    resolve({ left: rect.left, top: rect.top, width: rect.width, height: rect.height });
-  }, 100);
-})`, true);
-const dragY = carouselRect.top + carouselRect.height / 2;
 await evaluate(`(() => {
-  window.__perksPointerEvents = [];
-  const carousel = document.querySelector('#perks-carousel');
-  ['pointerdown', 'pointermove', 'pointerup'].forEach((type) => {
-    carousel.addEventListener(type, (event) => {
-      window.__perksPointerEvents.push({ type, x: event.clientX, pointerType: event.pointerType });
-    });
-  });
+  document.querySelector('#tab-bio-no').click();
+  const button = document.querySelector('#panel-bio-no .mfui-button');
+  window.scrollTo(0, button.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.45);
 })()`);
-await command("Input.dispatchMouseEvent", {
-  type: "mousePressed",
-  x: carouselRect.left + carouselRect.width - 30,
-  y: dragY,
-  button: "left",
-  buttons: 1,
-  clickCount: 1,
-});
-await command("Input.dispatchMouseEvent", {
-  type: "mouseMoved",
-  x: carouselRect.left + 50,
-  y: dragY,
-  button: "left",
-  buttons: 1,
-});
-await command("Input.dispatchMouseEvent", {
-  type: "mouseReleased",
-  x: carouselRect.left + 50,
-  y: dragY,
-  button: "left",
-  buttons: 0,
-  clickCount: 1,
-});
-await new Promise((resolve) => setTimeout(resolve, 500));
-const dragResult = await evaluate(`({
-  left: document.querySelector('#perks-carousel').scrollLeft,
-  events: window.__perksPointerEvents,
-})`);
-assert.ok(
-  dragResult.left > 0,
-  `Perks carousel must respond to mouse dragging; rect=${JSON.stringify(carouselRect)} events=${JSON.stringify(dragResult.events)}`,
+await new Promise((resolve) => setTimeout(resolve, 700));
+const buttonHeight = await evaluate(
+  "document.querySelector('#panel-bio-no .mfui-button').offsetHeight",
 );
+assert.equal(buttonHeight, 52, "No-biometry CTA must remain 52px high");
 
 if (process.env.ARTIFACT_PATH) {
   const screenshot = await command("Page.captureScreenshot", {
@@ -153,6 +124,6 @@ if (process.env.BUTTON_ARTIFACT_PATH) {
 }
 
 console.log(
-  `Browser checks passed: CTA ${buttonHeight}px; carousel ${carouselMetrics.clientWidth}/${carouselMetrics.scrollWidth}px; rotated to ${rotatedLeft}px; dragged to ${dragResult.left}px`,
+  `Browser checks passed: CTA ${buttonHeight}px; reveal ${initialReveal}->${revealed}; slider travel ${slider.stageHeight - slider.pinHeight}px; driven to ${drivenLeft}px`,
 );
 socket.close();
