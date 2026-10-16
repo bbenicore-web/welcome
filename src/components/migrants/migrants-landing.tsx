@@ -24,15 +24,6 @@ import { useLanguage } from "@/lib/language-context";
 const heroSrc = withBase("/migrants/hero.webp");
 const deviceSrc = withBase("/migrants/device.webp");
 const heroAlt = "Две чашки чая, выпечка и зелёный смартфон на светлом столе";
-const frame = "mx-auto w-full max-w-[1440px] px-4 md:px-12 lg:px-16 xl:px-20";
-const greenBtn =
-  "inline-flex h-[52px] items-center justify-center rounded-full bg-[#00b956] px-8 text-center text-[15px] font-medium leading-6 text-white hover:bg-[#10e272]";
-const blackBtn =
-  "inline-flex h-[52px] items-center justify-center rounded-full bg-[#333] px-8 text-center text-[15px] font-medium leading-6 text-white";
-const softBtn =
-  "inline-flex h-[52px] items-center justify-center rounded-full bg-white px-8 text-center text-[15px] font-medium leading-6 text-[#333]";
-const sectionTitle =
-  "text-center text-[22px] font-semibold leading-7 text-[#333] md:text-[32px] md:leading-10";
 
 export function MigrantsLanding() {
   const { locale, setLocale, t: dict } = useLanguage();
@@ -62,9 +53,8 @@ export function MigrantsLanding() {
 
   return (
     <div className="min-h-full bg-white text-[#333]">
-      <div className="w-full">
-        <header className="sticky top-0 z-40 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
-          <div className={`${frame} flex h-14 items-center justify-between`}>
+      <div className="mx-auto w-full max-w-[360px]">
+        <header className="sticky top-0 z-40 flex h-14 items-center justify-between bg-white px-4 shadow-[0_2px_6px_rgba(0,0,0,0.1)]">
           <a href="#top" className="inline-flex items-center" aria-label="МегаФон">
             <img
               src={withBase("/migrants/logo-mark.svg")}
@@ -120,14 +110,13 @@ export function MigrantsLanding() {
                   <button
                     type="button"
                     onClick={() => openLead()}
-                    className={`mt-3 ${greenBtn}`}
+                    className="mt-3 h-[52px] rounded-[12px] bg-[#333] text-[15px] font-medium leading-6 text-white"
                   >
                     {t.cta}
                   </button>
                 </nav>
               </SheetContent>
             </Sheet>
-          </div>
           </div>
         </header>
 
@@ -136,12 +125,10 @@ export function MigrantsLanding() {
             className="overflow-hidden"
             style={{
               backgroundImage:
-                "linear-gradient(278.83deg, rgba(143, 168, 216, 0.3) 0.27%, rgba(255, 255, 255, 0.3) 99.56%), linear-gradient(0deg, #f2f4f7, #f2f4f7)",
+                "linear-gradient(-26.76deg, rgba(143, 168, 216, 0.3) 0.86%, rgba(255, 255, 255, 0.3) 100%), linear-gradient(90deg, #f2f4f7, #f2f4f7)",
             }}
           >
-            <div className={`${frame} flex min-h-[520px] flex-col pb-12 pt-6 lg:flex-row lg:items-center lg:pt-10`}>
-            <div className="relative z-[1] max-w-[640px]">
-            <nav aria-label="breadcrumb" className="mb-6 flex items-center gap-1 text-[15px] leading-6">
+            <nav aria-label="breadcrumb" className="flex items-center gap-1 px-4 pt-4 text-[15px] leading-6">
               <a href={withBase("/")} className="text-[#333]">
                 {t.breadcrumbHome}
               </a>
@@ -150,26 +137,31 @@ export function MigrantsLanding() {
               </span>
               <span className="truncate text-[#333]/55">{t.breadcrumbCurrent}</span>
             </nav>
-              <h1 className="text-[44px] font-bold leading-[48px] text-[#333] md:text-[64px] md:leading-[56px] lg:text-[80px] lg:leading-[63px]">
+
+            <div className="px-4 pt-8">
+              <h1 className="text-[44px] font-bold leading-[48px] tracking-normal text-[#333]">
                 {t.heroTitleA}
                 <br />
                 {t.heroTitleB}
               </h1>
-              <p className="mt-6 max-w-[520px] text-[18px] font-medium leading-6 text-[#333] md:text-[20px] md:leading-7">
+              <p className="mt-2 text-[18px] font-medium leading-6 text-[#333]">
                 {t.heroLead}
               </p>
-              <div className="mt-8 flex flex-wrap gap-2">
-                <a href="#connect" className={greenBtn}>
+              <div className="mt-8 flex gap-2">
+                <a
+                  href="#connect"
+                  className="flex h-[52px] flex-1 items-center justify-center rounded-[12px] bg-[#333] px-3 text-center text-[15px] font-medium leading-6 whitespace-nowrap text-white"
+                >
                   {t.cta}
                 </a>
-                <div ref={langRef} className="relative">
+                <div ref={langRef} className="relative flex-1">
                   <button
                     type="button"
                     aria-expanded={langOpen}
                     aria-haspopup="listbox"
                     aria-label={t.langLabel}
                     onClick={() => setLangOpen((open) => !open)}
-                    className={`${softBtn} gap-2`}
+                    className="flex h-[52px] w-full items-center justify-center gap-[10px] rounded-[12px] bg-white px-3 text-[15px] font-medium leading-6 text-[#333]"
                   >
                     <Flag locale={locale} />
                     <span>{currentLang.native}</span>
@@ -209,89 +201,105 @@ export function MigrantsLanding() {
                 </div>
               </div>
             </div>
-            <div className="relative mt-4 h-[280px] w-full lg:mt-0 lg:h-[420px] lg:flex-1">
+
+            <div className="relative h-[212px] overflow-hidden">
               <img
                 src={heroSrc}
                 alt={heroAlt}
-                className="absolute inset-0 h-full w-full object-contain object-center lg:object-right"
+                className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
               />
-            </div>
             </div>
           </section>
 
-          <section id="benefits" className={`${frame} py-12 md:py-16`}>
-            <h2 className={sectionTitle}>{t.benefitsTitle}</h2>
-            <div className="mt-8 grid gap-3 md:grid-cols-2 md:gap-4">
-              {t.benefitCards.map((card) => (
+          <section id="benefits" className="px-4 pb-2 pt-12">
+            <h2 className="text-[22px] font-bold leading-7 text-[#333]">{t.benefitsTitle}</h2>
+            <div className="mt-6 grid gap-3">
+              {t.benefitCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className="relative min-h-[162px] overflow-hidden rounded-xl bg-[#ededed] p-4 md:min-h-[220px] md:rounded-3xl md:p-8"
+                  className="flex h-[162px] overflow-hidden rounded-[16px] bg-[#f3f5f8]"
                 >
-                  <div className="relative z-[1] max-w-[calc(100%-112px)] md:max-w-[calc(100%-180px)]">
-                    <h3 className="text-[20px] font-semibold leading-7 md:text-[26px] md:leading-8">{card.title}</h3>
-                    <p className="mt-2 text-[15px] leading-6 text-[#333]">{card.text}</p>
+                  <div className="flex w-[200px] shrink-0 flex-col justify-center px-4 py-4">
+                    <h3 className="text-[16px] font-medium leading-6">{card.title}</h3>
+                    <p className="mt-2 text-[14px] leading-[18px] text-[#333]/80">{card.text}</p>
                   </div>
-                  <div className="absolute bottom-0 right-0 h-full w-32 md:w-44">
-                    <img src={deviceSrc} alt="" className="h-full w-full object-contain object-right-bottom" />
+                  <div
+                    className="relative min-w-0 flex-1 overflow-hidden"
+                    style={{
+                      background:
+                        index === 0
+                          ? "linear-gradient(160deg, #eef3f8, #d5e4f2)"
+                          : "linear-gradient(160deg, #e7fff2, #b7f0cf)",
+                    }}
+                  >
+                    <img
+                      src={deviceSrc}
+                      alt=""
+                      className={`absolute max-w-none object-cover ${
+                        index === 0
+                          ? "-left-6 top-2 h-[180px] w-[220px]"
+                          : "-left-10 top-0 h-[190px] w-[230px]"
+                      }`}
+                    />
                   </div>
                 </article>
               ))}
             </div>
 
-            <div className="mt-6 rounded-2xl bg-white p-5 md:p-8">
-              <h3 className="mb-6 max-w-[80%] text-[22px] font-semibold leading-7 md:text-[28px] md:leading-9">{t.moreTitle}</h3>
+            <div className="mt-6">
+              <h3 className="pt-5 text-[18px] font-medium leading-6">{t.moreTitle}</h3>
               <TileScroller tiles={t.tiles} />
             </div>
           </section>
 
-          <section id="tariffs" className="bg-[#ededed] py-12 md:py-16">
-            <div className={frame}>
-            <h2 className={sectionTitle}>{t.tariffsTitle}</h2>
-            <div className="mt-8 grid gap-4">
-              {t.tariffs.map((tariff) => {
-                const dark = tariff.id === "family";
-                return (
-                <article key={tariff.id} className={`flex flex-col-reverse overflow-hidden rounded-2xl lg:flex-row ${dark ? "bg-[#333] text-white" : "bg-white text-[#333]"}`}>
-                  <div className={`relative z-[1] -mt-8 flex flex-1 flex-col gap-4 rounded-2xl px-4 pb-4 pt-5 lg:mt-0 lg:rounded-r-none lg:px-8 lg:py-8 ${dark ? "bg-[#333]" : "bg-white"}`}>
-                    <h3 className="text-[26px] font-semibold leading-8 md:text-[32px] md:leading-10 lg:text-[40px] lg:leading-[44px]">{tariff.title}</h3>
-                    <p className={`max-w-[370px] text-[15px] leading-6 ${dark ? "text-white/80" : "text-[#333]"}`}>{tariff.text}</p>
-                    <ul className="flex max-w-[370px] flex-wrap gap-1">
+          <section id="tariffs" className="px-4 pb-4 pt-12">
+            <h2 className="text-[22px] font-bold leading-7">{t.tariffsTitle}</h2>
+            <div className="mt-6 grid gap-3">
+              {t.tariffs.map((tariff) => (
+                <article key={tariff.id} className="overflow-hidden rounded-[16px] bg-white shadow-[0_8px_28px_rgba(17,24,39,0.08)]">
+                  <TariffArt id={tariff.id} />
+                  <div className="relative -mt-8 rounded-t-[16px] bg-white px-4 pb-4 pt-5">
+                    <h3 className="text-[22px] font-bold leading-8">{tariff.title}</h3>
+                    <p className="mt-1 text-[15px] leading-6 text-[#333]/80">{tariff.text}</p>
+                    <ul className="mt-3 flex flex-wrap gap-1">
                       {tariff.tags.map((tag) => (
                         <li
                           key={tag}
-                          className={`rounded-lg px-2 py-0.5 text-[12px] leading-[18px] ${dark ? "bg-[#3d3d3d] text-white/80" : "bg-[#f2f4f7] text-[#999]"}`}
+                          className="inline-flex h-[22px] items-center rounded-full bg-[#f2f4f7] px-2 text-[12px] font-medium leading-none text-[#333]"
                         >
                           {tag}
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-auto flex flex-wrap gap-2">
-                      <button type="button" onClick={() => openLead(tariff.id)} className={dark ? softBtn : blackBtn}>
+                    <div className="mt-4 flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => openLead(tariff.id)}
+                        className="h-11 flex-1 rounded-[12px] bg-[#333] text-[15px] font-medium text-white"
+                      >
                         {t.details}
                       </button>
                       <button
                         type="button"
                         aria-label={t.details}
                         onClick={() => openLead(tariff.id)}
-                        className={`grid size-[52px] place-items-center rounded-full ${dark ? "bg-white" : "bg-[#ededed]"}`}
+                        className="grid size-11 place-items-center rounded-[12px] bg-[#f2f4f7]"
                       >
                         <InfoIcon />
                       </button>
                     </div>
                   </div>
-                  <TariffArt id={tariff.id} />
                 </article>
-              );})}
-            </div>
+              ))}
             </div>
           </section>
 
-          <section id="connect" className={`${frame} py-12 md:py-16`}>
-            <h2 className={sectionTitle}>{t.connectTitle}</h2>
+          <section id="connect" className="px-4 pb-6 pt-12">
+            <h2 className="text-[22px] font-bold leading-7">{t.connectTitle}</h2>
             <div
               role="tablist"
               aria-label={t.connectTitle}
-              className="mx-auto mt-6 grid h-11 w-[286px] max-w-full grid-cols-2 rounded-full bg-[#f2f4f7] p-1"
+              className="mx-auto mt-5 grid h-11 w-[286px] max-w-full grid-cols-2 rounded-full bg-[#f2f4f7] p-1"
             >
               {(["online", "salon"] as const).map((id) => {
                 const selected = tab === id;
@@ -313,12 +321,19 @@ export function MigrantsLanding() {
               })}
             </div>
 
-            <article className="mx-auto mt-8 flex max-w-[920px] flex-col-reverse overflow-hidden rounded-2xl bg-white lg:flex-row">
-              <div className="relative z-[1] -mt-8 flex-1 rounded-2xl bg-white px-4 pb-4 pt-5 lg:mt-0 lg:px-8 lg:py-8">
-                <h3 className="text-[26px] font-semibold leading-8">
+            <article className="mt-6 overflow-hidden rounded-[16px] bg-white shadow-[0_8px_28px_rgba(17,24,39,0.08)]">
+              <div className="relative h-[184px] overflow-hidden bg-[#e7f7ee]">
+                <img
+                  src={deviceSrc}
+                  alt=""
+                  className="absolute top-[-16px] left-[-48px] h-[239px] w-[424px] max-w-none object-cover"
+                />
+              </div>
+              <div className="relative -mt-8 rounded-t-[16px] bg-white px-4 pb-4 pt-5">
+                <h3 className="text-[18px] font-medium leading-6">
                   {tab === "online" ? t.onlineTitle : t.salonTitle}
                 </h3>
-                <ol className="mt-4 grid gap-3">
+                <ol className="mt-4 grid gap-4">
                   {(tab === "online" ? t.onlineSteps : t.salonSteps).map((step, index) => (
                     <li key={step} className="flex gap-2.5">
                       <span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#00B956] text-[13px] font-bold text-white">
@@ -328,52 +343,49 @@ export function MigrantsLanding() {
                     </li>
                   ))}
                 </ol>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-8 grid gap-3">
                   {tab === "online" ? (
                     <>
-                      <button type="button" onClick={() => openLead(tariffId)} className={greenBtn}>
+                      <button
+                        type="button"
+                        onClick={() => openLead(tariffId)}
+                        className="h-[52px] rounded-[12px] bg-[#333] text-[15px] font-medium leading-6 text-white"
+                      >
                         {t.cta}
                       </button>
-                      <button type="button" onClick={() => setTab("salon")} className={`${softBtn} bg-[#ededed]`}>
+                      <button
+                        type="button"
+                        onClick={() => setTab("salon")}
+                        className="h-[52px] rounded-[12px] bg-[#f2f4f7] text-[15px] font-medium leading-6 text-[#333]"
+                      >
                         {t.prepare}
                       </button>
                     </>
                   ) : (
-                    <a href="#salons" className={greenBtn}>
+                    <a
+                      href="#salons"
+                      className="flex h-[52px] items-center justify-center rounded-[12px] bg-[#333] text-[15px] font-medium leading-6 text-white"
+                    >
                       {t.findSalon}
                     </a>
                   )}
                 </div>
               </div>
-              <div
-                className="h-[184px] w-full overflow-hidden rounded-2xl lg:h-auto lg:w-[420px]"
-                style={{
-                  background:
-                    "linear-gradient(278.83deg, rgba(143, 168, 216, 0.3) 0.27%, rgba(255, 255, 255, 0.3) 99.56%), #e9ebf0",
-                }}
-              >
-                <img src={deviceSrc} alt="" className="h-full w-full object-contain" />
-              </div>
             </article>
           </section>
 
-          <section id="salons" className="bg-[#ededed] py-12 md:py-16">
-            <div className={frame}>
-            <h2 className={sectionTitle}>{t.mapTitle}</h2>
-            <p className="mx-auto mt-4 max-w-[640px] text-center text-[15px] leading-6 text-[#333]">{t.mapLead}</p>
+          <section id="salons" className="px-4 pb-8 pt-8">
+            <h2 className="text-[22px] font-bold leading-7">{t.mapTitle}</h2>
+            <p className="mt-5 text-[15px] leading-6 text-[#333]/80">{t.mapLead}</p>
             <SalonMap title={t.mapSalon} subtitle={t.mapDistance} />
-            </div>
           </section>
 
-          <section id="faq" className={`${frame} py-12 md:py-16`}>
-            <h2 className={sectionTitle}>{t.faqTitle}</h2>
-            <div className="mx-auto max-w-[760px]">
-              <FaqList items={t.faq} />
-            </div>
+          <section id="faq" className="px-4 pb-10">
+            <h2 className="text-[22px] font-bold leading-7">{t.faqTitle}</h2>
+            <FaqList items={t.faq} />
           </section>
 
-          <footer className="bg-[#ededed] pb-10 pt-8">
-            <div className={frame}>
+          <footer className="bg-[#f7f8fa] px-4 pb-10 pt-8">
             <div className="divide-y divide-black/10 border-y border-black/10">
               {t.footerGroups.map((group) => (
                 <details key={group.title} className="group py-1">
@@ -438,7 +450,6 @@ export function MigrantsLanding() {
             </p>
             <p className="mt-3 text-[12px] leading-4 text-[#333]/50">{t.disclaimer}</p>
             <p className="mt-4 text-[12px] text-[#333]/40">© {new Date().getFullYear()} {dict.brand}</p>
-            </div>
           </footer>
         </main>
       </div>
@@ -489,18 +500,46 @@ function Flag({ locale }: { locale: Locale }) {
 }
 
 function TileScroller({ tiles }: { tiles: { title: string; text: string }[] }) {
+  const scroller = useRef<HTMLDivElement>(null);
+  const [page, setPage] = useState(0);
+
+  function sync() {
+    const el = scroller.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 8) {
+      setPage(0);
+      return;
+    }
+    setPage(el.scrollLeft > max / 2 ? 1 : 0);
+  }
+
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+    <div className="mt-4">
+      <div
+        ref={scroller}
+        onScroll={sync}
+        className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {tiles.map((tile, index) => (
           <article
             key={tile.title}
-            className="flex min-h-[160px] flex-col rounded-2xl bg-[#f6f6f6] p-4"
+            className="flex h-[148px] w-[146px] shrink-0 snap-start flex-col rounded-[16px] bg-[#f3f5f8] p-3"
           >
             <TileIcon index={index} />
-            <h4 className="mt-3 text-[15px] font-medium leading-5">{tile.title}</h4>
+            <h4 className="mt-3 text-[14px] font-medium leading-5">{tile.title}</h4>
             <p className="mt-1 text-[12px] leading-4 text-[#333]/70">{tile.text}</p>
           </article>
         ))}
+      </div>
+      <div className="mt-2.5 flex justify-center gap-1.5" aria-hidden>
+        {[0, 1].map((dot) => (
+          <span
+            key={dot}
+            className={`h-1 rounded-full ${page === dot ? "w-3.5 bg-[#333]" : "w-1 bg-[#333]/25"}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -522,19 +561,14 @@ function TileIcon({ index }: { index: number }) {
 }
 
 function TariffArt({ id }: { id: "work" | "study" | "family" }) {
-  const background =
-    id === "family"
-      ? "linear-gradient(124.37deg, #1a1a1a 0%, #595959 100%)"
-      : "linear-gradient(278.83deg, rgba(143, 168, 216, 0.3) 0.27%, rgba(255, 255, 255, 0.3) 99.56%), linear-gradient(0deg, #e9ebf0, #e9ebf0)";
+  const position =
+    id === "family" ? "object-[72%_center]" : id === "study" ? "object-[right_30%]" : "object-[28%_40%]";
   return (
-    <div
-      className="h-[184px] w-full shrink-0 overflow-hidden rounded-2xl lg:h-auto lg:min-h-[280px] lg:w-[min(532px,46%)]"
-      style={{ background }}
-    >
+    <div className={`relative h-[184px] overflow-hidden ${id === "family" ? "bg-[#102117]" : "bg-[#e8f3ec]"}`}>
       <img
-        src={id === "work" ? heroSrc : deviceSrc}
+        src={deviceSrc}
         alt=""
-        className="h-full w-full object-cover object-center"
+        className={`absolute inset-0 h-full w-full object-cover ${position} ${id === "family" ? "brightness-75" : ""}`}
       />
     </div>
   );
@@ -542,7 +576,7 @@ function TariffArt({ id }: { id: "work" | "study" | "family" }) {
 
 function SalonMap({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <div className="relative mt-5 h-[365px] overflow-hidden rounded-[20px] bg-[#d7e3d4]">
+    <div className="relative mt-6 h-[365px] overflow-hidden rounded-[20px] bg-[#d7e3d4]">
       <svg viewBox="0 0 328 365" className="absolute inset-0 h-full w-full" aria-hidden>
         <rect width="328" height="365" fill="#e7efe4" />
         <path d="M-10 80 C40 70 80 120 140 90 C190 66 230 40 340 78" stroke="#fff" strokeWidth="14" fill="none" />
@@ -557,7 +591,7 @@ function SalonMap({ title, subtitle }: { title: string; subtitle: string }) {
       <Pin className="left-[28%] top-[34%]" />
       <Pin className="left-[58%] top-[48%]" active />
       <Pin className="left-[42%] top-[62%]" />
-      <div className="absolute inset-x-3 bottom-3 rounded-2xl bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+      <div className="absolute inset-x-3 bottom-3 rounded-[16px] bg-white p-3 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
         <p className="text-[12px] font-medium text-[#00B956]">{subtitle}</p>
         <p className="mt-0.5 text-[16px] font-medium">{title}</p>
       </div>
@@ -579,7 +613,7 @@ function Pin({ className, active = false }: { className: string; active?: boolea
 function FaqList({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState(0);
   return (
-    <div className="mt-4 divide-y divide-black/10 border-y border-black/10">
+    <div className="mt-6 divide-y divide-black/10 border-y border-black/10">
       {items.map((item, index) => {
         const expanded = open === index;
         return (
