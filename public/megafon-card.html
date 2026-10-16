@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МегаФон — Тёплый приём в России</title>
+  <style>
+    :root {
+      --mf-green: #00B956;
+      --mf-green-hover: #009846;
+      --mf-purple: #731982;
+      --mf-dark: #1F2229;
+      --mf-gray-bg: #F6F7F9;
+      --mf-card-bg: #FFFFFF;
+      --mf-muted: #6B7280;
+      --mf-border: #E5E7EB;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--mf-gray-bg);
+      color: var(--mf-dark);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 0 20px;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--mf-green);
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--mf-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      background: #E5E7EB;
+      padding: 3px;
+      border-radius: 10px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4B5563;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lang-btn.active {
+      background: #FFFFFF;
+      color: var(--mf-dark);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .hero-intro { text-align: center; margin-bottom: 24px; }
+
+    .hero-title {
+      font-size: 26px;
+      line-height: 1.25;
+      font-weight: 800;
+      color: var(--mf-dark);
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle { font-size: 15px; color: var(--mf-muted); }
+
+    #offer { scroll-margin-top: 28px; }
+
+    .main-card {
+      background: var(--mf-card-bg);
+      border-radius: 24px;
+      border: 2px solid var(--mf-green);
+      box-shadow: 0 10px 30px rgba(0, 185, 86, 0.08);
+      padding: 24px 20px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .badge-top {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--mf-purple);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 8px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--mf-border);
+    }
+
+    .tariff-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .tariff-tagline { font-size: 13px; color: var(--mf-muted); }
+    .price-wrap { text-align: right; flex: none; }
+    .price-amount { font-size: 28px; font-weight: 900; color: var(--mf-green); line-height: 1; }
+    .price-sub { font-size: 12px; color: var(--mf-muted); }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .features-list li::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex: none;
+      border-radius: 50%;
+      background: #E8F8EF url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path d='M4.5 9.2 7.4 12l6.1-6.2' fill='none' stroke='%2300B956' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / 18px no-repeat;
+    }
+
+    .cta, .cta-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .cta { background: var(--mf-green); color: #fff; }
+    .cta:hover { background: var(--mf-green-hover); }
+    .cta-line { background: #fff; color: var(--mf-dark); border: 1.5px solid var(--mf-border); }
+
+    .side-card {
+      background: var(--mf-card-bg);
+      border: 1px solid var(--mf-border);
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+    }
+
+    .section { margin-bottom: 28px; scroll-margin-top: 16px; }
+    .section h2 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+
+    .choice, .step, .service, details {
+      background: var(--mf-card-bg);
+      border: 1px solid var(--mf-border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .choice h3, .step h3, .service strong { font-size: 16px; }
+    .choice p, .step p, .service p, details p {
+      margin-top: 6px;
+      color: var(--mf-muted);
+      font-size: 14px;
+    }
+
+    .step { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+    .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #F3E8F6;
+      color: var(--mf-purple);
+      font-size: 13px;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 700;
+      min-height: 28px;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    .help { margin-top: 10px; }
+
+    footer { color: var(--mf-muted); font-size: 13px; padding-bottom: 24px; }
+    footer strong { color: var(--mf-green); }
+
+    :focus-visible { outline: 3px solid #b7f0cf; outline-offset: 2px; }
+
+    @media (max-width: 420px) {
+      .card-head { flex-direction: column; }
+      .price-wrap { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="logo-badge" href="#top"><span class="logo-circle">М</span> МегаФон</a>
+      <div class="lang-switcher" role="group" aria-label="Язык">
+        <button class="lang-btn active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button class="lang-btn" type="button" data-lang="uz" aria-pressed="false">UZ</button>
+        <button class="lang-btn" type="button" data-lang="tg" aria-pressed="false">TJ</button>
+        <button class="lang-btn" type="button" data-lang="ky" aria-pressed="false">KG</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="hero-intro">
+        <h1 class="hero-title" data-i18n="heroTitle">Тёплый приём в России</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Связь в России и звонки домой</p>
+      </div>
+
+      <article class="main-card" id="offer">
+        <div class="badge-top" data-i18n="badge">Всё в одном</div>
+        <div class="card-head">
+          <div>
+            <h2 class="tariff-title">Семейный +</h2>
+            <p class="tariff-tagline" data-i18n="tagline">Для себя и близких</p>
+          </div>
+          <div class="price-wrap">
+            <div class="price-amount">1&nbsp;140&nbsp;₽</div>
+            <div class="price-sub" data-i18n="priceSub">за 30 дней</div>
+          </div>
+        </div>
+        <ul class="features-list">
+          <li data-i18n="f1">1&nbsp;500 минут по России</li>
+          <li data-i18n="f2">Интернет без ограничений</li>
+          <li data-i18n="f3">Один тариф на 5 человек</li>
+          <li data-i18n="f4">Звонки в страны СНГ включаются сами</li>
+        </ul>
+        <a class="cta" href="#steps" data-i18n="cta">Как подключить</a>
+      </article>
+
+      <article class="side-card">
+        <div class="card-head">
+          <div>
+            <h2 class="tariff-title">Минимум +</h2>
+            <p class="tariff-tagline" data-i18n="altTag">Для звонков, карт и сообщений</p>
+          </div>
+          <div class="price-wrap">
+            <div class="price-amount">850&nbsp;₽</div>
+            <div class="price-sub" data-i18n="priceSub">за 30 дней</div>
+          </div>
+        </div>
+        <ul class="features-list">
+          <li data-i18n="a1">400 минут по России</li>
+          <li data-i18n="a2">Интернет на карты, такси и мессенджеры</li>
+          <li data-i18n="a3">Звонки на МегаФон, даже если минуты кончились</li>
+        </ul>
+        <a class="cta-line" href="#steps" data-i18n="altCta">Подключить этот тариф</a>
+      </article>
+
+      <section class="section" id="how">
+        <h2 data-i18n="howTitle">Как подключить</h2>
+        <article class="choice">
+          <h3 data-i18n="p1t">Документы уже есть</h3>
+          <p data-i18n="p1">Есть СНИЛС, Госуслуги и биометрия. Заберите сим-карту в салоне. Нужен паспорт.</p>
+        </article>
+        <article class="choice">
+          <h3 data-i18n="p2t">Документов ещё нет</h3>
+          <p data-i18n="p2">Сначала получите СНИЛС, откройте Госуслуги и сдайте биометрию в банке. Потом приходите в салон.</p>
+        </article>
+      </section>
+
+      <section class="section" id="steps">
+        <h2 data-i18n="stepsTitle">Пять шагов</h2>
+        <article class="step">
+          <div class="num">1</div>
+          <div>
+            <h3 data-i18n="s1t">Купите сим-карту</h3>
+            <p data-i18n="s1">В салоне МегаФона. Назовите IMEI из настроек телефона. Без него связь не заработает.</p>
+            <details class="help">
+              <summary data-i18n="imeiSum">Как узнать IMEI</summary>
+              <p data-i18n="imei">Откройте настройки и найдите «О телефоне». IMEI — номер устройства, не номер сим-карты.</p>
+            </details>
+            <a class="cta-line" href="#offer" data-i18n="pick">Выбрать тариф</a>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <div>
+            <h3 data-i18n="s2t">Получите СНИЛС</h3>
+            <p data-i18n="s2">Это номер для документов. Оформите в МФЦ. Возьмите паспорт и перевод на русский.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <div>
+            <h3 data-i18n="s3t">Откройте Госуслуги</h3>
+            <p data-i18n="s3">Придите в банк или МФЦ. Возьмите паспорт и СНИЛС.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">4</div>
+          <div>
+            <h3 data-i18n="s4t">Сдайте биометрию</h3>
+            <p data-i18n="s4">В банке сфотографируют лицо и запишут голос. Возьмите паспорт и СНИЛС.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="num">5</div>
+          <div>
+            <h3 data-i18n="s5t">Включите сим-карту</h3>
+            <p data-i18n="s5">В приложении «Госуслуги» или в салоне МегаФона.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="services">
+        <h2 data-i18n="svcTitle">Услуги</h2>
+        <article class="service">
+          <strong data-i18n="c1t">Тёплый приём</strong>
+          <p data-i18n="c1">Звонки в страны СНГ. Включается сам, отдельно платить не нужно.</p>
+        </article>
+        <article class="service">
+          <strong data-i18n="c2t">100 минут за границу</strong>
+          <p data-i18n="c2">100&nbsp;₽ на 30 дней.</p>
+        </article>
+        <article class="service">
+          <strong data-i18n="c3t">Перевод в салоне</strong>
+          <p data-i18n="c3">Переведите деньги в салоне — связь будет бесплатной. 50&nbsp;000&nbsp;₽ — месяц, 70&nbsp;000&nbsp;₽ — 3 месяца, 100&nbsp;000&nbsp;₽ — полгода.</p>
+        </article>
+      </section>
+
+      <section class="section" id="faq">
+        <h2 data-i18n="faqTitle">Вопросы</h2>
+        <details>
+          <summary data-i18n="q1">Биометрия обязательна?</summary>
+          <p data-i18n="qa1">Да. В банке сделают фото лица и запишут голос. Возьмите паспорт и СНИЛС.</p>
+        </details>
+        <details>
+          <summary data-i18n="q2">Можно купить сим-карту с рук?</summary>
+          <p data-i18n="qa2">Нет. Оформите её в салоне МегаФона на своё имя.</p>
+        </details>
+        <details>
+          <summary data-i18n="q3">Зачем нужен IMEI?</summary>
+          <p data-i18n="qa3">Это номер устройства. Его вписывают при оформлении. Без него связь не заработает.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <strong>МегаФон</strong>
+      <p data-i18n="foot">Салоны есть в городах России. 6+</p>
+    </footer>
+  </div>
+  <script>
+    const copy = {
+      ru: {
+        heroTitle: "Тёплый приём в России",
+        heroSubtitle: "Связь в России и звонки домой",
+        badge: "Всё в одном",
+        tagline: "Для себя и близких",
+        priceSub: "за 30 дней",
+        f1: "1 500 минут по России",
+        f2: "Интернет без ограничений",
+        f3: "Один тариф на 5 человек",
+        f4: "Звонки в страны СНГ включаются сами",
+        cta: "Как подключить",
+        altTag: "Для звонков, карт и сообщений",
+        a1: "400 минут по России",
+        a2: "Интернет на карты, такси и мессенджеры",
+        a3: "Звонки на МегаФон, даже если минуты кончились",
+        altCta: "Подключить этот тариф",
+        howTitle: "Как подключить",
+        p1t: "Документы уже есть",
+        p1: "Есть СНИЛС, Госуслуги и биометрия. Заберите сим-карту в салоне. Нужен паспорт.",
+        p2t: "Документов ещё нет",
+        p2: "Сначала получите СНИЛС, откройте Госуслуги и сдайте биометрию в банке. Потом приходите в салон.",
+        stepsTitle: "Пять шагов",
+        s1t: "Купите сим-карту",
+        s1: "В салоне МегаФона. Назовите IMEI из настроек телефона. Без него связь не заработает.",
+        s2t: "Получите СНИЛС",
+        s2: "Это номер для документов. Оформите в МФЦ. Возьмите паспорт и перевод на русский.",
+        s3t: "Откройте Госуслуги",
+        s3: "Придите в банк или МФЦ. Возьмите паспорт и СНИЛС.",
+        s4t: "Сдайте биометрию",
+        s4: "В банке сфотографируют лицо и запишут голос. Возьмите паспорт и СНИЛС.",
+        s5t: "Включите сим-карту",
+        s5: "В приложении «Госуслуги» или в салоне МегаФона.",
+        imeiSum: "Как узнать IMEI",
+        imei: "Откройте настройки и найдите «О телефоне». IMEI — номер устройства, не номер сим-карты.",
+        pick: "Выбрать тариф",
+        svcTitle: "Услуги",
+        c1t: "Тёплый приём",
+        c1: "Звонки в страны СНГ. Включается сам, отдельно платить не нужно.",
+        c2t: "100 минут за границу",
+        c2: "100 ₽ на 30 дней.",
+        c3t: "Перевод в салоне",
+        c3: "Переведите деньги в салоне — связь будет бесплатной. 50 000 ₽ — месяц, 70 000 ₽ — 3 месяца, 100 000 ₽ — полгода.",
+        faqTitle: "Вопросы",
+        q1: "Биометрия обязательна?",
+        qa1: "Да. В банке сделают фото лица и запишут голос. Возьмите паспорт и СНИЛС.",
+        q2: "Можно купить сим-карту с рук?",
+        qa2: "Нет. Оформите её в салоне МегаФона на своё имя.",
+        q3: "Зачем нужен IMEI?",
+        qa3: "Это номер устройства. Его вписывают при оформлении. Без него связь не заработает.",
+        foot: "Салоны есть в городах России. 6+"
+      },
+      uz: {
+        heroTitle: "Rossiyada iliq kutib olish",
+        heroSubtitle: "Rossiyada aloqa va uyga qo‘ng‘iroqlar",
+        badge: "Hammasi bir joyda",
+        tagline: "O‘zingiz va yaqinlaringiz uchun",
+        priceSub: "30 kunga",
+        f1: "Rossiya bo‘ylab 1 500 daqiqa",
+        f2: "Cheklovsiz internet",
+        f3: "5 kishi uchun bitta tarif",
+        f4: "MDH ga qo‘ng‘iroq o‘zi yoqiladi",
+        cta: "Qanday ulash kerak",
+        altTag: "Qo‘ng‘iroq, xarita va xabarlar uchun",
+        a1: "Rossiya bo‘ylab 400 daqiqa",
+        a2: "Xarita, taksi va messenjerlar uchun internet",
+        a3: "Daqiqalar tugasa ham MegaFon ichida qo‘ng‘iroq",
+        altCta: "Shu tarifni ulash",
+        howTitle: "Qanday ulash kerak",
+        p1t: "Hujjatlar tayyor",
+        p1: "SNILS, Gosuslugi va biometriya bor. SIM-kartani salondan oling. Pasport kerak.",
+        p2t: "Hujjatlar hali yo‘q",
+        p2: "Avval SNILS, Gosuslugi va bankda biometriya. Keyin salon.",
+        stepsTitle: "Besh qadam",
+        s1t: "SIM-karta oling",
+        s1: "MegaFon salonida. Telefon sozlamasidagi IMEI raqamini ayting. Usiz aloqa ishlamaydi.",
+        s2t: "SNILS oling",
+        s2: "Bu hujjatlar uchun raqam. MFC da oling. Pasport va ruscha tarjima kerak.",
+        s3t: "Gosuslugini oching",
+        s3: "Bank yoki MFC ga pasport va SNILS bilan boring.",
+        s4t: "Biometriya topshiring",
+        s4: "Bankda yuzingizni suratga olishadi va ovozingizni yozishadi.",
+        s5t: "SIM-kartani yoqing",
+        s5: "«Gosuslugi» ilovasida yoki MegaFon salonida.",
+        imeiSum: "IMEI qayerda",
+        imei: "Sozlamalar → telefon haqida. IMEI qurilma raqami, SIM raqami emas.",
+        pick: "Tarif tanlash",
+        svcTitle: "Xizmatlar",
+        c1t: "Iliq kutib olish",
+        c1: "MDH ga qo‘ng‘iroqlar. O‘zi yoqiladi, alohida to‘lov yo‘q.",
+        c2t: "Chetga 100 daqiqa",
+        c2: "30 kunga 100 ₽.",
+        c3t: "Salonda o‘tkazma",
+        c3: "Salonda pul o‘tkazsangiz, aloqa bepul bo‘ladi. 50 000 ₽ — oy, 70 000 ₽ — 3 oy, 100 000 ₽ — yarim yil.",
+        faqTitle: "Savollar",
+        q1: "Biometriya shartmi?",
+        qa1: "Ha. Bankda yuz surati va ovoz. Pasport va SNILS oling.",
+        q2: "SIM-kartani qo‘ldan olsam bo‘ladimi?",
+        qa2: "Yo‘q. O‘z nomingizga MegaFon salonida rasmiylashtiring.",
+        q3: "IMEI nima uchun kerak?",
+        qa3: "Bu qurilma raqami. Shartnomaga yoziladi. Usiz aloqa ishlamaydi.",
+        foot: "Salonlar Rossiya shaharlarida. 6+"
+      },
+      tg: {
+        heroTitle: "Пешвози гарм дар Русия",
+        heroSubtitle: "Алоқа дар Русия ва занг ба хона",
+        badge: "Ҳама дар як ҷо",
+        tagline: "Барои худ ва наздикон",
+        priceSub: "барои 30 рӯз",
+        f1: "1 500 дақиқа дар Русия",
+        f2: "Интернети бемаҳдуд",
+        f3: "Як тариф барои 5 нафар",
+        f4: "Занг ба кишварҳои ИДМ худаш фаъол мешавад",
+        cta: "Чӣ тавр пайваст шавам",
+        altTag: "Барои занг, харита ва паёмҳо",
+        a1: "400 дақиқа дар Русия",
+        a2: "Интернет барои харита, такси ва мессенҷерҳо",
+        a3: "Дақиқаҳо тамом шуданд ҳам, дар дохили МегаФон занг мезанед",
+        altCta: "Ҳамин тарифро пайваст кунед",
+        howTitle: "Чӣ тавр пайваст шавам",
+        p1t: "Ҳуҷҷатҳо тайёранд",
+        p1: "СНИЛС, Госуслуги ва биометрия ҳаст. Сим-кортро аз салон гиред. Шиноснома лозим аст.",
+        p2t: "Ҳуҷҷатҳо ҳанӯз нестанд",
+        p2: "Аввал СНИЛС, Госуслуги ва биометрия дар бонк. Баъд салон.",
+        stepsTitle: "Панҷ қадам",
+        s1t: "Сим-корт харед",
+        s1: "Дар салони МегаФон. IMEI-ро аз танзимоти телефон гӯед. Бе он алоқа кор намекунад.",
+        s2t: "СНИЛС гиред",
+        s2: "Ин рақам барои ҳуҷҷатҳост. Дар МФЦ гиред. Шиноснома ва тарҷума ба русӣ лозим аст.",
+        s3t: "Госуслугиро кушоед",
+        s3: "Ба бонк ё МФЦ бо шиноснома ва СНИЛС равед.",
+        s4t: "Биометрия супоред",
+        s4: "Дар бонк рӯйро акс мегиранд ва овозро сабт мекунанд.",
+        s5t: "Сим-кортро фаъол кунед",
+        s5: "Дар барномаи «Госуслуги» ё дар салони МегаФон.",
+        imeiSum: "IMEI-ро аз куҷо ёбам",
+        imei: "Танзимот → дар бораи телефон. IMEI рақами дастгоҳ аст, на рақами сим-корт.",
+        pick: "Интихоби тариф",
+        svcTitle: "Хизматҳо",
+        c1t: "Пешвози гарм",
+        c1: "Занг ба кишварҳои ИДМ. Худаш фаъол мешавад, пардохти алоҳида нест.",
+        c2t: "100 дақиқа ба хориҷа",
+        c2: "100 ₽ барои 30 рӯз.",
+        c3t: "Интиқол дар салон",
+        c3: "Агар дар салон пул гузаронед, алоқа ройгон мешавад. 50 000 ₽ — як моҳ, 70 000 ₽ — 3 моҳ, 100 000 ₽ — ним сол.",
+        faqTitle: "Саволҳо",
+        q1: "Биометрия ҳатмӣ аст?",
+        qa1: "Ҳа. Дар бонк акс ва овоз. Шиноснома ва СНИЛС гиред.",
+        q2: "Сим-кортро аз даст харидан мумкин аст?",
+        qa2: "Не. Дар салони МегаФон ба номи худ расмият кунед.",
+        q3: "IMEI барои чист?",
+        qa3: "Ин рақами дастгоҳ аст. Онро ба шартнома менависанд. Бе он алоқа кор намекунад.",
+        foot: "Салонҳо дар шаҳрҳои Русия ҳастанд. 6+"
+      },
+      ky: {
+        heroTitle: "Орусияда жылуу тосуп алуу",
+        heroSubtitle: "Орусияда байланыш жана үйгө чалуу",
+        badge: "Баары бир жерде",
+        tagline: "Өзүңүз жана жакындарыңыз үчүн",
+        priceSub: "30 күнгө",
+        f1: "Орусия боюнча 1 500 мүнөт",
+        f2: "Чектөөсүз интернет",
+        f3: "5 адамга бир тариф",
+        f4: "КМШ өлкөлөрүнө чалуу өзү күйөт",
+        cta: "Кантип кошсом болот",
+        altTag: "Чалуу, карта жана билдирүү үчүн",
+        a1: "Орусия боюнча 400 мүнөт",
+        a2: "Карта, такси жана мессенджерлер үчүн интернет",
+        a3: "Мүнөттөр бүтсө да, МегаФон ичинде чаласыз",
+        altCta: "Ушул тарифти кошуу",
+        howTitle: "Кантип кошуу керек",
+        p1t: "Документтер даяр",
+        p1: "СНИЛС, Госуслуги жана биометрия бар. SIM-картаны салонунан алыңыз. Паспорт керек.",
+        p2t: "Документтер азырынча жок",
+        p2: "Адегенде СНИЛС, Госуслуги жана банкта биометрия. Анан салон.",
+        stepsTitle: "Беш кадам",
+        s1t: "SIM-карта алыңыз",
+        s1: "МегаФон салонунда. Телефондун жөндөөлөрүндөгү IMEIни айтыңыз. Ансыз байланыш иштебейт.",
+        s2t: "СНИЛС алыңыз",
+        s2: "Бул документтер үчүн номер. МФЦден алыңыз. Паспорт жана орусча котормо керек.",
+        s3t: "Госуслугини ачыңыз",
+        s3: "Банкка же МФЦге паспорт жана СНИЛС менен барыңыз.",
+        s4t: "Биометрия тапшырыңыз",
+        s4: "Банкта жүздү сүрөткө тартып, үндү жазышат.",
+        s5t: "SIM-картаны күйгүзүңүз",
+        s5: "«Госуслуги» тиркемесинде же МегаФон салонунда.",
+        imeiSum: "IMEI кайдан табылат",
+        imei: "Жөндөөлөр → телефон жөнүндө. IMEI — түзмөктүн номери, SIM номери эмес.",
+        pick: "Тариф тандоо",
+        svcTitle: "Кызматтар",
+        c1t: "Жылуу тосуп алуу",
+        c1: "КМШга чалуулар. Өзү күйөт, өзүнчө акы жок.",
+        c2t: "Чет өлкөгө 100 мүнөт",
+        c2: "30 күнгө 100 ₽.",
+        c3t: "Салондо которуу",
+        c3: "Салондо акча которсоңуз, байланыш акысыз болот. 50 000 ₽ — ай, 70 000 ₽ — 3 ай, 100 000 ₽ — жарым жыл.",
+        faqTitle: "Суроолор",
+        q1: "Биометрия сөзсүзбү?",
+        qa1: "Ооба. Банкта жүздүн сүрөтү жана үн. Паспорт менен СНИЛСти алыңыз.",
+        q2: "SIM-картаны колдон сатып алсам болобу?",
+        qa2: "Жок. МегаФон салонунда өз атыңызда тариздеңиз.",
+        q3: "IMEI эмне үчүн керек?",
+        qa3: "Бул түзмөктүн номери. Келишимге жазылат. Ансыз байланыш иштебейт.",
+        foot: "Салондор Орусиянын шаарларында. 6+"
+      }
+    };
+
+    const langs = { ru: "ru", uz: "uz", tg: "tg", ky: "ky" };
+    function apply(lang) {
+      const dict = copy[lang];
+      document.documentElement.lang = langs[lang];
+      document.querySelectorAll("[data-i18n]").forEach(node => {
+        const value = dict[node.dataset.i18n];
+        if (value) node.textContent = value;
+      });
+      document.querySelectorAll(".lang-btn").forEach(button => {
+        const on = button.dataset.lang === lang;
+        button.classList.toggle("active", on);
+        button.setAttribute("aria-pressed", String(on));
+      });
+    }
+    document.querySelector(".lang-switcher").addEventListener("click", event => {
+      const button = event.target.closest("[data-lang]");
+      if (button) apply(button.dataset.lang);
+    });
+  </script>
+</body>
+</html>
