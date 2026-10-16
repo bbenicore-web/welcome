@@ -79,19 +79,65 @@ if (process.env.REVEAL_ARTIFACT_PATH) {
 const slider = await evaluate(`(() => {
   const stage = document.getElementById('perks-stage');
   const carousel = document.getElementById('perks-carousel');
-  const start = stage.getBoundingClientRect().top + window.scrollY;
-  window.scrollTo(0, start + 80 + (stage.offsetHeight - 80) * 0.65);
+  carousel.scrollLeft = 0;
+  const before = window.scrollY;
+  const beforeLeft = carousel.scrollLeft;
+  window.scrollBy(0, 500);
   return {
     range: carousel.scrollWidth - carousel.clientWidth,
     stageHeight: stage.offsetHeight,
     pinHeight: stage.querySelector('.perks-pin').offsetHeight,
+    beforeLeft,
+    left: carousel.scrollLeft,
+    pageMoved: window.scrollY - before,
   };
 })()`);
-await new Promise((resolve) => setTimeout(resolve, 100));
-const drivenLeft = await evaluate("document.getElementById('perks-carousel').scrollLeft");
 assert.ok(slider.range > 0, "Perks carousel must overflow horizontally");
-assert.ok(slider.stageHeight > slider.pinHeight, "Perks slider must reserve vertical travel");
-assert.ok(drivenLeft > 0, `Vertical scrolling must move the perks slider, left=${drivenLeft}`);
+assert.equal(slider.stageHeight, slider.pinHeight, "Perks block must not add vertical scroll travel");
+assert.equal(slider.left, slider.beforeLeft, `Vertical page scrolling must not move the perks slider (${slider.beforeLeft} -> ${slider.left})`);
+assert.ok(slider.pageMoved > 0, "The page itself must still scroll vertically");
+
+const drag = await evaluate(`new Promise((resolve) => {
+  const carousel = document.getElementById('perks-carousel');
+  carousel.scrollIntoView({ block: 'center' });
+  setTimeout(() => {
+    const rect = carousel.getBoundingClientRect();
+    resolve({
+      left: rect.left, top: rect.top, width: rect.width, height: rect.height,
+      scrollY: window.scrollY,
+    });
+  }, 50);
+})`, true);
+const dragY = drag.top + drag.height / 2;
+await command("Input.dispatchMouseEvent", {
+  type: "mousePressed", x: drag.left + drag.width - 20, y: dragY, button: "left", buttons: 1, clickCount: 1,
+});
+await command("Input.dispatchMouseEvent", {
+  type: "mouseMoved", x: drag.left + 30, y: dragY, button: "left", buttons: 1,
+});
+await command("Input.dispatchMouseEvent", {
+  type: "mouseReleased", x: drag.left + 30, y: dragY, button: "left", buttons: 0, clickCount: 1,
+});
+const dragged = await evaluate(`({
+  left: document.getElementById('perks-carousel').scrollLeft,
+  scrollY: window.scrollY,
+})`);
+assert.ok(dragged.left > 0, "Horizontal dragging must move the perks slider");
+assert.equal(dragged.scrollY, drag.scrollY, "Horizontal dragging must not move the page");
+const flow = await evaluate(`(() => {
+  const tariffs = document.getElementById('tariffs');
+  const connect = document.getElementById('connect');
+  const perks = document.getElementById('perks-carousel');
+  const top = (element) => element.getBoundingClientRect().top + window.scrollY;
+  return {
+    tariffsHeight: tariffs.offsetHeight,
+    tariffsBottom: top(tariffs) + tariffs.offsetHeight,
+    connectTop: top(connect),
+    perksBottom: top(perks) + perks.offsetHeight,
+  };
+})()`);
+assert.ok(flow.connectTop >= flow.tariffsBottom - 1, "Connect section must follow the tariff section");
+assert.ok(flow.perksBottom <= flow.tariffsBottom + 1, "Perks slider must remain inside the tariff section");
 
 await evaluate(`(() => {
   document.querySelector('#tab-bio-no').click();
@@ -124,6 +170,6 @@ if (process.env.BUTTON_ARTIFACT_PATH) {
 }
 
 console.log(
-  `Browser checks passed: CTA ${buttonHeight}px; reveal ${initialReveal}->${revealed}; slider travel ${slider.stageHeight - slider.pinHeight}px; driven to ${drivenLeft}px`,
+  `Browser checks passed: CTA ${buttonHeight}px; reveal ${initialReveal}->${revealed}; vertical scroll left slider at ${slider.left}px; drag moved it to ${dragged.left}px without moving the page`,
 );
 socket.close();

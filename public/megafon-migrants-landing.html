@@ -702,7 +702,7 @@
       width: 343.111px; height: 193px; margin-left: -107px; margin-top: -15px;
     }
     #tariffs {
-      min-height: 1262px; height: auto; padding: 48px 16px; background: #f2f4f7;
+      height: 1262px; padding: 48px 16px; background: #f2f4f7;
     }
     .tariff-stack { gap: 12px; }
     .landing-service-side-picture-card { border-radius: 0; box-shadow: none; }
@@ -742,14 +742,10 @@
     }
     .landing-advantage-cards-carousel {
       gap: 6px; padding: 0 16px; margin: 0 -16px; scroll-padding: 16px;
-      cursor: grab;
+      cursor: grab; overflow-anchor: none; overscroll-behavior-x: contain;
     }
     .landing-advantage-cards-carousel.is-dragging { cursor: grabbing; user-select: none; }
     .landing-advantage-cards-carousel > .card-reveal-slot { flex: none; }
-    .perks-scroll-story .perks-pin { position: sticky; top: 0; }
-    .perks-scroll-story .landing-advantage-cards-carousel {
-      scroll-snap-type: none; scroll-behavior: auto; overflow-anchor: none;
-    }
     .landing-advantage-card {
       width: 146px; min-height: 148px; height: 148px; padding: 16px;
       border-radius: 16px; gap: 0; background: #f9f8fa;
@@ -1226,88 +1222,36 @@
     });
 
     (() => {
-      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const lead = 80;
-      const tail = 140;
-      const stage = document.getElementById('perks-stage');
-      const pin = stage.querySelector('.perks-pin');
       const carousel = document.getElementById('perks-carousel');
       const dotsRoot = document.getElementById('perks-dots');
-      const cards = [...carousel.children];
-      let queued = false;
-      let resizing = false;
-      let range = 0;
-      let travel = 0;
-      let start = 0;
-      let expectedLeft = 0;
-      let manualUntil = 0;
-      document.getElementById('tariffs').classList.add('perks-scroll-story');
-
-      function measure() {
-        resizing = true;
-        range = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
-        travel = range;
-        stage.style.height = `${pin.offsetHeight + lead + travel + tail}px`;
-        start = stage.getBoundingClientRect().top + window.scrollY;
-        resizing = false;
-        sync();
-      }
-      function sync() {
-        queued = false;
-        const progress = travel ? Math.min(1, Math.max(0, (window.scrollY - start - lead) / travel)) : 0;
-        expectedLeft = progress * range;
-        if (Math.abs(carousel.scrollLeft - expectedLeft) > 0.5) carousel.scrollLeft = expectedLeft;
-        queueCardReveals();
-      }
-      function queueSync() {
-        if (queued) return;
-        queued = true;
-        requestAnimationFrame(sync);
-      }
-      function goToCard(index) {
-        const card = cards[Math.max(0, Math.min(cards.length - 1, index))];
-        const left = index === cards.length - 1 ? range : Math.min(range, card.offsetLeft - cards[0].offsetLeft);
-        window.scrollTo({
-          top: start + lead + (range ? left / range * travel : 0),
-          behavior: motion.matches ? 'instant' : 'smooth',
-        });
-      }
-      cards.slice(0, 2).forEach((_, index) => {
+      const maxLeft = () => Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+      [0, 1].forEach((index) => {
         const dot = document.createElement('button');
         dot.type = 'button';
         dot.setAttribute('aria-label', `Страница ${index + 1}`);
         if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToCard(index === 0 ? 0 : cards.length - 1));
+        dot.addEventListener('click', () => {
+          carousel.scrollTo({ left: index === 0 ? 0 : maxLeft(), behavior: 'smooth' });
+        });
         dotsRoot.appendChild(dot);
       });
       carousel.addEventListener('scroll', () => {
-        const active = carousel.scrollLeft >= range / 2 ? 1 : 0;
+        const active = carousel.scrollLeft >= maxLeft() / 2 ? 1 : 0;
         [...dotsRoot.children].forEach((dot, index) => dot.classList.toggle('active', index === active));
-        if (resizing || Math.abs(carousel.scrollLeft - expectedLeft) < 2) return;
-        if (Date.now() > manualUntil) {
-          queueSync();
-          return;
-        }
-        window.scrollTo({
-          top: start + lead + (range ? carousel.scrollLeft / range * travel : 0),
-          behavior: 'instant',
-        });
+        queueCardReveals();
       }, { passive: true });
       let dragStartX = 0;
       let dragStartScroll = 0;
       let dragging = false;
       carousel.addEventListener('pointerdown', (event) => {
-        dragging = event.pointerType === 'mouse';
+        if (event.pointerType !== 'mouse') return;
+        dragging = true;
         dragStartX = event.clientX;
         dragStartScroll = carousel.scrollLeft;
-        if (dragging) {
-          carousel.classList.add('is-dragging');
-          carousel.setPointerCapture(event.pointerId);
-        }
+        carousel.classList.add('is-dragging');
+        carousel.setPointerCapture(event.pointerId);
       });
       carousel.addEventListener('pointermove', (event) => {
-        const distance = Math.abs(event.clientX - dragStartX);
-        if (distance > 8) manualUntil = Date.now() + 1500;
         if (!dragging) return;
         carousel.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
       });
@@ -1317,13 +1261,6 @@
       };
       carousel.addEventListener('pointerup', finishDrag);
       carousel.addEventListener('pointercancel', finishDrag);
-      carousel.addEventListener('wheel', (event) => {
-        if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) manualUntil = Date.now() + 1500;
-      }, { passive: true });
-      window.addEventListener('scroll', queueSync, { passive: true });
-      window.addEventListener('resize', measure, { passive: true });
-      document.fonts.ready.then(measure);
-      measure();
     })();
 
     const faqItems = [...document.querySelectorAll('.mfui-accordion')];

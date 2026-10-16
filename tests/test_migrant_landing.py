@@ -20,13 +20,15 @@ class MigrantLandingRegressionTests(unittest.TestCase):
         self.assertIn("flex: 0 0 auto", rule.group(1))
         self.assertIn("height: 52px", rule.group(1))
 
-    def test_prototype_card_reveal_and_scroll_slider(self):
+    def test_card_reveal_stays_and_slider_is_horizontal_only(self):
         self.assertIn("@keyframes megafon-service-appear", self.source)
         self.assertIn("rotateX(-68deg)", self.source)
         self.assertIn("data-card-reveal", self.source)
-        self.assertIn("perks-scroll-story", self.source)
-        self.assertIn("expectedLeft", self.source)
-        self.assertNotIn("setInterval(rotatePerks", self.source)
+        self.assertIn("carousel.addEventListener('pointerdown'", self.source)
+        self.assertIn("carousel.scrollLeft = dragStartScroll - (event.clientX - dragStartX)", self.source)
+        self.assertNotIn("perks-scroll-story", self.source)
+        self.assertNotIn("expectedLeft", self.source)
+        self.assertNotIn("window.scrollTo", self.source)
 
 
 if __name__ == "__main__":
