@@ -719,9 +719,14 @@
       height: 1262px; padding: 48px 16px; background: #f2f4f7;
     }
     .tariff-stack { gap: 12px; }
-    .landing-service-side-picture-card { border-radius: 0; box-shadow: none; }
+    .landing-service-side-picture-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: none;
+    }
     .landing-service-side-picture-card__image {
-      height: 184px; padding: 0; margin-bottom: -32px; border-radius: 16px;
+      height: 184px; padding: 0; margin-bottom: -32px;
+      border-radius: 16px 16px 0 0;
       overflow: hidden;
     }
     .landing-service-side-picture-card__image img {
@@ -731,7 +736,8 @@
       width: 344.016px; height: 193.469px;
     }
     .landing-service-side-picture-card__info {
-      margin: 0; padding: 20px 16px 16px; border-radius: 16px;
+      margin: 0; padding: 20px 16px 16px;
+      border-radius: 16px;
       gap: 16px; display: flex; flex-direction: column;
     }
     .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__info {
