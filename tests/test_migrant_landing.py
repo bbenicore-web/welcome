@@ -16,10 +16,10 @@ class MigrantLandingRegressionTests(unittest.TestCase):
             self.source,
             r"\.landing-service-side-picture-card\s*\{\s*border-radius:\s*0",
         )
-        self.assertIn(
-            ".landing-service-side-picture-card {\n      border-radius: 16px;",
-            self.source,
-        )
+        self.assertIn("#tariffs .tariff-stack > .card-reveal-slot", self.source)
+        self.assertIn("clip-path: inset(0 round 16px)", self.source)
+        self.assertIn("#tariffs .landing-service-side-picture-card__image img", self.source)
+        self.assertIn("width: 100%", self.source.split("#tariffs .landing-service-side-picture-card__image img")[1][:200])
 
     def test_connect_button_does_not_inherit_hero_flex_basis(self):
         rule = re.search(

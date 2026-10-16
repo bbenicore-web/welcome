@@ -719,28 +719,48 @@
       height: 1262px; padding: 48px 16px; background: #f2f4f7;
     }
     .tariff-stack { gap: 12px; }
-    .landing-service-side-picture-card {
+    #tariffs .tariff-stack > .card-reveal-slot {
       border-radius: 16px;
       overflow: hidden;
+      isolation: isolate;
+    }
+    #tariffs .landing-service-side-picture-card {
+      border-radius: 16px;
+      overflow: hidden;
+      isolation: isolate;
+      clip-path: inset(0 round 16px);
       box-shadow: none;
     }
-    .landing-service-side-picture-card__image {
-      height: 184px; padding: 0; margin-bottom: -32px;
-      border-radius: 16px 16px 0 0;
+    #tariffs .landing-service-side-picture-card__image {
+      width: 100%;
+      height: 184px;
+      padding: 0;
+      margin-bottom: -32px;
+      border-radius: 0;
       overflow: hidden;
     }
-    .landing-service-side-picture-card__image img {
-      width: 328px; max-width: none; height: 184px; object-fit: cover;
+    #tariffs .landing-service-side-picture-card__image img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 184px;
+      object-fit: cover;
     }
-    .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__image img {
-      width: 344.016px; height: 193.469px;
-    }
-    .landing-service-side-picture-card__info {
-      margin: 0; padding: 20px 16px 16px;
+    #tariffs .landing-service-side-picture-card__info {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 20px 16px 16px;
       border-radius: 16px;
-      gap: 16px; display: flex; flex-direction: column;
+      gap: 16px;
+      display: flex;
+      flex-direction: column;
     }
-    .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__info {
+    #tariffs .landing-service-side-picture-card_theme_white .landing-service-side-picture-card__info {
+      background: #fff;
+    }
+    #tariffs .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__info {
+      background: #333;
       padding: 16px;
     }
     .landing-service-side-picture-card__title {
