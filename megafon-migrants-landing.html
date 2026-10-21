@@ -524,18 +524,19 @@
     }
     .landing-picture-with-description { background: transparent; }
     .landing-picture-with-description__img-wrap {
-      height: 184px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       border-radius: 16px;
       overflow: hidden;
       margin-bottom: -32px;
-      background: linear-gradient(-74.5deg, rgba(143, 168, 216, .3), rgba(255, 255, 255, 0)), #e9ebf0;
+      background: #e9ebf0;
     }
     .landing-picture-with-description__img-wrap img {
+      width: 100%;
+      height: 100%;
       max-width: none;
-      width: 424.446px;
-      height: 238.751px;
       object-fit: cover;
-      transform: translateY(11px);
+      object-position: center;
     }
     .landing-picture-with-description__content {
       position: relative;
@@ -985,7 +986,7 @@
         <div id="panel-bio-yes" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-yes">
           <article class="landing-picture-with-description">
             <div class="landing-picture-with-description__img-wrap">
-              <img src="migrant-assets/sim-card.png" alt="SIM-карта">
+              <img src="migrant-assets/sim-card@2x.png" alt="SIM-карта">
             </div>
             <div class="landing-picture-with-description__content">
               <h3>Оформите в любом удобном салоне связи Мегафон</h3>
@@ -1005,7 +1006,7 @@
         <div id="panel-bio-no" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-no" hidden>
           <article class="landing-picture-with-description">
             <div class="landing-picture-with-description__img-wrap">
-              <img src="migrant-assets/sim-card.png" alt="SIM-карта">
+              <img src="migrant-assets/sim-card-nobio@2x.png" alt="SIM-карта">
             </div>
             <div class="landing-picture-with-description__content">
               <h3>Сначала подготовьте данные</h3>
