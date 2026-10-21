@@ -1,1532 +1,829 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="Связь для иностранных граждан — тарифы, подключение SIM и офисы МегаФона.">
-  <title>На связи с близкими — МегаФон</title>
-  <link rel="preload" href="fonts/MegaFonGraphikLC-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/MegaFonGraphikLC-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>СИМ-КАРТЫ В РОССИЙСКОЙ ФЕДЕРАЦИИ — МегаФон</title>
+  <meta name="description" content="Инструкция по правилам покупки и активации SIM-карты для иностранных граждан.">
   <style>
     @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Light.woff2") format("woff2");
-      font-weight: 300;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Regular.woff2") format("woff2");
+      font-family: Inter;
+      font-style: normal;
       font-weight: 400;
       font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-ext-400-normal.woff2") format("woff2");
+      unicode-range: U+0460-052F, U+0490-04FF, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
     }
     @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Medium.woff2") format("woff2");
-      font-weight: 500;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Semibold.woff2") format("woff2");
-      font-weight: 600;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Bold.woff2") format("woff2");
+      font-family: Inter;
+      font-style: normal;
       font-weight: 700;
       font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-ext-700-normal.woff2") format("woff2");
+      unicode-range: U+0460-052F, U+0490-04FF, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
     }
     @font-face {
-      font-family: Graphik;
-      src: url("fonts/MegaFonGraphikLC-Black.woff2") format("woff2");
-      font-weight: 900;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 800;
       font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-ext-800-normal.woff2") format("woff2");
+      unicode-range: U+0460-052F, U+0490-04FF, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-400-normal.woff2") format("woff2");
+      unicode-range: U+0301, U+0400-045F, U+2116;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-700-normal.woff2") format("woff2");
+      unicode-range: U+0301, U+0400-045F, U+2116;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-cyrillic-800-normal.woff2") format("woff2");
+      unicode-range: U+0301, U+0400-045F, U+2116;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-ext-400-normal.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-ext-700-normal.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-ext-800-normal.woff2") format("woff2");
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/inter-latin-800-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Leaflet Symbols";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/symbols-400.woff2") format("woff2");
+      unicode-range: U+2192, U+25D4, U+266A, U+2708, U+2713;
+    }
+    @font-face {
+      font-family: "Leaflet Symbols";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/symbols-700.woff2") format("woff2");
+      unicode-range: U+2192, U+25D4, U+266A, U+2708, U+2713;
+    }
+    @font-face {
+      font-family: "Leaflet CJK";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("leaflet-assets/fonts/cjk-400.woff2") format("woff2");
+      unicode-range: U+4E2D, U+4EBA, U+56FD;
     }
 
     :root {
-      --brand-green: #00b956;
-      --brand-green-hover: #10e272;
-      --content: #333;
-      --stc-white: #fff;
-      --spb-sky-0: #f6f6f6;
-      --spb-sky-1: #ededed;
-      --background: #f2f4f7;
-      --header-height: 56px;
-      --page-width: 480px;
-      --radius-card: 16px;
-      --radius-pill: 30px;
-      --shadow-soft: 0 4px 12px #00000014;
+      --ink: #1a1a1a;
+      --grey: #6e6e6e;
+      --white: #fff;
+      --font: Inter, "Leaflet Symbols", "Leaflet CJK", sans-serif;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 16px); }
+
+    html { background: var(--white); }
+
     body {
       margin: 0;
-      font-family: Graphik, Arial, sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font);
+      font-weight: 400;
       font-size: 15px;
-      line-height: 24px;
-      color: var(--content);
-      background: #e3e6eb;
+      line-height: 19px;
+      -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
-    a { color: inherit; text-decoration: none; }
-    h1, h2, h3, p { margin: 0; }
-    ul, ol { margin: 0; padding: 0; list-style: none; }
-    [hidden] { display: none !important; }
 
-    .mobile-page {
-      max-width: var(--page-width);
+    html[data-lang="ru"] .only-tg { display: none; }
+    html[data-lang="tg"] .only-ru { display: none; }
+
+    .sheet {
+      max-width: 1754px;
       margin: 0 auto;
-      background: var(--stc-white);
-      min-height: 100vh;
-      overflow-x: clip;
+      padding: 34px 31px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
     }
 
-    /* Header — mfui / ch-platform pattern */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--header-height);
-      padding: 8px 16px;
+    .col-left,
+    .col-mid,
+    .col-side,
+    .steps,
+    .benefits,
+    .faq,
+    .header {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .header { gap: 8px; align-items: stretch; }
+    .steps { gap: 18px; }
+    .col-mid { gap: 19px; }
+    .benefits { gap: 12px; }
+    .faq { gap: 8px; }
+    .col-side { gap: 18px; }
+
+    .brand-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: var(--stc-white);
-      box-shadow: 0 2px 6px #0000001a;
+      gap: 12px 16px;
+      flex-wrap: wrap;
     }
+
     .brand {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      color: var(--brand-green);
-    }
-    .header-actions { display: flex; align-items: center; gap: 12px; }
-    .login {
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 14px;
-      background: var(--brand-green);
-      color: var(--stc-white);
-      border-radius: 40px;
-      padding: 5px 16px;
-    }
-    .icon-button {
-      width: 32px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-    }
-    .icon-button span,
-    .icon-button span::before,
-    .icon-button span::after {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: #222;
-      border-radius: 2px;
-      position: relative;
-    }
-    .icon-button span::before,
-    .icon-button span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-    }
-    .icon-button span::before { top: -6px; }
-    .icon-button span::after { top: 6px; }
-
-    .breadcrumbs {
-      padding: 12px 16px 0;
-      font-size: 12px;
-      line-height: 18px;
-      color: #616c82;
-    }
-    .breadcrumbs a { color: #616c82; }
-
-    /* landing-banner-full-screen */
-    .landing-banner-full-screen {
-      background:
-        linear-gradient(278.83deg, rgba(143, 168, 216, 0.3) 0.27%, rgba(255, 255, 255, 0.3) 99.56%),
-        linear-gradient(0deg, var(--background), var(--background));
-      border-radius: 0 0 24px 24px;
-      overflow: clip;
-    }
-    .landing-banner-full-screen__inner {
-      display: flex;
-      flex-direction: column;
-      min-height: 520px;
-      padding: 16px;
-    }
-    .landing-banner-full-screen__body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 1;
-    }
-    .landing-banner-full-screen__title {
-      margin-top: 8px;
-      font-size: 36px;
-      line-height: 40px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .landing-banner-full-screen__description {
-      margin-top: 12px;
-      max-width: 328px;
-      font-size: 15px;
-      line-height: 24px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-      align-items: stretch;
-    }
-    .mfui-button {
-      appearance: none;
-      border-radius: var(--radius-pill);
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 24px;
-      min-height: 52px;
-      padding: 13px 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-align: center;
-    }
-    .mfui-button_type_primary.mfui-button_theme_black {
-      background: var(--content);
-      color: var(--stc-white);
-      flex: 1 1 160px;
-    }
-    .language-select {
-      position: relative;
-      flex: 1 1 140px;
+      gap: 12px;
       min-width: 0;
     }
-    .language-pill {
-      width: 100%;
-      min-height: 52px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--content);
-      background: var(--stc-white);
-      padding: 8px 12px;
-      display: inline-flex;
+
+    .mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 23px;
+      background: var(--ink);
+      color: var(--white);
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-weight: 500;
-    }
-    .language-pill__flag {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex: none;
-    }
-    .language-pill__label {
-      flex: 1 1 auto;
-      min-width: 0;
-      text-align: left;
-    }
-    .language-pill__chevron {
-      width: 20px;
-      height: 20px;
-      flex: none;
-      transition: transform .2s ease;
-    }
-    .language-select.is-open .language-pill__chevron {
-      transform: rotate(180deg);
-    }
-    .language-menu {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      right: 0;
-      z-index: 120;
-      margin: 0;
-      padding: 8px;
-      list-style: none;
-      background: var(--stc-white);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px #00000024;
-    }
-    .language-menu[hidden] { display: none !important; }
-    .language-menu__option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      padding: 10px 12px;
-      border: 0;
-      border-radius: 12px;
-      background: transparent;
-      font: inherit;
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 24px;
-      color: var(--content);
-      text-align: left;
-      cursor: pointer;
-    }
-    .language-menu__option.is-active {
-      background: #ecfbf2;
-      color: var(--brand-green);
-    }
-    .language-menu__option .language-flag {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex: none;
-    }
-    .landing-banner-full-screen__art {
-      position: relative;
-      margin: 16px -8px 0;
-      height: 220px;
-      display: grid;
-      place-items: center;
-    }
-    .landing-banner-full-screen__art img {
-      width: min(100%, 320px);
-      height: auto;
-      object-fit: contain;
-    }
-
-    .landing-container-v2 { padding: 48px 16px 0; scroll-margin-top: calc(var(--header-height) + 16px); }
-    .landing-container-v2_bg-gray { background: var(--background); padding-bottom: 48px; margin-top: 0; }
-    .landing-title-description-box h2 {
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .landing-title-description-box_lead {
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 600;
-      text-align: left;
-      margin-bottom: 16px;
-    }
-
-    /* landing-feature-cards */
-    .landing-feature-cards-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .landing-feature-cards-item {
-      background: var(--spb-sky-1);
-      border-radius: 24px;
-      min-height: 162px;
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 96px;
-      gap: 8px;
-      align-items: end;
-    }
-    .landing-feature-cards-item__title {
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .landing-feature-cards-item__text {
-      font-size: 15px;
-      line-height: 24px;
-      color: #333c;
-      max-width: 240px;
-    }
-    .landing-feature-cards-item__img {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      justify-self: end;
-    }
-
-    /* Tariffs — landing-service-side-picture-card (design v2) */
-    .tariff-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .landing-service-side-picture-card {
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      color: var(--content);
-    }
-    .landing-service-side-picture-card_theme_white {
-      background: var(--stc-white);
-      box-shadow: var(--shadow-soft);
-    }
-    .landing-service-side-picture-card_theme_black {
-      background: var(--content);
-      color: var(--stc-white);
-    }
-    .landing-service-side-picture-card__image {
-      height: 200px;
-      background: linear-gradient(278deg, rgba(143, 168, 216, 0.35), rgba(255, 255, 255, 0.2)), var(--background);
-      display: grid;
-      place-items: center;
-      padding: 16px;
-    }
-    .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__image {
-      background: linear-gradient(180deg, #4a4a4a, #222);
-    }
-    .landing-service-side-picture-card__image img {
-      width: min(100%, 280px);
-      height: 160px;
-      object-fit: contain;
-    }
-    .landing-service-side-picture-card__info {
-      padding: 20px 16px 16px;
-      margin-top: -24px;
-      border-radius: var(--radius-card) var(--radius-card) 0 0;
-      background: inherit;
-      position: relative;
-      z-index: 1;
-    }
-    .landing-service-side-picture-card__title {
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .landing-service-side-picture-card__description {
-      font-size: 15px;
-      line-height: 24px;
-      margin-bottom: 16px;
-      opacity: 0.92;
-    }
-    .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__description {
-      color: #ffffffcc;
-    }
-    .benefits-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .landing-service-side-picture-card__benefit {
-      font-size: 12px;
-      line-height: 14px;
-      padding: 8px 12px;
-      border-radius: 12px;
-      background: var(--background);
-      color: var(--content);
-    }
-    .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__benefit {
-      background: #3d3d3d;
-      color: var(--stc-white);
-    }
-    .mfui-button_type_outline {
-      width: 100%;
-      border: 1px solid var(--content);
-      background: transparent;
-      color: var(--content);
-    }
-    .landing-service-side-picture-card_theme_black .mfui-button_type_outline {
-      border-color: var(--stc-white);
-      color: var(--stc-white);
-    }
-
-    /* Perks carousel — landing-advantage-card */
-    .perks-intro {
-      margin: 48px 16px 16px;
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 600;
-    }
-    .landing-advantage-cards-carousel {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 16px 8px;
-      scrollbar-width: none;
-    }
-    .landing-advantage-cards-carousel::-webkit-scrollbar { display: none; }
-    .landing-advantage-card {
-      flex: none;
-      width: 268px;
-      scroll-snap-align: start;
-      background: var(--spb-sky-0);
-      border-radius: var(--radius-card);
-      min-height: 160px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .landing-advantage-card__title {
-      font-size: 15px;
-      line-height: 24px;
-      flex: 1;
-    }
-    .landing-advantage-card__icons {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .icon-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid #d2d5da;
-      display: grid;
-      place-items: center;
-      font-size: 11px;
-      font-weight: 600;
-      background: var(--stc-white);
-    }
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding: 16px 0 0;
-    }
-    .carousel-dots button {
-      width: 8px;
-      height: 8px;
-      border-radius: 4px;
-      background: #d8d8d8;
-      padding: 0;
-    }
-    .carousel-dots button.active {
-      width: 20px;
-      background: var(--brand-green);
-    }
-
-    /* Tabs + picture-with-description */
-    .mfui-v6-tabs {
-      margin-bottom: 24px;
-    }
-    .mfui-v6-tabs__list {
-      display: flex;
-      padding: 4px;
-      background: #d2d5da;
-      border-radius: 12px;
-      gap: 0;
-    }
-    .mfui-v6-tabs__tab {
-      flex: 1;
-      border: 0;
-      background: transparent;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 14px;
-      white-space: nowrap;
-    }
-    .mfui-v6-tabs__tab[aria-selected="true"] {
-      background: var(--stc-white);
-      box-shadow: var(--shadow-soft);
-    }
-    .landing-picture-with-description {
-      background: var(--background);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-    .landing-picture-with-description__img-wrap {
-      height: 200px;
-      display: grid;
-      place-items: center;
-      padding: 16px;
-    }
-    .landing-picture-with-description__img-wrap img {
-      max-height: 180px;
-      object-fit: contain;
-    }
-    .landing-picture-with-description__content {
-      background: var(--stc-white);
-      border-radius: var(--radius-card) var(--radius-card) 0 0;
-      margin-top: -16px;
-      padding: 20px 16px 16px;
-      position: relative;
-    }
-    .landing-picture-with-description__content h3 {
-      font-size: 20px;
-      line-height: 28px;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-    .landing-text-with-icon {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .mfui-text-with-icon-item {
-      display: grid;
-      grid-template-columns: 32px 1fr;
-      gap: 12px;
-      align-items: start;
-      font-size: 15px;
-      line-height: 24px;
-    }
-    .step-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid #d2d5da;
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--content);
-    }
-    .landing-buttons-box {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .mfui-button_type_outline.mfui-button_theme_black {
-      border-color: var(--content);
-      color: var(--content);
-    }
-
-    /* Map */
-    .map-section { padding-bottom: 48px; }
-    .section-description {
-      text-align: center;
-      margin: 8px 0 24px;
-      color: #333c;
-    }
-    .map-widget {
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      position: relative;
-      background: #e8ecf2;
-      min-height: 320px;
-    }
-    .map-search {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--stc-white);
-      border-radius: 12px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow-soft);
-      font-size: 15px;
-      color: #616c82;
-    }
-    .map-search svg { flex: none; }
-    .map-widget img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-    }
-
-    /* FAQ — mfui-accordion */
-    .faq-items { display: flex; flex-direction: column; gap: 8px; padding-bottom: 48px; }
-    .mfui-accordion {
-      border-radius: var(--radius-card);
-      background: var(--spb-sky-0);
-      overflow: hidden;
-    }
-    .mfui-accordion__title-wrap {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px;
-      min-height: 72px;
-      text-align: left;
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 24px;
-    }
-    .mfui-accordion__icon {
-      flex: none;
-      width: 24px;
-      height: 24px;
-      transition: transform 0.2s;
-    }
-    .mfui-accordion[open] .mfui-accordion__icon { transform: none; }
-    .mfui-accordion__content {
-      padding: 0 16px 16px;
-      color: #333c;
-      font-size: 15px;
-      line-height: 24px;
-    }
-
-    /* Footer — simplified mega5g */
-    .site-footer {
-      background: var(--spb-sky-0);
-      border-top: 1px solid #d8d8d8;
-      padding: 0 16px 24px;
-    }
-    .footer-nav details {
-      border-bottom: 1px solid #d8d8d8;
-    }
-    .footer-nav summary {
-      list-style: none;
-      cursor: pointer;
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-weight: 500;
-    }
-    .footer-nav summary::-webkit-details-marker { display: none; }
-    .footer-body { padding-top: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .footer-button {
-      min-height: 52px;
-      border-radius: 54px;
-      background: var(--stc-white);
-      font-weight: 500;
-      width: 100%;
-    }
-    .copyright {
-      font-size: 12px;
-      line-height: 16px;
-      color: #999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 8px;
-    }
-
-    @media (min-width: 600px) {
-      :root { --page-width: 390px; }
-      .mobile-page { box-shadow: 0 0 32px #00000012; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
-    }
-
-    /* Exact mobile composition from Figma frame 15.10.2026. */
-    :root { --page-width: 360px; }
-    body { background: #444; }
-    .mobile-page { width: min(100%, 360px); }
-    .site-header {
-      position: relative; height: 56px; padding: 8px 16px;
-      box-shadow: 0 2px 6px #0000001a;
-    }
-    .brand { gap: 6px; font-size: 0; }
-    .brand-symbol { width: 23.564px; height: 23.52px; }
-    .brand-word { width: 103.156px; height: 14.095px; }
-    .icon-button { width: 32px; height: 40px; }
-    .icon-button img { width: 32px; height: 32px; }
-    .breadcrumbs {
-      height: 40px; padding: 16px 16px 0; font-size: 15px;
-      line-height: 24px; white-space: nowrap; overflow: hidden;
-    }
-    .breadcrumbs .trail { opacity: .5; }
-    .landing-banner-full-screen { border-radius: 0; height: 480px; overflow: visible; }
-    .landing-banner-full-screen__inner { min-height: 480px; height: 480px; padding: 0; overflow: visible; }
-    .landing-banner-full-screen__body {
-      flex: none; height: 268px; padding: 32px 16px 0; position: relative; z-index: 2; overflow: visible;
-    }
-    .landing-banner-full-screen__title {
-      margin: 0; font-size: 44px; line-height: 48px; letter-spacing: 0;
-    }
-    .landing-banner-full-screen__description {
-      margin-top: 8px; font-size: 18px; line-height: 24px; font-weight: 500;
-    }
-    .hero-actions { margin-top: 32px; gap: 8px; flex-wrap: nowrap; }
-    .hero-actions .mfui-button, .language-select {
-      width: 160px; min-width: 0; flex: 0 0 160px;
-    }
-    .hero-actions .mfui-button {
-      min-height: 52px; height: 52px; border: 0; border-radius: 12px; padding: 14px 10px;
-    }
-    .language-pill {
-      min-height: 52px; height: 52px; border-radius: 12px; padding: 14px 10px; gap: 10px;
-    }
-    .language-pill__flag { width: 16px; height: 16px; }
-    .language-pill__chevron { width: 20px; height: 20px; margin-left: -6px; }
-    .language-menu { border-radius: 20px; padding: 8px; }
-    .language-menu__option { padding: 12px; border-radius: 16px; font-size: 15px; line-height: 24px; }
-    .language-menu__option.is-active { background: #ecfbf2; color: #00b956; }
-    .landing-banner-full-screen__art {
-      flex: none; height: 212px; margin: 0; overflow: hidden;
-    }
-    .landing-banner-full-screen__art img {
-      position: absolute; width: 486.223px; max-width: none; height: 273.501px;
-      left: 50%; top: 50%; transform: translate(-54.14%, -42.87%); object-fit: cover;
-    }
-    #benefits {
-      height: 452px; padding: 48px 16px 16px; border-radius: 0 0 20px 20px;
-    }
-    .landing-title-description-box h2 { margin: 0 0 24px; }
-    .landing-feature-cards-wrapper { gap: 12px; }
-    .landing-feature-cards-item {
-      min-height: 162px; height: 162px; padding: 0; border-radius: 12px;
-      grid-template-columns: 200px 128px; gap: 0; align-items: stretch; background: #f2f4f7;
-    }
-    .landing-feature-cards-item > div { padding: 16px 0 16px 16px; }
-    .landing-feature-cards-item__title { margin-bottom: 8px; font-weight: 500; }
-    .landing-feature-cards-item__text { font-size: 15px; line-height: 18px; opacity: .8; }
-    .landing-feature-cards-item__img {
-      width: 320px; max-width: none; height: 180px; justify-self: auto;
-      margin-left: -96px; margin-top: 6px; object-fit: cover;
-    }
-    .landing-feature-cards-wrapper > :nth-child(2) .landing-feature-cards-item__img {
-      width: 343.111px; height: 193px; margin-left: -107px; margin-top: -15px;
-    }
-    #tariffs {
-      height: 1262px; padding: 48px 16px; background: #f2f4f7;
-    }
-    .tariff-stack { gap: 12px; }
-    #tariffs .tariff-stack > .card-reveal-slot {
-      border-radius: 16px;
-      overflow: hidden;
-      isolation: isolate;
-    }
-    #tariffs .landing-service-side-picture-card {
-      border-radius: 16px;
-      overflow: hidden;
-      isolation: isolate;
-      clip-path: inset(0 round 16px);
-      box-shadow: none;
-    }
-    #tariffs .landing-service-side-picture-card__image {
-      width: 100%;
-      height: 184px;
-      padding: 0;
-      margin-bottom: -32px;
-      border-radius: 0;
-      overflow: hidden;
-    }
-    #tariffs .landing-service-side-picture-card__image img {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      height: 184px;
-      object-fit: cover;
-    }
-    #tariffs .landing-service-side-picture-card__info {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      padding: 20px 16px 16px;
-      border-radius: 16px;
-      gap: 16px;
-      display: flex;
-      flex-direction: column;
-    }
-    #tariffs .landing-service-side-picture-card_theme_white .landing-service-side-picture-card__info {
-      background: #fff;
-    }
-    #tariffs .landing-service-side-picture-card_theme_black .landing-service-side-picture-card__info {
-      background: #333;
-      padding: 16px;
-    }
-    .landing-service-side-picture-card__title {
-      font-size: 26px; line-height: 32px; margin: 0;
-    }
-    .landing-service-side-picture-card__description {
-      font-size: 15px; line-height: 18px; margin: 4px 0 0;
-    }
-    .benefits-tags { gap: 4px; margin: 0; }
-    .landing-service-side-picture-card__benefit {
-      font-size: 12px; line-height: 18px; padding: 2px 8px; border-radius: 8px; color: #616c82;
-    }
-    .landing-service-side-picture-card .mfui-button {
-      min-height: 44px; height: 44px; border-radius: 10px; padding: 8px 24px;
-    }
-    .perks-intro {
-      margin: 20px 0 24px; padding: 0; font-size: 18px; line-height: 24px;
-      font-weight: 500;
-    }
-    .landing-advantage-cards-carousel {
-      gap: 6px; padding: 0 16px; margin: 0 -16px; scroll-padding: 16px;
-      cursor: grab; overflow-anchor: none; overscroll-behavior-x: contain;
-    }
-    .landing-advantage-cards-carousel.is-dragging { cursor: grabbing; user-select: none; }
-    .landing-advantage-cards-carousel > .card-reveal-slot { flex: none; }
-    .landing-advantage-card {
-      width: 146px; min-height: 148px; height: 148px; padding: 16px;
-      border-radius: 16px; gap: 0; background: #f9f8fa;
-    }
-    .landing-advantage-card__title { font-size: 12px; line-height: 14px; }
-    .landing-advantage-card__icons { gap: 0; }
-    .perk-icon { width: 48px; height: 48px; position: relative; margin-right: -8px; }
-    .perk-icon:last-child { margin-right: 0; }
-    .perk-icon .base, .perk-icon .glyph { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .perk-icon .glyph { inset: 12px; width: 24px; height: 24px; }
-    .carousel-dots { padding: 10px 0 0; gap: 6px; height: 14px; }
-    .carousel-dots button { width: 4px; height: 4px; border-radius: 4px; background: #333; opacity: .16; }
-    .carousel-dots button.active { width: 4px; background: #333; opacity: 1; }
-    #connect {
-      min-height: 616px; padding: 48px 16px 0; border-radius: 20px 20px 0 0;
-      background: #fff;
-    }
-    #connect .landing-title-description-box h2 { margin-bottom: 20px; }
-    .mfui-v6-tabs { margin-bottom: 24px; display: flex; justify-content: center; }
-    .mfui-v6-tabs__list { width: auto; height: 44px; padding: 4px; background: #f2f4f7; }
-    .mfui-v6-tabs__tab { flex: none; padding: 6px 12px; font-size: 15px; line-height: 24px; }
-    .landing-picture-with-description { border-radius: 0; background: transparent; }
-    .landing-picture-with-description__img-wrap {
-      height: 184px; padding: 0; border-radius: 16px; overflow: hidden; margin-bottom: -32px;
-      background: linear-gradient(-74.5deg, rgba(143,168,216,.3), rgba(255,255,255,0)), #e9ebf0;
-    }
-    .landing-picture-with-description__img-wrap img {
-      max-width: none; width: 424.446px; height: 238.751px; max-height: none;
-      object-fit: cover; transform: translateY(11px);
-    }
-    .landing-picture-with-description__content {
-      margin: 0; padding: 20px 16px 16px; border-radius: 16px; background: #f2f4f7;
-      gap: 32px; display: flex; flex-direction: column;
-    }
-    .landing-picture-with-description__content h3 { margin: 0; font-size: 18px; line-height: 24px; font-weight: 500; }
-    .landing-text-with-icon { gap: 16px; margin: -16px 0 0; }
-    .mfui-text-with-icon-item { grid-template-columns: 32px 1fr; gap: 10px; align-items: center; line-height: 18px; }
-    .step-badge {
-      border: 0;
-      background-position: center;
-      background-size: 32px 32px;
-      background-repeat: no-repeat;
-      font-size: 12px;
-      font-weight: 500;
+      font-weight: 800;
+      font-size: 28px;
       line-height: 1;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -0.02em;
-      color: #333;
-      -webkit-text-stroke: 0.666667px #333;
-      paint-order: stroke fill;
+      flex: none;
     }
-    .mfui-text-with-icon-item:nth-child(1) .step-badge { background-image: url("migrant-assets/step-1.svg"); }
-    .mfui-text-with-icon-item:nth-child(2) .step-badge { background-image: url("migrant-assets/step-2.svg"); }
-    .mfui-text-with-icon-item:nth-child(3) .step-badge { background-image: url("migrant-assets/step-3.svg"); }
-    .mfui-text-with-icon-item:nth-child(4) .step-badge { background-image: url("migrant-assets/step-1.svg"); }
-    .landing-buttons-box .mfui-button {
-      flex: 0 0 auto; min-height: 52px; height: 52px; border-radius: 12px; padding: 14px 32px;
+
+    .brand-name {
+      margin: 0;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 35px;
     }
-    #panel-bio-yes .mfui-button_type_primary { display: none; }
-    .map-section { height: 615.295px; padding: 48px 16px; }
-    .map-section .landing-title-description-box h2 { margin-bottom: 20px; }
-    .section-description { text-align: left; margin: 0 0 24px; line-height: 18px; }
-    .map-widget { height: 365.295px; min-height: 0; border-radius: 16px; }
-    .map-widget > img { position: absolute; width: 119.7%; max-width: none; height: 233%; left: -9.95%; top: -37.74%; object-fit: fill; }
-    #faq { height: 501px; padding: 0 16px 48px; }
-    #faq .landing-title-description-box h2 { margin-bottom: 24px; }
-    .faq-items { gap: 8px; padding: 0; }
-    .mfui-accordion { border-radius: 12px; background: #f2f4f7; }
-    .mfui-accordion__title-wrap { min-height: 0; padding: 20px; font-size: 15px; line-height: 24px; }
-    .mfui-accordion__icon { width: 32px; height: 32px; }
-    .mfui-accordion__content { padding: 0 20px 20px; font-size: 15px; line-height: 24px; }
-    .site-footer {
-      height: 1218px; min-height: 1218px; padding: 0 13px 24px; background: #f2f4f7;
-      border-top-color: #f2f4f7;
+
+    .lang-switch {
+      margin-left: auto;
+      display: flex;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      overflow: hidden;
+      flex: none;
     }
-    .footer-nav details { border-bottom-color: #d8d8d8; }
-    .footer-nav summary {
-      min-height: 51px; padding: 12px 0 15px; font-size: 15px; line-height: 24px;
+
+    .lang-switch button {
+      appearance: none;
+      border: 0;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      padding: 8px 14px;
+      cursor: pointer;
     }
-    .footer-chevron { width: 24px; height: 24px; display: grid; place-items: center; font-size: 18px; }
-    .footer-body { gap: 20px; padding-top: 24px; }
-    .footer-app { display: flex; flex-direction: column; gap: 20px; }
-    .footer-app-title {
-      display: flex; align-items: center; gap: 4px; font-weight: 500; font-size: 15px; line-height: 24px;
+
+    .lang-switch button + button { border-left: 2px solid var(--ink); }
+
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--white);
     }
-    .footer-app-title span { font-size: 20px; }
-    .footer-app-download { display: grid; grid-template-columns: 190px 70px; gap: 16px; align-items: center; }
-    .footer-store-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-store-link {
-      height: 44px; border-radius: 54px; background: #fff; display: flex;
-      align-items: center; justify-content: center; gap: 8px; font-weight: 500;
+
+    .spacer { height: 8px; }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .display {
+      font-weight: 800;
+      font-size: 34px;
+      line-height: 37px;
     }
-    .footer-store-link img { width: 32px; height: 32px; }
-    .footer-qr { width: 70px; height: 95px; object-fit: contain; }
-    .footer-actions { display: flex; flex-direction: column; gap: 12px; }
-    .footer-button { min-height: 52px; height: 52px; }
-    .footer-gift {
-      height: 80px; padding: 16px; border-radius: 24px; background: #e8eaee;
-      display: grid; grid-template-columns: 48px 1fr 48px; gap: 12px; align-items: center;
-      font-size: 15px; line-height: 24px; font-weight: 500;
+
+    .h-side {
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 31px;
     }
-    .footer-gift > img { width: 48px; height: 48px; }
-    .footer-gift-send {
-      width: 48px; height: 48px; border: 1px solid #00b956; border-radius: 50%;
-      display: grid; place-items: center;
+
+    .h3 {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
     }
-    .footer-gift-send img { width: 32px; height: 32px; }
-    .footer-policy {
-      display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 0 4px 20px;
-      border-bottom: 1px solid #d8d8d8; color: #999; font-size: 12px; line-height: 16px;
+
+    .h2 {
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 25px;
     }
-    .footer-age {
-      width: 26px; height: 26px; border-radius: 50%; background: #ededed;
-      display: grid; place-items: center; color: #777; font-size: 11px;
+
+    .body {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 19px;
     }
-    .footer-policy a { display: block; margin-top: 8px; color: #888; }
-    .footer-legal { display: flex; flex-direction: column; gap: 20px; }
-    .footer-copyright { display: flex; align-items: center; gap: 12px; color: #999; font-size: 12px; line-height: 16px; }
-    .footer-copyright img { width: 24px; height: 24px; }
-    .footer-legal-links { display: flex; gap: 16px; color: #777; font-size: 12px; line-height: 16px; }
-    .footer-socials { display: flex; align-items: center; gap: 8px; }
-    .footer-socials img { width: 24px; height: 24px; }
-    .footer-socials .speedtest { width: 73px; height: 32px; margin-left: auto; }
-    [data-card-reveal].landing-appear-animation-wrapper_state_hidden {
-      opacity: 0;
-      transform: perspective(900px) translateY(120px) translateZ(-36px) rotateX(-68deg);
-      transform-origin: 50% 0;
-      pointer-events: none;
+
+    .caption {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
     }
-    [data-card-reveal].landing-appear-animation-wrapper_state_animated {
-      transform-origin: 50% 0;
-      animation: appear-animation-wrapper .6s ease both;
-      will-change: transform, opacity;
+
+    .caption--center { text-align: center; }
+
+    .bullets { display: flex; flex-direction: column; gap: 2px; }
+
+    .lang-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-left: 14px;
     }
-    [data-card-reveal].landing-appear-animation-wrapper_state_shown {
-      opacity: 1;
-      transform: perspective(900px);
+
+    .lang-list { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+    .pill {
+      align-self: center;
+      width: fit-content;
+      margin: 0;
+      background: var(--grey);
+      color: var(--white);
+      border: 3px solid var(--white);
+      border-radius: 999px;
+      padding: 9px 32px;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 25px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
-    @keyframes appear-animation-wrapper {
-      0% {
-        opacity: 0;
-        transform: perspective(900px) translateY(120px) translateZ(-36px) rotateX(-68deg);
+
+    .steps .pill { margin-bottom: -28px; }
+
+    .card {
+      position: relative;
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: 30px;
+      padding: 16px 36px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-no {
+      position: absolute;
+      z-index: 2;
+      right: -27px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 27px;
+      background: var(--grey);
+      color: var(--white);
+      border: 3px solid var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 31px;
+    }
+
+    .check-item { display: flex; gap: 8px; align-items: flex-start; }
+
+    .tick {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    .need { padding-left: 24px; white-space: pre-wrap; }
+    .need strong { font-weight: 700; font-size: 16px; line-height: 20px; }
+
+    .mixed strong { font-weight: 700; font-size: 21px; line-height: 25px; }
+    .mixed .soft { font-weight: 400; font-size: 15px; line-height: 19px; }
+
+    .link-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .link-copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 150px;
+      min-height: 104px;
+      flex: none;
+      padding: 8px 14px;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      background: var(--white);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    .btn:hover { background: #f4f4f4; }
+
+    .btn:focus-visible,
+    .lang-switch button:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .btn__label { flex: 1; min-width: 0; }
+    .btn__arrow { flex: none; }
+
+    .btn--langs { width: 230px; min-height: 74px; }
+
+    .trio {
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .trio__item {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn--wide { width: 100%; min-height: 96px; }
+
+    .benefit { display: flex; gap: 16px; align-items: flex-start; }
+    .benefit__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+
+    .icon-video {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      flex: none;
+    }
+
+    .icon-video__r {
+      position: absolute;
+      left: 10px;
+      top: -3px;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 25px;
+    }
+
+    .icon-video__screen {
+      position: absolute;
+      left: 7px;
+      top: 17px;
+      width: 20px;
+      height: 16px;
+      border: 2px solid var(--ink);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-video__screen img { display: block; transform: rotate(90deg); }
+
+    .messengers { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .msg {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--ink);
+      border-radius: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      flex: none;
+    }
+
+    .msg--imo { font-size: 10px; }
+
+    .qa { display: flex; flex-direction: column; gap: 3px; }
+
+    .faq-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .faq-block .faq { align-self: stretch; }
+
+    .salon-block { margin-top: 36px; align-self: stretch; }
+
+    @media (min-width: 1100px) {
+      .sheet {
+        display: grid;
+        grid-template-columns: minmax(0, 534fr) minmax(0, 531fr) minmax(0, 531fr);
+        column-gap: 43px;
+        row-gap: 0;
+        align-items: start;
       }
-      to {
-        opacity: 1;
-        transform: perspective(900px);
+
+      .col-left { grid-column: 1; grid-row: 1; gap: 36px; }
+      .col-mid { grid-column: 2; grid-row: 1; padding-top: 72px; }
+      .col-side { grid-column: 3; grid-row: 1; padding-top: 72px; }
+    }
+
+    @media (max-width: 1099px) {
+      .sheet { padding: 20px 16px 40px; }
+      .step-no {
+        right: auto;
+        left: 18px;
+        top: 14px;
+        transform: none;
       }
+      .card--step { padding-top: 78px; }
+      .steps .pill { margin-bottom: 0; }
+      .lang-row { flex-direction: column; align-items: stretch; padding-left: 0; }
+      .link-row { flex-direction: column; align-items: stretch; }
+      .btn, .btn--langs, .btn--wide { width: 100%; min-height: 72px; }
+      .trio { flex-direction: column; }
+      .display { font-size: 28px; line-height: 32px; }
+      .h-side { font-size: 24px; line-height: 28px; }
     }
-    .bio-tab-panel.tab-panel-enter {
-      animation: tabShow .3s forwards;
-    }
-    @keyframes tabShow {
-      0% { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      [data-card-reveal] { animation: none !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; }
-      .bio-tab-panel.tab-panel-enter { animation: none !important; transform: none !important; opacity: 1 !important; }
-    }
-    @media (min-width: 600px) { :root { --page-width: 360px; } }
   </style>
+  <script>
+    (function () {
+      var lang = "ru";
+      try {
+        var q = new URLSearchParams(location.search).get("lang");
+        var hash = location.hash === "#tg" ? "tg" : location.hash === "#ru" ? "ru" : "";
+        var saved = localStorage.getItem("megafon-migrant-landing-lang");
+        if (q === "tg" || q === "ru") lang = q;
+        else if (hash) lang = hash;
+        else if (saved === "tg" || saved === "ru") lang = saved;
+      } catch (e) {}
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.lang = lang;
+      document.title = lang === "tg"
+        ? "СИМ-КОРТҲО ДАР ФЕДЕРАТСИЯИ РУСИЯ — МегаФон"
+        : "СИМ-КАРТЫ В РОССИЙСКОЙ ФЕДЕРАЦИИ — МегаФон";
+    })();
+  </script>
 </head>
 <body>
-  <div class="mobile-page">
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="МегаФон">
-        <img class="brand-symbol" src="migrant-assets/logo-symbol.svg" alt="">
-        <img class="brand-word" src="migrant-assets/logo-word.svg" alt="МегаФон">
-      </a>
-      <div class="header-actions">
-        <button type="button" class="login">Войти</button>
-        <button type="button" class="icon-button" aria-label="Меню"><img src="migrant-assets/burger.svg" alt=""></button>
+  <main class="sheet">
+    <div class="col-left">
+      <header class="header">
+        <div class="brand-row">
+          <div class="brand">
+            <div class="mark" aria-hidden="true">!</div>
+            <p class="brand-name">МегаФон</p>
+          </div>
+          <div class="lang-switch" role="group" aria-label="Язык / Забон">
+            <button type="button" data-set-lang="ru" aria-pressed="true">Рус</button>
+            <button type="button" data-set-lang="tg" aria-pressed="false">Тоҷикӣ</button>
+          </div>
+        </div>
+        <div class="spacer" aria-hidden="true"></div>
+        <h1 class="display"><span class="only-ru">СИМ-КАРТЫ В РОССИЙСКОЙ ФЕДЕРАЦИИ</span><span class="only-tg">СИМ-КОРТҲО ДАР ФЕДЕРАТСИЯИ РУСИЯ</span></h1>
+        <p class="h3"><span class="only-ru">ИНСТРУКЦИЯ ПО ПРАВИЛАМ ПОКУПКИ И АКТИВАЦИИ SIM-КАРТЫ</span><span class="only-tg">ДАСТУРАМАЛ ОИД БА ҚОИДАҲОИ ХАРИД ВА ФАЪОЛСОЗИИ СИМ-КОРТ</span></p>
+        <p class="h3"><span class="only-ru">Для активации российской SIM-карты любого оператора иностранному гражданину необходимо:</span><span class="only-tg">Барои фаъолкунии сим-корти русиягии дилхоҳ оператор аз шаҳрванди хориҷӣ талаб карда мешавад:</span></p>
+        <div class="bullets">
+          <p class="body"><span class="only-ru">• получить СНИЛС</span><span class="only-tg">• дастраскунии СНИЛС</span></p>
+          <p class="body"><span class="only-ru">• зарегистрироваться на портале «Госуслуги»</span><span class="only-tg">• сабти ном дар портали «Госуслуги»</span></p>
+          <p class="body"><span class="only-ru">• сдать биометрию.</span><span class="only-tg">• ба қайд гирифтани биометрия.</span></p>
+        </div>
+        <p class="h3"><span class="only-ru">Без этих действий услуги связи будут недоступны</span><span class="only-tg">Бе ин амалҳо хизматрасониҳои алоқа дастнорас мешаванд</span></p>
+        <p class="body"><span class="only-ru">Иностранные граждане и лица без гражданства могут зарегистрировать на своё имя не более 10 SIM-карт.</span><span class="only-tg">Шаҳрвандони хориҷӣ ва шахсони бешаҳрвандӣ метавонанд на бештар аз 10 сим-кортро ба номи худ ба қайд гиранд.</span></p>
+        <div class="lang-row">
+          <!-- No destination in the design or on the previous page. -->
+          <a class="btn btn--langs" href="#">
+            <span class="btn__label"><span class="only-ru">Инструкция на языках:</span><span class="only-tg">Дастурамал бо забонҳо:</span></span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <div class="lang-list body">
+            <p>Рус • Eng</p>
+            <p>O‘zbek • Тоҷикӣ • 中国人</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="steps" aria-labelledby="actions-label">
+        <h2 class="pill" id="actions-label"><span class="only-ru">НЕОБХОДИМЫЕ ДЕЙСТВИЯ</span><span class="only-tg">АМАЛҲОИ ЗАРУРӢ</span></h2>
+        <article class="card card--step">
+          <div class="step-no">1</div>
+          <h3 class="h2"><span class="only-ru">Получите SIM-карту в ближайшем салоне МегаФона</span><span class="only-tg">Сим-кортро дар наздиктарин идораи МегаФон дастрас кунед</span></h3>
+          <div class="link-row">
+            <a class="btn" href="https://megafon.ru/go/offices">
+              <span class="btn__label"><span class="only-ru">Салоны МегаФона</span><span class="only-tg">Идораҳои МегаФон</span></span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="link-copy">
+              <p class="body"><span class="only-ru">Предоставьте IMEI устройства, в котором будет использоваться SIM-карта.</span><span class="only-tg">IMEI-и дастгоҳеро, ки дар он сим-корт истифода мешавад, пешниҳод намоед.</span></p>
+              <p class="body"><span class="only-ru">В противном случае услуги связи будут недоступны</span><span class="only-tg">Дар акси ҳол хизматрасониҳои алоқа дастнорас мешаванд</span></p>
+            </div>
+          </div>
+          <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/offices</p>
+        </article>
+        <article class="card card--step">
+          <div class="step-no">2</div>
+          <h3 class="h2"><span class="only-ru">Получите СНИЛС</span><span class="only-tg">СНИЛС дастрас кунед</span></h3>
+          <div class="check-item">
+            <span class="tick" aria-hidden="true">✓</span>
+            <p class="body"><span class="only-ru">Обратитесь с заявлением в МФЦ (Многофункциональный центр предоставления государственных и муниципальных услуг), Социальный фонд России или к своему работодателю</span><span class="only-tg">Бо ариза ба МФЦ (Маркази бисёрфунксионалии пешниҳоди хизматрасониҳои давлатӣ ва мунитсипалӣ, Фонди иҷтимоии Русия ё корфармои худ муроҷиат кунед</span></p>
+          </div>
+          <div class="check-item">
+            <span class="tick" aria-hidden="true">✓</span>
+            <p class="body"><span class="only-ru">СНИЛС в бумажном или электронном виде выдаётся сразу или в течение 5 рабочих дней</span><span class="only-tg">СНИЛС дар шакли коғазӣ ё рақамӣ якбора ё дар давоми 5 рӯзи корӣ дода мешавад</span></p>
+          </div>
+          <p class="need body"><span class="only-ru"><strong>При себе иметь: </strong>✓ Паспорт   ✓ Нотариально заверенный перевод паспорта</span><span class="only-tg"><strong>Бо худ дошта бошед: </strong>✓ Шиноснома   ✓ Тарҷумаи аз ҷиҳати нотариалӣ тасдиқшудаи шиноснома</span></p>
+          <div class="link-row">
+            <a class="btn" href="https://megafon.ru/go/mfc">
+              <span class="btn__label"><span class="only-ru">Карта ближайших отделений МФЦ</span><span class="only-tg">Харитаи наздиктарин шӯъбаи МФЦ</span></span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="link-copy">
+              <p class="mixed"><span class="only-ru"><strong>Карта ближайших отделений МФЦ </strong><span class="soft">(Многофункциональный центр предоставления государственных и муниципальных услуг)</span></span><span class="only-tg"><strong>Харитаи наздиктарин шӯъбаи МФЦ </strong><span class="soft">(Маркази бисёрфунксионалии пешниҳоди хизматрасониҳои давлатӣ ва мунитсипалӣ)</span></span></p>
+              <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/mfc</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <div class="col-mid">
+      <article class="card card--step">
+        <div class="step-no">3</div>
+        <h3 class="h2"><span class="only-ru">Зарегистрируйтесь на портале «Госуслуги»</span><span class="only-tg">Дар портали «Госуслуги» худро ба қайд гиред</span></h3>
+        <div class="check-item">
+          <span class="tick" aria-hidden="true">✓</span>
+          <p class="body"><span class="only-ru">Для подтверждения учётной записи на портале «Госуслуги» обратитесь в МФЦ (Многофункциональный центр предоставления государственных и муниципальных услуг) или в отделение банка</span><span class="only-tg">Барои кушодани сабти баҳисобгирӣ дар портали «Госуслуги» ба МФЦ (Маркази бисёрфунксионалии пешниҳоди хизматрасониҳои давлатӣ ва мунитсипалӣ) ё шӯъбаи бонк муроҷиат кунед</span></p>
+        </div>
+        <p class="need body"><span class="only-ru"><strong>При себе иметь: </strong>✓ Паспорт   ✓ СНИЛС</span><span class="only-tg"><strong>Бо худ дошта бошед: </strong>✓ Шиноснома   ✓ СНИЛС</span></p>
+        <div class="link-row">
+          <a class="btn" href="https://megafon.ru/go/mfc">
+            <span class="btn__label"><span class="only-ru">Карта ближайших отделений МФЦ</span><span class="only-tg">Харитаи наздиктарин шӯъбаи МФЦ</span></span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <div class="link-copy">
+            <p class="h2"><span class="only-ru">Карта ближайших отделений МФЦ</span><span class="only-tg">Харитаи наздиктарин шӯъбаи МФЦ</span></p>
+            <p class="body"><span class="only-ru">(Многофункциональный центр предоставления государственных и муниципальных услуг)</span><span class="only-tg">(Маркази бисёрфунксионалии пешниҳоди хизматрасониҳои давлатӣ ва мунитсипалӣ)</span></p>
+          </div>
+        </div>
+        <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/mfc</p>
+      </article>
+
+      <article class="card card--step">
+        <div class="step-no">4</div>
+        <h3 class="h2"><span class="only-ru">Сдайте биометрию в банке</span><span class="only-tg">Биометрияро дар бонк ба қайд гиред</span></h3>
+        <div class="check-item">
+          <span class="tick" aria-hidden="true">✓</span>
+          <p class="body"><span class="only-ru">Для регистрации в Единой биометрической системе обратитесь в отделение банка</span><span class="only-tg">Барои сабти ном дар Низоми ягонаи биометрӣ ба филиали бонк муроҷиат кунед</span></p>
+        </div>
+        <p class="need body"><span class="only-ru"><strong>При себе иметь: </strong>✓ Паспорт   ✓ СНИЛС</span><span class="only-tg"><strong>Бо худ дошта бошед: </strong>✓ Шиноснома   ✓ СНИЛС</span></p>
+        <div class="link-row">
+          <a class="btn" href="https://megafon.ru/go/nr_bank">
+            <span class="btn__label"><span class="only-ru">Карта ближайших отделений банков</span><span class="only-tg">Харитаи наздиктарини шӯъбаи бонк</span></span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <div class="link-copy">
+            <p class="h2"><span class="only-ru">Карта ближайших отделений банков</span><span class="only-tg">Харитаи наздиктарини шӯъбаи бонк</span></p>
+          </div>
+        </div>
+        <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/nr_bank</p>
+      </article>
+
+      <article class="card card--step">
+        <div class="step-no">5</div>
+        <h3 class="h2"><span class="only-ru">Активируйте SIM-карту</span><span class="only-tg">Сим-кортро фаъол созед</span></h3>
+        <div class="check-item">
+          <span class="tick" aria-hidden="true">✓</span>
+          <p class="body"><span class="only-ru">Перейдите по ссылке из уведомления о SIM-карте на портале «Госуслуги» и подключитесь к МегаФону, следуя подсказкам. Или обратитесь за помощью в салон МегаФона</span><span class="only-tg">Ба истиноди огоҳӣ оид ба сим-корт дар портали «Госуслуги» гузаред ва бо пайгирии шарҳҳо ба МегаФон пайваст шавед. Ё барои кӯмак ба идораи МегаФон муроҷиат кунед</span></p>
+        </div>
+        <div class="trio">
+          <div class="trio__item">
+            <p class="caption caption--center">megafon.ru/go/offices</p>
+            <a class="btn btn--wide" href="https://megafon.ru/go/offices">
+              <span class="btn__label"><span class="only-ru">Салоны МегаФона</span><span class="only-tg">Идораҳои МегаФон</span></span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="trio__item">
+            <p class="caption caption--center">megafon.ru/go/gos_andr</p>
+            <a class="btn btn--wide" href="https://megafon.ru/go/gos_andr">
+              <span class="btn__label">Госуслуги Android</span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="trio__item">
+            <p class="caption caption--center">megafon.ru/go/gos_ios</p>
+            <a class="btn btn--wide" href="https://megafon.ru/go/gos_ios">
+              <span class="btn__label">Госуслуги iOS</span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="col-side">
+      <h2 class="h-side"><span class="only-ru">ПОДКЛЮЧАЙТЕСЬ И ПОЛЬЗУЙТЕСЬ ДОПОЛНИТЕЛЬНЫМИ ПРЕИМУЩЕСТВАМИ</span><span class="only-tg">ПАЙВАСТ ШАВЕД ВА АЗ ИМТИЁЗҲОИ БЕШТАР БАҲРА БАРЕД</span></h2>
+      <div class="benefits">
+        <div class="benefit">
+          <img src="leaflet-assets/icon-gift.svg" alt="" width="34" height="34">
+          <div class="benefit__text">
+            <h3 class="h3">+10 ГБ</h3>
+            <p class="body"><span class="only-ru">Ежемесячный бонус за своевременную оплату тарифа</span><span class="only-tg">Бонуси ҳармоҳа барои пардохти саривақтии маблағи тарофа</span></p>
+          </div>
+        </div>
+        <div class="benefit">
+          <img src="leaflet-assets/icon-globe.svg" alt="" width="34" height="34">
+          <div class="benefit__text">
+            <h3 class="h3">+20 ГБ</h3>
+            <p class="body"><span class="only-ru">Ежемесячный бонус на полгода начисляется на SIM-карту при возвращении в Россию в течение 60–180 дней</span><span class="only-tg">Бонуси ҳармоҳа барои ним сол ба сим-корт ҳангоми бозгашт ба Русия дар давоми 60-180 рӯз гузаронида мешавад</span></p>
+          </div>
+        </div>
+        <div class="benefit">
+          <span class="icon-video" aria-hidden="true">
+            <span class="icon-video__r">R</span>
+            <span class="icon-video__screen"><img src="leaflet-assets/icon-play.svg" alt=""></span>
+          </span>
+          <div class="benefit__text">
+            <h3 class="h2"><span class="only-ru">Безлимитный трафик на RUTUBE и VK Видео</span><span class="only-tg">Трафики бемаҳдуд барои RUTUBE ва VK Видео</span></h3>
+          </div>
+        </div>
+        <div class="benefit">
+          <img src="leaflet-assets/icon-inf.svg" alt="" width="34" height="34">
+          <div class="benefit__text">
+            <h3 class="h2"><span class="only-ru">Безлимитный трафик на мессенджеры и социальные сети</span><span class="only-tg">Трафики бемаҳдуд барои паёмрасонҳо ва шабакаҳои иҷтимоӣ</span></h3>
+            <div class="messengers" aria-hidden="true">
+              <span class="msg">✈</span>
+              <span class="msg">W</span>
+              <span class="msg">♪</span>
+              <span class="msg">V</span>
+              <span class="msg msg--imo">imo</span>
+              <span class="msg">◔</span>
+              <span class="msg">+6</span>
+            </div>
+          </div>
+        </div>
+        <div class="benefit">
+          <img src="leaflet-assets/icon-people.svg" alt="" width="34" height="34">
+          <div class="benefit__text">
+            <h3 class="h3"><span class="only-ru">Делитесь трафиком тарифа</span><span class="only-tg">Трафики тарофаи</span></h3>
+            <p class="body"><span class="only-ru">с другими участниками «МегаСемьи»</span><span class="only-tg">худро ба дигар аъзои «МегаСемья» тақсим намоед</span></p>
+          </div>
+        </div>
       </div>
-    </header>
 
-    <main id="home">
-      <nav class="breadcrumbs" aria-label="Хлебные крошки">
-        <a href="https://www.megafon.ru/">МегаФон</a> → <span class="trail">Связь для иностранных граждан</span>
-      </nav>
-
-      <section class="landing-banner-full-screen" aria-labelledby="hero-title">
-        <div class="landing-banner-full-screen__inner">
-          <div class="landing-banner-full-screen__body">
-            <h1 class="landing-banner-full-screen__title" id="hero-title">На связи<br>с близкими</h1>
-            <p class="landing-banner-full-screen__description">Тарифы для гостей, интернет, звонки домой и полезные сервисы</p>
-            <div class="hero-actions">
-              <a class="mfui-button mfui-button_type_primary mfui-button_theme_black" href="#connect">Стать абонентом</a>
-              <div class="language-select" id="language-select">
-                <button type="button" class="language-pill" id="language-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu" aria-label="Язык интерфейса">
-                  <img class="language-pill__flag" src="migrant-assets/flag.svg" alt="">
-                  <span class="language-pill__label">Русский</span>
-                  <img class="language-pill__chevron" src="migrant-assets/arrow-down.svg" alt="">
-                </button>
-                <ul class="language-menu" id="language-menu" role="listbox" aria-label="Выбор языка" hidden>
-                  <li role="presentation">
-                    <button type="button" class="language-menu__option is-active" role="option" aria-selected="true" data-lang="ru" data-label="Русский" data-flag="migrant-assets/flag.svg">
-                      <img class="language-flag" src="migrant-assets/flag.svg" alt="">
-                      <span>Русский</span>
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="en" data-label="English" data-flag="migrant-assets/flag-gb.svg">
-                      <img class="language-flag" src="migrant-assets/flag-gb.svg" alt="">
-                      <span>English</span>
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="uz" data-label="Oʻzbekcha" data-flag="migrant-assets/flag-uz.svg">
-                      <img class="language-flag" src="migrant-assets/flag-uz.svg" alt="">
-                      <span>Oʻzbekcha</span>
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="tg" data-label="Тоҷикӣ" data-flag="migrant-assets/flag-tj.svg">
-                      <img class="language-flag" src="migrant-assets/flag-tj.svg" alt="">
-                      <span>Тоҷикӣ</span>
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button type="button" class="language-menu__option" role="option" aria-selected="false" data-lang="zh" data-label="中文" data-flag="migrant-assets/flag-cn.svg">
-                      <img class="language-flag" src="migrant-assets/flag-cn.svg" alt="">
-                      <span>中文</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="landing-banner-full-screen__art">
-            <img src="migrant-assets/hero.png" alt="SIM-карта — подключение к связи МегаФон">
-          </div>
-        </div>
-      </section>
-
-      <section class="landing-container-v2" id="benefits" aria-labelledby="benefits-title">
-        <div class="landing-title-description-box">
-          <h2 id="benefits-title">Связь для всего, что важно</h2>
-        </div>
-        <div class="landing-feature-cards-wrapper">
-          <article class="landing-feature-cards-item">
-            <div>
-              <h3 class="landing-feature-cards-item__title">Быстрый интернет</h3>
-              <p class="landing-feature-cards-item__text">Стабильная связь и максимум возможностей с Мега5G</p>
-            </div>
-            <img class="landing-feature-cards-item__img" src="migrant-assets/benefit-internet.png" alt="">
-          </article>
-          <article class="landing-feature-cards-item">
-            <div>
-              <h3 class="landing-feature-cards-item__title">Связь с близкими</h3>
-              <p class="landing-feature-cards-item__text">Выгодные звонки домой и общий тариф в МегаСемья</p>
-            </div>
-            <img class="landing-feature-cards-item__img" src="migrant-assets/benefit-family.png" alt="">
-          </article>
-        </div>
-      </section>
-
-      <section class="landing-container-v2 landing-container-v2_bg-gray" id="tariffs" aria-labelledby="tariffs-title">
-        <div class="landing-title-description-box">
-          <h2 id="tariffs-title">Выбирайте свой тариф</h2>
-        </div>
-        <div class="tariff-stack">
-          <article class="landing-service-side-picture-card landing-service-side-picture-card_theme_white">
-            <div class="landing-service-side-picture-card__image">
-              <img src="migrant-assets/tariff-minimum.png" alt="">
-            </div>
-            <div class="landing-service-side-picture-card__info">
-              <h3 class="landing-service-side-picture-card__title">Минимум +</h3>
-              <p class="landing-service-side-picture-card__description">Безлимитный доступ к сервисам, которые помогают в работе и повседневных делах даже при нулевом балансе</p>
-              <div class="benefits-tags">
-                <span class="landing-service-side-picture-card__benefit">50 ГБ</span>
-                <span class="landing-service-side-picture-card__benefit">400 минут</span>
-                <span class="landing-service-side-picture-card__benefit">Безлимит на мессенджеры</span>
-              </div>
-              <a class="mfui-button mfui-button_type_outline" href="#connect">Подключить</a>
-            </div>
-          </article>
-          <article class="landing-service-side-picture-card landing-service-side-picture-card_theme_black">
-            <div class="landing-service-side-picture-card__image">
-              <img src="migrant-assets/tariff-family.png" alt="">
-            </div>
-            <div class="landing-service-side-picture-card__info">
-              <h3 class="landing-service-side-picture-card__title">Семейный +</h3>
-              <p class="landing-service-side-picture-card__description">Объединяйте близких в МегаСемью: три участника в одной семейной группе</p>
-              <div class="benefits-tags">
-                <span class="landing-service-side-picture-card__benefit">Безлимитный интернет</span>
-                <span class="landing-service-side-picture-card__benefit">2500 минут</span>
-                <span class="landing-service-side-picture-card__benefit">МегаСемья: + 3 участника</span>
-              </div>
-              <a class="mfui-button mfui-button_type_outline" href="#connect">Подключить</a>
-            </div>
-          </article>
-        </div>
-        <div class="perks-stage" id="perks-stage">
-        <div class="perks-pin">
-        <p class="perks-intro">А чтобы каждый день был проще, позаботились и о других важных вещах</p>
-        <div class="landing-advantage-cards-carousel" id="perks-carousel" tabindex="0" aria-label="Дополнительные возможности">
-        <article class="landing-advantage-card">
-          <p class="landing-advantage-card__title">Безлимит на сервисы для работы, учёбы и мессенджеры</p>
-          <div class="landing-advantage-card__icons">
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base.svg" alt=""><img class="glyph" src="migrant-assets/perk-plus.svg" alt=""></span>
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base.svg" alt=""><img class="glyph" src="migrant-assets/perk-service.svg" alt=""></span>
-          </div>
-        </article>
-        <article class="landing-advantage-card">
-          <p class="landing-advantage-card__title">Выгодные переводы близким, домой</p>
-          <div class="landing-advantage-card__icons">
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base.svg" alt=""><img class="glyph" src="migrant-assets/perk-rate.svg" alt=""></span>
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base-alt.svg" alt=""><img class="glyph" src="migrant-assets/perk-transfer.svg" alt=""></span>
-          </div>
-        </article>
-        <article class="landing-advantage-card">
-          <p class="landing-advantage-card__title">Можно подключить дополнительный пакет минут на звонки домой</p>
-          <div class="landing-advantage-card__icons">
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base.svg" alt=""><img class="glyph" src="migrant-assets/perk-rate.svg" alt=""></span>
-            <span class="perk-icon"><img class="base" src="migrant-assets/perk-base-alt.svg" alt=""><img class="glyph" src="migrant-assets/perk-transfer.svg" alt=""></span>
-          </div>
-        </article>
-        </div>
-        <div class="carousel-dots" id="perks-dots" aria-label="Страницы с дополнительными возможностями"></div>
-        </div>
-        </div>
-      </section>
-
-      <section class="landing-container-v2" id="connect" aria-labelledby="connect-title">
-        <div class="landing-title-description-box">
-          <h2 id="connect-title">Как стать абонентом</h2>
-        </div>
-        <div class="mfui-v6-tabs" role="tablist" aria-label="Биометрия">
-          <div class="mfui-v6-tabs__list">
-            <button type="button" class="mfui-v6-tabs__tab" role="tab" id="tab-bio-yes" aria-selected="true" aria-controls="panel-bio-yes">Есть биометрия</button>
-            <button type="button" class="mfui-v6-tabs__tab" role="tab" id="tab-bio-no" aria-selected="false" aria-controls="panel-bio-no" tabindex="-1">Нет биометрии</button>
-          </div>
-        </div>
-
-        <div id="panel-bio-yes" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-yes">
-          <article class="landing-picture-with-description">
-            <div class="landing-picture-with-description__img-wrap">
-              <img src="migrant-assets/sim-card.png" alt="SIM-карта">
-            </div>
-            <div class="landing-picture-with-description__content">
-              <h3>Оформите в любом удобном салоне связи МегаФон</h3>
-              <div class="landing-text-with-icon">
-                <div class="mfui-text-with-icon-item"><span class="step-badge">01</span><span>Возьмите с собой паспорт иностранного гражданина и его нотариально заверенный перевод на русский язык. Также понадобится СНИЛС.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">02</span><span>Узнайте IMEI своего телефона, набрав *#06#.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">03</span><span>Выберите тариф и обратитесь к сотруднику салона связи МегаФон.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">04</span><span>Активируйте SIM-карту. Это можно сделать прямо в салоне.</span></div>
-              </div>
-              <div class="landing-buttons-box">
-                <a class="mfui-button mfui-button_type_primary mfui-button_theme_black" href="https://www.megafon.ru/go/join">Стать абонентом онлайн</a>
-                <a class="mfui-button mfui-button_type_outline mfui-button_theme_black" href="#offices">Пойти в салон</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div id="panel-bio-no" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-no" hidden>
-          <article class="landing-picture-with-description">
-            <div class="landing-picture-with-description__img-wrap">
-              <img src="migrant-assets/sim-card.png" alt="SIM-карта">
-            </div>
-            <div class="landing-picture-with-description__content">
-              <h3>Сначала подготовьте данные</h3>
-              <div class="landing-text-with-icon">
-                <div class="mfui-text-with-icon-item"><span class="step-badge">01</span><span>Подготовьте паспорт и перевод, если он необходим.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">02</span><span>Оформите необходимые данные — СНИЛС и подтверждённые Госуслуги, если они требуются.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">03</span><span>Сдайте биометрию лица и голоса в уполномоченном банке.</span></div>
-                <div class="mfui-text-with-icon-item"><span class="step-badge">04</span><span>Пройдите проверку и оформите SIM или eSIM доступным способом в салоне связи МегаФон.</span></div>
-              </div>
-              <div class="landing-buttons-box">
-                <a class="mfui-button mfui-button_type_primary mfui-button_theme_black" href="#faq">Подробная инструкция (PDF)</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="landing-container-v2 map-section" id="offices" aria-labelledby="offices-title">
-        <div class="landing-title-description-box">
-          <h2 id="offices-title">Поможем разобраться с подключением</h2>
-        </div>
-        <p class="section-description">Приходите в удобный салон связи. Ответим на вопросы и подскажем, какие документы понадобятся.</p>
-        <div class="map-widget">
-          <img src="migrant-assets/map.png" alt="Карта офисов МегаФона">
-        </div>
-      </section>
-
-      <section class="landing-container-v2" id="faq" aria-labelledby="faq-title">
-        <div class="landing-title-description-box">
-          <h2 id="faq-title">Вопросы и ответы</h2>
-        </div>
-        <div class="faq-items">
-          <details class="mfui-accordion" open>
-            <summary class="mfui-accordion__title-wrap">
-              Могу ли я оформить SIM-карту онлайн?
-              <img class="mfui-accordion__icon" src="migrant-assets/faq-open.svg" alt="">
-            </summary>
-            <div class="mfui-accordion__content">Это зависит от того, какие сведения о вас уже подтверждены. Выберите подходящий сценарий в разделе «Как стать абонентом» и проверьте инструкцию.</div>
-          </details>
-          <details class="mfui-accordion">
-            <summary class="mfui-accordion__title-wrap">
-              Нужны ли документы для подключения?
-              <img class="mfui-accordion__icon" src="migrant-assets/faq-closed.svg" alt="">
-            </summary>
-            <div class="mfui-accordion__content">Понадобится паспорт с нотариально заверенным переводом, СНИЛС, подтверждённые Госуслуги и биометрия. В салоне также укажите IMEI вашего телефона.</div>
-          </details>
-          <details class="mfui-accordion">
-            <summary class="mfui-accordion__title-wrap">
-              Как выбрать тариф?
-              <img class="mfui-accordion__icon" src="migrant-assets/faq-closed.svg" alt="">
-            </summary>
-            <div class="mfui-accordion__content">«Минимум +» подойдёт, если нужны интернет и мессенджеры для работы и учёбы. «Семейный +» — если хотите объединить близких в одной группе с большим пакетом минут и интернета.</div>
-          </details>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <nav class="footer-nav" aria-label="Разделы МегаФона">
-        <details><summary>Связь<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Услуги и опции<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Развлечения<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Поддержка<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Интернет-магазин<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Самозанятым<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>Бизнесу<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-        <details><summary>О компании<span class="footer-chevron" aria-hidden="true">⌄</span></summary></details>
-      </nav>
-      <div class="footer-body">
-        <section class="footer-app" aria-label="Приложение МегаФон">
-          <a class="footer-app-title" href="https://www.megafon.ru/app/">Приложение МегаФон <span aria-hidden="true">›</span></a>
-          <div class="footer-app-download">
-            <div class="footer-store-links">
-              <a class="footer-store-link" href="https://www.megafon.ru/app/"><img src="migrant-assets/android.svg" alt="">Android</a>
-              <a class="footer-store-link" href="https://www.megafon.ru/app/"><img src="migrant-assets/apple.svg" alt="">iOS</a>
-            </div>
-            <img class="footer-qr" src="migrant-assets/qr.svg" alt="QR-код для скачивания приложения">
-          </div>
-        </section>
-        <div class="footer-actions">
-          <button type="button" class="footer-button">Помогите нам стать лучше</button>
-          <a class="footer-button" href="https://career.megafon.ru/">Работа в МегаФоне</a>
-        </div>
-        <a class="footer-gift" href="https://www.megafon.ru/">
-          <img src="migrant-assets/gift.svg" alt="">
-          <span>Делимся скидками<br>и предложениями</span>
-          <span class="footer-gift-send"><img src="migrant-assets/send.svg" alt=""></span>
+      <div class="link-row">
+        <a class="btn" href="https://megafon.ru/go/sim_tr">
+          <span class="btn__label"><span class="only-ru">Подробнее о бонусах и опциях</span><span class="only-tg">Маълумоти бештар оид ба бонусҳо ва опсияҳо</span></span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
         </a>
-        <div class="footer-policy">
-          <span class="footer-age">6+</span>
-          <p>Продолжая использовать наш сайт, вы даёте согласие на обработку файлов Cookies и других пользовательских данных, в соответствии с <a href="https://www.megafon.ru/ai/document/2375/file/politika_obrabotki_pd.pdf">Политикой конфиденциальности</a><a href="https://www.megafon.ru/ai/document/9127/file/politika_pao_megafon.pdf">Политикой обработки персональных данных ПАО «МегаФон»</a></p>
-        </div>
-        <div class="footer-legal">
-          <p class="footer-copyright"><img src="migrant-assets/footer-logo.svg" alt="">© 2024 ПАО «МегаФон»</p>
-          <div class="footer-legal-links">
-            <a href="https://www.megafon.ru/help/info/terms/">Условия оказания услуг</a>
-            <a href="https://www.megafon.ru/help/info/licenses/">Лицензии</a>
-          </div>
-          <div class="footer-socials" aria-label="МегаФон в социальных сетях">
-            <a href="#"><img src="migrant-assets/vk.svg" alt="ВКонтакте"></a>
-            <a href="#"><img src="migrant-assets/ok.svg" alt="Одноклассники"></a>
-            <a href="#"><img src="migrant-assets/youtube.svg" alt="YouTube"></a>
-            <a href="#"><img src="migrant-assets/habr.svg" alt="Хабр"></a>
-            <a href="#"><img src="migrant-assets/telegram.svg" alt="Telegram"></a>
-            <img class="speedtest" src="migrant-assets/speedtest.svg" alt="Speedtest Awards">
-          </div>
+        <div class="link-copy">
+          <p class="h2"><span class="only-ru">Подробнее о подключении бонусов и опций тарифа — на сайте или в салонах продаж</span><span class="only-tg">Маълумоти бештар оид ба пайвасткунии бонусҳо ва опсияҳо дар тарофа — дар сомона ё идораҳои фурӯшҳо</span></p>
+          <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/sim_tr</p>
         </div>
       </div>
-    </footer>
-  </div>
 
+      <section class="faq-block" aria-labelledby="faq-label">
+        <h2 class="pill" id="faq-label"><span class="only-ru">ВОПРОСЫ И ОТВЕТЫ</span><span class="only-tg">САВОЛҲО ВА ҶАВОБҲО</span></h2>
+        <div class="faq">
+          <div class="qa">
+            <h3 class="h3"><span class="only-ru">Обязательно ли сдавать биометрию для активации SIM-карты?</span><span class="only-tg">Оё барои фаъолсозии сим-корт гузаштани биометрия ҳатмист?</span></h3>
+            <p class="body"><span class="only-ru">Да, по новому закону. В случае отказа SIM-карта не будет активирована, а услуги связи станут недоступны.</span><span class="only-tg">Бале, мувофиқи қонуни нав. Дар сурати саркашӣ сим-корт фаъол намешавад ва хизматрасониҳои алоқа дастнорас мегарданд.</span></p>
+          </div>
+          <div class="qa">
+            <h3 class="h3"><span class="only-ru">Что делать, если у меня уже есть SIM-карта МегаФона?</span><span class="only-tg">Агар ман аллакай сим-корти МегаФон дошта бошам, чӣ мешавад?</span></h3>
+            <p class="body"><span class="only-ru">Вы можете восстановить свою прежнюю SIM-карту в ближайшем салоне МегаФона.</span><span class="only-tg">Шумо метавонед сим-корти қаблии худро дар наздиктарин идораи МегаФон барқарор кунед.</span></p>
+          </div>
+          <div class="qa">
+            <h3 class="h3"><span class="only-ru">Как узнать IMEI устройства?</span><span class="only-tg">IMEI-и дастгоҳро чӣ гуна фаҳмидан мумкин аст?</span></h3>
+            <p class="body"><span class="only-ru">•&nbsp;&nbsp;Наберите USSD-команду *#06#</span><span class="only-tg">•&nbsp;&nbsp;USSD *#06#-ро бичинед</span></p>
+            <p class="body"><span class="only-ru">•&nbsp;&nbsp;Найдите его в настройках устройства или на коробке</span><span class="only-tg">•&nbsp;&nbsp;Дар танзимоти дастгоҳ ё қуттӣ пайдо кунед</span></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="salon-block link-row">
+        <a class="btn" href="https://megafon.ru/go/offices">
+          <span class="btn__label"><span class="only-ru">Салоны МегаФона в России</span><span class="only-tg">Идораҳои МегаФон дар Русия</span></span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        <div class="link-copy">
+          <p class="h2"><span class="only-ru">Где найти салон МегаФона в России?</span><span class="only-tg">Идораи МегаФон-ро дар Русия аз куҷо ёфта метавонам?</span></p>
+          <p class="caption"><span class="only-ru">Или перейдите по адресу:</span><span class="only-tg">Ё ба суроғаи:</span> megafon.ru/go/offices</p>
+        </div>
+      </div>
+    </aside>
+  </main>
   <script>
-    const bioTabs = [...document.querySelectorAll('.mfui-v6-tabs__tab')];
-    const bioPanels = {
-      'tab-bio-yes': document.getElementById('panel-bio-yes'),
-      'tab-bio-no': document.getElementById('panel-bio-no'),
-    };
-    document.querySelectorAll('.landing-service-side-picture-card, .landing-advantage-card, .landing-picture-with-description').forEach((card) => {
-      const slot = document.createElement('div');
-      slot.className = 'card-reveal-slot';
-      slot.setAttribute('data-card-reveal', '');
-      card.before(slot);
-      slot.append(card);
-    });
-
-    const revealSlots = [...document.querySelectorAll('[data-card-reveal]')];
-    const revealMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const revealStates = {
-      hidden: 'landing-appear-animation-wrapper_state_hidden',
-      animated: 'landing-appear-animation-wrapper_state_animated',
-      shown: 'landing-appear-animation-wrapper_state_shown',
-    };
-    function revealRootBottom(entry) {
-      return entry?.rootBounds?.bottom ?? window.visualViewport?.height ?? window.innerHeight;
-    }
-    function carouselSlotVisible(slot) {
-      const track = slot.closest('.landing-advantage-cards-carousel');
-      if (!track) return true;
-      const rect = slot.getBoundingClientRect();
-      const bounds = track.getBoundingClientRect();
-      return Math.min(rect.right, bounds.right, window.innerWidth) - Math.max(rect.left, bounds.left, 0) > 0;
-    }
-    function setRevealState(slot, state) {
-      slot.dataset.revealState = state;
-      slot.classList.remove(revealStates.hidden, revealStates.animated, revealStates.shown);
-      slot.classList.add(revealStates[state]);
-    }
-    function updateRevealSlot(slot, entry) {
-      if (!slot.getClientRects().length) return;
-      if (revealMotion.matches) {
-        setRevealState(slot, 'shown');
-        return;
-      }
-      if (!carouselSlotVisible(slot)) return;
-      const { top, bottom } = entry.boundingClientRect;
-      const viewportBottom = revealRootBottom(entry);
-      const state = slot.dataset.revealState || 'hidden';
-      if (state === 'hidden' && top < viewportBottom) setRevealState(slot, 'animated');
-      else if (top > viewportBottom && bottom > viewportBottom) setRevealState(slot, 'hidden');
-    }
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => updateRevealSlot(entry.target, entry));
-    }, { root: null, rootMargin: '0px 0px 120px 0px', threshold: [0, 0.01, 0.1, 0.25, 0.5, 0.75, 1] });
-    revealSlots.forEach((slot) => {
-      setRevealState(slot, revealMotion.matches ? 'shown' : 'hidden');
-      slot.addEventListener('animationend', (event) => {
-        if (event.target === slot && slot.dataset.revealState === 'animated') setRevealState(slot, 'shown');
-      });
-      revealObserver.observe(slot);
-    });
-    document.addEventListener('focusin', (event) => {
-      const slot = event.target.closest('[data-card-reveal]');
-      if (slot) setRevealState(slot, 'shown');
-    });
-    revealMotion.addEventListener('change', () => {
-      revealSlots.forEach((slot) => setRevealState(slot, revealMotion.matches ? 'shown' : 'hidden'));
-    });
-
-    bioTabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        bioTabs.forEach((t) => {
-          const active = t === tab;
-          t.setAttribute('aria-selected', active ? 'true' : 'false');
-          t.tabIndex = active ? 0 : -1;
+    (function () {
+      var buttons = document.querySelectorAll("[data-set-lang]");
+      function apply(lang, writeUrl) {
+        lang = lang === "tg" ? "tg" : "ru";
+        document.documentElement.lang = lang;
+        document.documentElement.dataset.lang = lang;
+        document.title = lang === "tg"
+          ? "СИМ-КОРТҲО ДАР ФЕДЕРАТСИЯИ РУСИЯ — МегаФон"
+          : "СИМ-КАРТЫ В РОССИЙСКОЙ ФЕДЕРАЦИИ — МегаФон";
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.dataset.setLang === lang ? "true" : "false");
         });
-        Object.entries(bioPanels).forEach(([id, panel]) => {
-          const show = tab.id === id;
-          panel.classList.remove('tab-panel-enter');
-          panel.hidden = !show;
-          if (show && !revealMotion.matches) {
-            void panel.offsetWidth;
-            panel.classList.add('tab-panel-enter');
-          }
-        });
-        revealSlots.forEach((slot) => {
-          if (slot.isConnected) revealObserver.unobserve(slot);
-          revealObserver.observe(slot);
-        });
-      });
-    });
-
-    (() => {
-      const carousel = document.getElementById('perks-carousel');
-      const dotsRoot = document.getElementById('perks-dots');
-      const maxLeft = () => Math.max(0, carousel.scrollWidth - carousel.clientWidth);
-      [0, 1].forEach((index) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Страница ${index + 1}`);
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          carousel.scrollTo({ left: index === 0 ? 0 : maxLeft(), behavior: 'smooth' });
-        });
-        dotsRoot.appendChild(dot);
-      });
-      carousel.addEventListener('scroll', () => {
-        const active = carousel.scrollLeft >= maxLeft() / 2 ? 1 : 0;
-        [...dotsRoot.children].forEach((dot, index) => dot.classList.toggle('active', index === active));
-      }, { passive: true });
-      let dragStartX = 0;
-      let dragStartScroll = 0;
-      let dragging = false;
-      carousel.addEventListener('pointerdown', (event) => {
-        if (event.pointerType !== 'mouse') return;
-        dragging = true;
-        dragStartX = event.clientX;
-        dragStartScroll = carousel.scrollLeft;
-        carousel.classList.add('is-dragging');
-        carousel.setPointerCapture(event.pointerId);
-      });
-      carousel.addEventListener('pointermove', (event) => {
-        if (!dragging) return;
-        carousel.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
-      });
-      const finishDrag = () => {
-        dragging = false;
-        carousel.classList.remove('is-dragging');
-      };
-      carousel.addEventListener('pointerup', finishDrag);
-      carousel.addEventListener('pointercancel', finishDrag);
-    })();
-
-    const faqItems = [...document.querySelectorAll('.mfui-accordion')];
-    faqItems.forEach((item) => {
-      item.addEventListener('toggle', () => {
-        if (item.open) {
-          faqItems.forEach((other) => {
-            if (other !== item) other.open = false;
-          });
+        try { localStorage.setItem("megafon-migrant-landing-lang", lang); } catch (e) {}
+        if (writeUrl) {
+          var url = new URL(location.href);
+          url.searchParams.set("lang", lang);
+          url.hash = "";
+          history.replaceState(null, "", url);
         }
-        const icon = item.querySelector('.mfui-accordion__icon');
-        icon.src = item.open ? 'migrant-assets/faq-open.svg' : 'migrant-assets/faq-closed.svg';
-      });
-    });
-
-    (() => {
-      const root = document.getElementById('language-select');
-      const toggle = document.getElementById('language-toggle');
-      const menu = document.getElementById('language-menu');
-      if (!root || !toggle || !menu) return;
-      const flag = toggle.querySelector('.language-pill__flag');
-      const label = toggle.querySelector('.language-pill__label');
-      const options = [...menu.querySelectorAll('.language-menu__option')];
-      const storageKey = 'megafon-migrant-landing-lang';
-
-      function setOpen(open) {
-        root.classList.toggle('is-open', open);
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        menu.hidden = !open;
       }
-
-      function applySelection(option) {
-        options.forEach((item) => {
-          const active = item === option;
-          item.classList.toggle('is-active', active);
-          item.setAttribute('aria-selected', active ? 'true' : 'false');
+      apply(document.documentElement.dataset.lang || "ru", false);
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          apply(button.dataset.setLang, true);
         });
-        flag.src = option.dataset.flag;
-        flag.alt = '';
-        label.textContent = option.dataset.label;
-        document.documentElement.lang = option.dataset.lang === 'zh' ? 'zh' : option.dataset.lang;
-        try {
-          localStorage.setItem(storageKey, option.dataset.lang);
-        } catch (_) {}
-        setOpen(false);
-      }
-
-      const saved = (() => {
-        try {
-          return localStorage.getItem(storageKey);
-        } catch (_) {
-          return null;
-        }
-      })();
-      const initial = options.find((item) => item.dataset.lang === saved) || options[0];
-      if (initial !== options[0]) applySelection(initial);
-
-      toggle.addEventListener('click', () => setOpen(!root.classList.contains('is-open')));
-      options.forEach((option) => {
-        option.addEventListener('click', () => applySelection(option));
-      });
-      document.addEventListener('click', (event) => {
-        if (!root.contains(event.target)) setOpen(false);
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') setOpen(false);
       });
     })();
   </script>
