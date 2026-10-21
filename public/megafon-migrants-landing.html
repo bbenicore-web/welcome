@@ -195,20 +195,33 @@
       height: 52px;
       min-height: 52px;
       border-radius: 12px;
-      border: 1px solid var(--content);
+      border: 0;
       background: var(--white);
-      padding: 14px 10px;
+      color: #333333;
+      padding: 14px 32px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 10px;
       font-weight: 500;
       font-size: 15px;
       line-height: 24px;
     }
-    .interest-pill:hover { background: var(--page); }
-    .interest-pill:active { background: #e6e8ec; }
-    .interest-pill__flag { width: 16px; height: 16px; flex: none; object-fit: cover; }
+    .interest-pill:hover { background: #f7f8fa; }
+    .interest-pill:active { background: #eef0f3; }
+    .interest-pill__text {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+    }
+    .interest-pill__flag {
+      width: 16px;
+      height: 16px;
+      flex: none;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: inset 0 0 0 1px rgba(51, 51, 51, 0.28);
+    }
     .interest-pill__label { white-space: nowrap; }
     .interest-pill__chevron { width: 20px; height: 20px; flex: none; transition: transform .2s ease; }
     .interest-select.is-open .interest-pill__chevron { transform: rotate(180deg); }
@@ -217,22 +230,30 @@
       top: calc(100% + 8px);
       right: 0;
       z-index: 120;
-      width: 260px;
+      width: 200px;
       margin: 0;
       padding: 8px;
       background: var(--white);
       border-radius: 20px;
       box-shadow: 0 8px 24px #00000024;
     }
-    .interest-menu a {
-      display: block;
+    .interest-menu__option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
       padding: 12px;
+      border: 0;
       border-radius: 16px;
+      background: transparent;
+      color: #333333;
+      font-weight: 500;
       font-size: 15px;
       line-height: 24px;
-      font-weight: 500;
+      text-align: left;
     }
-    .interest-menu a:hover { background: #ecfbf2; color: var(--brand-green); }
+    .interest-menu__option:hover,
+    .interest-menu__option.is-active { background: #ecfbf2; color: var(--brand-green); }
 
     .landing-banner-full-screen__art {
       position: relative;
@@ -775,17 +796,19 @@
             <div class="hero-actions">
               <a class="mfui-button mfui-button_type_primary mfui-button_theme_green" href="#connect">Стать абонентом</a>
               <div class="interest-select" id="interest-select">
-                <button type="button" class="interest-pill" id="interest-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="interest-menu">
+                <button type="button" class="interest-pill" id="interest-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="interest-menu" aria-label="Язык">
                   <img class="interest-pill__flag" src="migrant-assets/flag.svg" alt="">
-                  <span class="interest-pill__label">Интересное</span>
-                  <img class="interest-pill__chevron" src="migrant-assets/arrow-down.svg" alt="">
+                  <span class="interest-pill__text">
+                    <span class="interest-pill__label">Русский</span>
+                    <img class="interest-pill__chevron" src="migrant-assets/arrow-down.svg" alt="">
+                  </span>
                 </button>
-                <ul class="interest-menu" id="interest-menu" role="menu" hidden>
-                  <li role="none"><a role="menuitem" href="#benefits">Связь для всего, что важно</a></li>
-                  <li role="none"><a role="menuitem" href="#tariffs">Выбирайте свой тариф</a></li>
-                  <li role="none"><a role="menuitem" href="#connect">Как стать абонентом</a></li>
-                  <li role="none"><a role="menuitem" href="#offices">Поможем разобраться с подключением</a></li>
-                  <li role="none"><a role="menuitem" href="#faq">Вопросы и ответы</a></li>
+                <ul class="interest-menu" id="interest-menu" role="listbox" aria-label="Язык" hidden>
+                  <li role="none"><button type="button" class="interest-menu__option is-active" role="option" aria-selected="true" data-lang="ru" data-label="Русский" data-flag="migrant-assets/flag.svg"><img class="interest-pill__flag" src="migrant-assets/flag.svg" alt=""><span>Русский</span></button></li>
+                  <li role="none"><button type="button" class="interest-menu__option" role="option" aria-selected="false" data-lang="en" data-label="English" data-flag="migrant-assets/flag-gb.svg"><img class="interest-pill__flag" src="migrant-assets/flag-gb.svg" alt=""><span>English</span></button></li>
+                  <li role="none"><button type="button" class="interest-menu__option" role="option" aria-selected="false" data-lang="uz" data-label="Oʻzbekcha" data-flag="migrant-assets/flag-uz.svg"><img class="interest-pill__flag" src="migrant-assets/flag-uz.svg" alt=""><span>Oʻzbekcha</span></button></li>
+                  <li role="none"><button type="button" class="interest-menu__option" role="option" aria-selected="false" data-lang="tg" data-label="Тоҷикӣ" data-flag="migrant-assets/flag-tj.svg"><img class="interest-pill__flag" src="migrant-assets/flag-tj.svg" alt=""><span>Тоҷикӣ</span></button></li>
+                  <li role="none"><button type="button" class="interest-menu__option" role="option" aria-selected="false" data-lang="zh" data-label="中文" data-flag="migrant-assets/flag-cn.svg"><img class="interest-pill__flag" src="migrant-assets/flag-cn.svg" alt=""><span>中文</span></button></li>
                 </ul>
               </div>
             </div>
@@ -1217,14 +1240,39 @@
       const root = document.getElementById('interest-select');
       const toggle = document.getElementById('interest-toggle');
       const menu = document.getElementById('interest-menu');
+      const flag = toggle.querySelector('.interest-pill__flag');
+      const label = toggle.querySelector('.interest-pill__label');
+      const options = [...menu.querySelectorAll('.interest-menu__option')];
+      const storageKey = 'megafon-migrant-landing-lang';
+
       function setOpen(open) {
         root.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         menu.hidden = !open;
       }
+
+      function applySelection(option) {
+        options.forEach((item) => {
+          const active = item === option;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        flag.src = option.dataset.flag;
+        label.textContent = option.dataset.label;
+        document.documentElement.lang = option.dataset.lang === 'zh' ? 'zh' : option.dataset.lang;
+        try { localStorage.setItem(storageKey, option.dataset.lang); } catch (_) {}
+        setOpen(false);
+      }
+
+      const saved = (() => {
+        try { return localStorage.getItem(storageKey); } catch (_) { return null; }
+      })();
+      const initial = options.find((item) => item.dataset.lang === saved);
+      if (initial && initial !== options[0]) applySelection(initial);
+
       toggle.addEventListener('click', () => setOpen(menu.hidden));
-      menu.addEventListener('click', (event) => {
-        if (event.target.closest('a')) setOpen(false);
+      options.forEach((option) => {
+        option.addEventListener('click', () => applySelection(option));
       });
       document.addEventListener('click', (event) => {
         if (!root.contains(event.target)) setOpen(false);
