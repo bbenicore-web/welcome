@@ -263,12 +263,11 @@
     }
     .landing-banner-full-screen__art img {
       position: absolute;
-      width: 486.223px;
+      width: 486px;
       max-width: none;
-      height: 273.501px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-54.14%, -42.87%);
+      height: 274px;
+      left: -83px;
+      top: -11px;
       object-fit: cover;
     }
 
@@ -314,17 +313,26 @@
     }
     .landing-feature-cards-item__media img {
       position: absolute;
-      width: 320px;
       max-width: none;
+      object-fit: cover;
+    }
+    .landing-feature-cards-item:nth-child(1) .landing-feature-cards-item__media img,
+    .landing-feature-cards-item:nth-child(3) .landing-feature-cards-item__media img {
+      width: 320px;
       height: 180px;
       left: -96px;
       top: 6px;
-      object-fit: cover;
     }
-    .landing-feature-cards-item:nth-child(even) .landing-feature-cards-item__media img {
-      width: 343.111px;
+    .landing-feature-cards-item:nth-child(2) .landing-feature-cards-item__media img {
+      width: 343px;
       height: 193px;
-      left: -107px;
+      left: -113px;
+      top: 0;
+    }
+    .landing-feature-cards-item:nth-child(4) .landing-feature-cards-item__media img {
+      width: 343px;
+      height: 193px;
+      left: -124px;
       top: -15px;
     }
 
@@ -524,19 +532,22 @@
     }
     .landing-picture-with-description { background: transparent; }
     .landing-picture-with-description__img-wrap {
+      position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: 184px;
       border-radius: 16px;
       overflow: hidden;
       margin-bottom: -32px;
       background: #e9ebf0;
     }
     .landing-picture-with-description__img-wrap img {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      width: 424px;
+      height: 239px;
       max-width: none;
+      left: -48px;
+      top: -16px;
       object-fit: cover;
-      object-position: center;
     }
     .landing-picture-with-description__content {
       position: relative;
@@ -607,19 +618,19 @@
     }
     .map-widget {
       position: relative;
-      height: 365.295px;
+      height: 365.5px;
       border-radius: 16px;
       overflow: hidden;
       background: #e8ecf2;
     }
     .map-widget > img {
       position: absolute;
-      width: 119.7%;
+      width: 100%;
       max-width: none;
-      height: 233%;
-      left: -9.95%;
-      top: -37.74%;
-      object-fit: fill;
+      height: 100%;
+      left: 0;
+      top: 0;
+      object-fit: cover;
     }
 
     #faq { padding: 0 16px 48px; background: var(--white); }
@@ -817,7 +828,7 @@
             </div>
           </div>
           <div class="landing-banner-full-screen__art">
-            <img src="migrant-assets/hero.png" data-i18n-alt="hero.alt" alt="SIM-карта — подключение к связи МегаФон">
+            <img src="migrant-assets/img-promo@2x.png" data-i18n-alt="hero.alt" alt="SIM-карта — подключение к связи МегаФон">
           </div>
         </div>
       </section>
@@ -829,11 +840,11 @@
         <div class="landing-feature-cards-wrapper">
           <article class="landing-feature-cards-item">
             <div class="landing-feature-cards-item__copy">
-              <h3 class="landing-feature-cards-item__title">Мега5G</h3>
+              <h3 class="landing-feature-cards-item__title">Мега 5G</h3>
               <p class="landing-feature-cards-item__text" data-i18n="b1.text">Быстрый и стабильный интернет</p>
             </div>
             <div class="landing-feature-cards-item__media">
-              <img src="migrant-assets/benefit-internet.png" alt="">
+              <img src="migrant-assets/benefit-5g.png" alt="">
             </div>
           </article>
           <article class="landing-feature-cards-item">
@@ -842,7 +853,7 @@
               <p class="landing-feature-cards-item__text" data-i18n="b2.text">Связь в городах и на трассах</p>
             </div>
             <div class="landing-feature-cards-item__media">
-              <img src="migrant-assets/benefit-family.png" alt="">
+              <img src="migrant-assets/benefit-coverage.png" alt="">
             </div>
           </article>
           <article class="landing-feature-cards-item">
@@ -851,7 +862,7 @@
               <p class="landing-feature-cards-item__text" data-i18n="b3.text">Связь с родными за рубежом без переплат</p>
             </div>
             <div class="landing-feature-cards-item__media">
-              <img src="migrant-assets/benefit-internet.png" alt="">
+              <img src="migrant-assets/benefit-calls-home.png" alt="">
             </div>
           </article>
           <article class="landing-feature-cards-item">
@@ -860,7 +871,7 @@
               <p class="landing-feature-cards-item__text" data-i18n="b4.text">Общий пакет с близкими в России</p>
             </div>
             <div class="landing-feature-cards-item__media">
-              <img src="migrant-assets/benefit-family.png" alt="">
+              <img src="migrant-assets/benefit-megasemya.png" alt="">
             </div>
           </article>
         </div>
@@ -873,7 +884,7 @@
         <div class="tariff-stack">
           <article class="landing-service-side-picture-card landing-service-side-picture-card_theme_white">
             <div class="landing-service-side-picture-card__image">
-              <img src="migrant-assets/tariff-minimum.png" alt="">
+              <img src="migrant-assets/tariff-base5g@2x.png" alt="">
             </div>
             <div class="landing-service-side-picture-card__info">
               <div class="tariff-copy">
@@ -896,7 +907,7 @@
           </article>
           <article class="landing-service-side-picture-card landing-service-side-picture-card_theme_black">
             <div class="landing-service-side-picture-card__image">
-              <img src="migrant-assets/tariff-family.png" alt="">
+              <img src="migrant-assets/tariff-megaspeed@2x.png" alt="">
             </div>
             <div class="landing-service-side-picture-card__info">
               <div class="tariff-copy">
@@ -1007,7 +1018,7 @@
         <div id="panel-bio-no" class="bio-tab-panel" role="tabpanel" aria-labelledby="tab-bio-no" hidden>
           <article class="landing-picture-with-description">
             <div class="landing-picture-with-description__img-wrap">
-              <img src="migrant-assets/sim-card-nobio@2x.png" data-i18n-alt="sim.alt" alt="SIM-карта">
+              <img src="migrant-assets/sim-card@2x.png" data-i18n-alt="sim.alt" alt="SIM-карта">
             </div>
             <div class="landing-picture-with-description__content">
               <h3 data-i18n="no.title">Сначала подготовьте данные</h3>
@@ -1031,7 +1042,7 @@
         </div>
         <p class="section-description" data-i18n="offices.desc">Приходите в удобный салон связи. Ответим на вопросы и подскажем, какие документы понадобятся.</p>
         <div class="map-widget">
-          <img src="migrant-assets/map.png" data-i18n-alt="offices.alt" alt="Карта офисов МегаФона">
+          <img src="migrant-assets/map@2x.png" data-i18n-alt="offices.alt" alt="Карта офисов МегаФона">
         </div>
       </section>
 
