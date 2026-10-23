@@ -108,7 +108,7 @@
     .breadcrumbs {
       height: 40px;
       padding: 16px 16px 0;
-      background: var(--white);
+      background: transparent;
       font-size: 15px;
       line-height: 24px;
       white-space: nowrap;
@@ -117,7 +117,12 @@
     .breadcrumbs a { color: var(--content); }
     .breadcrumbs .trail { opacity: .5; }
 
-    .landing-banner-full-screen { background: var(--white); overflow: visible; }
+    .landing-banner-full-screen {
+      background-image:
+        linear-gradient(-26.76deg, rgba(143, 168, 216, 0.3) 0.86%, rgba(255, 255, 255, 0.3) 100.73%),
+        linear-gradient(90deg, #f2f4f7, #f2f4f7);
+      overflow: visible;
+    }
     .landing-banner-full-screen__inner { display: flex; flex-direction: column; }
     .landing-banner-full-screen__body {
       position: relative;
@@ -803,11 +808,10 @@
     </header>
 
     <main id="home">
-      <nav class="breadcrumbs" data-i18n-aria="crumbs.label" aria-label="Хлебные крошки">
-        <a href="https://www.megafon.ru/" data-href-ru="https://www.megafon.ru/" data-href-tg="https://megafon-ru.translate.goog/?_x_tr_sl=ru&amp;_x_tr_tl=tg&amp;_x_tr_hl=ru">МегаФон</a> → <span class="trail" data-i18n="crumbs.trail">Связь для иностранных граждан</span>
-      </nav>
-
       <section class="landing-banner-full-screen" aria-labelledby="hero-title">
+        <nav class="breadcrumbs" data-i18n-aria="crumbs.label" aria-label="Хлебные крошки">
+          <a href="https://www.megafon.ru/" data-href-ru="https://www.megafon.ru/" data-href-tg="https://megafon-ru.translate.goog/?_x_tr_sl=ru&amp;_x_tr_tl=tg&amp;_x_tr_hl=ru">МегаФон</a> → <span class="trail" data-i18n="crumbs.trail">Связь для иностранных граждан</span>
+        </nav>
         <div class="landing-banner-full-screen__inner">
           <div class="landing-banner-full-screen__body">
             <h1 class="landing-banner-full-screen__title" id="hero-title"><span data-i18n="hero.l1">На связи</span><br><span data-i18n="hero.l2">с близкими</span></h1>
