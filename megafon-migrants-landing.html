@@ -138,10 +138,14 @@
     }
     .landing-banner-full-screen__description {
       margin-top: 8px;
+      width: 328px;
+      max-width: none;
+      padding: 0;
       min-height: 48px;
       font-size: 18px;
       line-height: 24px;
       font-weight: 500;
+      letter-spacing: -0.01px;
     }
     .hero-actions {
       display: flex;
@@ -779,6 +783,7 @@
     @media (max-width: 359px) {
       .hero-actions .mfui-button,
       .interest-select { width: calc((100% - 8px) / 2); flex-basis: calc((100% - 8px) / 2); }
+      .landing-banner-full-screen__description { width: 100%; }
       .but-group, .mfui-button_type_primary.mfui-button_theme_black, .landing-buttons-box .mfui-button_type_outline { width: 100%; }
       .hero-actions .mfui-button_type_primary.mfui-button_theme_black { width: calc((100% - 8px) / 2); }
       .but-group .mfui-button_type_outline { width: calc(100% - 52px); }
@@ -837,7 +842,7 @@
             </div>
           </div>
           <div class="landing-banner-full-screen__art">
-            <img src="migrant-assets/img-promo@2x.png" data-i18n-alt="hero.alt" alt="SIM-карта — подключение к связи МегаФон">
+            <img src="migrant-assets/img-promo-design.png" data-i18n-alt="hero.alt" alt="SIM-карта — подключение к связи МегаФон">
           </div>
         </div>
       </section>
