@@ -181,6 +181,10 @@
     }
     .mfui-button_type_primary.mfui-button_theme_black:hover { background: #1f1f1f; }
     .mfui-button_type_primary.mfui-button_theme_black:active { background: #111; }
+    .hero-actions .mfui-button_type_primary.mfui-button_theme_black {
+      width: 160px;
+      padding: 14px 8px;
+    }
     .mfui-button_type_outline {
       border: 1px solid var(--content);
       background: transparent;
@@ -771,6 +775,7 @@
       .hero-actions .mfui-button,
       .interest-select { width: calc((100% - 8px) / 2); flex-basis: calc((100% - 8px) / 2); }
       .but-group, .mfui-button_type_primary.mfui-button_theme_black, .landing-buttons-box .mfui-button_type_outline { width: 100%; }
+      .hero-actions .mfui-button_type_primary.mfui-button_theme_black { width: calc((100% - 8px) / 2); }
       .but-group .mfui-button_type_outline { width: calc(100% - 52px); }
       .mfui-text-with-icon-item { grid-template-columns: 32px minmax(0, 1fr); }
     }
@@ -808,7 +813,7 @@
             <h1 class="landing-banner-full-screen__title" id="hero-title"><span data-i18n="hero.l1">На связи</span><br><span data-i18n="hero.l2">с близкими</span></h1>
             <p class="landing-banner-full-screen__description" data-i18n="hero.desc">Тарифы для гостей, интернет, звонки домой и полезные сервисы</p>
             <div class="hero-actions">
-              <a class="mfui-button mfui-button_type_primary mfui-button_theme_green" href="#connect" data-i18n="hero.cta">Стать абонентом</a>
+              <a class="mfui-button mfui-button_type_primary mfui-button_theme_black" href="#connect" data-i18n="hero.cta">Стать абонентом</a>
               <div class="interest-select" id="interest-select">
                 <button type="button" class="interest-pill" id="interest-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="interest-menu" data-i18n-aria="lang.label" aria-label="Язык">
                   <img class="interest-pill__flag" src="migrant-assets/flag.svg" alt="">
@@ -840,7 +845,7 @@
         <div class="landing-feature-cards-wrapper">
           <article class="landing-feature-cards-item">
             <div class="landing-feature-cards-item__copy">
-              <h3 class="landing-feature-cards-item__title">Мега 5G</h3>
+              <h3 class="landing-feature-cards-item__title">Мега5G</h3>
               <p class="landing-feature-cards-item__text" data-i18n="b1.text">Быстрый и стабильный интернет</p>
             </div>
             <div class="landing-feature-cards-item__media">
