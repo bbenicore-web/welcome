@@ -59,6 +59,11 @@ export function HomeChooser() {
               </p>
             </a>
           </Reveal>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            <a href={withBase("/warm")} className="font-semibold text-[#00B956]">
+              Связь для иностранных граждан
+            </a>
+          </p>
         </section>
       </main>
     </LandingChrome>
