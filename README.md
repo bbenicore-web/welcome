@@ -13,9 +13,18 @@
 
 ## GitHub Pages
 
-Сайт собирается в статику (`npm run build` → папка `out`). Адрес после включения Pages:
+Сайт опубликован: https://bbenicore-web.github.io/welcome/
 
-https://bbenicore-web.github.io/welcome/
+- Только приехал: https://bbenicore-web.github.io/welcome/arrive/
+- Уже в России: https://bbenicore-web.github.io/welcome/here/
+- Сегменты и CJM: https://bbenicore-web.github.io/welcome/cjm/
+
+Источник — ветка `gh-pages`. Обновить публикацию:
+
+```bash
+npm install
+npm run deploy:pages
+```
 
 Локально:
 

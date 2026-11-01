@@ -6,6 +6,7 @@
     "dev": "next dev --port 43123 --hostname 0.0.0.0",
     "build": "next build",
     "start": "npx --yes serve out --listen tcp://0.0.0.0:43123 --no-clipboard",
+    "deploy:pages": "bash scripts/deploy-pages.sh",
     "lint": "eslint"
   },
   "dependencies": {
